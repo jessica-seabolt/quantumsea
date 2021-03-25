@@ -301,3 +301,15 @@ EventScript_FailSweetScent:: @ 8290CAE
 
 Text_FailSweetScent: @ 8290CB7
 	.string "Looks like there's nothing here…$"
+
+EventScript_DisableAutoRun::
+    msgbox AutoRunDisabled MSGBOX_SIGN
+    end
+AutoRunDisabled:
+    .string "Running Shoes {COLOR RED}off{COLOR DARK_GREY}!$"
+    
+EventScript_EnableAutoRun::
+    msgbox AutoRunEnabled MSGBOX_SIGN
+    end
+AutoRunEnabled:
+    .string "Running Shoes {COLOR GREEN}on{COLOR DARK_GREY}!$"

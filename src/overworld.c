@@ -83,6 +83,28 @@
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
+// event scripts
+extern const u8 EventScript_WhiteOut[];
+extern const u8 EventScript_ResetMrBriney[];
+extern const u8 EventScript_DoLinkRoomExit[];
+extern const u8 CableClub_EventScript_TooBusyToNotice[];
+extern const u8 CableClub_EventScript_ReadTrainerCard[];
+extern const u8 CableClub_EventScript_ReadTrainerCardColored[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot0[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot1[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot2[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot3[];
+extern const u8 EventScript_RecordCenter_Spot0[];
+extern const u8 EventScript_RecordCenter_Spot1[];
+extern const u8 EventScript_RecordCenter_Spot2[];
+extern const u8 EventScript_RecordCenter_Spot3[];
+extern const u8 EventScript_BattleColosseum_2P_PlayerSpot0[];
+extern const u8 EventScript_BattleColosseum_2P_PlayerSpot1[];
+extern const u8 EventScript_TradeCenter_Chair1[];
+extern const u8 EventScript_TradeCenter_Chair0[];
+extern const u8 EventScript_ConfirmLeaveTradeRoom[];
+extern const u8 EventScript_TerminateLink[];
+
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
 
@@ -356,7 +378,7 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 void DoWhiteOut(void)
 {
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
-    SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
+    //SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
@@ -402,6 +424,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
+    FlagClear(FLAG_DISABLE_BAG);
     #if VAR_TERRAIN != 0
         VarSet(VAR_TERRAIN, 0);
     #endif
@@ -939,6 +962,10 @@ static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStr
         return DIR_EAST;
     else if (MetatileBehavior_IsEastArrowWarp(metatileBehavior) == TRUE)
         return DIR_WEST;
+    else if (MetatileBehavior_IsDirectionalUpRightStairWarp(metatileBehavior) == TRUE || MetatileBehavior_IsDirectionalDownRightStairWarp(metatileBehavior) == TRUE)
+        return DIR_WEST;
+    else if (MetatileBehavior_IsDirectionalUpLeftStairWarp(metatileBehavior) == TRUE || MetatileBehavior_IsDirectionalDownLeftStairWarp(metatileBehavior) == TRUE)
+        return DIR_EAST;
     else if ((playerStruct->transitionFlags == PLAYER_AVATAR_FLAG_UNDERWATER  && transitionFlags == PLAYER_AVATAR_FLAG_SURFING)
           || (playerStruct->transitionFlags == PLAYER_AVATAR_FLAG_SURFING && transitionFlags == PLAYER_AVATAR_FLAG_UNDERWATER))
         return playerStruct->direction;
@@ -1522,7 +1549,7 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext1_Init();
     ScriptContext2_Disable();
-    gFieldCallback = ExecuteTruckSequence;
+    // gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();

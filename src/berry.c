@@ -1,5 +1,5 @@
 #include "global.h"
-#include "berry.h"
+#include "Berry.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -11,13 +11,13 @@
 #include "random.h"
 #include "string_util.h"
 #include "text.h"
-#include "constants/berry.h"
+#include "constants/Berry.h"
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
 
 static u32 GetEnigmaBerryChecksum(struct EnigmaBerry *enigmaBerry);
 static bool32 BerryTreeGrow(struct BerryTree *tree);
-static u16 BerryTypeToItemId(u16 berry);
+static u16 BerryTypeToItemId(u16 Berry);
 static u8 BerryTreeGetNumStagesWatered(struct BerryTree *tree);
 static u8 GetNumStagesWateredByBerryTreeId(u8 id);
 static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water);
@@ -27,40 +27,40 @@ static u16 GetStageDurationByBerryType(u8);
 
 //.rodata
 static const u8 sBerryDescriptionPart1_Cheri[] = _("Blooms with delicate pretty flowers.");
-static const u8 sBerryDescriptionPart2_Cheri[] = _("The bright red BERRY is very spicy.");
-static const u8 sBerryDescriptionPart1_Chesto[] = _("The BERRY's thick skin and fruit are");
+static const u8 sBerryDescriptionPart2_Cheri[] = _("The bright red Berry is very spicy.");
+static const u8 sBerryDescriptionPart1_Chesto[] = _("The Berry's thick skin and fruit are");
 static const u8 sBerryDescriptionPart2_Chesto[] = _("very tough. It is dry-tasting all over.");
 static const u8 sBerryDescriptionPart1_Pecha[] = _("Very sweet and delicious.");
 static const u8 sBerryDescriptionPart2_Pecha[] = _("Also very tender - handle with care.");
 static const u8 sBerryDescriptionPart1_Rawst[] = _("If the leaves grow long and curly,");
-static const u8 sBerryDescriptionPart2_Rawst[] = _("the BERRY seems to grow very bitter.");
-static const u8 sBerryDescriptionPart1_Aspear[] = _("The hard BERRY is dense with a rich");
+static const u8 sBerryDescriptionPart2_Rawst[] = _("the Berry seems to grow very bitter.");
+static const u8 sBerryDescriptionPart1_Aspear[] = _("The hard Berry is dense with a rich");
 static const u8 sBerryDescriptionPart2_Aspear[] = _("juice. It is quite sour.");
 static const u8 sBerryDescriptionPart1_Leppa[] = _("Grows slower than CHERI and others.");
-static const u8 sBerryDescriptionPart2_Leppa[] = _("The smaller the BERRY, the tastier.");
-static const u8 sBerryDescriptionPart1_Oran[] = _("A peculiar BERRY with a mix of flavors.");
+static const u8 sBerryDescriptionPart2_Leppa[] = _("The smaller the Berry, the tastier.");
+static const u8 sBerryDescriptionPart1_Oran[] = _("A peculiar Berry with a mix of flavors.");
 static const u8 sBerryDescriptionPart2_Oran[] = _("BERRIES grow in half a day.");
-static const u8 sBerryDescriptionPart1_Persim[] = _("Loves sunlight. The BERRY's color");
+static const u8 sBerryDescriptionPart1_Persim[] = _("Loves sunlight. The Berry's color");
 static const u8 sBerryDescriptionPart2_Persim[] = _("grows vivid when exposed to the sun.");
 static const u8 sBerryDescriptionPart1_Lum[] = _("Slow to grow. If raised with loving");
 static const u8 sBerryDescriptionPart2_Lum[] = _("care, it may grow two BERRIES.");
 static const u8 sBerryDescriptionPart1_Sitrus[] = _("Closely related to ORAN. The large");
-static const u8 sBerryDescriptionPart2_Sitrus[] = _("BERRY has a well-rounded flavor.");
-static const u8 sBerryDescriptionPart1_Figy[] = _("The BERRY, which looks chewed up,");
+static const u8 sBerryDescriptionPart2_Sitrus[] = _("Berry has a well-rounded flavor.");
+static const u8 sBerryDescriptionPart1_Figy[] = _("The Berry, which looks chewed up,");
 static const u8 sBerryDescriptionPart2_Figy[] = _("brims with spicy substances.");
-static const u8 sBerryDescriptionPart1_Wiki[] = _("The BERRY is said to have grown lumpy");
+static const u8 sBerryDescriptionPart1_Wiki[] = _("The Berry is said to have grown lumpy");
 static const u8 sBerryDescriptionPart2_Wiki[] = _("to help POKéMON grip it.");
-static const u8 sBerryDescriptionPart1_Mago[] = _("The BERRY turns curvy as it grows.");
+static const u8 sBerryDescriptionPart1_Mago[] = _("The Berry turns curvy as it grows.");
 static const u8 sBerryDescriptionPart2_Mago[] = _("The curvier, the sweeter and tastier.");
 static const u8 sBerryDescriptionPart1_Aguav[] = _("The flower is dainty. It is rare in its");
 static const u8 sBerryDescriptionPart2_Aguav[] = _("ability to grow without light.");
-static const u8 sBerryDescriptionPart1_Iapapa[] = _("The BERRY is very big and sour.");
+static const u8 sBerryDescriptionPart1_Iapapa[] = _("The Berry is very big and sour.");
 static const u8 sBerryDescriptionPart2_Iapapa[] = _("It takes at least a day to grow.");
-static const u8 sBerryDescriptionPart1_Razz[] = _("The red BERRY tastes slightly spicy.");
+static const u8 sBerryDescriptionPart1_Razz[] = _("The red Berry tastes slightly spicy.");
 static const u8 sBerryDescriptionPart2_Razz[] = _("It grows quickly in just four hours.");
-static const u8 sBerryDescriptionPart1_Bluk[] = _("The BERRY is blue on the outside, but");
+static const u8 sBerryDescriptionPart1_Bluk[] = _("The Berry is blue on the outside, but");
 static const u8 sBerryDescriptionPart2_Bluk[] = _("it blackens the mouth when eaten.");
-static const u8 sBerryDescriptionPart1_Nanab[] = _("This BERRY was the seventh");
+static const u8 sBerryDescriptionPart1_Nanab[] = _("This Berry was the seventh");
 static const u8 sBerryDescriptionPart2_Nanab[] = _("discovered in the world. It is sweet.");
 static const u8 sBerryDescriptionPart1_Wepear[] = _("The flower is small and white. It has a");
 static const u8 sBerryDescriptionPart2_Wepear[] = _("delicate balance of bitter and sour.");
@@ -72,45 +72,45 @@ static const u8 sBerryDescriptionPart1_Kelpsy[] = _("A rare variety shaped like 
 static const u8 sBerryDescriptionPart2_Kelpsy[] = _("Grows a very large flower.");
 static const u8 sBerryDescriptionPart1_Qualot[] = _("Loves water. Grows strong even in");
 static const u8 sBerryDescriptionPart2_Qualot[] = _("locations with constant rainfall.");
-static const u8 sBerryDescriptionPart1_Hondew[] = _("A BERRY that is very valuable and");
+static const u8 sBerryDescriptionPart1_Hondew[] = _("A Berry that is very valuable and");
 static const u8 sBerryDescriptionPart2_Hondew[] = _("rarely seen. It is very delicious.");
 static const u8 sBerryDescriptionPart1_Grepa[] = _("Despite its tenderness and round");
-static const u8 sBerryDescriptionPart2_Grepa[] = _("shape, the BERRY is unimaginably sour.");
-static const u8 sBerryDescriptionPart1_Tamato[] = _("The BERRY is lip-bendingly spicy.");
+static const u8 sBerryDescriptionPart2_Grepa[] = _("shape, the Berry is unimaginably sour.");
+static const u8 sBerryDescriptionPart1_Tamato[] = _("The Berry is lip-bendingly spicy.");
 static const u8 sBerryDescriptionPart2_Tamato[] = _("It takes time to grow.");
-static const u8 sBerryDescriptionPart1_Cornn[] = _("A BERRY from an ancient era. May not");
+static const u8 sBerryDescriptionPart1_Cornn[] = _("A Berry from an ancient era. May not");
 static const u8 sBerryDescriptionPart2_Cornn[] = _("grow unless planted in quantity.");
-static const u8 sBerryDescriptionPart1_Magost[] = _("A BERRY that is widely said to have");
+static const u8 sBerryDescriptionPart1_Magost[] = _("A Berry that is widely said to have");
 static const u8 sBerryDescriptionPart2_Magost[] = _("a finely balanced flavor.");
 static const u8 sBerryDescriptionPart1_Rabuta[] = _("A rare variety that is overgrown with");
 static const u8 sBerryDescriptionPart2_Rabuta[] = _("hair. It is quite bitter.");
 static const u8 sBerryDescriptionPart1_Nomel[] = _("Quite sour. Just one bite makes it");
 static const u8 sBerryDescriptionPart2_Nomel[] = _("impossible to taste for three days.");
-static const u8 sBerryDescriptionPart1_Spelon[] = _("The vividly red BERRY is very spicy.");
+static const u8 sBerryDescriptionPart1_Spelon[] = _("The vividly red Berry is very spicy.");
 static const u8 sBerryDescriptionPart2_Spelon[] = _("Its warts secrete a spicy substance.");
 static const u8 sBerryDescriptionPart1_Pamtre[] = _("Drifts on the sea from somewhere.");
 static const u8 sBerryDescriptionPart2_Pamtre[] = _("It is thought to grow elsewhere.");
-static const u8 sBerryDescriptionPart1_Watmel[] = _("A huge BERRY, with some over 20");
+static const u8 sBerryDescriptionPart1_Watmel[] = _("A huge Berry, with some over 20");
 static const u8 sBerryDescriptionPart2_Watmel[] = _("inches discovered. Exceedingly sweet.");
 static const u8 sBerryDescriptionPart1_Durin[] = _("Bitter to even look at. It is so");
 static const u8 sBerryDescriptionPart2_Durin[] = _("bitter, no one has ever eaten it as is.");
 static const u8 sBerryDescriptionPart1_Belue[] = _("It is glossy and looks delicious, but");
 static const u8 sBerryDescriptionPart2_Belue[] = _("it is awfully sour. Takes time to grow.");
-static const u8 sBerryDescriptionPart1_Liechi[] = _("A mysterious BERRY. It is rumored to");
+static const u8 sBerryDescriptionPart1_Liechi[] = _("A mysterious Berry. It is rumored to");
 static const u8 sBerryDescriptionPart2_Liechi[] = _("contain the power of the sea.");
-static const u8 sBerryDescriptionPart1_Ganlon[] = _("A mysterious BERRY. It is rumored to");
+static const u8 sBerryDescriptionPart1_Ganlon[] = _("A mysterious Berry. It is rumored to");
 static const u8 sBerryDescriptionPart2_Ganlon[] = _("contain the power of the land.");
-static const u8 sBerryDescriptionPart1_Salac[] = _("A mysterious BERRY. It is rumored to");
+static const u8 sBerryDescriptionPart1_Salac[] = _("A mysterious Berry. It is rumored to");
 static const u8 sBerryDescriptionPart2_Salac[] = _("contain the power of the sky.");
-static const u8 sBerryDescriptionPart1_Petaya[] = _("A mysterious BERRY. It is rumored to");
+static const u8 sBerryDescriptionPart1_Petaya[] = _("A mysterious Berry. It is rumored to");
 static const u8 sBerryDescriptionPart2_Petaya[] = _("contain the power of all living things.");
-static const u8 sBerryDescriptionPart1_Apicot[] = _("A very mystifying BERRY. No telling");
+static const u8 sBerryDescriptionPart1_Apicot[] = _("A very mystifying Berry. No telling");
 static const u8 sBerryDescriptionPart2_Apicot[] = _("what may happen or how it can be used.");
-static const u8 sBerryDescriptionPart1_Lansat[] = _("Said to be a legendary BERRY.");
+static const u8 sBerryDescriptionPart1_Lansat[] = _("Said to be a legendary Berry.");
 static const u8 sBerryDescriptionPart2_Lansat[] = _("Holding it supposedly brings joy.");
 static const u8 sBerryDescriptionPart1_Starf[] = _("So strong, it was abandoned at the");
 static const u8 sBerryDescriptionPart2_Starf[] = _("world's edge. Considered a mirage.");
-static const u8 sBerryDescriptionPart1_Enigma[] = _("A completely enigmatic BERRY.");
+static const u8 sBerryDescriptionPart1_Enigma[] = _("A completely enigmatic Berry.");
 static const u8 sBerryDescriptionPart2_Enigma[] = _("Appears to have the power of stars.");
 
 static const u8 sBerryDescriptionPart1_Occa[] = _("Said to grow in the tropics once,");
@@ -119,7 +119,7 @@ static const u8 sBerryDescriptionPart1_Passho[] = _("Its flesh is dotted with ma
 static const u8 sBerryDescriptionPart2_Passho[] = _("bubbles that keep it afloat in water.");
 static const u8 sBerryDescriptionPart1_Wacan[] = _("Energy drawn from lightning strikes");
 static const u8 sBerryDescriptionPart2_Wacan[] = _("makes this Berry grow big and rich.");
-static const u8 sBerryDescriptionPart1_Rindo[] = _("This berry has a vegetable-like flavor,");
+static const u8 sBerryDescriptionPart1_Rindo[] = _("This Berry has a vegetable-like flavor,");
 static const u8 sBerryDescriptionPart2_Rindo[] = _("but is rich in health-promoting fiber.");
 static const u8 sBerryDescriptionPart1_Yache[] = _("This Berry has a refreshing dry and");
 static const u8 sBerryDescriptionPart2_Yache[] = _("sour flavor. Tastes better chilled.");
@@ -152,10 +152,10 @@ static const u8 sBerryDescriptionPart2_Roseli[] = _("for reasons that are still 
 
 const struct Berry gBerries[] =
 {
-    [ITEM_CHERI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CHERI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CHERI"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 20,
         .maxYield = 3,
         .minYield = 2,
@@ -170,10 +170,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_CHESTO_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CHESTO_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CHESTO"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 80,
         .maxYield = 3,
         .minYield = 2,
@@ -188,10 +188,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_PECHA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PECHA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PECHA"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 40,
         .maxYield = 3,
         .minYield = 2,
@@ -206,10 +206,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_RAWST_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_RAWST_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("RAWST"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 32,
         .maxYield = 3,
         .minYield = 2,
@@ -224,10 +224,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_ASPEAR_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_ASPEAR_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("ASPEAR"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 50,
         .maxYield = 3,
         .minYield = 2,
@@ -242,10 +242,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_LEPPA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_LEPPA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("LEPPA"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 28,
         .maxYield = 3,
         .minYield = 2,
@@ -260,10 +260,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_ORAN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_ORAN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("ORAN"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 35,
         .maxYield = 3,
         .minYield = 2,
@@ -278,10 +278,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_PERSIM_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PERSIM_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PERSIM"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 47,
         .maxYield = 3,
         .minYield = 2,
@@ -296,10 +296,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_LUM_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_LUM_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("LUM"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 34,
         .maxYield = 2,
         .minYield = 1,
@@ -314,10 +314,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_SITRUS_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_SITRUS_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("SITRUS"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 95,
         .maxYield = 3,
         .minYield = 2,
@@ -332,10 +332,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_FIGY_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_FIGY_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("FIGY"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 100,
         .maxYield = 3,
         .minYield = 2,
@@ -350,10 +350,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_WIKI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_WIKI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("WIKI"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 115,
         .maxYield = 3,
         .minYield = 2,
@@ -368,10 +368,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_MAGO_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_MAGO_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("MAGO"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 126,
         .maxYield = 3,
         .minYield = 2,
@@ -386,10 +386,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_AGUAV_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_AGUAV_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("AGUAV"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 64,
         .maxYield = 3,
         .minYield = 2,
@@ -404,10 +404,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_IAPAPA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_IAPAPA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("IAPAPA"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 223,
         .maxYield = 3,
         .minYield = 2,
@@ -422,10 +422,10 @@ const struct Berry gBerries[] =
         .smoothness = 25,
     },
 
-    [ITEM_RAZZ_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_RAZZ_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("RAZZ"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 120,
         .maxYield = 6,
         .minYield = 3,
@@ -440,10 +440,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_BLUK_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_BLUK_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("BLUK"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 108,
         .maxYield = 6,
         .minYield = 3,
@@ -458,10 +458,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_NANAB_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_NANAB_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("NANAB"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 77,
         .maxYield = 6,
         .minYield = 3,
@@ -476,10 +476,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_WEPEAR_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_WEPEAR_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("WEPEAR"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 74,
         .maxYield = 6,
         .minYield = 3,
@@ -494,10 +494,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_PINAP_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PINAP_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PINAP"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 80,
         .maxYield = 6,
         .minYield = 3,
@@ -512,10 +512,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_POMEG_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_POMEG_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("POMEG"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 135,
         .maxYield = 6,
         .minYield = 2,
@@ -530,10 +530,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_KELPSY_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_KELPSY_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("KELPSY"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 150,
         .maxYield = 6,
         .minYield = 2,
@@ -548,10 +548,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_QUALOT_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_QUALOT_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("QUALOT"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 110,
         .maxYield = 6,
         .minYield = 2,
@@ -566,10 +566,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_HONDEW_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_HONDEW_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("HONDEW"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 162,
         .maxYield = 6,
         .minYield = 2,
@@ -584,10 +584,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_GREPA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_GREPA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("GREPA"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 149,
         .maxYield = 6,
         .minYield = 2,
@@ -602,10 +602,10 @@ const struct Berry gBerries[] =
         .smoothness = 20,
     },
 
-    [ITEM_TAMATO_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_TAMATO_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("TAMATO"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 200,
         .maxYield = 4,
         .minYield = 2,
@@ -620,10 +620,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_CORNN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CORNN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CORNN"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 75,
         .maxYield = 4,
         .minYield = 2,
@@ -638,10 +638,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_MAGOST_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_MAGOST_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("MAGOST"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 140,
         .maxYield = 4,
         .minYield = 2,
@@ -656,10 +656,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_RABUTA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_RABUTA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("RABUTA"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 226,
         .maxYield = 4,
         .minYield = 2,
@@ -674,10 +674,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_NOMEL_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_NOMEL_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("NOMEL"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 285,
         .maxYield = 4,
         .minYield = 2,
@@ -692,10 +692,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_SPELON_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_SPELON_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("SPELON"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 133,
         .maxYield = 2,
         .minYield = 1,
@@ -710,10 +710,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_PAMTRE_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PAMTRE_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PAMTRE"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 244,
         .maxYield = 2,
         .minYield = 1,
@@ -728,10 +728,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_WATMEL_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_WATMEL_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("WATMEL"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 250,
         .maxYield = 2,
         .minYield = 1,
@@ -746,10 +746,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_DURIN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_DURIN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("DURIN"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 280,
         .maxYield = 2,
         .minYield = 1,
@@ -764,10 +764,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_BELUE_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_BELUE_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("BELUE"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 300,
         .maxYield = 2,
         .minYield = 1,
@@ -782,10 +782,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_LIECHI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_LIECHI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("LIECHI"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 111,
         .maxYield = 2,
         .minYield = 1,
@@ -800,10 +800,10 @@ const struct Berry gBerries[] =
         .smoothness = 80,
     },
 
-    [ITEM_GANLON_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_GANLON_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("GANLON"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 33,
         .maxYield = 2,
         .minYield = 1,
@@ -818,10 +818,10 @@ const struct Berry gBerries[] =
         .smoothness = 80,
     },
 
-    [ITEM_SALAC_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_SALAC_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("SALAC"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 95,
         .maxYield = 2,
         .minYield = 1,
@@ -836,10 +836,10 @@ const struct Berry gBerries[] =
         .smoothness = 80,
     },
 
-    [ITEM_PETAYA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PETAYA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PETAYA"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 237,
         .maxYield = 2,
         .minYield = 1,
@@ -854,10 +854,10 @@ const struct Berry gBerries[] =
         .smoothness = 80,
     },
 
-    [ITEM_APICOT_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_APICOT_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("APICOT"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 75,
         .maxYield = 2,
         .minYield = 1,
@@ -872,10 +872,10 @@ const struct Berry gBerries[] =
         .smoothness = 80,
     },
 
-    [ITEM_LANSAT_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_LANSAT_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("LANSAT"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 97,
         .maxYield = 2,
         .minYield = 1,
@@ -890,10 +890,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_STARF_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_STARF_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("STARF"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 153,
         .maxYield = 2,
         .minYield = 1,
@@ -908,10 +908,10 @@ const struct Berry gBerries[] =
         .smoothness = 30,
     },
 
-    [ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_ENIGMA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("ENIGMA"),
-        .firmness = BERRY_FIRMNESS_UNKNOWN,
+        .firmness = Berry_FIRMNESS_UNKNOWN,
         .size = 0,
         .maxYield = 2,
         .minYield = 1,
@@ -926,10 +926,10 @@ const struct Berry gBerries[] =
         .smoothness = 40,
     },
 
-    [ITEM_OCCA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_OCCA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("OCCA"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 89,
         .maxYield = 5,
         .minYield = 1,
@@ -944,10 +944,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_PASSHO_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PASSHO_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PASSHO"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 33,
         .maxYield = 5,
         .minYield = 1,
@@ -962,10 +962,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_WACAN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_WACAN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("WACAN"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 250,
         .maxYield = 5,
         .minYield = 1,
@@ -980,10 +980,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_RINDO_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_RINDO_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("RINDO"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 155,
         .maxYield = 5,
         .minYield = 1,
@@ -998,10 +998,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_YACHE_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_YACHE_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("YACHE"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 135,
         .maxYield = 5,
         .minYield = 1,
@@ -1016,10 +1016,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_CHOPLE_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CHOPLE_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CHOPLE"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 77,
         .maxYield = 5,
         .minYield = 1,
@@ -1034,10 +1034,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_KEBIA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_KEBIA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("KEBIA"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 89,
         .maxYield = 5,
         .minYield = 1,
@@ -1052,10 +1052,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_SHUCA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_SHUCA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("SHUCA"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 42,
         .maxYield = 5,
         .minYield = 1,
@@ -1070,10 +1070,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_COBA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_COBA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("COBA"),
-        .firmness = BERRY_FIRMNESS_VERY_HARD,
+        .firmness = Berry_FIRMNESS_VERY_HARD,
         .size = 277,
         .maxYield = 5,
         .minYield = 1,
@@ -1088,10 +1088,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_PAYAPA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_PAYAPA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("PAYAPA"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 251,
         .maxYield = 5,
         .minYield = 1,
@@ -1106,10 +1106,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_TANGA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_TANGA_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("TANGA"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 43,
         .maxYield = 5,
         .minYield = 1,
@@ -1124,10 +1124,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_CHARTI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CHARTI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CHARTI"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 28,
         .maxYield = 5,
         .minYield = 1,
@@ -1142,10 +1142,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_KASIB_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_KASIB_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("KASIB"),
-        .firmness = BERRY_FIRMNESS_HARD,
+        .firmness = Berry_FIRMNESS_HARD,
         .size = 144,
         .maxYield = 5,
         .minYield = 1,
@@ -1160,10 +1160,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_HABAN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_HABAN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("HABAN"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 23,
         .maxYield = 5,
         .minYield = 1,
@@ -1178,10 +1178,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_COLBUR_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_COLBUR_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("COLBUR"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 38,
         .maxYield = 5,
         .minYield = 1,
@@ -1196,10 +1196,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_BABIRI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_BABIRI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("BABIRI"),
-        .firmness = BERRY_FIRMNESS_SUPER_HARD,
+        .firmness = Berry_FIRMNESS_SUPER_HARD,
         .size = 265,
         .maxYield = 5,
         .minYield = 1,
@@ -1214,10 +1214,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_CHILAN_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_CHILAN_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("CHILAN"),
-        .firmness = BERRY_FIRMNESS_VERY_SOFT,
+        .firmness = Berry_FIRMNESS_VERY_SOFT,
         .size = 33,
         .maxYield = 5,
         .minYield = 1,
@@ -1232,10 +1232,10 @@ const struct Berry gBerries[] =
         .smoothness = 70,
     },
 
-    [ITEM_ROSELI_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_ROSELI_Berry - FIRST_Berry_INDEX] =
     {
         .name = _("ROSELI"),
-        .firmness = BERRY_FIRMNESS_SOFT,
+        .firmness = Berry_FIRMNESS_SOFT,
         .size = 35,
         .maxYield = 5,
         .minYield = 1,
@@ -1330,30 +1330,30 @@ static u32 GetEnigmaBerryChecksum(struct EnigmaBerry *enigmaBerry)
 
 bool32 IsEnigmaBerryValid(void)
 {
-    if (!gSaveBlock1Ptr->enigmaBerry.berry.stageDuration)
+    if (!gSaveBlock1Ptr->enigmaBerry.Berry.stageDuration)
         return FALSE;
-    if (!gSaveBlock1Ptr->enigmaBerry.berry.maxYield)
+    if (!gSaveBlock1Ptr->enigmaBerry.Berry.maxYield)
         return FALSE;
     if (GetEnigmaBerryChecksum(&gSaveBlock1Ptr->enigmaBerry) != gSaveBlock1Ptr->enigmaBerry.checksum)
         return FALSE;
     return TRUE;
 }
 
-const struct Berry *GetBerryInfo(u8 berry)
+const struct Berry *GetBerryInfo(u8 Berry)
 {
-    if (berry == ITEM_TO_BERRY(ITEM_ENIGMA_BERRY) && IsEnigmaBerryValid())
-        return (struct Berry*)(&gSaveBlock1Ptr->enigmaBerry.berry);
+    if (Berry == ITEM_TO_Berry(ITEM_ENIGMA_Berry) && IsEnigmaBerryValid())
+        return (struct Berry*)(&gSaveBlock1Ptr->enigmaBerry.Berry);
     else
     {
-        if (berry == BERRY_NONE || berry > ITEM_TO_BERRY(LAST_BERRY_INDEX))
-            berry = ITEM_TO_BERRY(FIRST_BERRY_INDEX);
-        return &gBerries[berry - 1];
+        if (Berry == Berry_NONE || Berry > ITEM_TO_Berry(LAST_Berry_INDEX))
+            Berry = ITEM_TO_Berry(FIRST_Berry_INDEX);
+        return &gBerries[Berry - 1];
     }
 }
 
 struct BerryTree *GetBerryTreeInfo(u8 id)
 {
-    return &gSaveBlock1Ptr->berryTrees[id];
+    return &gSaveBlock1Ptr->BerryTrees[id];
 }
 
 bool32 ObjectEventInteractionWaterBerryTree(void)
@@ -1362,16 +1362,16 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
 
     switch (tree->stage)
     {
-    case BERRY_STAGE_PLANTED:
+    case Berry_STAGE_PLANTED:
         tree->watered1 = TRUE;
         break;
-    case BERRY_STAGE_SPROUTED:
+    case Berry_STAGE_SPROUTED:
         tree->watered2 = TRUE;
         break;
-    case BERRY_STAGE_TALLER:
+    case Berry_STAGE_TALLER:
         tree->watered3 = TRUE;
         break;
-    case BERRY_STAGE_FLOWERING:
+    case Berry_STAGE_FLOWERING:
         tree->watered4 = TRUE;
         break;
     default:
@@ -1383,7 +1383,7 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
 bool8 IsPlayerFacingEmptyBerryTreePatch(void)
 {
     if (GetObjectEventScriptPointerPlayerFacing() == BerryTreeScript
-     && GetStageByBerryTreeId(GetObjectEventBerryTreeId(gSelectedObjectEvent)) == BERRY_STAGE_NO_BERRY)
+     && GetStageByBerryTreeId(GetObjectEventBerryTreeId(gSelectedObjectEvent)) == Berry_STAGE_NO_Berry)
         return TRUE;
     else
         return FALSE;
@@ -1401,8 +1401,8 @@ void ClearBerryTrees(void)
 {
     int i;
 
-    for (i = 0; i < BERRY_TREES_COUNT; i++)
-        gSaveBlock1Ptr->berryTrees[i] = gBlankBerryTree;
+    for (i = 0; i < Berry_TREES_COUNT; i++)
+        gSaveBlock1Ptr->BerryTrees[i] = gBlankBerryTree;
 }
 
 static bool32 BerryTreeGrow(struct BerryTree *tree)
@@ -1411,24 +1411,14 @@ static bool32 BerryTreeGrow(struct BerryTree *tree)
         return FALSE;
     switch (tree->stage)
     {
-    case BERRY_STAGE_NO_BERRY:
+    case Berry_STAGE_NO_Berry:
         return FALSE;
-    case BERRY_STAGE_FLOWERING:
-        tree->berryYield = CalcBerryYield(tree);
-    case BERRY_STAGE_PLANTED:
-    case BERRY_STAGE_SPROUTED:
-    case BERRY_STAGE_TALLER:
+    case Berry_STAGE_FLOWERING:
+        tree->BerryYield = CalcBerryYield(tree);
+    case Berry_STAGE_PLANTED:
+    case Berry_STAGE_SPROUTED:
+    case Berry_STAGE_TALLER:
         tree->stage++;
-        break;
-    case BERRY_STAGE_BERRIES:
-        tree->watered1 = 0;
-        tree->watered2 = 0;
-        tree->watered3 = 0;
-        tree->watered4 = 0;
-        tree->berryYield = 0;
-        tree->stage = BERRY_STAGE_SPROUTED;
-        if (++tree->regrowthCount == 10)
-            *tree = gBlankBerryTree;
         break;
     }
     return TRUE;
@@ -1439,17 +1429,17 @@ void BerryTreeTimeUpdate(s32 minutes)
     int i;
     struct BerryTree *tree;
 
-    for (i = 0; i < BERRY_TREES_COUNT; i++)
+    for (i = 0; i < Berry_TREES_COUNT; i++)
     {
-        tree = &gSaveBlock1Ptr->berryTrees[i];
+        tree = &gSaveBlock1Ptr->BerryTrees[i];
 
-        if (tree->berry && tree->stage && !tree->growthSparkle)
+        if (tree->Berry && tree->stage && !tree->growthSparkle && (tree->stage != BERRY_STAGE_BERRIES))
         {
-            if (minutes >= GetStageDurationByBerryType(tree->berry) * 71)
+            /*if (minutes >= GetStageDurationByBerryType(tree->Berry) * 71)
             {
                 *tree = gBlankBerryTree;
             }
-            else
+            else*/
             {
                 s32 time = minutes;
 
@@ -1461,10 +1451,10 @@ void BerryTreeTimeUpdate(s32 minutes)
                         break;
                     }
                     time -= tree->minutesUntilNextStage;
-                    tree->minutesUntilNextStage = GetStageDurationByBerryType(tree->berry);
+                    tree->minutesUntilNextStage = GetStageDurationByBerryType(tree->Berry);
                     if (!BerryTreeGrow(tree))
                         break;
-                    if (tree->stage == BERRY_STAGE_BERRIES)
+                    if (tree->stage == Berry_STAGE_BERRIES)
                         tree->minutesUntilNextStage *= 4;
                 }
             }
@@ -1472,17 +1462,17 @@ void BerryTreeTimeUpdate(s32 minutes)
     }
 }
 
-void PlantBerryTree(u8 id, u8 berry, u8 stage, bool8 sparkle)
+void PlantBerryTree(u8 id, u8 Berry, u8 stage, bool8 sparkle)
 {
     struct BerryTree *tree = GetBerryTreeInfo(id);
 
     *tree = gBlankBerryTree;
-    tree->berry = berry;
-    tree->minutesUntilNextStage = GetStageDurationByBerryType(berry);
+    tree->Berry = Berry;
+    tree->minutesUntilNextStage = GetStageDurationByBerryType(Berry);
     tree->stage = stage;
-    if (stage == BERRY_STAGE_BERRIES)
+    if (stage == Berry_STAGE_BERRIES)
     {
-        tree->berryYield = CalcBerryYield(tree);
+        tree->BerryYield = CalcBerryYield(tree);
         tree->minutesUntilNextStage *= 4;
     }
 
@@ -1492,48 +1482,48 @@ void PlantBerryTree(u8 id, u8 berry, u8 stage, bool8 sparkle)
 
 void RemoveBerryTree(u8 id)
 {
-    gSaveBlock1Ptr->berryTrees[id] = gBlankBerryTree;
+    gSaveBlock1Ptr->BerryTrees[id] = gBlankBerryTree;
 }
 
 u8 GetBerryTypeByBerryTreeId(u8 id)
 {
-    return gSaveBlock1Ptr->berryTrees[id].berry;
+    return gSaveBlock1Ptr->BerryTrees[id].Berry;
 }
 
 u8 GetStageByBerryTreeId(u8 id)
 {
-    return gSaveBlock1Ptr->berryTrees[id].stage;
+    return gSaveBlock1Ptr->BerryTrees[id].stage;
 }
 
 u8 ItemIdToBerryType(u16 item)
 {
-    u16 berry = item - FIRST_BERRY_INDEX;
+    u16 Berry = item - FIRST_Berry_INDEX;
 
-    if (berry > LAST_BERRY_INDEX - FIRST_BERRY_INDEX)
-        return ITEM_TO_BERRY(FIRST_BERRY_INDEX);
+    if (Berry > LAST_Berry_INDEX - FIRST_Berry_INDEX)
+        return ITEM_TO_Berry(FIRST_Berry_INDEX);
     else
-        return ITEM_TO_BERRY(item);
+        return ITEM_TO_Berry(item);
 }
 
-static u16 BerryTypeToItemId(u16 berry)
+static u16 BerryTypeToItemId(u16 Berry)
 {
-    u16 item = berry - 1;
+    u16 item = Berry - 1;
 
-    if (item > LAST_BERRY_INDEX - FIRST_BERRY_INDEX)
-        return FIRST_BERRY_INDEX;
+    if (item > LAST_Berry_INDEX - FIRST_Berry_INDEX)
+        return FIRST_Berry_INDEX;
     else
-        return berry + FIRST_BERRY_INDEX - 1;
+        return Berry + FIRST_Berry_INDEX - 1;
 }
 
-void GetBerryNameByBerryType(u8 berry, u8 *string)
+void GetBerryNameByBerryType(u8 Berry, u8 *string)
 {
-    memcpy(string, GetBerryInfo(berry)->name, BERRY_NAME_LENGTH);
-    string[BERRY_NAME_LENGTH] = EOS;
+    memcpy(string, GetBerryInfo(Berry)->name, Berry_NAME_LENGTH);
+    string[Berry_NAME_LENGTH] = EOS;
 }
 
-void GetBerryCountStringByBerryType(u8 berry, u8* dest, u32 berryCount)
+void GetBerryCountStringByBerryType(u8 Berry, u8* dest, u32 BerryCount)
 {
-    GetBerryCountString(dest, GetBerryInfo(berry)->name, berryCount);
+    GetBerryCountString(dest, GetBerryInfo(Berry)->name, BerryCount);
 }
 
 void ResetBerryTreeSparkleFlag(u8 id)
@@ -1562,10 +1552,10 @@ static u8 GetNumStagesWateredByBerryTreeId(u8 id)
 }
 
 // Berries can be watered at 4 stages of growth. This function is likely meant
-// to divide the berry yield range equally into quartiles. If you watered the
+// to divide the Berry yield range equally into quartiles. If you watered the
 // tree n times, your yield is a random number in the nth quartile.
 //
-// However, this function actually skews towards higher berry yields, because
+// However, this function actually skews towards higher Berry yields, because
 // it rounds `extraYield` to the nearest whole number.
 //
 // See resulting yields: https://gist.github.com/hondew/2a099dbe54aa91414decdbfaa524327d,
@@ -1596,58 +1586,59 @@ static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
 
 static u8 CalcBerryYield(struct BerryTree *tree)
 {
-    const struct Berry *berry = GetBerryInfo(tree->berry);
-    u8 min = berry->minYield;
-    u8 max = berry->maxYield;
+    const struct Berry *Berry = GetBerryInfo(tree->Berry);
+    u8 min = Berry->minYield;
+    u8 max = Berry->maxYield;
 
     return CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 }
 
 static u8 GetBerryCountByBerryTreeId(u8 id)
 {
-    return gSaveBlock1Ptr->berryTrees[id].berryYield;
+    return gSaveBlock1Ptr->BerryTrees[id].BerryYield;
 }
 
-static u16 GetStageDurationByBerryType(u8 berry)
+static u16 GetStageDurationByBerryType(u8 Berry)
 {
-    return GetBerryInfo(berry)->stageDuration * 60;
+    return GetBerryInfo(Berry)->stageDuration * 60;
 }
 
 void ObjectEventInteractionGetBerryTreeData(void)
 {
     u8 id;
-    u8 berry;
+    u8 Berry;
     u8 localId;
     u8 group;
     u8 num;
 
     id = GetObjectEventBerryTreeId(gSelectedObjectEvent);
-    berry = GetBerryTypeByBerryTreeId(id);
+    Berry = GetBerryTypeByBerryTreeId(id);
     ResetBerryTreeSparkleFlag(id);
     localId = gSpecialVar_LastTalked;
     num = gSaveBlock1Ptr->location.mapNum;
     group = gSaveBlock1Ptr->location.mapGroup;
     if (IsBerryTreeSparkling(localId, num, group))
-        gSpecialVar_0x8004 = BERRY_STAGE_SPARKLING;
+        gSpecialVar_0x8004 = Berry_STAGE_SPARKLING;
     else
         gSpecialVar_0x8004 = GetStageByBerryTreeId(id);
     gSpecialVar_0x8005 = GetNumStagesWateredByBerryTreeId(id);
     gSpecialVar_0x8006 = GetBerryCountByBerryTreeId(id);
-    GetBerryCountStringByBerryType(berry, gStringVar1, gSpecialVar_0x8006);
+    GetBerryCountStringByBerryType(Berry, gStringVar1, gSpecialVar_0x8006);
 }
 
 void ObjectEventInteractionGetBerryName(void)
 {
-    u8 berryType = GetBerryTypeByBerryTreeId(GetObjectEventBerryTreeId(gSelectedObjectEvent));
-    GetBerryNameByBerryType(berryType, gStringVar1);
+    u8 BerryType = GetBerryTypeByBerryTreeId(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+    GetBerryNameByBerryType(BerryType, gStringVar1);
 }
 
 void ObjectEventInteractionGetBerryCountString(void)
 {
     u8 treeId = GetObjectEventBerryTreeId(gSelectedObjectEvent);
-    u8 berry = GetBerryTypeByBerryTreeId(treeId);
+    u8 Berry = GetBerryTypeByBerryTreeId(treeId);
     u8 count = GetBerryCountByBerryTreeId(treeId);
-    GetBerryCountStringByBerryType(berry, gStringVar1, count);
+    gSpecialVar_0x8006 = BerryTypeToItemId(berry);
+    GetBerryCountStringByBerryType(Berry, gStringVar1, count);
 }
 
 void Bag_ChooseBerry(void)
@@ -1657,18 +1648,18 @@ void Bag_ChooseBerry(void)
 
 void ObjectEventInteractionPlantBerryTree(void)
 {
-    u8 berry = ItemIdToBerryType(gSpecialVar_ItemId);
+    u8 Berry = ItemIdToBerryType(gSpecialVar_ItemId);
 
-    PlantBerryTree(GetObjectEventBerryTreeId(gSelectedObjectEvent), berry, 1, TRUE);
+    PlantBerryTree(GetObjectEventBerryTreeId(gSelectedObjectEvent), Berry, 1, TRUE);
     ObjectEventInteractionGetBerryTreeData();
 }
 
 void ObjectEventInteractionPickBerryTree(void)
 {
     u8 id = GetObjectEventBerryTreeId(gSelectedObjectEvent);
-    u8 berry = GetBerryTypeByBerryTreeId(id);
+    u8 Berry = GetBerryTypeByBerryTreeId(id);
 
-    gSpecialVar_0x8004 = AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
+    gSpecialVar_0x8004 = AddBagItem(BerryTypeToItemId(Berry), GetBerryCountByBerryTreeId(id));
 }
 
 void ObjectEventInteractionRemoveBerryTree(void)
@@ -1699,12 +1690,12 @@ void ResetBerryTreeSparkleFlags(void)
     bottom = top + 8;
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].active && gObjectEvents[i].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH)
+        if (gObjectEvents[i].active && gObjectEvents[i].movementType == MOVEMENT_TYPE_Berry_TREE_GROWTH)
         {
             cam_left = gObjectEvents[i].currentCoords.x;
             cam_top = gObjectEvents[i].currentCoords.y;
             if (left <= cam_left && cam_left <= right && top <= cam_top && cam_top <= bottom)
-                ResetBerryTreeSparkleFlag(gObjectEvents[i].trainerRange_berryTreeId);
+                ResetBerryTreeSparkleFlag(gObjectEvents[i].trainerRange_BerryTreeId);
         }
     }
 }

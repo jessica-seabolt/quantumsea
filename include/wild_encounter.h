@@ -28,7 +28,7 @@ struct WildPokemonHeader
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
 };
-
+extern u8 gChainFishingStreak;
 extern bool8 gIsFishingEncounter;
 extern bool8 gIsSurfingEncounter;
 
