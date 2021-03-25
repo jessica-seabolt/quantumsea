@@ -464,6 +464,10 @@ struct RankingHall2P
     u8 language;
 };
 
+// quest menu
+#include "constants/quests.h"
+#define SIDE_QUEST_FLAGS_COUNT     ((SIDE_QUEST_COUNT / 8) + ((SIDE_QUEST_COUNT % 8) ? 1 : 0))
+
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
@@ -503,6 +507,9 @@ struct SaveBlock2
              u8 itemFlags[ITEM_FLAGS_COUNT];
     /*0xF2C*/ bool8 autoRun;
      /*0xF2C*/ u8 rivalName[PLAYER_NAME_LENGTH + 1];
+     /*0x0F2C*/ u8 unlockedQuests[SIDE_QUEST_FLAGS_COUNT];
+    /*0x????*/ u8 completedQuests[SIDE_QUEST_FLAGS_COUNT];
+    /*0x????*/ u8 activeQuest;
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1006,7 +1013,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     /*0x3D88*/ u16 registeredItemL;
     /*0x3D8A*/ u16 registeredItemR;
-    // sizeof: 0x3???
+    /* size = 0x3D88 */
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;
