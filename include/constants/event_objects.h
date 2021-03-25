@@ -161,7 +161,7 @@
 #define OBJ_EVENT_GFX_DUSKULL_DOLL               157
 #define OBJ_EVENT_GFX_WYNAUT_DOLL                158
 #define OBJ_EVENT_GFX_BALTOY_DOLL                159
-#define OBJ_EVENT_GFX_KECLEON_DOLL               160
+#define OBJ_EVENT_GFX_KECLEON_1_DOLL               160
 #define OBJ_EVENT_GFX_AZURILL_DOLL               161
 #define OBJ_EVENT_GFX_SKITTY_DOLL                162
 #define OBJ_EVENT_GFX_SWABLU_DOLL                163
@@ -205,7 +205,7 @@
 #define OBJ_EVENT_GFX_REGICE                     201
 #define OBJ_EVENT_GFX_REGISTEEL                  202
 #define OBJ_EVENT_GFX_SKITTY                     203
-#define OBJ_EVENT_GFX_KECLEON                    204
+#define OBJ_EVENT_GFX_KECLEON_1                    204
 #define OBJ_EVENT_GFX_KYOGRE_2                   205
 #define OBJ_EVENT_GFX_GROUDON_2                  206
 #define OBJ_EVENT_GFX_RAYQUAZA_2                 207
@@ -213,7 +213,7 @@
 #define OBJ_EVENT_GFX_PIKACHU                    209
 #define OBJ_EVENT_GFX_AZUMARILL                  210
 #define OBJ_EVENT_GFX_WINGULL                    211
-#define OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW      212
+#define OBJ_EVENT_GFX_KECLEON_2      212
 #define OBJ_EVENT_GFX_TUBER_M_SWIMMING           213
 #define OBJ_EVENT_GFX_AZURILL                    214
 #define OBJ_EVENT_GFX_MOM                        215
