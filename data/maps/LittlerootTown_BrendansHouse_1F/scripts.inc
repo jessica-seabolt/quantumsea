@@ -1,6 +1,6 @@
-.set LOCALID_MOM, 1
-.set LOCALID_RIVAL_MOM, 4
-.set LOCALID_RIVAL, 7
+.set LOCALID_MOM, 14
+.set LOCALID_RIVAL_MOM, 1
+.set LOCALID_RIVAL, 3
 
 LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
 	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_BrendansHouse_1F_OnLoad
@@ -9,9 +9,6 @@ LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
 	.byte 0
 
 LittlerootTown_BrendansHouse_1F_OnLoad: @ 81F7765
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_lt LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes:: @ 81F777A
@@ -29,13 +26,14 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual:: @ 81F779A
 	setmetatile 3, 7, METATILE_BrendansMaysHouse_BookOnTable, 1
 	return
 
+LittlerootTown_BrendansHouse_1F_EventScript_ReadNotebook::
+	msgbox LittlerootTown_BrendansHouse_1F_Text_ReadNotebook, MSGBOX_DEFAULT
+	closemessage
+	end
+
 LittlerootTown_BrendansHouse_1F_OnTransition: @ 81F77A4
-	compare VAR_LITTLEROOT_INTRO_STATE, 3
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
-	compare VAR_LITTLEROOT_INTRO_STATE, 5
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	compare VAR_LITTLEROOT_INTRO_STATE, 2
+	call_if_eq Common_EventScript_SetupRivalGfxId
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs:: @ 81F77C6
@@ -56,7 +54,6 @@ LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor:: @ 81F77DE
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 @ The below SS Ticket script uses Mays house state by accident(?), but theyre both set identically after the intro
 LittlerootTown_BrendansHouse_1F_OnFrame: @ 81F77EA
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
@@ -122,7 +119,6 @@ LittlerootTown_BrendansHouse_1F_Movement_RivalMomApproach: @ 81F789C
 LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom:: @ 81F78A3
 	lockall
 	setvar VAR_0x8004, LOCALID_MOM
-	setvar VAR_0x8005, MALE
 	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
@@ -147,18 +143,14 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival2:: @ 81F78D6
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival:: @ 81F78E2
-	playse SE_EXIT
-	delay 10
 	addobject LOCALID_RIVAL
-	delay 30
 	playse SE_PIN
+	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_LEFT
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
-	compare VAR_0x8008, 1
-	call_if_ne LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan
-	playbgm MUS_ENCOUNTER_BRENDAN, 1
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
 	compare VAR_0x8008, 0
 	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer0
 	compare VAR_0x8008, 1
@@ -173,16 +165,19 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival:: @ 81F78E2
 	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1
 	compare VAR_0x8008, 2
 	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2
+	fadedefaultbgm
 	playse SE_EXIT
 	removeobject LOCALID_RIVAL
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	clearflag FLAG_UNKNOWN_0x363
+	clearflag FLAG_UNKNOWN_0x393
+	clearflag FLAG_HIDE_RIVAL_SPRINGROCK_PATH
+	setflag FLAG_HIDE_HIKER_SPRINGROCK_PATH
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	delay 30
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 1
+	setvar VAR_LITTLEROOT_INTRO_STATE, 3
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
 	releaseall
 	end
 
@@ -207,29 +202,35 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2:: @ 81F79A2
 	return
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0: @ 81F79AD
-	walk_in_place_fastest_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_in_place_fastest_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1: @ 81F79B5
-	walk_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_fastest_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2: @ 81F79B9
-	walk_in_place_fastest_right
-	walk_right
-	walk_in_place_fastest_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_in_place_fastest_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs0:: @ 81F79C1
@@ -253,51 +254,69 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2:: @ 81F79E5
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit0: @ 81F79F7
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit1: @ 81F79FB
 	delay_16
 	delay_8
-	walk_in_place_fastest_right
-	delay_16
-	delay_16
-	walk_in_place_fastest_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit2: @ 81F7A02
 	delay_16
 	delay_8
-	walk_in_place_fastest_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0: @ 81F7A06
-	walk_in_place_fastest_right
-	walk_right
-	walk_in_place_fastest_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1: @ 81F7A0C
-	walk_in_place_fastest_right
-	walk_right
-	walk_in_place_fastest_up
-	walk_up
-	walk_up
-	walk_in_place_fastest_left
+	walk_down
 	walk_left
-	walk_in_place_fastest_up
-	walk_up
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
+
 LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2: @ 81F7A16
-	walk_in_place_fastest_left
+	walk_up
 	walk_left
-	walk_in_place_fastest_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
+
 
 PlayersHouse_1F_Text_IsntItNiceInHere: @ 81F7A1C
 	.string "MOM: See, {PLAYER}?\n"
@@ -450,3 +469,20 @@ PlayersHouse_1F_Text_WhatColorDidTheySay: @ 81F8351
 PlayersHouse_1F_Text_StillUnknownPokemon: @ 81F83A1
 	.string "MOM: Well, isn't that something!\n"
 	.string "There are still unknown POKéMON.$"
+
+LittlerootTown_BrendansHouse_1F_Text_ReadNotebook:
+	.string "It's a copy of Rika Ramblings magazine!\p"
+	.string "The First Annual Rika League Challenge\p"
+	.string "Rika's official Pokémon League is now\n"
+	.string "underway! Our region's Trainers are\l"
+	.string "infamous for being more powerful than a\l"
+	.string "typical Trainer in any other Pokémon\l"
+	.string "League out there.\p"
+	.string "This will surely test the limits of\n"
+	.string "Pokémon for years to come! The Rika\l"
+	.string "League officials have not yet named\l"
+	.string "the Champion, but the first to earn the\l"
+	.string "eight Gym Badges and defeat the Elite\l"
+	.string "Four will have a chance to challenge\l"
+	.string "them for their title!\p"
+	.string "More info awaits in further articles!$"

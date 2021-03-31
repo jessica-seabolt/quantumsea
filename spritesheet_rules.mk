@@ -305,6 +305,9 @@ $(OBJEVENTGFXDIR)/people/picnicker.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/sakura.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/cubone.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/psychic_m.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 

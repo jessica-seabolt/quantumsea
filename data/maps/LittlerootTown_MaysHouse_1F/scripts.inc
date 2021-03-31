@@ -3,16 +3,9 @@
 .set LOCALID_RIVAL, 7
 
 LittlerootTown_MaysHouse_1F_MapScripts:: @ 81F88A5
-	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_MaysHouse_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MaysHouse_1F_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_MaysHouse_1F_OnFrame
 	.byte 0
-
-LittlerootTown_MaysHouse_1F_OnLoad: @ 81F88B5
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_lt LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual
-	end
 
 LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes:: @ 81F88CA
 	setmetatile 5, 4, METATILE_BrendansMaysHouse_MovingBox_Open, 1
@@ -30,18 +23,90 @@ LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual:: @ 81F88EA
 	return
 
 LittlerootTown_MaysHouse_1F_OnTransition: @ 81F88F4
-	compare VAR_LITTLEROOT_INTRO_STATE, 3
-	call_if_eq LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor
-	compare VAR_LITTLEROOT_INTRO_STATE, 5
-	call_if_eq LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_eq LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs:: @ 81F8916
-	setobjectxyperm LOCALID_MOM, 2, 4
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	lockall
+	setobjectxyperm LOCALID_MOM, 13, 5
+	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_DOWN
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox LittlerootTown_MaysHouse_1F_Text_ComeHerePlayer, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_GoToMom
+	waitmovement 0
+	msgbox LittlerootTown_MaysHouse_1F_Text_ZRing, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_Z_RING
+	msgbox LittlerootTown_MaysHouse_1F_Text_TimeToGo, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MOM, LittlerootTown_MaysHouse_1F_Movement_MomLeaves
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_MOM
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM
+	setvar VAR_LITTLEROOT_INTRO_STATE, 2
+	releaseall
 	return
+
+LittlerootTown_MaysHouse_1F_Movement_GoToMom:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+
+LittlerootTown_MaysHouse_1F_Movement_MomLeaves:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV:: @ 81F8922
 	setobjectxyperm LOCALID_MOM, 6, 5
@@ -55,7 +120,6 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor:: @ 81F892E
 
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 LittlerootTown_MaysHouse_1F_OnFrame: @ 81F893A
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
@@ -121,11 +185,6 @@ LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach: @ 81F89EC
 RivalsHouse_1F_EventScript_RivalMom:: @ 81F89F3
 	lock
 	faceplayer
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE103, RivalsHouse_1F_EventScript_GoHomeEverySoOften
-	goto_if_set FLAG_SYS_POKEMON_GET, RivalsHouse_1F_EventScript_RivalIsOnRoute103
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	goto_if_eq RivalsHouse_1F_EventScript_RivalTooBusy
-	special GetRivalSonDaughterString
 	msgbox RivalsHouse_1F_Text_LikeChildLikeFather, MSGBOX_DEFAULT
 	release
 	end
@@ -346,11 +405,11 @@ RivalsHouse_1F_Text_OhYoureTheNewNeighbor: @ 81F8BC5
 	.string "Our {STR_VAR_1} is upstairs, I think.$"
 
 RivalsHouse_1F_Text_LikeChildLikeFather: @ 81F8CA5
-	.string "Like child, like father.\p"
-	.string "My husband is as wild about POKéMON\n"
-	.string "as our child.\p"
-	.string "If he's not at his LAB, he's likely\n"
-	.string "scrabbling about in grassy places.$"
+	.string "Oh, I'm {RIVAL}'s father. You kids\n"
+	.string "stay out of trouble, you hear me?\p"
+	.string "...Nah, I'm joking! At your age, I\n"
+	.string "would be concerned if you weren't\l"
+	.string "causing trouble! Bwahaha!$"
 
 RivalsHouse_1F_Text_TooBusyToNoticeVisit: @ 81F8D37
 	.string "That {RIVAL}!\p"
@@ -397,26 +456,42 @@ RivalsHouse_1F_Text_MayWhoAreYou: @ 81F8EC6
 	.string "{PLAYER}{KUN}, I'll catch you later!$"
 
 RivalsHouse_1F_Text_BrendanWhoAreYou: @ 81F90B4
-	.string "Hey!\n"
-	.string "You…\p"
-	.string "Who are you?\p"
-	.string "Oh, you're {PLAYER}, aren't you?\n"
-	.string "Moved in next door, right?\p"
-	.string "I didn't know that you're a girl.\p"
-	.string "Dad, PROF. BIRCH, said that our new\n"
-	.string "next-door neighbor is a GYM LEADER's\l"
-	.string "kid, so I assumed you'd be a guy.\p"
-	.string "My name's BRENDAN.\n"
-	.string "So, hi, neighbor!\p"
-	.string "Huh? Hey, {PLAYER}, don't you have\n"
-	.string "a POKéMON?\p"
-	.string "Do you want me to go catch you one?\p"
-	.string "Aw, darn, I forgot…\p"
-	.string "I'm supposed to go help my dad catch\n"
-	.string "some wild POKéMON.\p"
-	.string "Some other time, okay?$"
+	.string "{RIVAL}: Oh, hey!\p"
+	.string "You're {PLAYER}, right? You live next\n"
+	.string "door? Nice to meet you!\p"
+	.string "I'm {RIVAL}. I was looking forward to\n"
+	.string "having a friend to train Pokémon with!\p"
+	.string "...Oh? You don't have a Pokémon?\n"
+	.string "What are you waiting for, {PLAYER}?!\p"
+	.string "Prof. Sakura would totally give you one\n"
+	.string "if you asked her. She's just past the\l"
+	.string "tunnel, yeah? Let's go!\p"
+	.string "...Dangerous? Rubbish! I'll help you\n"
+	.string "through! Just follow my lead!$"
 
 RivalsHouse_1F_Text_DoYouHavePokemon: @ 81F9262
-	.string "Hi, neighbor!\p"
-	.string "Do you already have your\n"
-	.string "own POKéMON?$"
+	.string "Hi, there! Are you looking for\n"
+	.string "{RIVAL}?\p"
+	.string "Sorry, I haven't got a clue where they\n"
+	.string "might've gone. I've been watching the\l"
+	.string "tele and playing video games all day!$"
+
+LittlerootTown_MaysHouse_1F_Text_ComeHerePlayer:
+	.string "Mom: Oh, {PLAYER}! Come here!$"
+
+LittlerootTown_MaysHouse_1F_Text_ZRing:
+	.string "Mom: I know you're upset that I have to\n"
+	.string "keep leaving you, {PLAYER}.\p"
+	.string "And it's not fun using our house as a\n"
+	.string "storage unit for Prof. Sakura, either.\p"
+	.string "Nevertheless, I was looking through some\n"
+	.string "of the boxes, and I found something you\l"
+	.string "might like. It's very stylish!$"
+
+LittlerootTown_MaysHouse_1F_Text_TimeToGo:
+	.string "Mom: Just don't tell Prof. Sakura, okay?\n"
+	.string "Not that she would know it was gone...\p"
+	.string "But listen, honey. I really do need to\n"
+	.string "get going. Don't forget to cook dinner\l"
+	.string "while I'm gone, okay {PLAYER}?\p"
+	.string "Mom: I love you, dear!$"

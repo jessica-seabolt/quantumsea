@@ -1,7 +1,9 @@
 .set LOCALID_TWIN, 1
-.set LOCALID_MOM, 4
-.set LOCALID_RIVAL, 7
-.set LOCALID_BIRCH, 8
+.set LOCALID_MOM, 11
+.set LOCALID_RIVAL, 3
+.set LOCALID_RIVAL2, 6
+.set LOCALID_BIRCH, 4
+.set LOCALID_BIRCH2, 10
 
 LittlerootTown_MapScripts:: @ 81E7DCB
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
@@ -43,23 +45,274 @@ LittlerootTown_OnTransition: @ 81E7DDB
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call Common_EventScript_SetupRivalGfxId
 	compare VAR_LITTLEROOT_INTRO_STATE, 2
-	call_if_eq LittlerootTown_EventScript_MoveMomToMaysDoor
-	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
-	compare VAR_LITTLEROOT_TOWN_STATE, 3
-	call_if_eq LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos
-	compare VAR_LITTLEROOT_HOUSES_STATE_MAY, 4
-	call_if_eq LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
-	compare VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4
-	call_if_eq LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
-	compare VAR_OLDALE_RIVAL_STATE, 1
-	call_if_eq LittlerootTown_EventScript_MoveRivalFromOldale
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_eq LittlerootTown_EventScript_SetRivalLeftForRoute103
-	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1
-	call_if_eq LittlerootTown_EventScript_HideMapNamePopup
-	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2
-	call_if_eq LittlerootTown_EventScript_LeftLabAfterDexUpgrade
+	call_if_eq LittlerootTown_EventScript_BlockTunnel
+	call_if_set FLAG_HIDE_LITTLEROOT_TOWN_RIVAL, LittlerootTown_EventScript_SetTwinPos
+	compare VAR_LITTLEROOT_INTRO_STATE, 3
+	call_if_eq LittlerootTown_EventScript_RivalAtTunnel
+	compare VAR_LITTLEROOT_INTRO_STATE, 5
+	call_if_eq LittlerootTown_EventScript_RivalAtStarterBag
 	end
+
+LittlerootTown_EventScript_RivalAtStarterBag::
+	addobject LOCALID_BIRCH
+	addobject LOCALID_RIVAL2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	setobjectxyperm LOCALID_RIVAL2, 21, 26
+	return
+
+LittlerootTown_EventScript_GetStarter::
+	lockall
+	msgbox ChooseAStarter, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL2, RivalExcitedForPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	waitmovement 0
+	msgbox RivalExcitedForPlayerText, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8
+	releaseall
+	end
+
+ChooseAStarter:
+	.string "Sakura: Alright, {PLAYER}! This bag has\n"
+	.string "three Pokémon inside.\p"
+	.string "They aren't your traditional choices for\n"
+	.string "a starter, but I promise they're great!\p"
+	.string "Go ahead, take your pick! Just make sure\n"
+	.string "it's a good one!$"
+
+RivalExcitedForPlayer:
+	jump_in_place_left
+	jump_in_place_left
+	step_end
+
+RivalExcitedForPlayerText:
+	.string "{RIVAL}: This is so exciting, innit?\p"
+	.string "I know we just met, but I think you and I\n"
+	.string "will really help each other grow!\p"
+	.string "Kind of like a couple of friendly rivals\n"
+	.string "or something, yeah?\p"
+	.string "Well? Go on! Pick the best Pokémon!$"
+
+VisitingSakura::
+	lock
+	faceplayer
+	msgbox VisitingSakuraText, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+VisitingSakuraText:
+	.string "I'm here visiting Prof. Sakura.\p"
+	.string "She gave my son Steven his first\n"
+	.string "Pokémon a few years ago, and now he's\l"
+	.string "become the Champion of Hoenn!$" 
+
+LittlerootTown_EventScript_BirchsBag:: @ 81EBE16
+	lockall
+	faceplayer
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	fadescreen FADE_TO_BLACK
+	special ChooseStarter
+	waitstate
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	waitmovement 0
+	applymovement LOCALID_RIVAL2, LittlerootTown_Movement_TimeToBattleRival
+	waitmovement 0
+	msgbox TimeToBattleRival, MSGBOX_DEFAULT
+	closemessage
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE
+	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LittlerootTown_EventScript_BattleRivalMale
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LittlerootTown_EventScript_BattleRivalFemale
+	release
+	end
+
+LittlerootTown_Movement_TimeToBattleRival:
+	jump_in_place_left
+	jump_in_place_left
+	walk_fastest_up
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_up
+	walk_in_place_fastest_left
+	jump_in_place_left
+	jump_in_place_left
+	step_end
+
+GetPokeBallsDown::
+	lockall
+	addobject LOCALID_BIRCH2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	setobjectxyperm LOCALID_BIRCH2, 28, 34
+	playse SE_EXIT
+	applymovement LOCALID_BIRCH2, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	waitmovement 0
+	msgbox ForgotToGiveBalls, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_POKE_BALL, 20
+	compare VAR_RESULT, FALSE
+	call_if_eq NoRoom
+	msgbox PokeBallsAreForCatching, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestUp
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	removeobject LOCALID_BIRCH2
+	removeobject LOCALID_RIVAL2
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	release
+	end
+
+NoRoom::
+	msgbox DontHaveRoomForBallsSakura, MSGBOX_DEFAULT
+	closemessage
+	return
+
+DontHaveRoomForBallsSakura:
+	.string "Oh, the Bag is full...$"
+
+GetPokeBallsLeft::
+	lockall
+	addobject LOCALID_BIRCH2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	setobjectxyperm LOCALID_BIRCH2, 28, 34
+	playse SE_EXIT
+	applymovement LOCALID_BIRCH2, Common_Movement_WalkInPlaceFastestLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	waitmovement 0
+	msgbox ForgotToGiveBalls, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_POKE_BALL, 20
+	compare VAR_RESULT, FALSE
+	call_if_eq NoRoom
+	msgbox PokeBallsAreForCatching, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BIRCH2, Common_Movement_WalkInPlaceFastestUp
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	removeobject LOCALID_BIRCH2
+	removeobject LOCALID_RIVAL2
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	release
+	end
+
+ForgotToGiveBalls:
+	.string "Sakura: Wait, {PLAYER}! I almsot forgot!$"
+
+PokeBallsAreForCatching:
+	.string "Sakura: These are called Poké Balls.\n"
+	.string "You can use them to capture any new\l"
+	.string "Pokémon you might find!\p"
+	.string "Can't really finish the Pokédex without\n"
+	.string "catching Pokémon, now can we?\p"
+	.string "That's all this time, I promise! Get out\n"
+	.string "there, {PLAYER}! Your journey begins!$"
+
+TimeToBattleRival:
+	.string "{RIVAL}: No point wasting time, {PLAYER}!\n"
+	.string "You know what's next- let's do this!$"
+
+LittlerootTown_EventScript_BattleRivalMale:: @ 81EC48E
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, LittlerootTown_Text_Defeated
+	goto LittlerootTown_EventScript_AfterBattle
+	end
+
+LittlerootTown_EventScript_BattleRivalFemale:: @ 81EC48E
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, LittlerootTown_Text_Defeated
+	goto LittlerootTown_EventScript_AfterBattle
+	end
+
+LittlerootTown_Text_Defeated:
+	.string "{RIVAL}: Brilliant! Bloody brilliant!$"
+
+LittlerootTown_EventScript_AfterBattle::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	waitmovement 0
+	msgbox LittlerootTown_Text_WhatABattle, MSGBOX_DEFAULT	
+	special HealPlayerParty
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_LITTLEROOT_TOWN_STATE, 2
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8
+	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 255, 6, 5
+	waitstate
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+	removeobject LOCALID_RIVAL2
+	removeobject LOCALID_BIRCH
+	releaseall
+	end
+
+LittlerootTown_EventScript_Potion1::
+	finditem ITEM_POTION, 3
+	end
+
+LittlerootTown_EventScript_Potion2::
+	finditem ITEM_POTION, 1
+	end
+
+LittlerootTown_EventScript_Potion3::
+	finditem ITEM_POTION, 1
+	end
+
+LittlerootTown_Text_WhatABattle:
+	.string "Sakura: What a battle! You two are even\n"
+	.string "more passionate than I thought!\p"
+	.string "I seriously think you kids have what it\n"
+	.string "takes to beat the Rika League.\p"
+	.string "Not to mention, I have an assignment I'd\n"
+	.string "like you both to take care of.\p"
+	.string "Follow me to my Lab, we'll talk about\n"
+	.string "it more inside.$"
+
+LittlerootTown_EventScript_RivalAtTunnel::
+	addobject LOCALID_RIVAL
+	setobjectxyperm LOCALID_RIVAL, 19, 3
+	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_DOWN
+	return
+
+LittlerootTown_EventScript_BlockTunnel::
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+	return
+
+LittlerootTown_EventScript_RivalAtTunnel2::
+	lockall
+	msgbox LittlerootTown_Text_RivalAtTunnel, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, LittlerootTown_Movement_RivalEntersTunnel
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_RIVAL
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	removeobject LOCALID_TWIN
+	release
+	end
+
+LittlerootTown_Movement_RivalEntersTunnel:
+	walk_in_place_up
+	walk_up
+	step_end
 
 LittlerootTown_EventScript_LeftLabAfterDexUpgrade:: @ 81E7E45
 	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3
@@ -90,12 +343,12 @@ LittlerootTown_EventScript_MoveMomToMaysDoor:: @ 81E7E67
 LittlerootTown_EventScript_SetTwinPos:: @ 81E7E6F
 	compare VAR_LITTLEROOT_TOWN_STATE, 0
 	goto_if_eq LittlerootTown_EventScript_SetTwinGuardingRoutePos
-	setobjectxyperm LOCALID_TWIN, 10, 1
+	setobjectxyperm LOCALID_TWIN, 19, 3
 	setobjectmovementtype LOCALID_TWIN, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_EventScript_SetTwinGuardingRoutePos:: @ 81E7E86
-	setobjectxyperm LOCALID_TWIN, 7, 2
+	setobjectxyperm LOCALID_TWIN, 19, 3
 	setobjectmovementtype LOCALID_TWIN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -118,9 +371,9 @@ LittlerootTown_EventScript_SetMomInFrontOfDoorFemale:: @ 81E7EB9
 	return
 
 LittlerootTown_OnFrame: @ 81E7EC1
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_EventScript_StepOffTruckMale
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_StepOffTruckFemale
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_BeginDexUpgradeScene
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_EventScript_GetStarter
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_EventScript_AfterBattle
 	.2byte 0
 
 LittlerootTown_EventScript_StepOffTruckMale:: @ 81E7EDB
@@ -237,7 +490,13 @@ LittlerootTown_EventScript_BeginDexUpgradeScene:: @ 81E7FB1
 
 LittlerootTown_OnWarp: @ 81E7FE2
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_SetPlayerDirectionNorth
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_SetPlayerDirectionNorth
 	.2byte 0
+
+LittlerootTown_SetPlayerDirectionNorth::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	end
 
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade:: @ 81E7FEC
 	addobject LOCALID_BIRCH
@@ -262,9 +521,44 @@ LittlerootTown_EventScript_FatMan:: @ 81E8022
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
 	end
 
+LittlerootTown_EventScript_Child:: @ 81E8022
+	msgbox LittlerootTown_Text_Child, MSGBOX_NPC
+	end
+
+LittlerootTown_Text_Child:
+	.string "You know, if you travel past Archaic\n"
+	.string "Canyon and Route 1, there's a huge city\l"
+	.string "just full of Pokémon Trainers!\p"
+	.string ". . . . . . . . . . . . . . . . . . . . . . .\p"
+	.string "Nah, I'm just messing with you. Cobalt\n"
+	.string "Town is pretty, but it's very small.$"
+
+LittlerootTown_EventScript_BlockCave:: @ 81E8022
+	msgbox LittlerootTown_Text_BlockCave, MSGBOX_NPC
+	end
+
 LittlerootTown_EventScript_Boy:: @ 81E802B
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
 	end
+
+LittlerootTown_EventScript_RivalWaiting:: @ 81E802B
+	msgbox LittlerootTown_Text_RivalWaiting, MSGBOX_DEFAULT
+	closemessage
+	end
+
+LittlerootTown_EventScript_SakuraWaiting:: @ 81E802B
+	msgbox LittlerootTown_Text_SakuraWaiting, MSGBOX_DEFAULT
+	closemessage
+	end
+
+LittlerootTown_Text_RivalWaiting:
+	.string "{RIVAL}: Huh? Come on! Get your\n"
+	.string "new Pokémon, {PLAYER}!$"
+
+LittlerootTown_Text_SakuraWaiting:
+	.string "Sakura: I know it can be intimidating\n"
+	.string "to pick your first Pokémon, but any one\l"
+	.string "of these three will be great!$" 
 
 LittlerootTown_EventScript_Twin:: @ 81E8034
 	lock
@@ -424,11 +718,23 @@ LittlerootTown_EventScript_BrendansHouseSign:: @ 81E8163
 	end
 
 LittlerootTown_EventScript_PlayersHouseSignMale:: @ 81E817D
-	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_DEFAULT
+	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_SIGN
 	return
 
 LittlerootTown_EventScript_BirchsHouseSignFemale:: @ 81E8186
-	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_DEFAULT
+	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_SIGN
+	return
+
+LittlerootTown_EventScript_TunnelSign1:: @ 81E8186
+	msgbox LittlerootTown_Text_TunnelSign1, MSGBOX_SIGN
+	return
+
+LittlerootTown_EventScript_TunnelSign2:: @ 81E8186
+	msgbox LittlerootTown_Text_TunnelSign2, MSGBOX_SIGN
+	return
+
+LittlerootTown_EventScript_CaveSign:: @ 81E8186
+	msgbox LittlerootTown_Text_CaveSign, MSGBOX_SIGN
 	return
 
 LittlerootTown_EventScript_MaysHouseSign:: @ 81E818F
@@ -1009,16 +1315,13 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens: @ 81E8A03
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems: @ 81E8ACF
-	.string "If you use a PC, you can store items\n"
-	.string "and POKéMON.\p"
-	.string "The power of science is staggering!$"
+	.string "Skitty: Prrrrr...\p"
+	.string "The Skitty is fast asleep! How cute!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab: @ 81E8B25
-	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "When does PROF. BIRCH spend time\n"
-	.string "at home?$"
+	.string "The Rika League...\p"
+	.string "I've always wanted to be a Pokémon\n"
+	.string "Trainer. Maybe now's my chance!$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut: @ 81E8BB8
 	.string "Um, um, um!\p"
@@ -1047,17 +1350,17 @@ LittlerootTown_Text_GoodLuckCatchingPokemon: @ 81E8D07
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign: @ 81E8D32
-	.string "LITTLEROOT TOWN\n"
-	.string "“A town that can't be shaded any hue.”$"
+	.string "Springrock Villa\n"
+	.string "“A quiet little slice of paradise!”$"
 
 LittlerootTown_Text_ProfBirchsLab: @ 81E8D69
-	.string "PROF. BIRCH'S POKéMON LAB$"
+	.string "Prof. Sakura's Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse: @ 81E8D83
-	.string "{PLAYER}'s HOUSE$"
+	.string "{PLAYER}'s House$"
 
 LittlerootTown_Text_ProfBirchsHouse: @ 81E8D8E
-	.string "PROF. BIRCH'S HOUSE$"
+	.string "{RIVAL}'s House$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"
@@ -1070,3 +1373,29 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+LittlerootTown_Text_TunnelSign1:
+	.string "Springrock Path\p"
+	.string "Springrock Villa South {UP_ARROW}$"
+
+LittlerootTown_Text_TunnelSign2:
+	.string "Springrock Path\p"
+	.string "Springrock Villa North {UP_ARROW}$"
+
+LittlerootTown_Text_CaveSign:
+	.string "Springrock Path\p"
+	.string "Route 1 {UP_ARROW}$"
+
+LittlerootTown_Text_BlockCave:
+	.string "Hey, {PLAYER}! Did you finally get\n"
+	.string "a Pokémon?\p"
+	.string "...No? Well  sorry kiddo, but I can't\n"
+	.string "let you through here without a partner.\p"
+	.string "I'm sure your mom will open up to the\n"
+	.string "idea any day now!$"
+
+LittlerootTown_Text_RivalAtTunnel:
+	.string "{RIVAL}: Alright, {PLAYER}!\n"
+	.string "We can reach Prof. Sakura's Lab by going\l"
+	.string "through Springrock Path.\p"
+	.string "I know you don't have a Pokémon, so just\n"
+	.string "stick with me, yeah? Let's go!$"

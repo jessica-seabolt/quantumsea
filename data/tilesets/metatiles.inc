@@ -557,3 +557,46 @@ gMetatiles_UnionRoom:: @ 83DF392
 	.align 1
 gMetatileAttributes_UnionRoom:: @ 83DF6A2
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_BuildingMain::
+	.incbin "data/tilesets/primary/buildingmain/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_BuildingMain::
+	.incbin "data/tilesets/primary/buildingmain/metatile_attributes.bin"
+	.align 1
+gMetatiles_Main::
+	.incbin "data/tilesets/primary/main/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Main::
+	.incbin "data/tilesets/primary/main/metatile_attributes.bin"
+	.align 1
+gMetatiles_SpringwoodTown::
+	.incbin "data/tilesets/secondary/springwoodtown/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SpringwoodTown::
+	.incbin "data/tilesets/secondary/springwoodtown/metatile_attributes.bin"
+	.align 1
+gMetatiles_PlayersHouse::
+	.incbin "data/tilesets/secondary/playershouse/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_PlayersHouse::
+	.incbin "data/tilesets/secondary/playershouse/metatile_attributes.bin"
+	.align 1
+gMetatiles_SpringrockCave::
+	.incbin "data/tilesets/secondary/springrockcave/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SpringrockCave::
+	.incbin "data/tilesets/secondary/springrockcave/metatile_attributes.bin"
+	.align 1
+gMetatiles_SakuraLab::
+	.incbin "data/tilesets/secondary/sakuralab/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SakuraLab::
+	.incbin "data/tilesets/secondary/sakuralab/metatile_attributes.bin"

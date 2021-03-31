@@ -830,3 +830,69 @@ gTileset_UnionRoom:: @ 83DFDFC
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_BuildingMain::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_BuildingMain
+	.4byte gTilesetPalettes_BuildingMain
+	.4byte gMetatiles_BuildingMain
+	.4byte gMetatileAttributes_BuildingMain
+	.4byte NULL
+
+	.align 2
+gTileset_Main::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Main
+	.4byte gTilesetPalettes_Main
+	.4byte gMetatiles_Main
+	.4byte gMetatileAttributes_Main
+	.4byte NULL
+
+	.align 2
+gTileset_SpringwoodTown::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SpringwoodTown
+	.4byte gTilesetPalettes_SpringwoodTown
+	.4byte gMetatiles_SpringwoodTown
+	.4byte gMetatileAttributes_SpringwoodTown
+	.4byte NULL
+
+	.align 2
+gTileset_PlayersHouse::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_PlayersHouse
+	.4byte gTilesetPalettes_PlayersHouse
+	.4byte gMetatiles_PlayersHouse
+	.4byte gMetatileAttributes_PlayersHouse
+	.4byte NULL
+
+	.align 2
+gTileset_SpringrockCave::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SpringrockCave
+	.4byte gTilesetPalettes_SpringrockCave
+	.4byte gMetatiles_SpringrockCave
+	.4byte gMetatileAttributes_SpringrockCave
+	.4byte NULL
+
+	.align 2
+gTileset_SakuraLab::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SakuraLab
+	.4byte gTilesetPalettes_SakuraLab
+	.4byte gMetatiles_SakuraLab
+	.4byte gMetatileAttributes_SakuraLab
+	.4byte NULL

@@ -1729,3 +1729,123 @@ gTilesetPalettes_UnionRoom:: @ 8395678
 	.align 2
 gTilesetTiles_UnionRoom:: @ 8395878
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_BuildingMain::
+	.incbin "data/tilesets/primary/buildingmain/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/buildingmain/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_BuildingMain::
+	.incbin "data/tilesets/primary/buildingmain/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Main::
+	.incbin "data/tilesets/primary/main/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/main/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Main::
+	.incbin "data/tilesets/primary/main/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_SpringwoodTown::
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/springwoodtown/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_SpringwoodTown::
+	.incbin "data/tilesets/secondary/springwoodtown/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_PlayersHouse::
+	.incbin "data/tilesets/secondary/playershouse/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/playershouse/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_PlayersHouse::
+	.incbin "data/tilesets/secondary/playershouse/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_SpringrockCave::
+	.incbin "data/tilesets/secondary/springrockcave/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/springrockcave/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_SpringrockCave::
+	.incbin "data/tilesets/secondary/springrockcave/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_SakuraLab::
+	.incbin "data/tilesets/secondary/sakuralab/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/sakuralab/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_SakuraLab::
+	.incbin "data/tilesets/secondary/sakuralab/tiles.4bpp.lz"

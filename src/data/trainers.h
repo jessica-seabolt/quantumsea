@@ -7408,10 +7408,10 @@ const struct Trainer gTrainers[] = {
     [TRAINER_MAY_ROUTE_103_MUDKIP] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_MAY,
-        .trainerName = _("{B_RIVAL_NAME}"),
+        .trainerClass = TRAINER_CLASS_HIKER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
+        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerName = _("Hank"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,

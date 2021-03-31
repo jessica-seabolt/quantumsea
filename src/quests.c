@@ -133,7 +133,7 @@ static const u16 sFR_MessageBoxTiles[] = INCBIN_U16("graphics/text_window/fr_mes
 
 // strings
 static const u8 sText_Empty[] = _("");
-static const u8 sText_Quests[] = _("   Side\n Quests");
+static const u8 sText_Quests[] = _("   Quest\n Journal");
 static const u8 sText_QuestMenu_Begin[] = _("Begin");
 static const u8 sText_QuestMenu_End[] = _("End");
 static const u8 sText_QuestMenu_Details[] = _("Details");
@@ -141,9 +141,9 @@ static const u8 sText_QuestMenu_Reward[] = _("Reward");
 static const u8 sText_QuestMenu_Unk[] = _("{COLOR}{LIGHT_GREY}?????????");
 static const u8 sText_QuestMenu_Active[] = _("{COLOR}{GREEN}Active");
 static const u8 sText_QuestMenu_Complete[] = _("{COLOR}{BLUE}Done");
-static const u8 sText_QuestMenu_Exit[] = _("Exit the Quest Menu");
+static const u8 sText_QuestMenu_Exit[] = _("Exit the Quest Journal");
 static const u8 sText_QuestMenu_SelectedQuest[] = _("Do what with\nthis quest?");
-static const u8 sText_QuestMenu_DisplayDetails[] = _("POC: {STR_VAR_1}\nMap: {STR_VAR_2}");
+static const u8 sText_QuestMenu_DisplayDetails[] = _("Quest Giver: {STR_VAR_1}\nMap: {STR_VAR_2}");
 static const u8 sText_QuestMenu_DisplayReward[] = _("Reward:\n{STR_VAR_1}");
 static const u8 sText_QuestMenu_BeginQuest[] = _("Initiating Quest:\n{STR_VAR_1}");
 static const u8 sText_QuestMenu_EndQuest[] = _("Cancelling Quest:\n{STR_VAR_1}");
@@ -194,8 +194,8 @@ static const u16 sSideQuestDifficultyItemIds[] =
 static const u8 sSideQuestDifficulties[SIDE_QUEST_COUNT] = 
 {
     [SIDE_QUEST_1] = QUEST_DIFFICULTY_EASY,
-    [SIDE_QUEST_2] = QUEST_DIFFICULTY_EASY,
-    [SIDE_QUEST_3] = QUEST_DIFFICULTY_EASY,
+    [SIDE_QUEST_2] = QUEST_DIFFICULTY_MEDIUM,
+    [SIDE_QUEST_3] = QUEST_DIFFICULTY_EXTREME,
     [SIDE_QUEST_4] = QUEST_DIFFICULTY_EASY,
     [SIDE_QUEST_5] = QUEST_DIFFICULTY_EASY,
     [SIDE_QUEST_6] = QUEST_DIFFICULTY_EASY,
@@ -1265,12 +1265,11 @@ static void Task_QuestMenuReward(u8 taskId)
 static void Task_QuestMenuEndQuest(u8 taskId)
 {
     u8 questIndex = QuestMenu_GetCursorPosition();
-    
-    ResetActiveQuest();
-    QuestMenuSubmenuSelectionMessage(taskId);
-    StringCopy(gStringVar1, sSideQuests[questIndex].name);
-    StringExpandPlaceholders(gStringVar4, sText_QuestMenu_EndQuest);
-    QuestMenu_DisplaySubMenuMessage(taskId);
+        ResetActiveQuest();
+        QuestMenuSubmenuSelectionMessage(taskId);
+        StringCopy(gStringVar1, sSideQuests[questIndex].name);
+        StringExpandPlaceholders(gStringVar4, sText_QuestMenu_EndQuest);
+        QuestMenu_DisplaySubMenuMessage(taskId);
 }
 
 static void Task_QuestMenuBeginQuest(u8 taskId)

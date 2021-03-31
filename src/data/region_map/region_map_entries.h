@@ -1,7 +1,7 @@
 #ifndef GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H
 #define GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H
 
-static const u8 sMapName_LittlerootTown[] = _("LITTLEROOT TOWN");
+static const u8 sMapName_LittlerootTown[] = _("Springrock Villa");
 static const u8 sMapName_OldaleTown[] = _("OLDALE TOWN");
 static const u8 sMapName_DewfordTown[] = _("DEWFORD TOWN");
 static const u8 sMapName_LavaridgeTown[] = _("LAVARIDGE TOWN");
@@ -52,7 +52,7 @@ static const u8 sMapName_Route132[] = _("ROUTE 132");
 static const u8 sMapName_Route133[] = _("ROUTE 133");
 static const u8 sMapName_Route134[] = _("ROUTE 134");
 static const u8 sMapName_Underwater[] = _("UNDERWATER");
-static const u8 sMapName_GraniteCave[] = _("GRANITE CAVE");
+static const u8 sMapName_GraniteCave[] = _("Springrock Path");
 static const u8 sMapName_MtChimney[] = _("MT. CHIMNEY");
 static const u8 sMapName_SafariZone[] = _("SAFARI ZONE");
 static const u8 sMapName_BattleFrontier[] = _("BATTLE FRONTIER");

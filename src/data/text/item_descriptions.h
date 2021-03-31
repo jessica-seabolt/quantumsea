@@ -1536,19 +1536,18 @@ static const u8 sDevonScopeDesc[] = _(
 
 // TMs/HMs
 static const u8 sTM01Desc[] = _(
-    "Powerful, but makes\n"
-    "the user flinch if\n"
-    "hit by the foe.");
+    "Does massive damage to\n"
+    "a target affected by\n"
+    "status conditions.");
 
 static const u8 sTM02Desc[] = _(
-    "Hooks and slashes\n"
-    "the foe with long,\n"
-    "sharp claws.");
+    "The user hardens is\n"
+    "body's to sharply\n"
+    "raise its Defense.");
 
 static const u8 sTM03Desc[] = _(
-    "Generates an\n"
-    "ultrasonic wave\n"
-    "that may confuse.");
+    "Powerful move that\n"
+    "makes the user faint.");
 
 static const u8 sTM04Desc[] = _(
     "Raises Sp. Atk and\n"

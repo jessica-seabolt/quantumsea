@@ -1773,6 +1773,7 @@ static const u8 sText_Your1[] = _("Your");
 static const u8 sText_Opposing1[] = _("The opposing");
 static const u8 sText_Your2[] = _("your");
 static const u8 sText_Opposing2[] = _("the opposing");
+static const u8 sText_RivalSpringrockLastLowHp[] = _("{B_RIVAL_NAME}: It's not over yet!\nC'mon, Weedle!\p");
 
 // This is four lists of moves which use a different attack string in Japanese
 // to the default. See the documentation for ChooseTypeOfMoveUsedString for more detail.
@@ -3744,7 +3745,8 @@ struct TrainerSlide
 
 static const struct TrainerSlide sTrainerSlides[] =
 {
-    {0x291, sText_AarghAlmostHadIt, sText_BoxIsFull, sText_123Poof},
+    {TRAINER_BRENDAN_ROUTE_103_TREECKO, NULL, sText_RivalSpringrockLastLowHp, NULL},
+    {TRAINER_MAY_ROUTE_103_TREECKO, NULL, sText_RivalSpringrockLastLowHp, NULL},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

@@ -770,7 +770,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
 #define FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM                         0x2D8
 
-#define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
+#define FLAG_HIDE_RIVAL_SPRINGROCK_PATH                             0x2D9 // Unused Flag
 
 #define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
 #define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
@@ -909,7 +909,7 @@
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
 #define FLAG_HIDE_PETALBURG_GYM_WALLY                               0x362
-#define FLAG_UNKNOWN_0x363                                          0x363 // Set, however has no purpose.
+#define FLAG_UNKNOWN_0x363                                          0x363 // Hides cubone1 in springrock path
 #define FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN                           0x364
 #define FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY          0x365
 #define FLAG_HIDE_LANETTES_HOUSE_LANETTE                            0x366
@@ -957,7 +957,7 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WATTSON                             0x390
 #define FLAG_HIDE_MAUVILLE_GYM_WATTSON                              0x391
 #define FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS                        0x392
-#define FLAG_UNKNOWN_0x393                                          0x393 // Set, however has no purpose.
+#define FLAG_UNKNOWN_0x393                                          0x393 // Hides cubone2 in springrock path
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
 #define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA                          0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
@@ -1169,9 +1169,9 @@
 #define FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL                            0x462
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
-#define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MASTER_BALL                 0x465 // Unused Flag, leftover from the Ruby Magma hideout
-#define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MAX_ELIXIR                  0x466 // Unused Flag, leftover from the Ruby Magma hideout
-#define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B2F_NEST_BALL                   0x467 // Unused Flag, leftover from the Ruby Magma hideout
+#define FLAG_ITEM_SPRINGROCK_VILLA_POTION1                          0x465 // Unused Flag, leftover from the Ruby Magma hideout
+#define FLAG_ITEM_SPRINGROCK_VILLA_POTION2                          0x466 // Unused Flag, leftover from the Ruby Magma hideout
+#define FLAG_ITEM_SPRINGROCK_VILLA_POTION3                          0x467 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
@@ -1216,7 +1216,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
+#define FLAG_HIDE_HIKER_SPRINGROCK_PATH                             0x493 // Hides Hiker in Springrock Path
 #define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
 #define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag

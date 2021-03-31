@@ -1,11 +1,17 @@
 @ Local IDs are the same for both players houses
 .set LOCALID_MOM, 1
 .set LOCALID_DAD, 5
-.set LOCALID_MOM_2F, 14
+.set LOCALID_MOM_2F, 1
 
 PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet:: @ 82926FE
-	setvar VAR_LITTLEROOT_INTRO_STATE, 5
-	return
+	lock
+	msgbox PlayersHouse_2F_Text_CheckTheTime, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_SetTime
+	waitmovement 0
+	goto LittlerootTown_MaysHouse_2F_EventScript_WallClock
+	release
+	end
 
 PlayersHouse_1F_EventScript_EnterHouseMovingIn:: @ 8292704
 	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
@@ -49,31 +55,39 @@ PlayersHouse_1F_EventScript_MomGoSeeRoom:: @ 8292765
 
 LittlerootTown_BrendansHouse_2F_EventScript_WallClock:: @ 8292781
 	lockall
-	setvar VAR_0x8004, MALE
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_WallClock:: @ 829278D
 	lockall
+	goto PlayersHouse_2F_EventScript_WallClock
+	end
+
+PlayersHouse_EventSCript_SetClockMale::
+	setvar VAR_0x8004, MALE
+	goto PlayersHouse_2F_EventScript_WallClock
+	end
+
+PlayersHouse_EventScript_SetClockFemale::
 	setvar VAR_0x8004, FEMALE
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
 PlayersHouse_2F_EventScript_WallClock:: @ 8292799
+	setvar VAR_0x8004, MALE
 	goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
 	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
 	call PlayersHouse_2F_EventScript_SetWallClock
 	delay 30
-	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	clearflag FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM
 	setflag FLAG_SET_WALL_CLOCK
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq PlayersHouse_2F_EventScript_MomComesUpstairsMale
-	compare VAR_RESULT, FEMALE
-	call_if_eq PlayersHouse_2F_EventScript_MomComesUpstairsFemale
 	playse SE_EXIT
+	call PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+	playse SE_EXIT
+	setflag FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM
 	removeobject VAR_0x8008
 	releaseall
 	end
@@ -100,9 +114,40 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale:: @ 829280F
 	waitmovement 0
 	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
 	closemessage
+	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomLooksLeft
+	waitmovement 0
+	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomQuestion
+	msgbox PlayersHouse_2F_Text_PokeGear1, MSGBOX_DEFAULT
+	closemessage
+	waitmovement 0
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox PlayersHouse_2F_Text_PokeGear2, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox PlayersHouse_2F_Text_RunningLate, MSGBOX_DEFAULT
+	closemessage
+	special NameRival
+	waitstate
+	msgbox PlayersHouse_2F_Text_RivalName, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFastestRight
+	waitmovement 0
+	msgbox PlayersHouse_2F_Text_IKnowYouWantAPokemon, MSGBOX_DEFAULT
+	closemessage
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsFemale
 	waitmovement 0
 	return
+
+PlayersHouse_2F_Movement_MomLooksLeft:
+	walk_in_place_left
+	step_end
+
+PlayersHouse_2F_Movement_MomQuestion:
+	emote_question_mark
+	step_end
 
 PlayersHouse_2F_EventScript_CheckWallClock:: @ 829283F
 	incrementgamestat GAME_STAT_CHECKED_CLOCK
@@ -117,6 +162,13 @@ PlayersHouse_2F_EventScript_SetWallClock:: @ 8292849
 	special StartWallClock
 	waitstate
 	return
+
+PlayersHouse_1F_Movement_SetTime:
+	delay_8
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
 
 PlayersHouse_2F_Movement_MomEntersMale: @ 8292850
 	delay_8
@@ -705,3 +757,7 @@ PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale: @ 8292DDE
 EventScript_RunningShoesManual:: @ 8292DE5
 	msgbox PlayersHouse_1F_Text_RunningShoesManual, MSGBOX_SIGN
 	end
+
+PlayersHouse_2F_Text_CheckTheTime:
+	.string "Mom: Hey, {PLAYER}! Could you\n"
+	.string "check the time for me?$"

@@ -351,7 +351,7 @@ RusturfTunnel_EventScript_ItemMaxEther:: @ 8291143
 	end
 
 GraniteCave_1F_EventScript_ItemEscapeRope:: @ 8291150
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_RARE_CANDY
 	end
 
 GraniteCave_B1F_EventScript_ItemPokeBall:: @ 829115D

@@ -287,32 +287,56 @@ PlayersHouse_2F_EventScript_GameCube:: @ 81F865F
 	end
 
 PlayersHouse_2F_Text_ClockIsStopped: @ 81F8668
-	.string "The clock is stopped…\p"
-	.string "Better set it and start it!$"
+	.string "{PLAYER} glanced at the clock.\n"
+	.string "What time is it?$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom: @ 81F869A
-	.string "MOM: {PLAYER}, how do you like your\n"
-	.string "new room?\p"
-	.string "Good! Everything's put away neatly!\p"
-	.string "They finished moving everything in\n"
-	.string "downstairs, too.\p"
-	.string "POKéMON movers are so convenient!\p"
-	.string "Oh, you should make sure that\n"
-	.string "everything's all there on your desk.$"
+	.string "Mom: Don't worry about it, {PLAYER}.\n"
+	.string "I can check the time on my PokéGear.$"
+
+PlayersHouse_2F_Text_PokeGear1:
+	.string ". . . . . . . . . . . . . . . . . . .$"
+
+PlayersHouse_2F_Text_PokeGear2:
+	.string "Mom: Oh no! I'm running late!$"
+
+PlayersHouse_2F_Text_RunningLate:
+	.string "Mom: Sorry, {PLAYER}. I need to go.\n"
+	.string "I'll miss my flight to Sinnoh!\p"
+	.string "Oh yes, the new neighbors have moved in\n"
+	.string "from Galar. I believe they have a child\l"
+	.string "around your age, {PLAYER}.\p"
+	.string "What was their name again?$"
+
+PlayersHouse_2F_Text_RivalName:
+	.string "Mom: Oh, that's right! {RIVAL}!\p"
+	.string "Okay honey, be good! Make sure you\n"
+	.string "take care of the house, alright?\p"
+	.string "I'll be back in a few days.\p"
+	.string "I've left Prof. Sakura in charge, but\n"
+	.string "she's probably still at her lab.\p"
+	.string "Don't go through Springrock Path!\n"
+	.string "There's wild Pokémon in there! You\l"
+	.string "can't go in by yourself, okay?$"
+
+PlayersHouse_2F_Text_IKnowYouWantAPokemon:
+	.string "Mom: Oh, {PLAYER}, I know you really\n"
+	.string "want a Pokémon of your own, but...\p"
+	.string "Well, we can talk about it when I'm\n"
+	.string "back from Sinnoh, okay? Prof. Rowan will\l"
+	.string "get annoyed if I don't make it on time.\p"
+	.string "Mom: Be good, ok? Don't burn down the\n"
+	.string "house while I'm gone!$"
 
 PlayersHouse_2F_Text_Notebook: @ 81F877F
 	.string "{PLAYER} flipped open the notebook.\p"
-	.string "ADVENTURE RULE NO. 1\n"
-	.string "Open the MENU with START.\p"
-	.string "ADVENTURE RULE NO. 2\n"
-	.string "Record your progress with SAVE.\p"
-	.string "The remaining pages are blank…$"
+	.string "Dear {PLAYER}...\p"
+	.string "Thanks for playing!$"
 
 Common_Text_LookCloserAtMap: @ 81F8820
-	.string "{PLAYER} took a closer look at the\n"
-	.string "HOENN region map.$"
+	.string "Hey, it's a map of Rika!$"
 
 PlayersHouse_2F_Text_ItsAGameCube: @ 81F884F
-	.string "It's a Nintendo GameCube.\p"
-	.string "A Game Boy Advance is connected to\n"
-	.string "serve as the Controller.$"
+	.string "It's a Nintendo Wii.\p"
+	.string "It was a great console, but it's\n"
+	.string "starting to collect a lot of dust.$"

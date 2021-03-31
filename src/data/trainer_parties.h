@@ -8798,10 +8798,10 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Mudkip[] 
 static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Treecko[] = {
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 6,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = SPECIES_TORCHIC,
+    .species = SPECIES_WEEDLE,
     }
 };
 
@@ -8917,7 +8917,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Mudkip[] = {
     .lvl = 5,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = SPECIES_TREECKO,
+    .species = SPECIES_SANDSHREW,
     }
 };
 
@@ -8972,10 +8972,10 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Mudkip[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Treecko[] = {
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 6,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = SPECIES_TORCHIC,
+    .species = SPECIES_WEEDLE,
     }
 };
 

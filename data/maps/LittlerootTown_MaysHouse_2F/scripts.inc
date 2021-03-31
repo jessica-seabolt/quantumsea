@@ -6,14 +6,13 @@ LittlerootTown_MaysHouse_2F_MapScripts:: @ 81F9296
 	.byte 0
 
 LittlerootTown_MaysHouse_2F_OnTransition: @ 81F92A1
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	call_if_lt LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_ge LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos
-	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	call_if_eq PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
+	goto_if_set FLAG_SET_WALL_CLOCK, LittlerootTown_MaysHouse_2F_EventScript_Ending
+	setvar VAR_LITTLEROOT_INTRO_STATE, 0
+	end
+
+LittlerootTown_MaysHouse_2F_EventScript_Ending::
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos:: @ 81F92CD
@@ -314,7 +313,6 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC:: @ 81F956C
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC:: @ 81F9576
 	setvar VAR_0x8004, 2
-	special DoPCTurnOnEffect
 	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC, MSGBOX_DEFAULT
 	special BedroomPC
@@ -325,7 +323,6 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC:: @ 81F9576
 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
 	setvar VAR_0x8004, 2
 	playse SE_PC_OFF
-	special DoPCTurnOffEffect
 	releaseall
 	end
 

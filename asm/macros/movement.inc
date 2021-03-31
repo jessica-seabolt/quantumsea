@@ -155,4 +155,3 @@
     
 	enum_start 0xfe
 	create_movement_action step_end
-	

@@ -2,7 +2,7 @@
   "id": "MAP_GRANITE_CAVE_1F",
   "name": "GraniteCave_1F",
   "layout": "LAYOUT_GRANITE_CAVE_1F",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_RG_MT_MOON",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,25 +12,25 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 36,
-      "y": 9,
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 28,
+      "y": 5,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GraniteCave_1F_EventScript_Hiker",
-      "flag": "0"
+      "script": "0x0",
+      "flag": "FLAG_HIDE_RIVAL_SPRINGROCK_PATH  "
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 17,
-      "y": 7,
+      "x": 8,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -39,38 +39,75 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GraniteCave_1F_EventScript_ItemEscapeRope",
       "flag": "FLAG_ITEM_GRANITE_CAVE_1F_ESCAPE_ROPE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_1",
+      "x": 13,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_UNKNOWN_0x393"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_1",
+      "x": 18,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_UNKNOWN_0x363  "
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 21,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_Hiker",
+      "flag": "FLAG_HIDE_HIKER_SPRINGROCK_PATH "
     }
   ],
   "warp_events": [
     {
-      "x": 37,
-      "y": 12,
+      "x": 28,
+      "y": 9,
       "elevation": 3,
-      "dest_map": "MAP_ROUTE106",
-      "dest_warp_id": 0
+      "dest_map": "MAP_LITTLEROOT_TOWN",
+      "dest_warp_id": 2
     },
     {
-      "x": 35,
-      "y": 3,
+      "x": 19,
+      "y": 29,
       "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 17,
-      "y": 11,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": 1
-    },
-    {
-      "x": 5,
-      "y": 10,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_STEVENS_ROOM",
-      "dest_warp_id": 0
+      "dest_map": "MAP_LITTLEROOT_TOWN",
+      "dest_warp_id": 3
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var_value": "3",
+      "script": "GraniteCave_1F_EventScript_RivalAtTunnel"
+    }
+  ],
+  "bg_events": [
+
+  ]
 }

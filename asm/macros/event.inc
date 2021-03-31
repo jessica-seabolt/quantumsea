@@ -1619,12 +1619,6 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
-
-	.macro questmenu case:req, questId:req
-    .byte 0xe3
-    .byte \case
-    .byte \questId
-    .endm
     
     .macro openquestmenu
     questmenu 0 0
@@ -1636,6 +1630,12 @@
     
     .macro hideitemdesc
     .byte 0xe4
+    .endm
+
+.macro questmenu case:req, questId:req
+    .byte 0xe5
+    .byte \case
+    .byte \questId
     .endm
 
 	.macro showitemdesc
