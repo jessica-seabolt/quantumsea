@@ -1,0 +1,195 @@
+Polter
+Type = Ghost
+Items: X_Speed, Potion
+
+Pokemon: M	Sableye Lv 18 [Magic Bounce] [Sablenite]
+						-Hex
+						-Protect
+						-Attract
+						-Confuse Ray
+					Duskull Lv 16 [Levitate] [Oran Berry]
+						-Hex
+						-Will-O-Wisp
+						-Confuse Ray
+						-Mean Look
+					Mimikyu Lv 15 [Disguise] [Quick Claw]
+						-Hex
+						-Double Team
+						-Thunder Wave
+						-Will-O-Wisp
+						
+						
+Smithie
+Type = Steel
+Items: X_Defense, Super Potion, Potion
+
+Pokemon: M Mawile Lv 25 [Huge Power] [Mawilinite]
+						-Iron Defense
+						-Thunder Punch
+						-Sucker Punch
+						-Mega Kick
+					Metang Lv 21 [Clear Body] [Metal Coat]
+						-Iron Defense
+						-Bulldoze
+						-Zen Headbutt
+						-Flash Cannon
+					Galarian Stunfisk Lv 23[Sand Veil] [Leftovers]
+						-Iron Defense
+						-Sandstorm
+						-Water Gun
+						-Thunder Wave
+						
+Norton
+Type = Normal
+Items: X_Attack, Super Potion, Super Potion
+
+Pokemon:	M Lopunny Lv 31 [Scrappy] [Lopunnite]
+						-Baton Pass
+						-Shadow Ball
+						-Close Combat
+						-Agility
+					Wigglytuff Lv 29[Competitive] [Misty Seed]
+						-Baton Pass
+						-Defense Curl
+						-Misty Terrain
+						-Body Slam
+					Indeedee M Lv 29[Psychic Surge] [Psychic Seed]
+						-Calm Mind
+						-Reflect
+						-Psybeam
+						-Baton Pass
+						
+Ellie
+Type = Elemental
+Items: X_SpAttack, Hyper Potion, Super Potion
+
+Pokemon:  M Venusaur Lv 36 [Thick Fat] [Venusaurite]
+							-Petal Dance
+							-Toxic
+							-Synthesis
+							-Leech Seed
+					Cinderace Lv 36 [Libero] [Charcoal]
+							-Sacred Fire
+							-Iron Head
+							-Gunk Shot
+							-Agility
+					Empoleon Lv 36 [Defiant] [Quick Claw]
+							-Fishious Rend
+							-Double Team
+							-Steel Wing
+							-Earthquake
+							
+Midnight
+Type = Dark
+Items: Hyper Potion, Hyper Potion, Full Heal, Full Heal
+
+Pokemon: M Absol Lv 41 [Magic Bounce] [Absolite]
+						-Parting Shot
+						-Megahorn
+						-Night Slash
+						-Thunder
+					Obstagoon Lv 37 [Guts] [Flame Orb]
+						-Parting Shot
+						-Close Combat
+						-Body Slam
+						-Ice Punch
+					Krokorok Lv 37 [Intimidate] [Blackglasses]
+						-Stomping Tantrum
+						-Parting Shot
+						-Leer
+						-Crunch
+					Skuntank Lv 39 [Aftermath] [Quick Claw]
+						-Parting Shot
+						-Sucker Punch
+						-Night Slash
+						-Smokescreen
+					
+Hydeira
+Type = Dragon
+Items: Max Potion, Max Potion, Full Heal, Full Heal
+
+Pokemon: M Ampharos Lv 45 [Mold Breaker] [Ampharosite]
+						-Dragon Tail
+						-Thunderbolt
+						-Toxic
+						-Flamethrower
+					Turtonator Lv 43 [Shell Armor] [Jaboca Berry]
+						-Dragon Tail
+						-Shell Trap
+						-Sunny Day
+						-Rest
+					Drampa Lv 43 [Berserk] [Sticky Barb]
+						-Dragon Tail
+						-Fly
+						-Sunny Day
+						-Flamethrower
+					Dracozolt Lv 44 [Hustle] [Wide Lens]
+						-Dragon Tail
+						-Body Slam
+						-Flamethrower
+						-Thunderfang
+
+Dusty
+Type = Ground
+Items: Full Restore, Full Restore, Full Heal, Full Heal
+
+Pokemon:	M Camerupt Lv 50 [Sheer Force] [Cameruptite]
+						-Scorching Sands
+						-Fire Blast
+						-Toxic
+						-Flash Cannon
+					Sandaconda Lv 49 [Sand Spit] [Leftovers]
+						-Scorching Sands
+						-Coil
+						-Stealth Rock
+						-Rest
+					Gastrodon Lv 48 [Sand Force] [Soft Sand]
+						-Sandstorm
+						-Scorching Sands
+						-Surf
+						-Earth Power
+					Marowak Lv 48 [Rock Head] [Thick Club]
+						-Scorching Sands
+						-Stealth Rock
+						-Thunder Punch
+						-Double Edge
+					Quagsire Lv 48 [Unaware] [Leftovers]
+						-Scorching Sands
+						-Stone Edge
+						-Aqua Tail
+						-Rest
+						
+Hailey
+Type = Ice
+Items: Full Restore, Full Restore, Full Restore, Full Heal
+
+Pokemon:	M Glalie Lv 56 [Refrigerate] [Galite]
+						-Freeze Shock
+						-Earthquake
+						-Rest
+						-Hyper Beam
+					Lapras Lv 54 [Hydration] [Leftovers]
+						-Rain Dance
+						-Freeze Shock
+						-Liquidation
+						-Dragon Dance
+					Walrein Lv 54 [Thick Fat] [Leftovers]
+						-Freeze Shock
+						-Surf
+						-Body Press
+						-Rest
+					Mr. Rime Lv 54 [Ice Body] [Leftovers]
+						-Hail
+						-Block
+						-Perish Song
+						-Freeze Shock
+					Alolan Sandslash Lv 55 [Slush Rush] [Nevermeltice]
+						-Freeze Shock
+						-Hail
+						-Poison Jab
+						-Sword Dance
+					Beartic Lv 53 [Slush Rush] [Leftovers]
+						-Hail
+						-Freeze Shock
+						-Liquidation
+						-Protect

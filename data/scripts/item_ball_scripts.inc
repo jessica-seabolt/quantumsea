@@ -355,7 +355,7 @@ GraniteCave_1F_EventScript_ItemEscapeRope:: @ 8291150
 	end
 
 GraniteCave_B1F_EventScript_ItemPokeBall:: @ 829115D
-	finditem ITEM_POKE_BALL
+	finditem ITEM_TM11
 	end
 
 GraniteCave_B2F_EventScript_ItemRepel:: @ 829116A
