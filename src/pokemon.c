@@ -7024,6 +7024,8 @@ u16 GetBattleBGM(void)
     {
         u8 trainerClass;
 
+        if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleRavynnName))
+        return MUS_RG_VS_DEOXYS;
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(gTrainerBattleOpponent_A);
         else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)

@@ -840,12 +840,12 @@ Common_EventScript_PlayerHandedOverTheItem:: @ 82723E4
 
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign:: @ 8272B6A
-	.string "“Selected items for your convenience!”\n"
-	.string "POKéMON MART$"
+	.string "“Shop 'till you drop!”\n"
+	.string "Pokémon Mart$"
 
 gText_PokemonCenterSign:: @ 8272B9E
-	.string "“Rejuvenate your tired partners!”\n"
-	.string "POKéMON CENTER$"
+	.string "“Don't give up- heal up!”\n"
+	.string "Pokémon Center$"
 
 gText_MomOrDadMightLikeThisProgram:: @ 8272BCF
 	.string "{STR_VAR_1} might like this program.\n"
@@ -861,7 +861,7 @@ gText_SandstormIsVicious:: @ 8272C5F
 	.string "It's impossible to keep going.$"
 
 gText_SelectWithoutRegisteredItem:: @ 8272C98
-	.string "An item in the BAG can be\n"
+	.string "An item in the Bag can be\n"
 	.string "registered for easy use.$"
 
 gText_PokemonTrainerSchoolEmail:: @ 8272CD5
@@ -874,7 +874,7 @@ gText_PokemonTrainerSchoolEmail:: @ 8272CD5
 	.string "… … … … … …$"
 
 gText_PlayerHouseBootPC:: @ 8272D87
-	.string "{PLAYER} booted up the PC.$"
+	.string "{PLAYER} logged into the PC.$"
 
 gText_PokeblockLinkCanceled:: @ 8272D9C
 	.string "The link was canceled.$"
@@ -885,11 +885,11 @@ gText_UnusedNicknameReceivedPokemon:: @ 8272DB3
 
 gText_PlayerWhitedOut:: @ 8272DE3
 	.string "{PLAYER} is out of usable\n"
-	.string "POKéMON!\p{PLAYER} whited out!$"
+	.string "Pokémon!\p{PLAYER} blacked out!$"
 
 gText_RegisteredTrainerinPokeNav:: @ 8272E0F
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
 gText_ComeBackWithSecretPower:: @ 8272E30
 	.string "Do you know the TM SECRET POWER?\p"

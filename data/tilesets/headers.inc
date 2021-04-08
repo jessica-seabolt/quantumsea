@@ -896,3 +896,36 @@ gTileset_SakuraLab::
 	.4byte gMetatiles_SakuraLab
 	.4byte gMetatileAttributes_SakuraLab
 	.4byte NULL
+
+	.align 2
+gTileset_Cobalt::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Cobalt
+	.4byte gTilesetPalettes_Cobalt
+	.4byte gMetatiles_Cobalt
+	.4byte gMetatileAttributes_Cobalt
+	.4byte NULL
+
+	.align 2
+gTileset_DarkwingGrove::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_DarkwingGrove
+	.4byte gTilesetPalettes_DarkwingGrove
+	.4byte gMetatiles_DarkwingGrove
+	.4byte gMetatileAttributes_DarkwingGrove
+	.4byte NULL
+
+	.align 2
+gTileset_PokeCenterNew::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_PokeCenterNew
+	.4byte gTilesetPalettes_PokeCenterNew
+	.4byte gMetatiles_PokeCenterNew
+	.4byte gMetatileAttributes_PokeCenterNew
+	.4byte NULL

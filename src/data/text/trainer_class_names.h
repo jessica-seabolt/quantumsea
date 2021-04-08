@@ -1,6 +1,6 @@
 const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_PKMN_TRAINER_1] = _("{PKMN} Trainer"),
-    [TRAINER_CLASS_PKMN_TRAINER_2] = _("{PKMN} Trainer"),
+    [TRAINER_CLASS_PKMN_TRAINER_2] = _("Miscreant"),
     [TRAINER_CLASS_HIKER] = _("Hiker"),
     [TRAINER_CLASS_TEAM_AQUA] = _("Team Quantum"),
     [TRAINER_CLASS_PKMN_BREEDER] = _("{PKMN} Breeder"),
@@ -32,7 +32,7 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_GENTLEMAN] = _("Gentleman"),
     [TRAINER_CLASS_ELITE_FOUR] = _("Elite Four"),
     [TRAINER_CLASS_LEADER] = _("Gym Leader"),
-    [TRAINER_CLASS_SCHOOL_KID] = _("School"),
+    [TRAINER_CLASS_SCHOOL_KID] = _("Schoolkid"),
     [TRAINER_CLASS_SR_AND_JR] = _("Sr. and Jr."),
     [TRAINER_CLASS_WINSTRATE] = _("Traveler"),
     [TRAINER_CLASS_POKEFAN] = _("Pokéfan"),

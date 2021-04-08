@@ -4,6 +4,7 @@
 .set LOCALID_GRUNT, 10
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
+.set LOCALID_QUANTUM, 19
 
 RustboroCity_MapScripts:: @ 81E06BD
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -12,6 +13,7 @@ RustboroCity_MapScripts:: @ 81E06BD
 
 RustboroCity_OnTransition: @ 81E06C8
 	setflag FLAG_VISITED_RUSTBORO_CITY
+	clearflag FLAG_ROUTE_2_RAINING
 	call Common_EventScript_SetupRivalGfxId
 	compare VAR_RUSTBORO_CITY_STATE, 6
 	call_if_eq RustboroCity_EventScript_HideMapNamePopup
@@ -1040,9 +1042,239 @@ RustboroCity_Movement_RivalApproachPlayer7: @ 81E1230
 	walk_down
 	step_end
 
-RustboroCity_EventScript_Boy1:: @ 81E1236
-	msgbox RustboroCity_Text_YouCanHave2On2Battle, MSGBOX_NPC
+QuantumQuest4Script::
+	lockall
+	faceplayer
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_4
+	goto_if_eq QuantumBattleForQuest4
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_4
+	compare VAR_RESULT, TRUE
+	goto_if_eq ActivateQuest4Script
+	releaseall
 	end
+
+QuantumBattleForQuest4::
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_1, SpectreCity_Text_QuantumIntro, SpectreCity_Text_QuantumDefeat
+	setflag FLAG_QUEST_4_QUANTUM_DEFEATED
+	msgbox SpectreCity_Text_QuantumPostBattle, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_QUANTUM
+	playse SE_EXIT
+	setflag FLAG_HIDE_QUANTUM_QUEST_4
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+ActivateQuest4Script::
+	goto_if_set FLAG_QUEST_4_QUANTUM_DEFEATED, QuantumDefeatedQuest4
+	msgbox ActivateQuest4, MSGBOX_NPC
+	releaseall
+	end
+
+QuantumDefeatedQuest4::
+	msgbox SpectreCity_Text_QuantumPostBattle, MSGBOX_NPC
+	end
+
+ActivateQuest4:
+	.string "Hm? What makes you think I'm an {COLOR GREEN}Active{COLOR DARK_GREY}\n"
+	.string "member of Team Quantum, kid?$"
+
+SpectreCity_Text_QuantumIntro:
+	.string "What? That poor little girl wants her\n"
+	.string "precious Escape Rope back?\p"
+	.string "I suppose now is a great time to use it!\p"
+	.string ". . . . . . . . . . . . . . . . . . . . .\p"
+	.string "What?! It doesn't work here?! Gah, fine!\p"
+	.string "You stupid little brat! If you want it\n"
+	.string "so badly, just try and take it from me!$"
+
+SpectreCity_Text_QuantumDefeat:
+	.string "Beat by a punky little kid!$"
+
+SpectreCity_Text_QuantumPostBattle:
+	.string "Oh, whatever! This whole city was a big\n"
+	.string "waste of time!\p"
+	.string "They'll demote me when they find out I\n"
+	.string "failed to find anything in the haunted\l"
+	.string "Trainer's School...\p"
+	.string "But they're going to fire me once they\n"
+	.string "learn I lost a battle to some kid!\p"
+	.string "You ruined everything! Gah! I'm out!$"
+
+Quest4NPC:: @ 81E1236
+	lock
+	faceplayer
+	questmenu QUEST_MENU_CHECK_COMPLETE, SIDE_QUEST_5
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest5Completed
+	goto_if_set FLAG_QUEST_5_OBJECTIVE_COMPLETE, Quest5ObjectiveComplete
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_5
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest5AlreadyStarted
+	goto_if_set FLAG_QUEST_4_QUANTUM_DEFEATED, Quest4ObjectiveComplete
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_4
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest4AlreadyStarted
+	msgbox Quest4StartDialogue, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_4
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_4
+	clearflag FLAG_HIDE_QUANTUM_QUEST_4
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+Quest5Completed::
+	msgbox ThanksForTheHelpQuest5, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Quest4AlreadyStarted::
+	msgbox Quest4AlreadyStartedDialogue, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Quest5AlreadyStarted::
+	msgbox Quest5AlreadyStartedDialogue, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Quest4ObjectiveComplete::
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_4
+	goto_if_ne YouNeedToActivateSideQuest4
+	msgbox Quest4ObjectiveCompleteDialogue, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_ESCAPE_ROPE, 1
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_4
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_4
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	msgbox Quest5StartDialogue, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_5
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_5
+	setflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+Quest5ObjectiveComplete::
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_5
+	goto_if_ne YouNeedToActivateSideQuest5
+	msgbox Quest5ObjectiveCompleteDialogue, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_TOXIC_ORB, 1
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_5
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_5
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	closemessage
+	release
+	end
+
+
+YouNeedToActivateSideQuest4::
+	msgbox SideQuest4Inactive, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+YouNeedToActivateSideQuest5::
+	msgbox SideQuest5Inactive, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Quest5IsntStarted::
+	msgbox Quest5IsntStartedText, MSGBOX_NPC
+	end
+
+Quest5IsntStartedText:
+	.string "Hm? You want into the Trainer's School?\p"
+	.string "I'm sorry to disappoint, but it's been\l"
+	.string "closed indefinitely.\p"
+	.string "It was already overrun by Ghost Pokémon\n"
+	.string "before, and now Team Quantum has taken\l"
+	.string "interest in the place too.\p"
+	.string "It's simply too dangerous right now.$"
+
+SideQuest4Inactive:
+	.string "Oh, is the search for my Escape Rope\n"
+	.string "still {COLOR GREEN}Active{COLOR DARK_GREY}, or have you given up?$"
+
+SideQuest5Inactive:
+	.string "Oh, have you checked out the Trainer's\n"
+	.string "School? Or is the search still {COLOR GREEN}Active{COLOR DARK_GREY}?$"
+
+Quest4StartDialogue:
+	.string "Hi, um... can you help me?\p"
+	.string "This mean scary woman came and took my\n"
+	.string "Escape Rope. I think she was with that\n"
+	.string "awful Team Quantum gang.\p"
+	.string "I don't really use it, but it was a\n"
+	.string "gift from my father. It means a lot to\l"
+	.string "me... I would hate to lose it.\p"
+	.string "Please, can you help me get it back?$"
+
+Quest4AlreadyStartedDialogue:
+	.string "Please, help me get my Escape Rope back\n"
+	.string "from that Team Quantum lady!$"
+
+Quest5AlreadyStartedDialogue:
+	.string "Would you mind checking out the haunted\n"
+	.string "Trainer's School for me?\p"
+	.string "I would hate for Team Quantum to do some\n"
+	.string "awful thing with the Ghost Pokémon.$"
+
+Quest4ObjectiveCompleteDialogue:
+	.string "You did it! You got my Escape Rope back!\p"
+	.string "Oh, how can I ever repay you? I haven't\n"
+	.string "got much money...\p"
+	.string "I know! You can keep that Escape Rope\n"
+	.string "you got back for me. I'll be happy\l"
+	.string "knowing someone as kind as you is\l"
+	.string "getting good use out of it.\p"
+	.string "Please, I insist!$"
+
+Quest5ObjectiveCompleteDialogue:
+	.string "Oh, there was a Pokémon up there? Wow!\p"
+	.string "I'm glad Team Quantum can't get their\n"
+	.string "hands on it. I wonder what they might\l"
+	.string "have wanted with it?$"
+
+ThanksForTheHelpQuest5:
+	.string "Thank you again for all of your help!\n"
+	.string "Spectre City is safe thanks to you!$"
+
+ExplainEscapeRope:
+	.string "The Escape Rope can get you out of any\n"
+	.string "tricky situations you might get into if\l"
+	.string "you lose your way in places like caves\l"
+	.string "and forests. Take good care of it!$"
+
+Quest5StartDialogue:
+	.string "The Escape Rope can get you out of any\n"
+	.string "tricky situations you might get into if\l"
+	.string "you lose your way in places like caves\l"
+	.string "and forests.\p"
+	.string "Huh? that Quantum lady said something\n"
+	.string "about the Trainer's School?\p"
+	.string "I hate to bother you, but would you\n"
+	.string "mind looking into that? I don't think\l"
+	.string "I'm equipped for it myself...$"
 
 RustboroCity_Text_WeShortenItToDevon: @ 81E123F
 	.string "The DEVON CORPORATION…\n"

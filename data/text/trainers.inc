@@ -1,15 +1,13 @@
 Route102_Text_CalvinIntro: @ 8294513
-	.string "If you have POKéMON with you, then\n"
-	.string "you're an official POKéMON TRAINER!\l"
-	.string "You can't say no to my challenge!$"
+	.string "Aw yeah! Look at all these rare Pokémon\n"
+	.string "I've caught!$"
 
 Route102_Text_CalvinDefeated: @ 829457C
-	.string "Arrgh, I lost…\n"
-	.string "I should have trained mine more…$"
+	.string "But how?!$"
 
 Route102_Text_CalvinPostBattle: @ 82945AC
-	.string "Listen, you. If you're strong,\n"
-	.string "you should have told me before!$"
+	.string "Rare Pokémon aren't automatically tough.\n"
+	.string "It's up to the Trainer to raise them!$"
 
 Route102_Text_CalvinRegister: @ 82945EB
 	.string "I've been working hard at this since\n"
@@ -35,39 +33,40 @@ Route102_Text_CalvinRematchPostBattle: @ 829473C
 	.string "I'll get stronger, too.$"
 
 Route102_Text_AllenIntro: @ 8294775
-	.string "Did you just become a TRAINER?\n"
-	.string "We're both beginners!$"
+	.string "Yo! Check it out! I caught so many Bug\n"
+	.string "Pokémon today you wouldn't believe it!$"
 
 Route102_Text_AllenDefeated: @ 82947AA
-	.string "I called you because I thought\n"
-	.string "I could beat you…$"
+	.string "No! How could you beat my Bug Pokémon?!$"
 
 Route102_Text_AllenPostBattle: @ 82947DB
-	.string "I haven't won once yet…\n"
-	.string "I wish I would win soon…$"
+	.string "Bug Pokémon aren't always the roughest\n"
+	.string "Type, but they sure are cool!$"
 
 Route102_Text_RickIntro: @ 829480C
-	.string "Hahah! Our eyes met!\n"
-	.string "I'll take you on with my BUG POKéMON!$"
+	.string "Could it be? Are you... my true love?$"
 
 Route102_Text_RickDefeated: @ 8294847
-	.string "Ow! Down and out!$"
+	.string "My heart breaks once more...$"
 
 Route102_Text_RickPostBattle: @ 8294859
-	.string "If you lock eyes with a TRAINER,\n"
-	.string "you have to challenge! It's a rule!$"
+	.string "If you find anyone cute, send 'em my\n"
+	.string "way! Guys, girls, anyone will do!$"
 
 Route102_Text_TianaIntro: @ 829489E
-	.string "I'm going to keep winning and aim\n"
-	.string "to be the best TRAINER.\p"
-	.string "Help me further my career!$"
+	.string "What the? It just started pouring out of\n"
+	.string "nowhere, didn't it?$"
 
 Route102_Text_TianaDefeated: @ 82948F3
-	.string "I ended up furthering your career…$"
+	.string "What a rotten day!$"
 
-Route102_Text_TianaPostBattle: @ 8294916
-	.string "To keep winning my way up, I see that\n"
-	.string "I have to catch more POKéMON.$"
+Route102_Text_TianaPostBattleRain: @ 8294916
+	.string "Darn! It was such a pretty day, too!\p"
+	.string "Listen, weather can change a Pokémon\n"
+	.string "battle. Pay attention to it!$"
+
+Route102_Text_TianaPostBattleNoRain: @ 8294916
+	.string "Oh, yes! It's a beautiful day again!$"
 
 Route103_Text_DaisyIntro: @ 829495A
 	.string "Did you feel the tug of our\n"
@@ -198,28 +197,29 @@ Route103_Text_MiguelRematchPostBattle: @ 829501E
 	.string "the more adorable my POKéMON becomes.$"
 
 Route103_Text_PeteIntro: @ 8295063
-	.string "This sort of distance…\n"
-	.string "You should just swim it!$"
+	.string "I wanted to go to the Trainer's School\n"
+	.string "and learn to battle, but it was closed.\p"
+	.string "I'll practice on you instead!$"
 
 Route103_Text_PeteDefeated: @ 8295093
-	.string "Oh, that's good going!$"
+	.string "You're not a very good teacher...$"
 
 Route103_Text_PetePostBattle: @ 82950AA
-	.string "Oh, I understand where you're coming\n"
-	.string "from now.\p"
-	.string "If I had a POKéMON that trusty,\n"
-	.string "I'd want to SURF on it, too!$"
+	.string "Oh, the Trainer's School?\p"
+	.string "I think they closed it off because it\n"
+	.string "was overrun by Ghost Pokémon.$"
 
 Route103_Text_IsabelleIntro: @ 8295116
-	.string "Watch where you're going!\n"
-	.string "We're going to crash!$"
+	.string "There aren't any good biking trails\n"
+	.string "around here, so I just go back and\l"
+	.string "forth in this grassy area.$"
 
 Route103_Text_IsabelleDefeated: @ 8295146
-	.string "Groan…$"
+	.string "That'll teach me to bike here...$"
 
 Route103_Text_IsabellePostBattle: @ 829514D
-	.string "I'm a poor swimmer so I was practicing…\n"
-	.string "Sorry for almost crashing into you.$"
+	.string "I really wish there were better trails\n"
+	.string "for me ride my bike around here.$"
 
 Route103_Text_RhettIntro: @ 8295199
 	.string "Whoa!\n"

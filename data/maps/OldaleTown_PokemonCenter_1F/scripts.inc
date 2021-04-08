@@ -40,16 +40,14 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable:: @ 81FC04F
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC: @ 81FC059
-	.string "That PC in the corner there is\n"
-	.string "for any POKéMON TRAINER to use.\p"
-	.string "Naturally, that means you're welcome\n"
-	.string "to use it, too.$"
+	.string "Nurse Joy works day and night to make sure\n"
+	.string "our Pokémon are healthy.\p"
+	.string "When does that young lady ever sleep?$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat: @ 81FC0CD
-	.string "POKéMON CENTERS are great!\p"
-	.string "You can use their services as much\n"
-	.string "as you like, and it's all for free.\l"
-	.string "You never have to worry!$"
+	.string "I love the Pokémon Center! It's a great\n"
+	.string "hub for Trainers like me to relax."
+	.string "Plus, I see all sorts of cool people!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable: @ 81FC148
 	.string "The POKéMON WIRELESS CLUB on\n"
@@ -58,7 +56,7 @@ OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable: @ 81FC148
 	.string "adjustments.$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub: @ 81FC1B9
-	.string "The POKéMON WIRELESS CLUB on\n"
-	.string "the second floor was built recently.\p"
-	.string "I traded POKéMON right away.$"
-
+	.string "Have you heard about Team Quantum?\p"
+	.string "Rumor has it they've been stealing a lot\n"
+	.string "of Pokémon from Trainers and forcing\l"
+	.string "them to do evil things! It's terrible!$"

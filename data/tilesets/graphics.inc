@@ -1849,3 +1849,63 @@ gTilesetPalettes_SakuraLab::
 	.align 2
 gTilesetTiles_SakuraLab::
 	.incbin "data/tilesets/secondary/sakuralab/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Cobalt::
+	.incbin "data/tilesets/secondary/cobalt/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/cobalt/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Cobalt::
+	.incbin "data/tilesets/secondary/cobalt/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_DarkwingGrove::
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/darkwinggrove/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_DarkwingGrove::
+	.incbin "data/tilesets/secondary/darkwinggrove/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_PokeCenterNew::
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/pokecenternew/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_PokeCenterNew::
+	.incbin "data/tilesets/secondary/pokecenternew/tiles.4bpp.lz"

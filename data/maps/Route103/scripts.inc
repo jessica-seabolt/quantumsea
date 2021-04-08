@@ -8,6 +8,7 @@ Route103_MapScripts:: @ 81EC38E
 Route103_OnTransition: @ 81EC399
 	call Common_EventScript_SetupRivalGfxId
 	call ProfBirch_EventScript_UpdateLocation
+	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
 	end
 
 Route103_OnLoad: @ 81EC3A4
@@ -203,6 +204,10 @@ Route103_EventScript_RouteSign:: @ 81EC5EB
 	msgbox Route103_Text_RouteSign, MSGBOX_SIGN
 	end
 
+Route103_EventScript_RouteSign2:: @ 81EC5EB
+	msgbox Route103_Text_RouteSign2, MSGBOX_SIGN
+	end
+
 Route103_EventScript_Daisy:: @ 81EC5F4
 	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
 	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
@@ -284,12 +289,12 @@ Route103_EventScript_Rhett:: @ 81EC761
 	end
 
 Route103_EventScript_Pete:: @ 81EC778
-	trainerbattle_single TRAINER_PETE, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
+	trainerbattle_single TRAINER_MATT, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
 	msgbox Route103_Text_PetePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Isabelle:: @ 81EC78F
-	trainerbattle_single TRAINER_ISABELLE, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
+	trainerbattle_single TRAINER_ZANDER, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -346,8 +351,9 @@ Route103_Text_BrendanTimeToHeadBack: @ 81ECA79
 	.string "We should head back to the LAB.$"
 
 Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
-	.string "My POKéMON is staggeringly tired…\n"
-	.string "I should have brought a POTION…$"
+	.string "Did you know you can check the IVs and\n"
+	.string "EVs of a Pokémon in the Summary Screen\l"
+	.string "by pressing L and R?$"
 
 Route103_Text_ShortcutToOldale: @ 81ECBB5
 	.string "If you cross the sea from here,\n"
@@ -355,6 +361,10 @@ Route103_Text_ShortcutToOldale: @ 81ECBB5
 	.string "Fufufu, that's useful, isn't it?$"
 
 Route103_Text_RouteSign: @ 81ECC1A
-	.string "ROUTE 103\n"
-	.string "{DOWN_ARROW} OLDALE TOWN$"
+	.string "Route 3\p"
+	.string "Route 2 {LEFT_ARROW}$"
+
+Route103_Text_RouteSign2: @ 81ECC1A
+	.string "Route 3\p"
+	.string "Spectre City {UP_ARROW}$"
 

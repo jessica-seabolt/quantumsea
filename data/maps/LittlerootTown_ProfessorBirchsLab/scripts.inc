@@ -626,7 +626,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_1
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_1
 	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Quest1Name, MSGBOX_SIGN
+	msgbox QuestName, MSGBOX_SIGN
 	waitfanfare
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
@@ -962,7 +962,7 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext: @ 81FAF08
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese: @ 81FAF3F
 	.string "{RIVAL}: Aw, yeah! A Z-Ring and a Mega\n"
 	.string "Bracelet, too! {PLAYER}, are you ready?\p"
-	.string "I'm going to the Gym in Darkwing Grove!\n"
+	.string "I'm going to the Gym in Spectre City!\n"
 	.string "I bet I'll beat it right quick!\p"
 	.string "I challenge you to a race! Whoever beats\n"
 	.string "the Gym last is a Slakoth! Hahaha!\p"
@@ -1176,6 +1176,6 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall: @ 81FBD1A
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 
-Quest1Name:
+QuestName:
 	.string "Quest Started!\n"
 	.string "{COLOR GREEN}{STR_VAR_1}{COLOR DARK_GREY}$"

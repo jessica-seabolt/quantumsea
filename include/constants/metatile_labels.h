@@ -390,18 +390,9 @@
 #define METATILE_PetalburgGym_SlidingDoor_Frame4  0x21C
 
 // gTileset_Petalburg
-#define METATILE_Petalburg_CalmWater            0x220
-#define METATILE_Petalburg_CaveEntrance_Bottom  0x209
-#define METATILE_Petalburg_CaveEntrance_Top     0x208
-#define METATILE_Petalburg_Door_BirchsLab       0x248
-#define METATILE_Petalburg_Door_Littleroot      0x287
-#define METATILE_Petalburg_Door_Oldale          0x249
-#define METATILE_Petalburg_ReflectiveWater      0x20A
-#define METATILE_Petalburg_RockWall_GrassBase   0x21A
-#define METATILE_Petalburg_RockWall_RockBase    0x210
-#define METATILE_Petalburg_RockWall_SandBase    0x211
-#define METATILE_Petalburg_RoughDeepWater       0x219
-#define METATILE_Petalburg_RoughWater           0x218
+#define METATILE_Petalburg_Door_BirchsLab   0x313
+#define METATILE_Petalburg_Door_Littleroot  0x249
+#define METATILE_Petalburg_Door_Oldale      0x314
 
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_CounterBarrier            0x25D

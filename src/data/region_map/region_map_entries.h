@@ -2,7 +2,7 @@
 #define GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H
 
 static const u8 sMapName_LittlerootTown[] = _("Springrock Villa");
-static const u8 sMapName_OldaleTown[] = _("OLDALE TOWN");
+static const u8 sMapName_OldaleTown[] = _("Taproot Town");
 static const u8 sMapName_DewfordTown[] = _("DEWFORD TOWN");
 static const u8 sMapName_LavaridgeTown[] = _("LAVARIDGE TOWN");
 static const u8 sMapName_FallarborTown[] = _("FALLARBOR TOWN");
@@ -11,15 +11,15 @@ static const u8 sMapName_PacifidlogTown[] = _("PACIFIDLOG TOWN");
 static const u8 sMapName_PetalburgCity[] = _("PETALBURG CITY");
 static const u8 sMapName_SlateportCity[] = _("SLATEPORT CITY");
 static const u8 sMapName_MauvilleCity[] = _("MAUVILLE CITY");
-static const u8 sMapName_RustboroCity[] = _("RUSTBORO CITY");
+static const u8 sMapName_RustboroCity[] = _("Spectre City");
 static const u8 sMapName_FortreeCity[] = _("FORTREE CITY");
 static const u8 sMapName_LilycoveCity[] = _("LILYCOVE CITY");
 static const u8 sMapName_MossdeepCity[] = _("MOSSDEEP CITY");
 static const u8 sMapName_SootopolisCity[] = _("SOOTOPOLIS CITY");
 static const u8 sMapName_EverGrandeCity[] = _("EVER GRANDE CITY");
-static const u8 sMapName_Route101[] = _("ROUTE 101");
-static const u8 sMapName_Route102[] = _("ROUTE 102");
-static const u8 sMapName_Route103[] = _("ROUTE 103");
+static const u8 sMapName_Route101[] = _("Route 1");
+static const u8 sMapName_Route102[] = _("Route 2");
+static const u8 sMapName_Route103[] = _("Route 3");
 static const u8 sMapName_Route104[] = _("ROUTE 104");
 static const u8 sMapName_Route105[] = _("ROUTE 105");
 static const u8 sMapName_Route106[] = _("ROUTE 106");

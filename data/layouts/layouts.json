@@ -36,8 +36,8 @@
       "name": "RustboroCity_Layout",
       "width": 40,
       "height": 60,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "primary_tileset": "gTileset_Main",
+      "secondary_tileset": "gTileset_DarkwingGrove",
       "border_filepath": "data/layouts/RustboroCity/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity/map.bin"
     },
@@ -104,10 +104,10 @@
     {
       "id": "LAYOUT_OLDALE_TOWN",
       "name": "OldaleTown_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "width": 30,
+      "height": 36,
+      "primary_tileset": "gTileset_Main",
+      "secondary_tileset": "gTileset_Cobalt",
       "border_filepath": "data/layouts/OldaleTown/border.bin",
       "blockdata_filepath": "data/layouts/OldaleTown/map.bin"
     },
@@ -167,7 +167,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Main",
-      "secondary_tileset": "gTileset_SpringwoodTown",
+      "secondary_tileset": "gTileset_Cobalt",
       "border_filepath": "data/layouts/Route101/border.bin",
       "blockdata_filepath": "data/layouts/Route101/map.bin"
     },
@@ -176,18 +176,18 @@
       "name": "Route102_Layout",
       "width": 50,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_Main",
+      "secondary_tileset": "gTileset_Cobalt",
       "border_filepath": "data/layouts/Route102/border.bin",
       "blockdata_filepath": "data/layouts/Route102/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE103",
       "name": "Route103_Layout",
-      "width": 80,
+      "width": 30,
       "height": 22,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_Main",
+      "secondary_tileset": "gTileset_DarkwingGrove",
       "border_filepath": "data/layouts/Route103/border.bin",
       "blockdata_filepath": "data/layouts/Route103/map.bin"
     },
@@ -586,8 +586,8 @@
       "name": "House1_Layout",
       "width": 10,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_PlayersHouse",
       "border_filepath": "data/layouts/House1/border.bin",
       "blockdata_filepath": "data/layouts/House1/map.bin"
     },
@@ -596,8 +596,8 @@
       "name": "House2_Layout",
       "width": 11,
       "height": 8,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_PlayersHouse",
       "border_filepath": "data/layouts/House2/border.bin",
       "blockdata_filepath": "data/layouts/House2/map.bin"
     },
@@ -605,9 +605,9 @@
       "id": "LAYOUT_POKEMON_CENTER_1F",
       "name": "PokemonCenter_1F_Layout",
       "width": 14,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PokemonCenter",
+      "height": 20,
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_PokeCenterNew",
       "border_filepath": "data/layouts/PokemonCenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/PokemonCenter_1F/map.bin"
     },
@@ -1366,7 +1366,7 @@
       "name": "MtPyre_1F_Layout",
       "width": 22,
       "height": 19,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_BuildingMain",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/MtPyre_1F/border.bin",
       "blockdata_filepath": "data/layouts/MtPyre_1F/map.bin"
@@ -1376,7 +1376,7 @@
       "name": "MtPyre_2F_Layout",
       "width": 13,
       "height": 13,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_BuildingMain",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/MtPyre_2F/border.bin",
       "blockdata_filepath": "data/layouts/MtPyre_2F/map.bin"
@@ -1386,7 +1386,7 @@
       "name": "MtPyre_3F_Layout",
       "width": 13,
       "height": 13,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_BuildingMain",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/MtPyre_3F/border.bin",
       "blockdata_filepath": "data/layouts/MtPyre_3F/map.bin"
@@ -1394,9 +1394,9 @@
     {
       "id": "LAYOUT_MT_PYRE_4F",
       "name": "MtPyre_4F_Layout",
-      "width": 13,
+      "width": 15,
       "height": 13,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Main",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/MtPyre_4F/border.bin",
       "blockdata_filepath": "data/layouts/MtPyre_4F/map.bin"

@@ -249,6 +249,7 @@ LittlerootTown_EventScript_AfterBattle::
 	waitmovement 0
 	msgbox LittlerootTown_Text_WhatABattle, MSGBOX_DEFAULT	
 	special HealPlayerParty
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
@@ -305,6 +306,8 @@ LittlerootTown_EventScript_RivalAtTunnel2::
 	playse SE_EXIT
 	removeobject LOCALID_RIVAL
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	setflag FLAG_HIDE_SIDE_QUEST_3_SON
+	setvar VAR_OLDALE_RIVAL_STATE, 1
 	removeobject LOCALID_TWIN
 	release
 	end
@@ -526,12 +529,15 @@ LittlerootTown_EventScript_Child:: @ 81E8022
 	end
 
 LittlerootTown_Text_Child:
-	.string "You know, if you travel past Archaic\n"
-	.string "Canyon and Route 1, there's a huge city\l"
+	.string "You know, if you travel past Springrock\n"
+	.string "Path and Route 1, there's a huge city\l"
 	.string "just full of Pokémon Trainers!\p"
 	.string ". . . . . . . . . . . . . . . . . . . . . . .\p"
-	.string "Nah, I'm just messing with you. Cobalt\n"
-	.string "Town is pretty, but it's very small.$"
+	.string "Nah, I'm just messing with you. Taproot\n"
+	.string "Town is pretty, but it's not the biggest\l"
+	.string "battling town ever.\p"
+	.string "Spectre City isn't too far from there\n"
+	.string "if you're looking for challengers.$"
 
 LittlerootTown_EventScript_BlockCave:: @ 81E8022
 	msgbox LittlerootTown_Text_BlockCave, MSGBOX_NPC

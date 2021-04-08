@@ -1825,8 +1825,8 @@ const u8 gText_Nickname[] = _("Nickname");
 //// side quest data
 //names
 const u8 gText_SideQuestName_1[] = _("Food for Thought");
-const u8 gText_SideQuestName_2[] = _("MQ: Battle Polter");
-const u8 gText_SideQuestName_3[] = _("MQ: Catch 'em All");
+const u8 gText_SideQuestName_2[] = _("Outside the Fox");
+const u8 gText_SideQuestName_3[] = _("Teaching Respect");
 const u8 gText_SideQuestName_4[] = _("Side Quest 4");
 const u8 gText_SideQuestName_5[] = _("Side Quest 5");
 const u8 gText_SideQuestName_6[] = _("Side Quest 6");
@@ -1856,8 +1856,8 @@ const u8 gText_SideQuestName_29[] = _("Side Quest 29");
 const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 //descriptions
 const u8 gText_SideQuestDesc_1[] = _("Find the man in Springrock Path\nwho cooked a little too much to eat!");
-const u8 gText_SideQuestDesc_2[] = _("Defeat Polter's Gym in Darkwing\nGrove and obtain your first Gym Badge.");
-const u8 gText_SideQuestDesc_3[] = _("Catch every Pokémon in Rika for\nProf. Sakura's research.");
+const u8 gText_SideQuestDesc_2[] = _("Catch your very own Nickit for\nthe kind lady in Taproot Town.");
+const u8 gText_SideQuestDesc_3[] = _("Defeat William and teach him to\nrespect his team of Pokémon.");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");
 const u8 gText_SideQuestDesc_5[] = _("Description 5");
 const u8 gText_SideQuestDesc_6[] = _("Description 6");
@@ -1887,8 +1887,8 @@ const u8 gText_SideQuestDesc_29[] = _("Description 29");
 const u8 gText_SideQuestDesc_30[] = _("Description 30");
 //point of contact
 const u8 gText_SideQuestPOC_1[] = _("Prof. Sakura");
-const u8 gText_SideQuestPOC_2[] = _("{RIVAL}");
-const u8 gText_SideQuestPOC_3[] = _("Prof. Sakura");
+const u8 gText_SideQuestPOC_2[] = _("Nickit Lady");
+const u8 gText_SideQuestPOC_3[] = _("William's Mom");
 const u8 gText_SideQuestPOC_4[] = _("POC 4");
 const u8 gText_SideQuestPOC_5[] = _("POC 5");
 const u8 gText_SideQuestPOC_6[] = _("POC 6");
@@ -1918,8 +1918,8 @@ const u8 gText_SideQuestPOC_29[] = _("POC 29");
 const u8 gText_SideQuestPOC_30[] = _("POC 30");
 //map
 const u8 gText_SideQuestMap_1[] = _("Springrock Path");
-const u8 gText_SideQuestMap_2[] = _("Darkwing Grove");
-const u8 gText_SideQuestMap_3[] = _("Springrock Villa");
+const u8 gText_SideQuestMap_2[] = _("Taproot Town");
+const u8 gText_SideQuestMap_3[] = _("Taproot Town");
 const u8 gText_SideQuestMap_4[] = _("Map 4");
 const u8 gText_SideQuestMap_5[] = _("Map 5");
 const u8 gText_SideQuestMap_6[] = _("Map 6");
@@ -1949,8 +1949,8 @@ const u8 gText_SideQuestMap_29[] = _("Map 29");
 const u8 gText_SideQuestMap_30[] = _("Map 30");
 //rewards
 const u8 gText_SideQuestReward_1[] = _("Leftovers");
-const u8 gText_SideQuestReward_2[] = _("TM01 Hex; Umbra Badge; Sablenite");
-const u8 gText_SideQuestReward_3[] = _("Satisfaction :D");
+const u8 gText_SideQuestReward_2[] = _("Exp. Share");
+const u8 gText_SideQuestReward_3[] = _("TM11 Will-O-Wisp");
 const u8 gText_SideQuestReward_4[] = _("Reward 4");
 const u8 gText_SideQuestReward_5[] = _("Reward 5");
 const u8 gText_SideQuestReward_6[] = _("Reward 6");

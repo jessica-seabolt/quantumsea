@@ -8,10 +8,16 @@ OldaleTown_MapScripts:: @ 81E8EA2
 
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
-	setflag FLAG_VISITED_OLDALE_TOWN
+	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
+	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
+	end
+
+Route2Raining::
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
@@ -33,8 +39,23 @@ OldaleTown_EventScript_CitySign:: @ 81E8EEA
 	msgbox OldaleTown_Text_CitySign, MSGBOX_SIGN
 	end
 
+TaprootTown_LeafStone::
+	finditem ITEM_LEAF_STONE, 1
+	end
+
+TaprootTown_Azumarill::
+	msgbox Azumarill, MSGBOX_NPC
+	end
+
+Azumarill:
+	.string "Azumarill: Zuzuriii!$"
+
 OldaleTown_EventScript_Girl:: @ 81E8EF3
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+	end
+
+WannaKnowSecret::
+	msgbox WannaKnowSecretText, MSGBOX_NPC
 	end
 
 OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
@@ -43,13 +64,7 @@ OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
 	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
 	setflag FLAG_TEMP_1
-	playbgm MUS_FOLLOW_ME, 0
-	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
-	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
-	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
-	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
+	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
@@ -75,12 +90,11 @@ OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
 
 OldaleTown_EventScript_ExplainPokemonMart:: @ 81E8F8C
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
+	giveitem ITEM_PREMIER_BALL
 	compare VAR_RESULT, FALSE
 	goto_if_eq OldaleTown_EventScript_BagIsFull
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_POTION_OLDALE
-	fadedefaultbgm
 	release
 	end
 
@@ -195,13 +209,164 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
-	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_FOOTPRINTS_MAN, Common_Movement_FaceOriginalDirection
-	waitmovement 0
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_2
+	compare VAR_RESULT, TRUE
+	goto_if_ne GiveSideQuest2
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_2
+	compare VAR_RESULT, TRUE
+	goto_if_eq NickitAlreadyShown
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_2
+	goto_if_eq NickitQuestIsActive
+	msgbox NickitQuestIsNotActive, MSGBOX_SIGN
 	release
 	end
+
+NickitQuestIsActive::
+	msgbox CheckForNickitText, MSGBOX_DEFAULT
+	closemessage
+	special ChoosePartyMon
+	waitstate
+	compare VAR_RESULT, 255
+	goto_if_eq NickitCheckFailed
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_NICKIT
+	goto_if_eq NickitCheckPassed
+	msgbox Text_NickitCheckFailed, MSGBOX_SIGN
+	release
+	end	
+
+NickitQuestIsNotActive:
+	.string "Huh? No, I don't quite remember you.\n"
+	.string "My brain isn't very {COLOR GREEN}Active{COLOR DARK_GREY} right now...$"
+
+NickitCheckFailed::
+	msgbox Text_NickitCheckFailed, MSGBOX_SIGN
+	release
+	end
+
+NickitAlreadyShown::
+	msgbox ExplainExpShareText, MSGBOX_SIGN
+	release
+	end
+
+NickitCheckPassed::
+	msgbox YouHaveANickit, MSGBOX_SIGN
+	giveitem ITEM_EXP_SHARE, 1
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_2
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_2
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+YouHaveANickit:
+	.string "A Nickit! Oh my gosh! It's so adorable!\p"
+	.string "Thank you so much! I promised I would\n"
+	.string "give you an item and I meant it!\p"
+	.string "This Exp. Share will allow your Pokémon\n"
+	.string "to share their experience together!\p"
+	.string "But, who even needs other Pokémon when\n"
+	.string "you have a Nickit?$"
+
+ExplainExpShareText:
+	.string "The Exp. Share will allow your Pokémon\n"
+	.string "to share their experience together!\p"
+	.string "But, who even needs other Pokémon when\n"
+	.string "you have a Nickit?$"
+
+CheckForNickitText:
+	.string "So? Do you have an an adorable little\n"
+	.string "Nickit to show me?$"
+
+Text_NickitCheckFailed:
+	.string "Aw, okay! Come back when you have a\n"
+	.string "Nickit to show me, ok?\p"
+	.string "I think you can find them hiding out\n"
+	.string "in the West section of Springrock Path.$"
+
+
+GiveSideQuest2::
+	msgbox CatchANickitQuestText1, MSGBOX_DEFAULT
+	closemessage
+	showmonpic SPECIES_NICKIT, 10, 3
+	msgbox CatchANickitQuestText2, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_2
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_2
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+SonCheckIfActive::
+	lockall
+	faceplayer
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_3
+	goto_if_eq SonBattleForQuestTaproot
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_3
+	compare VAR_RESULT, TRUE
+	goto_if_eq ActivateQuest3Script
+	releaseall
+	end
+
+SonBattleForQuestTaproot::
+	trainerbattle_single TRAINER_MARCEL, TaprootTown_Text_WilliamIntro, TaprootTown_Text_WilliamDefeat
+	setflag FLAG_DEFEATED_SON_TAPROOT
+	msgbox TaprootTown_Text_WilliamPostBattle, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ActivateQuest3Script::
+	goto_if_set FLAG_DEFEATED_SON_TAPROOT, SonDefeatedTaproot
+	msgbox ActivateQuest3, MSGBOX_NPC
+	releaseall
+	end
+
+SonDefeatedTaproot::
+	msgbox TaprootTown_Text_WilliamPostBattle, MSGBOX_NPC
+	end
+
+ActivateQuest3:
+	.string "Huh? You think you can battle me?\p"
+	.string "Ha! Your Pokémon don't look very {COLOR GREEN}Active{COLOR DARK_GREY}\n"
+	.string "to me!$"
+
+TaprootTown_Text_WilliamIntro:
+	.string "So, another Trainer thinks they can take\n"
+	.string "on my Pokémon team?\p"
+	.string "I make them train all day and night! No\n"
+	.string "Pokémon worth catching gets too tired to\l"
+	.string "battle chumps like you!\p"
+	.string "Huh? You think I'm treating my Pokémon\n"
+	.string "like tools?\p"
+	.string "I'm treating them like the fighters they\n"
+	.string "are. It makes them stronger!\p"
+	.string "Here, let me show you what they can do!$"
+
+TaprootTown_Text_WilliamDefeat:
+	.string "I understand now. I should give my\n"
+	.string "Pokémon a rest and take care of them.$"
+
+TaprootTown_Text_WilliamPostBattle:
+	.string "Thank you for opening my eyes. I never\n"
+	.string "realized how much my attitude towards my\l"
+	.string "Pokémon was affecting their well-being.\p"
+	.string "I promise to give them breaks and not\n"
+	.string "push them so hard.$"
+
+CatchANickitQuestText1::
+	.string "Hi there! I really, really, REALLY love\n"
+	.string "the Pokémon Nickit.$"
+
+CatchANickitQuestText2::
+	.string "If you can show me a Nickit, I've got a\n"
+	.string "great item just for you!$"
+
 
 OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	lockall
@@ -228,35 +393,143 @@ OldaleTown_EventScript_Rival:: @ 81E9070
 	goto OldaleTown_EventScript_ShowRivalMessage
 	end
 
+OldaleTown_EventScript_RivalTrigger0:: @ 81E9086
+	lockall
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 0
+	goto_if_set FLAG_VISITED_OLDALE_TOWN, RivalFightQuick0
+	setflag FLAG_VISITED_OLDALE_TOWN
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	addobject LOCALID_RIVAL
+	msgbox OutOfTheWayTaproot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer0
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto OldaleTown_EventScript_ShowMayMessage
+	end
+
 OldaleTown_EventScript_RivalTrigger1:: @ 81E9086
 	lockall
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 0
+	goto_if_set FLAG_VISITED_OLDALE_TOWN, RivalFightQuick1
+	setflag FLAG_VISITED_OLDALE_TOWN
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	addobject LOCALID_RIVAL
+	msgbox OutOfTheWayTaproot, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
+	goto OldaleTown_EventScript_ShowMayMessage
 	end
 
 OldaleTown_EventScript_RivalTrigger2:: @ 81E90A6
 	lockall
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 0
+	goto_if_set FLAG_VISITED_OLDALE_TOWN, RivalFightQuick2
+	setflag FLAG_VISITED_OLDALE_TOWN
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	addobject LOCALID_RIVAL
+	msgbox OutOfTheWayTaproot, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
+	goto OldaleTown_EventScript_ShowMayMessage
 	end
 
 OldaleTown_EventScript_RivalTrigger3:: @ 81E90C6
 	lockall
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 0
+	goto_if_set FLAG_VISITED_OLDALE_TOWN, RivalFightQuick3
+	setflag FLAG_VISITED_OLDALE_TOWN
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	addobject LOCALID_RIVAL
+	msgbox OutOfTheWayTaproot, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
+	goto OldaleTown_EventScript_ShowMayMessage
 	end
+
+BackAgainTaproot:
+	.string "Ravynn: Really, {PLAYER}?$"
+
+RivalFightQuick0::
+	addobject LOCALID_RIVAL
+	msgbox BackAgainTaproot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer0
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto ShowRavynnQuick
+	end
+
+RivalFightQuick1::
+	addobject LOCALID_RIVAL
+	msgbox BackAgainTaproot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto ShowRavynnQuick
+	end
+
+RivalFightQuick2::
+	addobject LOCALID_RIVAL
+	msgbox BackAgainTaproot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto ShowRavynnQuick
+	end
+
+RivalFightQuick3::
+	addobject LOCALID_RIVAL
+	msgbox BackAgainTaproot, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto ShowRavynnQuick
+	end
+
+OutOfTheWayTaproot:
+	.string "???: Out of the way.$"
+
+OldaleTown_Movement_RivalApproachPlayer0:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_left
+	step_end
 
 OldaleTown_EventScript_ShowRivalMessage:: @ 81E90E6
 	checkplayergender
@@ -268,8 +541,21 @@ OldaleTown_EventScript_ShowRivalMessage:: @ 81E90E6
 
 OldaleTown_EventScript_ShowMayMessage:: @ 81E90FE
 	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_DEFAULT
+	closemessage
 	goto OldaleTown_EventScript_RivalFinish
 	end
+
+ShowRavynnQuick::
+	msgbox RavynnLetsGetThisOverWith, MSGBOX_DEFAULT
+	closemessage
+	goto OldaleTown_EventScript_RivalFinish
+	end
+
+RavynnLetsGetThisOverWith:
+	.string "Ravynn: You seriously want more? Even\n"
+	.string "after that pitiful battle?\p"
+	.string "Fine. I'll happily put you down again.\n"
+	.string "Let's just get this over with.$"
 
 OldaleTown_EventScript_ShowBrendanMessage:: @ 81E910C
 	msgbox OldaleTown_Text_BrendanLetsGoBack, MSGBOX_DEFAULT
@@ -277,18 +563,50 @@ OldaleTown_EventScript_ShowBrendanMessage:: @ 81E910C
 	end
 
 OldaleTown_EventScript_RivalFinish:: @ 81E911A
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, TaprootTown_RavynnDefeatedText
+	goto TaprootTown_EventScript_AfterRavynnBattle
+	end
+
+TaprootTown_RavynnDefeatedText:
+	.string "Hmph. You're tougher than I thought.$"
+
+TaprootTown_EventScript_AfterRavynnBattle:
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 0
+	msgbox ImSureWellMeetAgain, MSGBOX_DEFAULT
 	closemessage
-	compare VAR_0x8009, 0
-	call_if_eq OldaleTown_EventScript_DoExitMovement1
-	compare VAR_0x8009, 1
-	call_if_eq OldaleTown_EventScript_DoExitMovement2
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
+	applymovement LOCALID_RIVAL, RavynnLeaves
 	waitmovement 0
 	removeobject LOCALID_RIVAL
-	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	setvar VAR_OLDALE_RIVAL_STATE, 2
+	setflag FLAG_HIDE_QUANTUM_QUEST_4
+	clearflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+	fadedefaultbgm
 	releaseall
 	end
+
+RavynnLeaves:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImSureWellMeetAgain:
+	.string "Ravynn: Interesting. I held back and\n"
+	.string "you still struggled to defeat me.\p"
+	.string "You're lucky I was in a good mood for\n"
+	.string "that battle, {PLAYER}.\p"
+	.string "Still, you're stronger than I thought.\n"
+	.string "I'll be watching your progress closely.\p"
+	.string "I'm sure we'll meet again, in due time.$"
 
 OldaleTown_EventScript_DoExitMovement1:: @ 81E9148
 	compare VAR_FACING, DIR_SOUTH
@@ -303,17 +621,50 @@ OldaleTown_EventScript_DoExitMovement2:: @ 81E915E
 	waitmovement 0
 	return
 
-OldaleTown_Movement_RivalApproachPlayer1: @ 81E9170
+OldaleTown_Movement_RivalApproachPlayer1:
+	walk_up
+	walk_up
+	walk_up
 	walk_left
 	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_left
 	step_end
 
 OldaleTown_Movement_RivalApproachPlayer2: @ 81E9173
+	walk_up
+	walk_up
+	walk_up
 	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_right
 	step_end
 
 OldaleTown_Movement_RivalApproachPlayer3: @ 81E9175
-	face_left
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_right
 	step_end
 
 OldaleTown_Movement_RivalExit: @ 81E9177
@@ -350,8 +701,15 @@ OldaleTown_Movement_ReturnToOriginalPosition: @ 81E918B
 	step_end
 
 OldaleTown_Text_SavingMyProgress: @ 81E918E
-	.string "I want to take a rest, so I'm saving my\n"
-	.string "progress.$"
+	.string "Taproot Town isn't the biggest place\n"
+	.string "in Rika, but it's home to me.$"
+
+WannaKnowSecretText: @ 81E918E
+	.string "Hey, kid. Wanna know a secret?\p"
+	.string "Sometimes you can find hiddem items\n"
+	.string "in nooks and crannies like this one.\p"
+	.string "There might even be something down in\n"
+	.string "that corner if you press the A Button.$"
 
 OldaleTown_Text_IWorkAtPokemonMart: @ 81E91C0
 	.string "Hi!\n"
@@ -359,25 +717,21 @@ OldaleTown_Text_IWorkAtPokemonMart: @ 81E91C0
 	.string "Can I get you to come with me?$"
 
 OldaleTown_Text_ThisIsAPokemonMart: @ 81E91FD
-	.string "This is a POKéMON MART.\n"
-	.string "Just look for our blue roof.\p"
-	.string "We sell a variety of goods including\n"
-	.string "POKé BALLS for catching POKéMON.\p"
-	.string "Here, I'd like you to have this as\n"
-	.string "a promotional item.$"
+	.string "Hey, Trainer! Are you familiar with the\n"
+	.string "Pokémon Market?\p"
+	.string "It's a place where Trainers can purchase\n"
+	.string "all of the essential goods they need.\p"
+	.string "Here, let me give you a share of what I\n"
+	.string "just picked up!$"
 
 OldaleTown_Text_PotionExplanation: @ 81E92AF
-	.string "A POTION can be used anytime, so it's\n"
-	.string "even more useful than a POKéMON CENTER\l"
-	.string "in certain situations.$"
+	.string "A Premier Ball is a free Poké Ball that\n"
+	.string "you can get if you purchase at least\l"
+	.string "ten of any type of Poké Ball!\p"
+	.string "Isn't that neat?$"
 
 OldaleTown_Text_WaitDontComeInHere: @ 81E9313
-	.string "Aaaaah! Wait!\n"
-	.string "Please don't come in here.\p"
-	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
-	.string "Wait until I finish sketching\n"
-	.string "them, okay?$"
+	.string "This text is impossible to see.$"
 
 OldaleTown_Text_DiscoveredFootprints: @ 81E939A
 	.string "I just discovered the footprints of\n"
@@ -392,9 +746,23 @@ OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
 	.string "own footprints…$"
 
 OldaleTown_Text_MayLetsGoBack: @ 81E9462
-	.string "MAY: {PLAYER}{KUN}!\n"
-	.string "Over here!\l"
-	.string "Let's hurry home!$"
+	.string "???: Who are you?\p"
+	.string "...{PLAYER}?\p"
+	.string "{RIVAL} told me about you. They said you\n"
+	.string "would teach me a lesson while their\l"
+	.string "pathetic Pokémon collapsed from pain.\p"
+	.string "Weaklings, all of you. And here I was\n"
+	.string "thinking Rika's Trainers might offer me\l"
+	.string "a slight challenge.\p"
+	.string "My name is Ravynn. I'm going to defeat\n"
+	.string "the Champion and become the strongest\l"
+	.string "Pokémon Trainer who ever lived.\p"
+	.string "Everyone will know my name.\p"
+	.string "Ravynn: So, you really think you have a\n"
+	.string "fighting chance against me?\p"
+	.string "So be it.\p"
+	.string "Don't be surprised if you need a trip to\n"
+	.string "Lavender Town after I humiliate you.$"
 
 OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 	.string "BRENDAN: I'm heading back to my dad's\n"
@@ -402,6 +770,5 @@ OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_CitySign: @ 81E94DA
-	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"
-
+	.string "Taproot Town\n"
+	.string "“The town of beautiful memories!”$"

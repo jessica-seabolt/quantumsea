@@ -1,9 +1,9 @@
 gText_HowMayIServeYou:: @ 8272A21
-	.string "Welcome!\p"
-	.string "How may I serve you?$"
+	.string "Hi there! Welcome to the Pokémon Market!\p"
+	.string "What can we get you today?$"
 
 gText_PleaseComeAgain:: @ 8272A3F
-	.string "Please come again!$"
+	.string "Come back anytime!$"
 
 gText_PlayerWhatCanIDoForYou:: @ 8272A52
 	.string "{PLAYER}{STRING 5}, welcome!\p"

@@ -600,3 +600,24 @@ gMetatiles_SakuraLab::
 	.align 1
 gMetatileAttributes_SakuraLab::
 	.incbin "data/tilesets/secondary/sakuralab/metatile_attributes.bin"
+	.align 1
+gMetatiles_Cobalt::
+	.incbin "data/tilesets/secondary/cobalt/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Cobalt::
+	.incbin "data/tilesets/secondary/cobalt/metatile_attributes.bin"
+	.align 1
+gMetatiles_DarkwingGrove::
+	.incbin "data/tilesets/secondary/darkwinggrove/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_DarkwingGrove::
+	.incbin "data/tilesets/secondary/darkwinggrove/metatile_attributes.bin"
+	.align 1
+gMetatiles_PokeCenterNew::
+	.incbin "data/tilesets/secondary/pokecenternew/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_PokeCenterNew::
+	.incbin "data/tilesets/secondary/pokecenternew/metatile_attributes.bin"

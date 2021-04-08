@@ -44,12 +44,12 @@
 #define FLAG_WILD_ENCOUNTERS 0x20 // Enables Wild Encounters when set
 #define FLAG_DISABLE_BAG     0x21 // Disables bag in battle.
 #define FLAG_QUEST_MENU_ACTIVE  0x264 // Activates Quest Menu.
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_HIDE_SIDE_QUEST_3_SON    0x23 // Hides the son for side quest 3
+#define FLAG_DEFEATED_SON_TAPROOT    0x24 // If set, quest 3 can be completed
+#define FLAG_ROUTE_2_RAINING    0x25 // If set, Route 2 rains
+#define FLAG_QUEST_4_QUANTUM_DEFEATED    0x26 // Set when quest 4 objective is completed
+#define FLAG_HIDE_QUANTUM_QUEST_4    0x27 // set when quest 4 objective is completed
+#define FLAG_QUEST_5_OBJECTIVE_COMPLETE    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
@@ -569,7 +569,7 @@
 #define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC               (FLAG_HIDDEN_ITEMS_START + 0x66)
 #define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN            (FLAG_HIDDEN_ITEMS_START + 0x67)
 #define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON               (FLAG_HIDDEN_ITEMS_START + 0x68)
-#define FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1        (FLAG_HIDDEN_ITEMS_START + 0x30)
+#define FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1        (FLAG_HIDDEN_ITEMS_START + 0x30) //Used for Taproot Town
 #define FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_2        (FLAG_HIDDEN_ITEMS_START + 0x31)
 #define FLAG_HIDDEN_ITEM_JAGGED_PASS_GREAT_BALL              (FLAG_HIDDEN_ITEMS_START + 0x4C)
 #define FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL               (FLAG_HIDDEN_ITEMS_START + 0x4D)
@@ -1172,7 +1172,7 @@
 #define FLAG_ITEM_SPRINGROCK_VILLA_POTION1                          0x465 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_SPRINGROCK_VILLA_POTION2                          0x466 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_SPRINGROCK_VILLA_POTION3                          0x467 // Unused Flag, leftover from the Ruby Magma hideout
-#define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
+#define FLAG_ITEM_TAPROOT_TOWN_LEAF_STONE                           0x468 // Unused Flag
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B

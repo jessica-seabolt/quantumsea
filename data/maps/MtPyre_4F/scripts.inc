@@ -20,3 +20,54 @@ MtPyre_5F_Text_AtsushiPostBattle: @ 8231C24
 	.string "Until I improve, my teacher, who rests\n"
 	.string "here, will never find true peace…$"
 
+StartBattleSpiritomb::
+	lockall
+	waitse
+	playmoncry SPECIES_SPIRITOMB, 2
+	delay 40
+	waitmoncry
+	msgbox SpiritombIsAngry, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_SPIRITOMB, 20, ITEM_BLACK_GLASSES
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_eq DefeatedSpiritomb
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq DefeatedSpiritomb
+	compare VAR_RESULT, B_OUTCOME_RAN
+	goto_if_eq RanFromSpiritomb
+	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
+	goto_if_eq RanFromSpiritomb
+	setflag FLAG_QUEST_5_OBJECTIVE_COMPLETE
+	releaseall
+	end
+
+DefeatedSpiritomb:: @ 8239768
+	setflag FLAG_QUEST_5_OBJECTIVE_COMPLETE
+	setvar VAR_MT_PYRE_STATE, 1
+	goto DefeatedSpiritomb2
+	end
+
+DefeatedSpiritomb2::
+	msgbox SpiritombCalmedDown, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_RUSTBORO_CITY, 255, 23, 24
+	waitstate
+	releaseall
+	end
+
+RanFromSpiritomb::
+	warp MAP_RUSTBORO_CITY, 255, 23, 24
+	waitstate
+	releaseall
+	end
+
+SpiritombCalmedDown::
+	.string "Spiritomb calmed down. It seems to think\n"
+	.string "it is safe from Team Quantum.$"
+
+SpiritombIsAngry:
+	.string "???: Gyaaaooo!$"

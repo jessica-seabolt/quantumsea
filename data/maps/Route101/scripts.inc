@@ -1,4 +1,4 @@
-.set LOCALID_BIRCH, 2
+.set LOCALID_NURSE, 2
 .set LOCALID_ZIGZAGOON, 4
 
 Route101_MapScripts:: @ 81EBCBA
@@ -8,6 +8,7 @@ Route101_MapScripts:: @ 81EBCBA
 
 Route101_OnTransition: @ 81EBCC5
 	call ProfBirch_EventScript_UpdateLocation
+	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
 	end
 
 Route101_OnFrame: @ 81EBCCB
@@ -15,7 +16,6 @@ Route101_OnFrame: @ 81EBCCB
 	.2byte 0
 
 Route101_EventScript_HideMapNamePopup:: @ 81EBCD5
-	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_ROUTE101_STATE, 1
 	end
 
@@ -24,19 +24,19 @@ Route101_EventScript_StartBirchRescue:: @ 81EBCDE
 	playbgm MUS_HELP, 1
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
-	setobjectxy LOCALID_BIRCH, 0, 15
+	setobjectxy LOCALID_NURSE, 0, 15
 	setobjectxy LOCALID_ZIGZAGOON, 0, 16
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
+	applymovement LOCALID_NURSE, Route101_Movement_BirchRunAway1
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
 	waitmovement 0
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
+	applymovement LOCALID_NURSE, Route101_Movement_BirchRunInCircles
 	waitmovement 0
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_NURSE, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
+	applymovement LOCALID_NURSE, Route101_Movement_BirchFaceZigzagoon
 	waitmovement 0
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
@@ -206,17 +206,49 @@ Route101_Movement_Unused2: @ 81EBDF7
 	walk_up
 	step_end
 
-Route101_EventScript_Youngster:: @ 81EBDFB
-	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
+Route1_EventScript_Mikey:: @ 81F7331
+	trainerbattle_single TRAINER_TISHA, Route1_Text_MikeyIntro, Route1_Text_MikeyDefeat
+	msgbox Route1_Text_MikeyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route1_EventScript_Ryan:: @ 81F7331
+	trainerbattle_single TRAINER_SAWYER_1, Route1_Text_RyanIntro, Route1_Text_RyanDefeat
+	msgbox Route1_Text_RyanPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route1_EventScript_Lilith:: @ 81F7331
+	trainerbattle_single TRAINER_GABRIELLE_1, Route1_Text_LilithIntro, Route1_Text_LilithDefeat
+	msgbox Route1_Text_LilithPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route101_EventScript_Boy:: @ 81EBE04
-	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	fadescreen FADE_FROM_BLACK
+	msgbox AllHealedUpRoute1, MSGBOX_DEFAULT
+	applymovement LOCALID_NURSE, Route1HealMovement
+	waitmovement 0
+	closemessage
+	release
 	end
 
 Route101_EventScript_RouteSign:: @ 81EBE0D
 	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
 	end
+
+Route1CobaltTownSign::
+	msgbox Route1CobaltTownSignText, MSGBOX_SIGN
+	end
+
+Route1CobaltTownSignText:
+	.string "Route 1\p"
+	.string "Taproot Town {UP_ARROW}$"
 
 Route101_EventScript_BirchsBag:: @ 81EBE16
 	lock
@@ -230,7 +262,7 @@ Route101_EventScript_BirchsBag:: @ 81EBE16
 	waitmovement 0
 	special ChooseStarter
 	waitstate
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
+	applymovement LOCALID_NURSE, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
 	special HealPlayerParty
@@ -293,12 +325,57 @@ Route101_Text_TakeTiredPokemonToPokeCenter: @ 81EBFDD
 	.string "TOWN right close by.$"
 
 Route101_Text_WildPokemonInTallGrass: @ 81EC04A
-	.string "Wild POKéMON will jump out at you in\n"
-	.string "tall grass.\p"
-	.string "If you want to catch POKéMON, you have\n"
-	.string "to go into the tall grass and search.$"
+	.string "Nurse Joy: Hello, Trainer! It must be\n"
+	.string "a rough journey coming all this way!\p"
+	.string "Here, let me heal your Pokémon!$"
+
+AllHealedUpRoute1:
+	.string "Nurse Joy: There you are! If you ever\n"
+	.string "need help, just look for your nearest\l"
+	.string "Pokémon Center.\p"
+	.string "We'll heal you right up!$"
 
 Route101_Text_RouteSign: @ 81EC0C8
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "Springrock Path\p"
+	.string "Springrock Villa {UP_ARROW}$"
 
+Route1HealMovement:
+    nurse_joy_bow
+    delay_4
+    step_end
+
+Route1_Text_MikeyIntro:
+	.string "Wow! Are you a beginner, too? We should\n"
+	.string "battle and see who's tougher!$"
+
+Route1_Text_MikeyDefeat:
+	.string "What? I can't believe it!$"
+
+Route1_Text_MikeyPostBattle:
+	.string "I guess you're not a beginner after all.\p"
+	.string "Maybe you should try to battle Polter in\n"
+	.string "Spectre City's Gym.$"
+
+Route1_Text_RyanIntro:
+	.string "Mwahaha! You cannot defeat the power of\n"
+	.string "my Bug Pokémon!$"
+
+Route1_Text_RyanDefeat:
+	.string "Aw, what? You really Bug me!$"
+
+Route1_Text_RyanPostBattle:
+	.string "I guess Bug Pokémon can't do everything\n"
+	.string "all on their own...$"
+
+Route1_Text_LilithIntro:
+	.string "Are you a Pokémon Trainer?\p"
+	.string "Then you have to battle me! You can't\n"
+	.string "say no to a challenge!$"
+
+Route1_Text_LilithDefeat:
+	.string "I wish you said no to my challenge...$"
+
+Route1_Text_LilithPostBattle:
+	.string "Hm? Are you Pokémon hurt? You can find a\n"
+	.string "Pokémon Center in most Towns.\p"
+	.string "The Nurse there can heal you right up!$"

@@ -3,11 +3,11 @@ Route102_EventScript_ItemPotion:: @ 8290CD8
 	end
 
 Route103_EventScript_ItemGuardSpec:: @ 8290CE5
-	finditem ITEM_GUARD_SPEC
+	finditem ITEM_ETHER
 	end
 
 Route103_EventScript_ItemPPUp:: @ 8290CF2
-	finditem ITEM_PP_UP
+	finditem ITEM_PROTEIN
 	end
 
 Route104_EventScript_ItemPPUp:: @ 8290CFF
@@ -23,7 +23,7 @@ Route104_EventScript_ItemXAccuracy:: @ 8290D19
 	end
 
 Route104_EventScript_ItemPotion:: @ 8290D26
-	finditem ITEM_POTION
+	finditem ITEM_HP_UP
 	end
 
 Route105_EventScript_ItemIron:: @ 8290D33
@@ -355,7 +355,7 @@ GraniteCave_1F_EventScript_ItemEscapeRope:: @ 8291150
 	end
 
 GraniteCave_B1F_EventScript_ItemPokeBall:: @ 829115D
-	finditem ITEM_TM11
+	finditem ITEM_HEAL_BALL
 	end
 
 GraniteCave_B2F_EventScript_ItemRepel:: @ 829116A

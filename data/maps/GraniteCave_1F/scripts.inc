@@ -358,7 +358,7 @@ GraniteCave_1F_EventScript_AfterBattleHiker::
 	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_1
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_1
 	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Quest1Completed, MSGBOX_SIGN
+	msgbox QuestCompleted, MSGBOX_SIGN
 	waitfanfare
 	release
 	end
@@ -394,6 +394,6 @@ GraniteCave_1F_Text_ExplainLeftovers: @ 822DBB7
 	.string "hold! Might keep them going a little in\l"
 	.string "battle if their belly is full! Oh ho ho!$"
 
-Quest1Completed:
+QuestCompleted:
 	.string "Quest completed:\n"
 	.string "{COLOR GREEN}{STR_VAR_1}{COLOR DARK_GREY}!$"

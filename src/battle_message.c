@@ -1657,6 +1657,7 @@ const u8 gText_Are[] = _("are");
 const u8 gText_Are2[] = _("are");
 const u8 gText_BadEgg[] = _("Bad EGG");
 const u8 gText_BattleWallyName[] = _("WALLY");
+const u8 gText_BattleRavynnName[] = _("Ravynn");
 const u8 gText_Win[] = _("{HIGHLIGHT TRANSPARENT}Win");
 const u8 gText_Loss[] = _("{HIGHLIGHT TRANSPARENT}Loss");
 const u8 gText_Draw[] = _("{HIGHLIGHT TRANSPARENT}Draw");
@@ -1774,6 +1775,9 @@ static const u8 sText_Opposing1[] = _("The opposing");
 static const u8 sText_Your2[] = _("your");
 static const u8 sText_Opposing2[] = _("the opposing");
 static const u8 sText_RivalSpringrockLastLowHp[] = _("{B_RIVAL_NAME}: It's not over yet!\nC'mon, Weedle!\p");
+static const u8 sText_RavynnTaprootLastSwitchIn[] = _("Ravynn: Sorry, but this is\nwhere you lose.\p");
+static const u8 sText_RavynnTaprootFirstDown[] = _("Ravynn: Ha! I bet you're feeling\npretty good right now.\p");
+static const u8 sText_RavynnTaprootLastLowHp[] = _("Ravynn: What? How are you\ndoing this?\p");
 
 // This is four lists of moves which use a different attack string in Japanese
 // to the default. See the documentation for ChooseTypeOfMoveUsedString for more detail.
@@ -3747,6 +3751,7 @@ static const struct TrainerSlide sTrainerSlides[] =
 {
     {TRAINER_BRENDAN_ROUTE_103_TREECKO, NULL, sText_RivalSpringrockLastLowHp, NULL},
     {TRAINER_MAY_ROUTE_103_TREECKO, NULL, sText_RivalSpringrockLastLowHp, NULL},
+    {TRAINER_MAY_ROUTE_103_TORCHIC, sText_RavynnTaprootLastSwitchIn, sText_RavynnTaprootLastLowHp, sText_RavynnTaprootFirstDown},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)
