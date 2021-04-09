@@ -10,12 +10,12 @@ RustboroCity_House2_EventScript_LittleGirl:: @ 8215EBD
 	end
 
 RustboroCity_House2_Text_TrainerSchoolExcellent: @ 8215EC6
-	.string "The TRAINER'S SCHOOL is excellent.\p"
-	.string "If you study there, you could even\n"
-	.string "become a GYM LEADER.$"
+	.string "Oh, hello {PLAYER}.\p"
+	.string "Hm? Don't you remember me? I'm one of\n"
+	.string "Prof. Sakura's assistants.\p"
+	.string "I live here, in Spectre City. It's a\n"
+	.string "peaceful, affordable little place.$"
 
 RustboroCity_House2_Text_RoxanneKnowsALot: @ 8215F21
-	.string "ROXANNE, the GYM LEADER, really knows\n"
-	.string "a lot about POKéMON.\p"
-	.string "She's really strong, too!$"
-
+	.string "When I grow up, I want to do science\n"
+	.string "research. Just like my dad!$"

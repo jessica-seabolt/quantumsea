@@ -315,7 +315,11 @@ MauvilleCity_EventScript_ItemXSpeed:: @ 82910CE
 	end
 
 RustboroCity_EventScript_ItemXDefend:: @ 82910DB
-	finditem ITEM_X_DEFENSE
+	finditem ITEM_TM12
+	end
+
+RustboroCity_EventScript_ItemRevive:: @ 82910DB
+	finditem ITEM_REVIVE
 	end
 
 LilycoveCity_EventScript_ItemMaxRepel:: @ 82910E8

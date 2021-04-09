@@ -2,7 +2,7 @@
 .set LOCALID_LITTLE_GIRL, 8
 .set LOCALID_DEVON_EMPLOYEE, 9
 .set LOCALID_GRUNT, 10
-.set LOCALID_RIVAL, 14
+.set LOCALID_RIVAL, 13
 .set LOCALID_SCIENTIST, 15
 .set LOCALID_QUANTUM, 19
 
@@ -14,13 +14,14 @@ RustboroCity_MapScripts:: @ 81E06BD
 RustboroCity_OnTransition: @ 81E06C8
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	clearflag FLAG_ROUTE_2_RAINING
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	call Common_EventScript_SetupRivalGfxId
-	compare VAR_RUSTBORO_CITY_STATE, 6
-	call_if_eq RustboroCity_EventScript_HideMapNamePopup
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	compare VAR_RUSTBORO_CITY_STATE, 6
-	goto_if_eq RustboroCity_EventScript_PositionScientistForExit
+	call_if_set FLAG_BADGE01_GET, MoveDevonGuySpectre
 	end
+
+MoveDevonGuySpectre::
+	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 24, 12
+	return
 
 RustboroCity_EventScript_PositionScientistForExit:: @ 81E06EC
 	compare VAR_TEMP_0, 11
@@ -181,10 +182,102 @@ RustboroCity_EventScript_Man1HaveBadge:: @ 81E08A8
 RustboroCity_EventScript_Boy2:: @ 81E08B2
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_POKENAV, RustboroCity_EventScript_Boy2BrineyLeftTunnel
-	msgbox RustboroCity_Text_MrBrineyWalksInTheTunnel, MSGBOX_DEFAULT
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_6
+	compare VAR_RESULT, TRUE
+	goto_if_ne GiveSideQuest6
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_6
+	compare VAR_RESULT, TRUE
+	goto_if_eq MimikyuAlreadyShown
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_6
+	goto_if_eq MimikyuQuestIsActive
+	msgbox MimikyuQuestIsNotActive, MSGBOX_SIGN
 	release
 	end
+
+MimikyuQuestIsActive::
+	msgbox CheckForMimikyuText, MSGBOX_DEFAULT
+	closemessage
+	special ChoosePartyMon
+	waitstate
+	compare VAR_RESULT, 255
+	goto_if_eq MimikyuCheckFailed
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_MIMIKYU
+	goto_if_eq MimikyuCheckPassed
+	msgbox Text_MimikyuCheckFailed, MSGBOX_SIGN
+	release
+	end	
+
+MimikyuQuestIsNotActive:
+	.string "Huh? No, I don't quite remember you.\n"
+	.string "My brain isn't very {COLOR GREEN}Active{COLOR DARK_GREY} right now...$"
+
+MimikyuCheckFailed::
+	msgbox Text_MimikyuCheckFailed, MSGBOX_SIGN
+	release
+	end
+
+MimikyuAlreadyShown::
+	msgbox ExplainMimikiumZText, MSGBOX_SIGN
+	release
+	end
+
+MimikyuCheckPassed::
+	msgbox YouHaveAMimikyu, MSGBOX_SIGN
+	giveitem ITEM_MIMIKIUM_Z, 1
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_6
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_6
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+YouHaveAMimikyu:
+	.string "Woah! I can't believe it! You actually\n"
+	.string "found one?!\p"
+	.string "Okay, fair's fair. Here's what I agreed\n"
+	.string "to give you!$"
+
+ExplainMimikiumZText:
+	.string "The Mimikium Z is a special crystal that\n"
+	.string "can unlock some awesome damage!\p"
+	.string "You'll need a Mimikyu for it, of course.\n"
+	.string "And a Z-Ring, too!$"
+
+CheckForMimikyuText:
+	.string "Hey, did you find that Mimikyu yet?$"
+
+Text_MimikyuCheckFailed:
+	.string "No Mimikyu? Darn, oh well... come\n"
+	.string "back when you find one, okay?$"
+
+
+GiveSideQuest6::
+	msgbox CatchAMimikyuQuestText1, MSGBOX_DEFAULT
+	closemessage
+	showmonpic SPECIES_MIMIKYU, 10, 3
+	msgbox CatchAMimikyuQuestText2, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_6
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_6
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+CatchAMimikyuQuestText1::
+	.string "Hey, can I ask you something?\p"
+	.string "Have you ever heard of a Mimikyu? It's a\n"
+	.string "super rare Ghost Pokémon, and I really\l"
+	.string "want to see one."
+
+CatchAMimikyuQuestText2::
+	.string "If you can show me a Mimikyu, I can give\n"
+	.string "you my lucky crystal!$"
 
 RustboroCity_EventScript_Boy2BrineyLeftTunnel:: @ 81E08C7
 	msgbox RustboroCity_Text_MrBrineyLovesPeeko, MSGBOX_DEFAULT
@@ -249,9 +342,158 @@ RustboroCity_EventScript_LittleGirl:: @ 81E0938
 RustboroCity_EventScript_Man2:: @ 81E094E
 	lock
 	faceplayer
+	goto_if_set FLAG_RECEIVED_OLD_ROD, OldrodReceivedSpectre
 	msgbox RustboroCity_Text_TradePokemonGrowFast, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_OLD_ROD, 1
+	setflag FLAG_RECEIVED_OLD_ROD
+	msgbox OldRodReceivedText, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
+
+OldrodReceivedSpectre::
+	msgbox OldRodReceivedText, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+OldRodReceivedText:
+	.string "That Old Rod will come in handy near any\n"
+	.string "bodies of water you might find!$"
+
+RivalSpectreCityTrigger0::
+	lockall
+	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	addobject LOCALID_RIVAL
+	playse SE_EXIT
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	playse SE_PIN
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox RivalSpectreCityBattle, MSGBOX_DEFAULT
+	closemessage
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq RivalBattleSpectreCityMale
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq RivalBattleSpectreCityFemale
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	msgbox RivalSpectreCityDefeated, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, RivalSpectreCityLeaves0
+	waitmovement 0
+	removeobject LOCALID_RIVAL
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	setvar VAR_RUSTBORO_CITY_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+RivalSpectreCityTrigger1::
+	lockall
+	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	addobject LOCALID_RIVAL
+	playse SE_EXIT
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	playse SE_PIN
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox RivalSpectreCityBattle, MSGBOX_DEFAULT
+	closemessage
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq RivalBattleSpectreCityMale
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq RivalBattleSpectreCityFemale
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	msgbox RivalSpectreCityDefeated, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, RivalSpectreCityLeaves1
+	waitmovement 0
+	removeobject LOCALID_RIVAL
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	setvar VAR_RUSTBORO_CITY_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+RivalBattleSpectreCityMale::
+	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, SpectreCity_Text_Defeated
+	return
+
+RivalBattleSpectreCityFemale::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, SpectreCity_Text_Defeated
+	return
+
+SpectreCity_Text_Defeated:
+	.string "{RIVAL}: Wicked! What a battle!$"
+
+RivalSpectreCityDefeated:
+	.string "{RIVAL}: You've gotten really tough!\n"
+	.string "You and your Pokémon have bonded a lot.\p"
+	.string "But you know what? You still lost our\n"
+	.string "race! That makes you the Slakoth!\p"
+	.string "It was great cathing up mate, but I've\n"
+	.string "gotta get moving to the next Gym!\p"
+	.string "...Oh, yeah! I almost forgot!\p"
+	.string "I met this jerk earlier, Ravynn I think.\n"
+	.string "Rumor has it he's a Pokémon thief. If\l"
+	.string "you see him, make sure you teach him a\l"
+	.string "lesson for me, yeah?\p"
+	.string "Alright, {PLAYER}! I'm off. Good luck\n"
+	.string "with your Gym battle!$"
+
+RivalSpectreCityLeaves0:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+RivalSpectreCityLeaves1:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+RivalSpectreCityBattle:
+	.string "{RIVAL}: Hey, {PLAYER}! What luck!\p"
+	.string "I was hoping I'd run into you soon.\n"
+	.string "I fought Polter a little while ago.\p"
+	.string "I had to come back because I left my\n"
+	.string "Pokédex in there...\p"
+	.string "But that's besides the point! He's not a\n"
+	.string "joke, {PLAYER}! That guy can battle!\p"
+	.string "Are you on your way in there to take\n"
+	.string "a shot at it?\p"
+	.string "Wicked! Let's see if you're ready. No\n"
+	.string "backing out, {PLAYER}. Here I come!$"
 
 RustboroCity_EventScript_StolenGoodsTrigger0:: @ 81E095A
 	lockall
@@ -472,7 +714,7 @@ RustboroCity_Movement_EmployeeApproachPlayerFar: @ 81E0AD5
 RustboroCity_EventScript_DevonEmployee1:: @ 81E0ADD
 	lock
 	faceplayer
-	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_EventScript_ReturnGoodsSpokeToEmployee
+	goto_if_set FLAG_BADGE01_GET, RustboroCity_EventScript_ReturnGoodsSpokeToEmployee
 	msgbox RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel, MSGBOX_DEFAULT
 	release
 	end
@@ -603,28 +845,10 @@ RustboroCity_EventScript_ReturnGoodsTrigger3:: @ 81E0C4F
 	end
 
 RustboroCity_EventScript_ReturnGoods:: @ 81E0C5B
-	compare VAR_TEMP_1, 0
-	call_if_eq RustboroCity_EventScript_EmployeeFacePlayerUp2
-	compare VAR_TEMP_1, 1
-	call_if_eq RustboroCity_EventScript_EmployeeFacePlayerLeft2
-	compare VAR_TEMP_1, 2
-	call_if_eq RustboroCity_EventScript_EmployeeFacePlayerDown2
-	compare VAR_TEMP_1, 3
-	call_if_eq RustboroCity_EventScript_EmployeeApproachPlayerDown2
-	compare VAR_TEMP_1, 4
-	call_if_eq RustboroCity_EventScript_EmployeeFacePlayerRight
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
 	giveitem ITEM_GREAT_BALL
 	compare VAR_RESULT, FALSE
 	call_if_eq RustboroCity_EventScript_BagFull
-	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
-	closemessage
-	setflag FLAG_RETURNED_DEVON_GOODS
-	setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
-	setvar VAR_RUSTBORO_CITY_STATE, 5
-	delay 30
-	warp MAP_RUSTBORO_CITY_DEVON_CORP_3F, 255, 2, 2
-	waitstate
 	releaseall
 	end
 
@@ -1202,6 +1426,22 @@ Quest5IsntStarted::
 	msgbox Quest5IsntStartedText, MSGBOX_NPC
 	end
 
+ForestSign1::
+	msgbox SpectreForestSign, MSGBOX_SIGN
+	end
+
+ForestSign2::
+	msgbox SpectreWoodsSign, MSGBOX_SIGN
+	end
+
+SpectreForestSign:
+	.string "Spectre Forest\p"
+	.string "Route 4 {UP_ARROW}$"
+
+SpectreWoodsSign:
+	.string "Spectre Woods\p"
+	.string "Route 9 {UP_ARROW}$"
+
 Quest5IsntStartedText:
 	.string "Hm? You want into the Trainer's School?\p"
 	.string "I'm sorry to disappoint, but it's been\l"
@@ -1277,40 +1517,34 @@ Quest5StartDialogue:
 	.string "I'm equipped for it myself...$"
 
 RustboroCity_Text_WeShortenItToDevon: @ 81E123F
-	.string "The DEVON CORPORATION…\n"
-	.string "We all just shorten it to DEVON.\p"
-	.string "That company makes all sorts of\n"
-	.string "convenient products.$"
+	.string "Did you hear? The weather has been all\n"
+	.string "over the place. It's not normal.\p"
+	.string "They think it has to do with whatever\n"
+	.string "that Team Quantum gang is up to.$"
 
 RustboroCity_Text_SneakyLookingManWentAroundCorner: @ 81E12AC
-	.string "Hm? A sneaky-looking man?\p"
-	.string "Come to think of it, yes, a shady-\n"
-	.string "looking guy went around the corner.$"
+	.string "Team Quantum? No, I don't know much.\n"
+	.string "I know they're trouble, though.$"
 
 RustboroCity_Text_HaveYouChallengedGym: @ 81E130D
-	.string "Have you taken the POKéMON GYM\n"
-	.string "challenge?\p"
-	.string "When you get that shiny GYM BADGE\n"
-	.string "in hand, I guess TRAINERS begin to\l"
-	.string "realize what is required of them.$"
+	.string "Oh, are you here to get a Badge from\n"
+	.string "Polter's Gym?\p"
+	.string "Well, good luck! You're gonna need it!$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge: @ 81E139E
-	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
-	.string "Out of all the POKéMON GYM BADGES,\n"
-	.string "RUSTBORO's is the coolest, I'd say.$"
+	.string "Woah! You got the Umbra Badge? Like, the\n"
+	.string "real thing? That's awesome!\p"
+	.string "I guess you'll be heading out for your\n"
+	.string "next Badge, then? Good luck!$"
 
 RustboroCity_Text_YoureNewAroundHere: @ 81E1407
-	.string "Oh? Who might you be?\n"
-	.string "You're a new face around these parts.\p"
-	.string "Have you just transferred into the\n"
-	.string "POKéMON TRAINER'S SCHOOL?$"
+	.string "I haven't seen you around here before.\n"
+	.string "Have you met Polter yet?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire: @ 81E1480
-	.string "I challenged the GYM LEADER, but…\p"
-	.string "It's not going to be easy winning with\n"
-	.string "my FIRE-type POKéMON…\p"
-	.string "FIRE-type POKéMON don't match up\n"
-	.string "well against ROCK-type POKéMON…$"
+	.string "I challenged Polter in his Gym just a\n"
+	.string "short while ago.\p"
+	.string "Man, who knew Ghosts were so powerful?$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel: @ 81E1520
 	.string "The old sailor MR. BRINEY lives in\n"
@@ -1327,29 +1561,29 @@ RustboroCity_Text_MrBrineyLovesPeeko: @ 81E1589
 	.string "that PEEKO.$"
 
 RustboroCity_Text_WowYouHavePokemon: @ 81E1633
-	.string "Wow, you have POKéMON with you, too.\p"
-	.string "When I get bigger, I'm going to go\n"
-	.string "places with POKéMON, too.$"
+	.string "Hiya! Are you looking for the Pokémon\n"
+	.string "Gym? It's just up North from here!$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool: @ 81E1695
-	.string "POKéMON TRAINER'S SCHOOL!\p"
-	.string "If I go to this school, will I be able\n"
-	.string "to catch rare POKéMON easily?$"
+	.string "Heheh, yeah, I've been in the Trainer's\n"
+	.string "School before! I snuck in through the\l"
+	.string "front door when nobody was around!\p"
+	.string "...No, you're right. I'm lying. There's\n"
+	.string "no way I'm going in there!$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp: @ 81E16F4
-	.string "If a POKéMON gains experience in\n"
-	.string "battles, it can sometimes change in\l"
-	.string "the way it looks.$"
+	.string "I'm the best Pokémon Trainer! Tell her\n"
+	.string "it's me!$"
 
 RustboroCity_Text_PokemonChangeShape: @ 81E174B
-	.string "A POKéMON changes shape?\n"
-	.string "If one did that, I would be shocked!$"
+	.string "I'm a better Pokémon Trainer than he is!\n"
+	.string "Can't you see?$"
 
 RustboroCity_Text_TradePokemonGrowFast: @ 81E1789
-	.string "A POKéMON you get in a trade from\n"
-	.string "someone grows fast.\p"
-	.string "But if you don't have certain GYM\n"
-	.string "BADGES, it may not obey you…$"
+	.string "Pokémon are great, am I right?\p"
+	.string "...And fishing for Pokémon is also great!\n"
+	.string "Am I right?\p"
+	.string "You seem alright, pal! Here, take this!$"
 
 RustboroCity_Text_OutOfTheWay: @ 81E17FE
 	.string "Get out!\n"
@@ -1369,21 +1603,19 @@ RustboroCity_Text_HelpMeIWasRobbed: @ 81E183E
 	.string "I'm going to be in serious trouble.$"
 
 RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel: @ 81E1904
-	.string "That shady character, I think he took\n"
-	.string "off towards the tunnel over there.$"
+	.string "Sorry, I can't let you through here. The\n"
+	.string "police are investigating rumors of a\l"
+	.string "thief who uses his bird Pokémon to make\l"
+	.string "his victims surrender their belongings.$"
 
 RustboroCity_Text_YouGotItThankYou: @ 81E194D
-	.string "Oh! How did it go?\n"
-	.string "The DEVON GOODS?\p"
-	.string "You did!\n"
-	.string "You got them back!\p"
-	.string "You really are a great TRAINER!\p"
-	.string "I know! As my thanks, I'll give you\n"
-	.string "another GREAT BALL!$"
+	.string "Oh, the investigation? It's all over.\n"
+	.string "Here, you can have this for being so\l"
+	.string "patient for us.$"
 
 RustboroCity_Text_YoureLoadedWithItems: @ 81E19E5
 	.string "You're loaded with items.\n"
-	.string "I can't give you this GREAT BALL.$"
+	.string "I can't give you this Great Ball.$"
 
 RustboroCity_Text_PleaseComeWithMe: @ 81E1A21
 	.string "Excuse me, please!\n"
@@ -1490,24 +1722,19 @@ RustboroCity_Text_TunnelNearingCompletion: @ 81E20A6
 	.string "across it in red paint…$"
 
 RustboroCity_Text_DevonCorpSign: @ 81E2128
-	.string "DEVON CORPORATION\p"
-	.string "“For all your living needs, we make\n"
-	.string "it all.”$"
+	.string "Spectre City Contest Hall$"
 
 RustboroCity_Text_GymSign: @ 81E2167
-	.string "RUSTBORO CITY POKéMON GYM\n"
-	.string "LEADER: ROXANNE\p"
-	.string "“The ROCK-loving honors student!”$"
+	.string "Spectre City Pokémon Gym\n"
+	.string "Leader: Polter\p"
+	.string "“He'll scare you into submission!”$"
 
 RustboroCity_Text_DevonCorpBranchOfficeSign: @ 81E21B3
-	.string "DEVON CORP. BRANCH OFFICE\p"
-	.string "“Access limited to DEVON employees\n"
-	.string "and authorized personnel.”$"
+	.string "Spectre City Contest Hall$"
 
 RustboroCity_Text_CitySign: @ 81E220B
-	.string "RUSTBORO CITY\p"
-	.string "“The city probing the integration of\n"
-	.string "nature and science.”$"
+	.string "Spectre City\p"
+	.string "“The city of life's end.”$"
 
 RustboroCity_Text_TrainersSchoolSign: @ 81E2253
 	.string "POKéMON TRAINER'S SCHOOL\p"
@@ -1515,7 +1742,7 @@ RustboroCity_Text_TrainersSchoolSign: @ 81E2253
 	.string "POKéMON!”$"
 
 RustboroCity_Text_CuttersHouse: @ 81E2296
-	.string "CUTTER'S HOUSE$"
+	.string "Greevil's House$"
 
 RustboroCity_Text_DevelopedNewPokenavFeature: @ 81E22A5
 	.string "I've been developing an added feature\n"

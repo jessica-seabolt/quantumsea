@@ -31,19 +31,16 @@ RustboroCity_PokemonCenter_1F_EventScript_Girl:: @ 8214D96
 	end
 
 RustboroCity_PokemonCenter_1F_Text_PokemonHavePersonalities: @ 8214D9F
-	.string "My POKéMON has a NAIVE nature, and my\n"
-	.string "friend's has a JOLLY nature.\p"
-	.string "It's fascinating how POKéMON have\n"
-	.string "personalities!$"
+	.string "My Pokémon needed to rest up after we\n"
+	.string "got into a battle with some jerk.\p"
+	.string "He insulted my Pokémon and ran off!$"
 
 RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon: @ 8214E13
-	.string "Just like people, there are male and\n"
-	.string "female POKéMON.\p"
-	.string "But no one seems to have any idea how\n"
-	.string "they're different.$"
+	.string "Hey, have you been to the Contest Hall?\p"
+	.string "It's a place where you and your Pokémon\n"
+	.string "can show off against other Trainers!$"
 
 RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor: @ 8214E81
-	.string "The man next door gave me an HM!\p"
-	.string "I used it to teach my POKéMON how to\n"
-	.string "CUT down skinny trees.$"
-
+	.string "That old man Greevil is super stinking\n"
+	.string "rich! How did he get all that money?$"
+	

@@ -937,7 +937,7 @@
       "width": 11,
       "height": 20,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_RustboroGym",
+      "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/RustboroCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_Gym/map.bin"
     },
@@ -956,8 +956,8 @@
       "name": "RustboroCity_House_Layout",
       "width": 12,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_SakuraLab",
       "border_filepath": "data/layouts/RustboroCity_House/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_House/map.bin"
     },
@@ -976,8 +976,8 @@
       "name": "RustboroCity_CuttersHouse_Layout",
       "width": 11,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_SakuraLab",
       "border_filepath": "data/layouts/RustboroCity_CuttersHouse/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_CuttersHouse/map.bin"
     },
@@ -1046,7 +1046,7 @@
       "name": "LilycoveCity_ContestLobby_Layout",
       "width": 31,
       "height": 12,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_BuildingMain",
       "secondary_tileset": "gTileset_Contest",
       "border_filepath": "data/layouts/LilycoveCity_ContestLobby/border.bin",
       "blockdata_filepath": "data/layouts/LilycoveCity_ContestLobby/map.bin"
@@ -2936,8 +2936,8 @@
       "name": "RustboroCity_Flat2_1F_Layout",
       "width": 14,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_SakuraLab",
       "border_filepath": "data/layouts/RustboroCity_Flat2_1F/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_Flat2_1F/map.bin"
     },
@@ -3126,8 +3126,8 @@
       "name": "RustboroCity_Flat1_1F_Layout",
       "width": 14,
       "height": 8,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_BuildingMain",
+      "secondary_tileset": "gTileset_SakuraLab",
       "border_filepath": "data/layouts/RustboroCity_Flat1_1F/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_Flat1_1F/map.bin"
     },

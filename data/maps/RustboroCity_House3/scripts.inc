@@ -21,17 +21,14 @@ RustboroCity_House3_EventScript_Pekachu:: @ 82161A3
 	end
 
 RustboroCity_House3_Text_IGivePerfectlySuitedNicknames: @ 82161B6
-	.string "For my own POKéMON, I give them\n"
-	.string "perfectly suited nicknames!\p"
-	.string "It's my expression of, uh…\n"
-	.string "originality, yes, that's it!$"
+	.string "Me and my Cubone are about to go battle\n"
+	.string "Polter's Gym!$"
 
 RustboroCity_House3_Text_NamingPikachuPekachu: @ 821622A
-	.string "But giving the name PEKACHU to\n"
-	.string "a PIKACHU? It seems pointless.\p"
-	.string "I suppose it is good to use a name\n"
-	.string "that's easy to understand, but…$"
+	.string "I'm very supportive of my little girl.\p"
+	.string "I know she can't defeat Polter, but I\n"
+	.string "can't help but smile when I see the fire\l"
+	.string "in her eyes.$"
 
 RustboroCity_House3_Text_Pekachu: @ 82162AB
-	.string "PEKACHU: Peka!$"
-
+	.string "Cubone: Bo bo bo!$"

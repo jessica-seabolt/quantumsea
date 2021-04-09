@@ -241,7 +241,7 @@ LittlerootTown_EventScript_BattleRivalFemale:: @ 81EC48E
 	end
 
 LittlerootTown_Text_Defeated:
-	.string "{RIVAL}: Brilliant! Bloody brilliant!$"
+	.string "{RIVAL}: Brilliant! Spot on, {PLAYER}!$"
 
 LittlerootTown_EventScript_AfterBattle::
 	lockall

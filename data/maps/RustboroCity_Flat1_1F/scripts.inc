@@ -10,9 +10,10 @@ RustboroCity_Flat1_1F_EventScript_Woman:: @ 82150D7
 	end
 
 RustboroCity_Flat1_1F_Text_EveryPokemonHasAbility: @ 82150E0
-	.string "Every POKéMON has a special ability\n"
-	.string "that it can use.$"
+	.string "Team Quantum is really making a mess of\n"
+	.string "things. I hope someone takes them down.$"
 
 RustboroCity_Flat1_1F_Text_PokemonStrange: @ 8215115
-	.string "POKéMON are such strange creatures.$"
+	.string "Team Quantum? I'm not worried about it.\n"
+	.string "My boyfriend here will protect me!$"
 

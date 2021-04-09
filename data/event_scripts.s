@@ -841,7 +841,7 @@ Common_EventScript_PlayerHandedOverTheItem:: @ 82723E4
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign:: @ 8272B6A
 	.string "“Shop 'till you drop!”\n"
-	.string "Pokémon Mart$"
+	.string "Pokémon Market$"
 
 gText_PokemonCenterSign:: @ 8272B9E
 	.string "“Don't give up- heal up!”\n"

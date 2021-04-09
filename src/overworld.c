@@ -425,6 +425,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
     FlagClear(FLAG_DISABLE_BAG);
+    FlagSet(FLAG_WILD_ENCOUNTERS);
     #if VAR_TERRAIN != 0
         VarSet(VAR_TERRAIN, 0);
     #endif
