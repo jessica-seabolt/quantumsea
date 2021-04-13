@@ -2152,10 +2152,10 @@ static void Debug_NamingScreenNickname(void)
 void NameRival(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
-        StringCopy(gSaveBlock2Ptr->rivalName, gFemalePresetNames[Random() % NELEMS(gFemalePresetNames)]); // choose a random name from gFemalePresetNames for a male player's rival
+        StringCopy(gSaveBlock1Ptr->rivalName, gFemalePresetNames[Random() % NELEMS(gFemalePresetNames)]); // choose a random name from gFemalePresetNames for a male player's rival
     else
-        StringCopy(gSaveBlock2Ptr->rivalName, gMalePresetNames[Random() % NELEMS(gMalePresetNames)]); // choose a random name from gMalePresetNames for a female player's rival
-    DoNamingScreen(NAMING_SCREEN_RIVAL, gSaveBlock2Ptr->rivalName, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+        StringCopy(gSaveBlock1Ptr->rivalName, gMalePresetNames[Random() % NELEMS(gMalePresetNames)]); // choose a random name from gMalePresetNames for a female player's rival
+    DoNamingScreen(NAMING_SCREEN_RIVAL, gSaveBlock1Ptr->rivalName, 0, 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
 

@@ -1898,7 +1898,7 @@ static const u8 sSLUDGE_WAVEDescription[] = _(
     "of sludge. May also poison.");
 
 static const u8 sQUIVER_DANCEDescription[] = _(
-    "Dances to raise Sp. Atk\n"
+    "Dances to raise Sp. Atk,\n"
     "Sp. Def and Speed.");
 
 static const u8 sHEAVY_SLAMDescription[] = _(

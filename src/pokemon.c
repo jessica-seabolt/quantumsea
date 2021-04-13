@@ -1583,6 +1583,9 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
     // Calyrex
     [SPECIES_CALYREX_ICE_RIDER - 1] = NATIONAL_DEX_CALYREX,
     [SPECIES_CALYREX_SHADOW_RIDER - 1] = NATIONAL_DEX_CALYREX,
+    //Shadows
+    [SPECIES_MURKROW_SHADOW - 1] = NATIONAL_DEX_MURKROW,
+    [SPECIES_NATU_SHADOW - 1] = NATIONAL_DEX_NATU,
 };
 
 const u16 gHoennToNationalOrder[HOENN_DEX_COUNT] = // Assigns Hoenn Dex Pokémon (Using National Dex Index)
@@ -6864,11 +6867,21 @@ u32 CanMonLearnTMHM(struct Pokemon *mon, u8 tm)
         u32 mask = 1 << tm;
         return gTMHMLearnsets[species][0] & mask;
     }
-    else
+    else if (tm < 64)
     {
         u32 mask = 1 << (tm - 32);
         return gTMHMLearnsets[species][1] & mask;
     }
+	else if (tm < 96)
+	{
+		u32 mask = 1 << (tm - 64);
+        return gTMHMLearnsets[species][2] & mask;
+	}
+	else
+	{
+		u32 mask = 1 << (tm - 96);
+        return gTMHMLearnsets[species][3] & mask;
+	}	
 }
 
 u32 CanSpeciesLearnTMHM(u16 species, u8 tm)
@@ -6882,10 +6895,20 @@ u32 CanSpeciesLearnTMHM(u16 species, u8 tm)
         u32 mask = 1 << tm;
         return gTMHMLearnsets[species][0] & mask;
     }
-    else
+    else if (tm < 64)
     {
         u32 mask = 1 << (tm - 32);
         return gTMHMLearnsets[species][1] & mask;
+    }
+    else if (tm < 96)
+    {
+        u32 mask = 1 << (tm - 64);
+        return gTMHMLearnsets[species][2] & mask;
+    }
+    else
+    {
+        u32 mask = 1 << (tm - 96);
+        return gTMHMLearnsets[species][3] & mask;
     }
 }
 

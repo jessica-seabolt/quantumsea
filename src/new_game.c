@@ -209,9 +209,9 @@ void NewGameInitData(void)
     
     gSaveBlock2Ptr->expShare = 0;
 
-    memset(&gSaveBlock2Ptr->unlockedQuests, 0, sizeof(gSaveBlock2Ptr->unlockedQuests));
-    memset(&gSaveBlock2Ptr->completedQuests, 0, sizeof(gSaveBlock2Ptr->completedQuests));
-    gSaveBlock2Ptr->activeQuest = 0;
+    memset(&gSaveBlock1Ptr->unlockedQuests, 0, sizeof(gSaveBlock1Ptr->unlockedQuests));
+    memset(&gSaveBlock1Ptr->completedQuests, 0, sizeof(gSaveBlock1Ptr->completedQuests));
+    gSaveBlock1Ptr->activeQuest = 0;
 
 }
 

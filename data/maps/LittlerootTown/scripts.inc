@@ -322,7 +322,6 @@ LittlerootTown_EventScript_LeftLabAfterDexUpgrade:: @ 81E7E45
 	return
 
 LittlerootTown_EventScript_HideMapNamePopup:: @ 81E7E4B
-	setflag FLAG_HIDE_MAP_NAME_POPUP
 	return
 
 LittlerootTown_EventScript_SetRivalLeftForRoute103:: @ 81E7E4F
@@ -432,7 +431,6 @@ LittlerootTown_EventScript_GoInsideWithMom:: @ 81E7F17
 	closedoor VAR_0x8004, VAR_0x8005
 	waitdooranim
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	return
 
 LittlerootTown_Movement_MomExitHouse: @ 81E7F98
@@ -485,7 +483,6 @@ LittlerootTown_EventScript_BeginDexUpgradeScene:: @ 81E7FB1
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
 	delay 20
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 255, 6, 5
 	waitstate
 	releaseall

@@ -315,7 +315,7 @@ MauvilleCity_EventScript_ItemXSpeed:: @ 82910CE
 	end
 
 RustboroCity_EventScript_ItemXDefend:: @ 82910DB
-	finditem ITEM_TM12
+	finditem ITEM_TM62
 	end
 
 RustboroCity_EventScript_ItemRevive:: @ 82910DB

@@ -6100,6 +6100,16 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = 0x87,
         .y_offset = 7,
     },
+    [SPECIES_MURKROW_SHADOW] =
+    {
+        .size = 0x57,
+        .y_offset = 10,
+    },
+    [SPECIES_NATU_SHADOW] =
+    {
+        .size = 0x55,
+        .y_offset = 15,
+    },
     // Egg
     [SPECIES_EGG] =
     {

@@ -49,8 +49,8 @@
 #define FLAG_ROUTE_2_RAINING    0x25 // If set, Route 2 rains
 #define FLAG_QUEST_4_QUANTUM_DEFEATED    0x26 // Set when quest 4 objective is completed
 #define FLAG_HIDE_QUANTUM_QUEST_4    0x27 // set when quest 4 objective is completed
-#define FLAG_QUEST_5_OBJECTIVE_COMPLETE    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
+#define FLAG_QUEST_5_OBJECTIVE_COMPLETE    0x28 // set when quest 5 objective is completed
+#define FLAG_OBTAINED_ZORUA    0x29 // set when zorua is obtained
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag

@@ -3342,7 +3342,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     toCpy = sText_Opposing2;
                 break;
             case B_TXT_RIVAL_NAME:
-                toCpy = gSaveBlock2Ptr->rivalName;
+                toCpy = gSaveBlock1Ptr->rivalName;
                 break;
             }
             

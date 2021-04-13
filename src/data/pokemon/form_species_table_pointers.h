@@ -143,6 +143,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_URSHIFU] = sUrshifuFormSpeciesIdTable,
     [SPECIES_ZARUDE] = sZarudeFormSpeciesIdTable,
     [SPECIES_CALYREX] = sCalyrexFormSpeciesIdTable,
+    [SPECIES_MURKROW] = sMurkrowFormSpeciesIdTable,
     // Megas
     [SPECIES_VENUSAUR_MEGA] = sVenusaurFormSpeciesIdTable,
     [SPECIES_CHARIZARD_MEGA_X] = sCharizardFormSpeciesIdTable,
@@ -516,4 +517,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     // Calyrex
     [SPECIES_CALYREX_ICE_RIDER] = sCalyrexFormSpeciesIdTable,
     [SPECIES_CALYREX_SHADOW_RIDER] = sCalyrexFormSpeciesIdTable,
+    //Shadows
+    [SPECIES_MURKROW_SHADOW] = sMurkrowFormSpeciesIdTable,
+    [SPECIES_NATU_SHADOW] = sNatuFormSpeciesIdTable,
 };

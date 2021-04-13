@@ -10595,4 +10595,20 @@ static const u32 sTutorLearnsets[] =
                                             | TUTOR(MOVE_SNORE)
                                             | TUTOR(MOVE_SUBSTITUTE)
                                             | TUTOR(MOVE_SWIFT)),
+    [SPECIES_MURKROW_SHADOW]  = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
+                                            | TUTOR(MOVE_DOUBLE_EDGE)
+                                            | TUTOR(MOVE_ENDURE)
+                                            | TUTOR(MOVE_METRONOME)
+                                            | TUTOR(MOVE_SLEEP_TALK)
+                                            | TUTOR(MOVE_SNORE)
+                                            | TUTOR(MOVE_SUBSTITUTE)
+                                            | TUTOR(MOVE_SWIFT)),
+    [SPECIES_NATU_SHADOW]  = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
+                                            | TUTOR(MOVE_DOUBLE_EDGE)
+                                            | TUTOR(MOVE_ENDURE)
+                                            | TUTOR(MOVE_METRONOME)
+                                            | TUTOR(MOVE_SLEEP_TALK)
+                                            | TUTOR(MOVE_SNORE)
+                                            | TUTOR(MOVE_SUBSTITUTE)
+                                            | TUTOR(MOVE_SWIFT)),
 };

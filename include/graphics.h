@@ -1203,6 +1203,8 @@ extern const u32 gMonFrontPic_UrshifuRapidStrikeStyle[];
 extern const u32 gMonFrontPic_ZarudeDada[];
 extern const u32 gMonFrontPic_CalyrexIceRider[];
 extern const u32 gMonFrontPic_CalyrexShadowRider[];
+extern const u32 gMonFrontPic_MurkrowShadow[];
+extern const u32 gMonFrontPic_NatuShadow[];
 extern const u32 gMonFrontPic_Egg[];
 
 extern const u32 gMonBackPic_CircledQuestionMark[];
@@ -2343,6 +2345,8 @@ extern const u32 gMonBackPic_UrshifuRapidStrikeStyle[];
 extern const u32 gMonBackPic_ZarudeDada[];
 extern const u32 gMonBackPic_CalyrexIceRider[];
 extern const u32 gMonBackPic_CalyrexShadowRider[];
+extern const u32 gMonBackPic_MurkrowShadow[];
+extern const u32 gMonBackPic_NatuShadow[];
 
 extern const u32 gMonPalette_CircledQuestionMark[];
 extern const u32 gMonPalette_DoubleQuestionMark[];
@@ -3507,6 +3511,8 @@ extern const u32 gMonPalette_UrshifuRapidStrikeStyle[];
 extern const u32 gMonPalette_ZarudeDada[];
 extern const u32 gMonPalette_CalyrexIceRider[];
 extern const u32 gMonPalette_CalyrexShadowRider[];
+extern const u32 gMonPalette_MurkrowShadow[];
+extern const u32 gMonPalette_NatuShadow[];
 extern const u32 gMonPalette_Egg[];
 
 extern const u32 gMonShinyPalette_CircledQuestionMark[];
@@ -4666,6 +4672,8 @@ extern const u32 gMonShinyPalette_UrshifuRapidStrikeStyle[];
 extern const u32 gMonShinyPalette_ZarudeDada[];
 extern const u32 gMonShinyPalette_CalyrexIceRider[];
 extern const u32 gMonShinyPalette_CalyrexShadowRider[];
+extern const u32 gMonShinyPalette_MurkrowShadow[];
+extern const u32 gMonShinyPalette_NatuShadow[];
 
 extern const u8 gMonIcon_QuestionMark[];
 extern const u8 gMonIcon_Bulbasaur[];
@@ -5687,6 +5695,8 @@ extern const u8 gMonIcon_NecrozmaDuskMane[];
 extern const u8 gMonIcon_NecrozmaDawnWings[];
 extern const u8 gMonIcon_NecrozmaUltra[];
 extern const u8 gMonIcon_MagearnaOriginalColor[];
+extern const u8 gMonIcon_MurkrowShadow[];
+extern const u8 gMonIcon_NatuShadow[];
 extern const u8 gMonIcon_Egg[];
 
 extern const u8 gMonFootprint_QuestionMark[];
@@ -6339,6 +6349,8 @@ extern const u8 gMonFootprint_Kyurem[];
 extern const u8 gMonFootprint_Keldeo[];
 extern const u8 gMonFootprint_Meloetta[];
 extern const u8 gMonFootprint_Genesect[];
+extern const u8 gMonFootprint_MurkrowShadow[];
+extern const u8 gMonFootprint_NatuShadow[];
 
 // trainer sprites
 extern const u32 gTrainerFrontPic_Hiker[];
@@ -8215,7 +8227,7 @@ extern const u32 gTitleScreenEmeraldVersionGfx[];
 extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
 extern const u32 gUnknown_08DE0644[];
-extern const u32 gUnknown_08DDE458[];
+//extern const u32 gUnknown_08DDE458[];
 extern const u16 gTitleScreenBgPalettes[];
 extern const u16 gTitleScreenPressStartPal[];
 extern const u16 gTitleScreenEmeraldVersionPal[];

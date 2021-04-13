@@ -650,5 +650,7 @@ const u8 *const gMonFootprintTable[] =
     [SPECIES_KELDEO] = gMonFootprint_Keldeo,
     [SPECIES_MELOETTA] = gMonFootprint_Meloetta,
     [SPECIES_GENESECT] = gMonFootprint_Genesect,
+    [SPECIES_MURKROW_SHADOW] = gMonFootprint_Murkrow,
+    [SPECIES_NATU_SHADOW] = gMonFootprint_Natu,
     [SPECIES_EGG] = gMonFootprint_Bulbasaur,
 };

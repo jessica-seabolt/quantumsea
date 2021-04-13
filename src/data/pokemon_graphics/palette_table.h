@@ -1271,6 +1271,8 @@ SPECIES_PAL(CRAMORANT_GULPING, gMonPalette_CramorantGulping),
 
     SPECIES_PAL(CALYREX_ICE_RIDER, gMonPalette_CalyrexIceRider),
     SPECIES_PAL(CALYREX_SHADOW_RIDER, gMonPalette_CalyrexShadowRider),
+    SPECIES_PAL(MURKROW_SHADOW, gMonPalette_MurkrowShadow),
+    SPECIES_PAL(NATU_SHADOW, gMonPalette_NatuShadow),
 
     SPECIES_PAL(EGG, gMonPalette_Egg),
 };

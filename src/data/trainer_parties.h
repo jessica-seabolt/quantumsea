@@ -4375,8 +4375,8 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne1[] = {
     .evs = {0, 0, 0, 252, 4, 252},
     .abilityNums = 0,
     .species = SPECIES_CORSOLA_GALARIAN,
-    .heldItem = ITEM_CHESTO_BERRY,
-    .moves = {MOVE_HEX, MOVE_WILL_O_WISP, MOVE_CONFUSE_RAY, MOVE_REST}
+    .heldItem = ITEM_FOCUS_SASH,
+    .moves = {MOVE_HEX, MOVE_WILL_O_WISP, MOVE_CONFUSE_RAY, MOVE_SELF_DESTRUCT}
     },
     {
     .iv = 255,
@@ -9054,16 +9054,16 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = {
     .lvl = 6,
     .evs = {252, 0, 252, 4, 0, 0},
     .abilityNums = 2,
-    .species = SPECIES_NATU,
+    .species = SPECIES_NATU_SHADOW,
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_STORED_POWER, MOVE_PECK, MOVE_LEER, MOVE_CALM_MIND}
     },
     {
-    .iv = 100,
+    .iv = 200,
     .lvl = 8,
     .evs = {0, 252, 0, 0, 4, 252},
     .abilityNums = 1,
-    .species = SPECIES_MURKROW,
+    .species = SPECIES_MURKROW_SHADOW,
     .heldItem = ITEM_BLACK_GLASSES,
     .moves = {MOVE_PURSUIT, MOVE_PECK, MOVE_CALM_MIND, MOVE_DOUBLE_TEAM}
     }

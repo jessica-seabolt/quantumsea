@@ -563,6 +563,24 @@ static const u16 sBadgeFlags[8] =
 };
 static const u16 sWhiteOutBadgeMoney[9] = { 8, 16, 24, 36, 48, 60, 80, 100, 120, };
 
+const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
+{
+    FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
+    FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
+};
+
+const u16 sLevelCaps[NUM_SOFT_CAPS] = { 18, 25, 31, 36, 41, 46, 51, 56 };
+const double sLevelCapReduction[7] = { .2, .175, .15, .125, .1, .075, .05 };
+const double sRelativePartyScaling[27] =
+{
+    3.00, 2.75, 2.50, 2.33, 2.25,
+    2.00, 1.80, 1.70, 1.60, 1.50,
+    1.40, 1.30, 1.20, 1.10, 1.00,
+    0.90, 0.80, 0.75, 0.66, 0.50,
+    0.40, 0.33, 0.25, 0.20, 0.15,
+    0.10, 0.05,
+};
+
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
     Cmd_attackcanceler,                          //0x0
@@ -1068,14 +1086,15 @@ static const u16 sPickupItems[] =
 static const u16 sRarePickupItems[] =
 {
     ITEM_HYPER_POTION,
-    ITEM_NUGGET,
-    ITEM_KINGS_ROCK,
-    ITEM_FULL_RESTORE,
+    ITEM_REVIVE,
     ITEM_ETHER,
-    ITEM_WHITE_HERB,
-    ITEM_TM44_REST,
+	ITEM_FULL_RESTORE,
+    ITEM_MAX_REVIVE,
     ITEM_ELIXIR,
-    ITEM_TM01_FOCUS_PUNCH,
+    ITEM_NUGGET,
+    ITEM_RARE_CANDY,
+    ITEM_WHITE_HERB,
+    ITEM_KINGS_ROCK,
     ITEM_LEFTOVERS,
     ITEM_TM26_EARTHQUAKE,
 };
@@ -3617,6 +3636,72 @@ static void Cmd_jumpbasedontype(void)
     }
 }
 
+u8 GetTeamLevel(void)
+{
+    u8 i;
+    u16 partyLevel = 0;
+    u16 threshold = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+            partyLevel += gPlayerParty[i].level;
+        else
+            break;
+    }
+    partyLevel /= i;
+
+    threshold = partyLevel * .8;
+    partyLevel = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            if (gPlayerParty[i].level >= threshold)
+                partyLevel += gPlayerParty[i].level;
+        }
+        else
+            break;
+    }
+    partyLevel /= i;
+
+    return partyLevel;
+}
+
+double GetPkmnExpMultiplier(u8 level)
+{
+    u8 i;
+    double lvlCapMultiplier = 1.0;
+    u8 levelDiff;
+    s8 avgDiff;
+
+    // multiply the usual exp yield by the soft cap multiplier
+    for (i = 0; i < NUM_SOFT_CAPS; i++)
+    {
+        if (!FlagGet(sLevelCapFlags[i]) && level >= sLevelCaps[i])
+        {
+            levelDiff = level - sLevelCaps[i];
+            if (levelDiff > 6)
+                levelDiff = 6;
+            lvlCapMultiplier = sLevelCapReduction[levelDiff];
+            break;
+        }
+    }
+
+    // multiply the usual exp yield by the party level multiplier
+    avgDiff = level - GetTeamLevel();
+
+    if (avgDiff >= 12)
+        avgDiff = 12;
+    else if (avgDiff <= -14)
+        avgDiff = -14;
+
+    avgDiff += 14;
+
+    return lvlCapMultiplier * sRelativePartyScaling[avgDiff];
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3729,13 +3814,15 @@ static void Cmd_getexp(void)
 
                 if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && !GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_IS_EGG))
                 {
+                    double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
+
                     if (gBattleStruct->sentInPokes & 1)
-                        gBattleMoveDamage = *exp;
+                        gBattleMoveDamage = *exp * expMultiplier;
                     else
                         gBattleMoveDamage = 0;
 
                     if (gSaveBlock2Ptr->expShare)
-                        gBattleMoveDamage += gExpShareExp;
+                        gBattleMoveDamage += gExpShareExp * expMultiplier;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)

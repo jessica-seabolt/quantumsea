@@ -169,15 +169,47 @@ RustboroCity_EventScript_Woman:: @ 81E088A
 RustboroCity_EventScript_Man1:: @ 81E0893
 	lock
 	faceplayer
+	goto_if_set FLAG_OBTAINED_ZORUA, ZoruaAlreadyObtained
 	goto_if_set FLAG_BADGE01_GET, RustboroCity_EventScript_Man1HaveBadge
 	msgbox RustboroCity_Text_HaveYouChallengedGym, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_EventScript_Man1HaveBadge:: @ 81E08A8
-	msgbox RustboroCity_Text_HeyThatsRustborosGymBadge, MSGBOX_DEFAULT
+ZoruaAlreadyObtained::
+	msgbox ZoruaAlreadyObtainedText, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
+
+ZoruaAlreadyObtainedText:
+	.string "Please take good care of my Zorua! I\n"
+	.string "promise it'll be a valuable fighter!$"
+
+RustboroCity_EventScript_Man1HaveBadge:: @ 81E08A8
+	msgbox RustboroCity_Text_HeyThatsRustborosGymBadge, MSGBOX_DEFAULT
+	closemessage
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq Script_PlayerHasFullPartyZorua
+	givemon SPECIES_ZORUA, 5, ITEM_LIFE_ORB
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox Text_ReceivedZorua, MSGBOX_DEFAULT
+	waitfanfare
+	setflag FLAG_OBTAINED_ZORUA
+	release
+	end
+
+Script_PlayerHasFullPartyZorua::
+	msgbox Text_PlayerHasFullPartyZorua, MSGBOX_DEFAULT
+	release
+	end
+
+Text_PlayerHasFullPartyZorua:
+	.string "Huh? Oh, your party is full. Come back\n"
+	.string "when you have room, okay?$"
+
+Text_ReceivedZorua:
+	.string "{PLAYER} received a Zorua!$"
 
 RustboroCity_EventScript_Boy2:: @ 81E08B2
 	lock
@@ -1535,7 +1567,11 @@ RustboroCity_Text_HeyThatsRustborosGymBadge: @ 81E139E
 	.string "Woah! You got the Umbra Badge? Like, the\n"
 	.string "real thing? That's awesome!\p"
 	.string "I guess you'll be heading out for your\n"
-	.string "next Badge, then? Good luck!$"
+	.string "next Badge, then?\p"
+	.string "Here, since you got that Badge, I think\n"
+	.string "you're the perfect person for this.\p"
+	.string "I can't raise it myself, so... please\n"
+	.string "give this Zorua a good home!$"
 
 RustboroCity_Text_YoureNewAroundHere: @ 81E1407
 	.string "I haven't seen you around here before.\n"

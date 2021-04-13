@@ -15,7 +15,7 @@ OldaleTown_House1_EventScript_Woman:: @ 81FBE86
 	end
 
 SideQuest3Completed::
-	msgbox Text_TM11, MSGBOX_NPC
+	msgbox Text_TM61, MSGBOX_NPC
 	release
 	end
 
@@ -33,8 +33,8 @@ GiveSideQuest3::
 
 CompleteQuest3::
 	msgbox YouDefeatedMySon, MSGBOX_SIGN
-	giveitem ITEM_TM11, 1
-	msgbox Text_TM11, MSGBOX_SIGN
+	giveitem ITEM_TM61, 1
+	msgbox Text_TM61, MSGBOX_SIGN
 	playfanfare MUS_REGISTER_MATCH_CALL
 	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_3
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_3
@@ -68,8 +68,8 @@ YouDefeatedMySon:
 	.string "loss, but I think it will help him grow.\p"
 	.string "Please, accept this as my thanks!$"
 
-Text_TM11:
-	.string "TM11 contains Will-O-Wisp. It can burn\n"
+Text_TM61:
+	.string "TM61 contains Will-O-Wisp. It can burn\n"
 	.string "opposing Pokémon in battle.\p"
 	.string "Use it wisely!"
 

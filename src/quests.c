@@ -1425,14 +1425,14 @@ s8 GetSetQuestFlag(u8 quest, u8 caseId)
     switch (caseId)
     {
     case FLAG_GET_UNLOCKED:
-        return gSaveBlock2Ptr->unlockedQuests[index] & mask;
+        return gSaveBlock1Ptr->unlockedQuests[index] & mask;
     case FLAG_SET_UNLOCKED:
-        gSaveBlock2Ptr->unlockedQuests[index] |= mask;
+        gSaveBlock1Ptr->unlockedQuests[index] |= mask;
         return 1;
     case FLAG_GET_COMPLETED:
-        return gSaveBlock2Ptr->completedQuests[index] & mask;
+        return gSaveBlock1Ptr->completedQuests[index] & mask;
     case FLAG_SET_COMPLETED:
-        gSaveBlock2Ptr->completedQuests[index] |= mask;
+        gSaveBlock1Ptr->completedQuests[index] |= mask;
         return 1;
     }
     
@@ -1441,8 +1441,8 @@ s8 GetSetQuestFlag(u8 quest, u8 caseId)
 
 s8 GetActiveQuestIndex(void)
 {
-    if (gSaveBlock2Ptr->activeQuest > 0)
-        return (gSaveBlock2Ptr->activeQuest - 1);
+    if (gSaveBlock1Ptr->activeQuest > 0)
+        return (gSaveBlock1Ptr->activeQuest - 1);
     else
         return NO_ACTIVE_QUEST;
 }
@@ -1457,12 +1457,12 @@ static bool8 IsActiveQuest(u8 questId)
 
 void SetActiveQuest(u8 questId)
 {
-    gSaveBlock2Ptr->activeQuest = questId + 1;  // 1-indexed
+    gSaveBlock1Ptr->activeQuest = questId + 1;  // 1-indexed
 }
 
 void ResetActiveQuest(void)
 {
-    gSaveBlock2Ptr->activeQuest = 0;
+    gSaveBlock1Ptr->activeQuest = 0;
 }
 
 /*
