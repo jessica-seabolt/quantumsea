@@ -11886,7 +11886,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -11980,7 +11980,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -20065,7 +20065,7 @@ static __attribute__((section("ewram_data"))) u32 sBattleTowerMultiBattleTypeFla
 
 struct ListMenuTemplate gScrollableMultichoice_ListMenuTemplate;
 
-extern const u16 gObjectEventPalette8[];
+extern const u16 gObjectEventPaletteQuinn[];
 extern const u16 gObjectEventPalette17[];
 extern const u16 gObjectEventPalette33[];
 extern const u16 gObjectEventPalette34[];
@@ -20607,7 +20607,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
                 LoadPalette(gObjectEventPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
             case 100:
-                LoadPalette(gObjectEventPalette8, 0x100 + (adjustedPaletteNum << 4), 0x20);
+                LoadPalette(gObjectEventPaletteQuinn, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
             case 105:
                 LoadPalette(gObjectEventPalette17, 0x100 + (adjustedPaletteNum << 4), 0x20);

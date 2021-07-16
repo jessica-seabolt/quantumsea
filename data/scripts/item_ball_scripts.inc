@@ -10,16 +10,28 @@ Route103_EventScript_ItemPPUp:: @ 8290CF2
 	finditem ITEM_PROTEIN
 	end
 
+SpectreForest_EventScript_ItemPPUp:: @ 8290CF2
+	finditem ITEM_PP_UP
+	end
+
+SpectreForest_EventScript_ItemTM64:: @ 8290CF2
+	finditem ITEM_TM64
+	end
+
+SpectreForest_EventScript_ItemSuperPotion:: @ 8290CF2
+	finditem ITEM_SUPER_POTION
+	end
+
 Route104_EventScript_ItemPPUp:: @ 8290CFF
 	finditem ITEM_PP_UP
 	end
 
 Route104_EventScript_ItemPokeBall:: @ 8290D0C
-	finditem ITEM_POKE_BALL
+	finditem ITEM_TM66
 	end
 
 Route104_EventScript_ItemXAccuracy:: @ 8290D19
-	finditem ITEM_X_ACCURACY
+	finditem ITEM_TM76
 	end
 
 Route104_EventScript_ItemPotion:: @ 8290D26
@@ -311,7 +323,11 @@ PetalburgCity_EventScript_ItemEther:: @ 82910C1
 	end
 
 MauvilleCity_EventScript_ItemXSpeed:: @ 82910CE
-	finditem ITEM_X_SPEED
+	finditem ITEM_AGGRONITE
+	end
+
+MauvilleCity_EventScript_ItemLightClay:: @ 82910CE
+	finditem ITEM_LIGHT_CLAY
 	end
 
 RustboroCity_EventScript_ItemXDefend:: @ 82910DB

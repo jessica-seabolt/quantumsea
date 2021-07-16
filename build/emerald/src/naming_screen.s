@@ -5162,33 +5162,29 @@ NamingScreen_CreatePlayerIcon:
 .LBB43:
 .LM548:
 
-	ldr	r0, .L300
+	ldr	r0, .L302
 	ldr	r0, [r0]
-	ldr	r1, .L300+0x4
-	add	r0, r0, r1
-	ldrb	r1, [r0]
-	mov	r0, #0x0
-	bl	GetRivalAvatarGraphicsIdByStateIdAndGender
-	lsl	r0, r0, #0x18
-	lsr	r0, r0, #0x18
+	ldrb	r0, [r0, #0x8]
+	cmp	r0, #0
+	beq	.L300	@cond_branch
 .LM549:
 
-	ldr	r1, .L300+0x8
-	mov	r2, #0x0
-	str	r2, [sp]
+	ldr	r1, .L302+0x4
+	mov	r0, #0x0
+	str	r0, [sp]
+	mov	r0, #0x59
 	mov	r2, #0x38
 	mov	r3, #0x25
 	bl	AddPseudoObjectEvent
-	add	r1, r0, #0
-	lsl	r1, r1, #0x18
-	lsr	r1, r1, #0x18
+	lsl	r0, r0, #0x18
+	lsr	r2, r0, #0x18
 .LM550:
 
-	ldr	r2, .L300+0xc
-	lsl	r0, r1, #0x4
-	add	r0, r0, r1
-	lsl	r0, r0, #0x2
+	ldr	r1, .L302+0x8
+	lsl	r0, r2, #0x4
 	add	r0, r0, r2
+	lsl	r0, r0, #0x2
+	add	r0, r0, r1
 	ldrb	r1, [r0, #0x5]
 	mov	r2, #0xc
 	orr	r1, r1, r2
@@ -5199,15 +5195,49 @@ NamingScreen_CreatePlayerIcon:
 	bl	StartSpriteAnim
 .LM552:
 
+	b	.L301
+.L303:
+	.align	2, 0
+.L302:
+	.word	gSaveBlock2Ptr
+	.word	SpriteCallbackDummy
+	.word	gSprites
+.L300:
+.LM553:
+
+	ldr	r1, .L304
+	str	r0, [sp]
+	mov	r0, #0x0
+	mov	r2, #0x38
+	mov	r3, #0x25
+	bl	AddPseudoObjectEvent
+	lsl	r0, r0, #0x18
+	lsr	r2, r0, #0x18
+.LM554:
+
+	ldr	r1, .L304+0x4
+	lsl	r0, r2, #0x4
+	add	r0, r0, r2
+	lsl	r0, r0, #0x2
+	add	r0, r0, r1
+	ldrb	r1, [r0, #0x5]
+	mov	r2, #0xc
+	orr	r1, r1, r2
+	strb	r1, [r0, #0x5]
+.LM555:
+
+	mov	r1, #0x4
+	bl	StartSpriteAnim
+.L301:
+.LM556:
+
 .LBE43:
 	add	sp, sp, #0x4
 	pop	{r0}
 	bx	r0
-.L301:
+.L305:
 	.align	2, 0
-.L300:
-	.word	sNamingScreen
-	.word	0x1e34
+.L304:
 	.word	SpriteCallbackDummy
 	.word	gSprites
 .LFE61:
@@ -5218,46 +5248,46 @@ NamingScreen_CreatePlayerIcon:
 	.thumb_func
 NamingScreen_CreatePCIcon:
 .LFB62:
-.LM553:
+.LM557:
 
 	push	{r4, lr}
-.LM554:
+.LM558:
 
 .LBB44:
-.LM555:
+.LM559:
 
-	ldr	r0, .L303
+	ldr	r0, .L307
 	mov	r1, #0x38
 	mov	r2, #0x29
 	mov	r3, #0x0
 	bl	CreateSprite
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM556:
+.LM560:
 
 	lsl	r4, r0, #0x4
 	add	r4, r4, r0
 	lsl	r4, r4, #0x2
-	ldr	r0, .L303+0x4
+	ldr	r0, .L307+0x4
 	add	r4, r4, r0
-	ldr	r1, .L303+0x8
+	ldr	r1, .L307+0x8
 	add	r0, r4, #0
 	bl	SetSubspriteTables
-.LM557:
+.LM561:
 
 	ldrb	r0, [r4, #0x5]
 	mov	r1, #0xc
 	orr	r0, r0, r1
 	strb	r0, [r4, #0x5]
-.LM558:
+.LM562:
 
 .LBE44:
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.L304:
+.L308:
 	.align	2, 0
-.L303:
+.L307:
 	.word	sSpriteTemplate_PCIcon
 	.word	gSprites
 	.word	sSubspriteTable_PCIcon
@@ -5269,27 +5299,27 @@ NamingScreen_CreatePCIcon:
 	.thumb_func
 NamingScreen_CreateMonIcon:
 .LFB63:
-.LM559:
+.LM563:
 
 	push	{lr}
 	add	sp, sp, #-0x8
-.LM560:
+.LM564:
 
 .LBB45:
-.LM561:
+.LM565:
 
 	bl	LoadMonIconPalettes
-.LM562:
+.LM566:
 
-	ldr	r0, .L306
+	ldr	r0, .L310
 	ldr	r3, [r0]
-	ldr	r1, .L306+0x4
+	ldr	r1, .L310+0x4
 	add	r0, r3, r1
 	ldrh	r0, [r0]
-	ldr	r1, .L306+0x8
+	ldr	r1, .L310+0x8
 	mov	r2, #0x0
 	str	r2, [sp]
-	ldr	r2, .L306+0xc
+	ldr	r2, .L310+0xc
 	add	r3, r3, r2
 	ldr	r2, [r3]
 	str	r2, [sp, #0x4]
@@ -5298,9 +5328,9 @@ NamingScreen_CreateMonIcon:
 	bl	CreateMonIcon
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM563:
+.LM567:
 
-	ldr	r2, .L306+0x10
+	ldr	r2, .L310+0x10
 	lsl	r1, r0, #0x4
 	add	r1, r1, r0
 	lsl	r1, r1, #0x2
@@ -5309,15 +5339,15 @@ NamingScreen_CreateMonIcon:
 	mov	r2, #0xc
 	orr	r0, r0, r2
 	strb	r0, [r1, #0x5]
-.LM564:
+.LM568:
 
 .LBE45:
 	add	sp, sp, #0x8
 	pop	{r0}
 	bx	r0
-.L307:
+.L311:
 	.align	2, 0
-.L306:
+.L310:
 	.word	sNamingScreen
 	.word	0x1e34
 	.word	SpriteCallbackDummy
@@ -5331,16 +5361,16 @@ NamingScreen_CreateMonIcon:
 	.thumb_func
 NamingScreen_CreateWaldaDadIcon:
 .LFB64:
-.LM565:
+.LM569:
 
 	push	{lr}
 	add	sp, sp, #-0x4
-.LM566:
+.LM570:
 
 .LBB46:
-.LM567:
+.LM571:
 
-	ldr	r1, .L309
+	ldr	r1, .L313
 	mov	r0, #0x0
 	str	r0, [sp]
 	mov	r0, #0x13
@@ -5350,9 +5380,9 @@ NamingScreen_CreateWaldaDadIcon:
 	add	r1, r0, #0
 	lsl	r1, r1, #0x18
 	lsr	r1, r1, #0x18
-.LM568:
+.LM572:
 
-	ldr	r2, .L309+0x4
+	ldr	r2, .L313+0x4
 	lsl	r0, r1, #0x4
 	add	r0, r0, r1
 	lsl	r0, r0, #0x2
@@ -5361,19 +5391,19 @@ NamingScreen_CreateWaldaDadIcon:
 	mov	r2, #0xc
 	orr	r1, r1, r2
 	strb	r1, [r0, #0x5]
-.LM569:
+.LM573:
 
 	mov	r1, #0x4
 	bl	StartSpriteAnim
-.LM570:
+.LM574:
 
 .LBE46:
 	add	sp, sp, #0x4
 	pop	{r0}
 	bx	r0
-.L310:
+.L314:
 	.align	2, 0
-.L309:
+.L313:
 	.word	SpriteCallbackDummy
 	.word	gSprites
 .LFE64:
@@ -5384,60 +5414,90 @@ NamingScreen_CreateWaldaDadIcon:
 	.thumb_func
 NamingScreen_CreateRivalIcon:
 .LFB65:
-.LM571:
+.LM575:
 
 	push	{lr}
 	add	sp, sp, #-0x4
-.LM572:
+.LM576:
 
 .LBB47:
-.LM573:
+.LM577:
 
-	ldr	r0, .L312
+	ldr	r0, .L318
 	ldr	r0, [r0]
 	ldrb	r0, [r0, #0x8]
-	mov	r1, #0x1
-	eor	r1, r1, r0
-	mov	r0, #0x0
-	bl	GetRivalAvatarGraphicsIdByStateIdAndGender
-	lsl	r0, r0, #0x18
-	lsr	r0, r0, #0x18
-.LM574:
+	cmp	r0, #0
+	beq	.L316	@cond_branch
+.LM578:
 
-	ldr	r1, .L312+0x4
-	mov	r2, #0x0
-	str	r2, [sp]
+	ldr	r1, .L318+0x4
+	mov	r0, #0x0
+	str	r0, [sp]
 	mov	r2, #0x38
 	mov	r3, #0x25
 	bl	AddPseudoObjectEvent
-	add	r1, r0, #0
-	lsl	r1, r1, #0x18
-	lsr	r1, r1, #0x18
-.LM575:
+	lsl	r0, r0, #0x18
+	lsr	r2, r0, #0x18
+.LM579:
 
-	ldr	r2, .L312+0x8
-	lsl	r0, r1, #0x4
-	add	r0, r0, r1
-	lsl	r0, r0, #0x2
+	ldr	r1, .L318+0x8
+	lsl	r0, r2, #0x4
 	add	r0, r0, r2
+	lsl	r0, r0, #0x2
+	add	r0, r0, r1
 	ldrb	r1, [r0, #0x5]
 	mov	r2, #0xc
 	orr	r1, r1, r2
 	strb	r1, [r0, #0x5]
-.LM576:
+.LM580:
 
 	mov	r1, #0x4
 	bl	StartSpriteAnim
-.LM577:
+.LM581:
+
+	b	.L317
+.L319:
+	.align	2, 0
+.L318:
+	.word	gSaveBlock2Ptr
+	.word	SpriteCallbackDummy
+	.word	gSprites
+.L316:
+.LM582:
+
+	ldr	r1, .L320
+	str	r0, [sp]
+	mov	r0, #0x59
+	mov	r2, #0x38
+	mov	r3, #0x25
+	bl	AddPseudoObjectEvent
+	lsl	r0, r0, #0x18
+	lsr	r2, r0, #0x18
+.LM583:
+
+	ldr	r1, .L320+0x4
+	lsl	r0, r2, #0x4
+	add	r0, r0, r2
+	lsl	r0, r0, #0x2
+	add	r0, r0, r1
+	ldrb	r1, [r0, #0x5]
+	mov	r2, #0xc
+	orr	r1, r1, r2
+	strb	r1, [r0, #0x5]
+.LM584:
+
+	mov	r1, #0x4
+	bl	StartSpriteAnim
+.L317:
+.LM585:
 
 .LBE47:
 	add	sp, sp, #0x4
 	pop	{r0}
 	bx	r0
-.L313:
+.L321:
 	.align	2, 0
-.L312:
-	.word	gSaveBlock2Ptr
+.L320:
 	.word	SpriteCallbackDummy
 	.word	gSprites
 .LFE65:
@@ -5458,71 +5518,71 @@ sKeyboardKeyHandlers:
 	.thumb_func
 HandleKeyboardEvent:
 .LFB66:
-.LM578:
+.LM586:
 
 	push	{r4, r5, lr}
-.LM579:
+.LM587:
 
 .LBB48:
 	bl	GetInputEvent
 	lsl	r0, r0, #0x18
 	lsr	r4, r0, #0x18
 	add	r5, r4, #0
-.LM580:
+.LM588:
 
 	bl	GetKeyRoleAtCursorPos
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM581:
+.LM589:
 
 	cmp	r4, #0x8
-	bne	.L315	@cond_branch
-.LM582:
+	bne	.L323	@cond_branch
+.LM590:
 
 	bl	SwapKeyboardPage
-	b	.L322
-.L315:
-.LM583:
+	b	.L330
+.L323:
+.LM591:
 
 	cmp	r4, #0x6
-	bne	.L317	@cond_branch
-.LM584:
+	bne	.L325	@cond_branch
+.LM592:
 
 	bl	DeleteTextCharacter
-.LM585:
+.LM593:
 
-	b	.L323
-.L317:
-.LM586:
+	b	.L331
+.L325:
+.LM594:
 
 	cmp	r5, #0x9
-	beq	.L319	@cond_branch
-.LM587:
+	beq	.L327	@cond_branch
+.LM595:
 
-	ldr	r1, .L324
+	ldr	r1, .L332
 	lsl	r0, r0, #0x2
 	add	r0, r0, r1
 	ldr	r1, [r0]
 	add	r0, r5, #0
 	bl	_call_via_r1
-.L322:
+.L330:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-	b	.L321
-.L325:
+	b	.L329
+.L333:
 	.align	2, 0
-.L324:
+.L332:
 	.word	sKeyboardKeyHandlers
-.L319:
-.LM588:
+.L327:
+.LM596:
 
 	bl	MoveCursorToOKButton
-.LM589:
+.LM597:
 
-.L323:
+.L331:
 	mov	r0, #0x0
-.L321:
-.LM590:
+.L329:
+.LM598:
 
 .LBE48:
 	pop	{r4, r5}
@@ -5536,82 +5596,82 @@ HandleKeyboardEvent:
 	.thumb_func
 KeyboardKeyHandler_Character:
 .LFB67:
-.LM591:
+.LM599:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM592:
+.LM600:
 
 .LBB49:
 	mov	r0, #0x3
 	mov	r1, #0x0
 	mov	r2, #0x0
 	bl	TryStartButtonFlash
-.LM593:
+.LM601:
 
 	cmp	r4, #0x5
-	bne	.L327	@cond_branch
-.LM594:
+	bne	.L335	@cond_branch
+.LM602:
 
 .LBB50:
 	bl	AddTextCharacter
 	lsl	r0, r0, #0x18
 	lsr	r4, r0, #0x18
-.LM595:
+.LM603:
 
-	ldr	r0, .L330
+	ldr	r0, .L338
 	ldr	r0, [r0]
-	ldr	r1, .L330+0x4
+	ldr	r1, .L338+0x4
 	add	r0, r0, r1
 	ldrb	r0, [r0]
 	cmp	r0, #0x1
-	bne	.L328	@cond_branch
+	bne	.L336	@cond_branch
 	bl	GetTextEntryPosition
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	cmp	r0, #0x1
-	bne	.L328	@cond_branch
-.LM596:
+	bne	.L336	@cond_branch
+.LM604:
 
 	bl	MainState_StartPageSwap
-.L328:
-.LM597:
+.L336:
+.LM605:
 
 	bl	SquishCursor
-.LM598:
+.LM606:
 
 	cmp	r4, #0
-	beq	.L327	@cond_branch
-.LM599:
+	beq	.L335	@cond_branch
+.LM607:
 
 	mov	r0, #0x2
 	bl	SetInputState
-.LM600:
+.LM608:
 
-	ldr	r0, .L330
+	ldr	r0, .L338
 	ldr	r0, [r0]
-	ldr	r1, .L330+0x8
+	ldr	r1, .L338+0x8
 	add	r0, r0, r1
 	mov	r1, #0x3
 	strb	r1, [r0]
-.LM601:
+.LM609:
 
 .LBE50:
-.L327:
-.LM602:
+.L335:
+.LM610:
 
 	mov	r0, #0x0
-.LM603:
+.LM611:
 
 .LBE49:
 	pop	{r4}
 	pop	{r1}
 	bx	r1
-.L331:
+.L339:
 	.align	2, 0
-.L330:
+.L338:
 	.word	sNamingScreen
 	.word	0x1e22
 	.word	0x1e10
@@ -5623,34 +5683,34 @@ KeyboardKeyHandler_Character:
 	.thumb_func
 KeyboardKeyHandler_Page:
 .LFB68:
-.LM604:
+.LM612:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM605:
+.LM613:
 
 	mov	r0, #0x0
 	mov	r1, #0x1
 	mov	r2, #0x0
 	bl	TryStartButtonFlash
-.LM606:
+.LM614:
 
 	cmp	r4, #0x5
-	beq	.L333	@cond_branch
-.LM607:
+	beq	.L341	@cond_branch
+.LM615:
 
 	mov	r0, #0x0
-	b	.L335
-.L333:
-.LM608:
+	b	.L343
+.L341:
+.LM616:
 
 	bl	SwapKeyboardPage
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.L335:
-.LM609:
+.L343:
+.LM617:
 
 	pop	{r4}
 	pop	{r1}
@@ -5663,30 +5723,30 @@ KeyboardKeyHandler_Page:
 	.thumb_func
 KeyboardKeyHandler_Backspace:
 .LFB69:
-.LM610:
+.LM618:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM611:
+.LM619:
 
 	mov	r0, #0x1
 	mov	r1, #0x1
 	mov	r2, #0x0
 	bl	TryStartButtonFlash
-.LM612:
+.LM620:
 
 	cmp	r4, #0x5
-	bne	.L337	@cond_branch
-.LM613:
+	bne	.L345	@cond_branch
+.LM621:
 
 	bl	DeleteTextCharacter
-.L337:
-.LM614:
+.L345:
+.LM622:
 
 	mov	r0, #0x0
-.LM615:
+.LM623:
 
 	pop	{r4}
 	pop	{r1}
@@ -5699,51 +5759,51 @@ KeyboardKeyHandler_Backspace:
 	.thumb_func
 KeyboardKeyHandler_OK:
 .LFB70:
-.LM616:
+.LM624:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM617:
+.LM625:
 
 	mov	r0, #0x2
 	mov	r1, #0x1
 	mov	r2, #0x0
 	bl	TryStartButtonFlash
-.LM618:
+.LM626:
 
 	cmp	r4, #0x5
-	beq	.L339	@cond_branch
-.LM619:
+	beq	.L347	@cond_branch
+.LM627:
 
 	mov	r0, #0x0
-	b	.L341
-.L339:
-.LM620:
+	b	.L349
+.L347:
+.LM628:
 
 	mov	r0, #0x5
 	bl	PlaySE
-.LM621:
+.LM629:
 
-	ldr	r0, .L342
+	ldr	r0, .L350
 	ldr	r0, [r0]
-	ldr	r1, .L342+0x4
+	ldr	r1, .L350+0x4
 	add	r0, r0, r1
 	mov	r1, #0x6
 	strb	r1, [r0]
-.LM622:
+.LM630:
 
 	mov	r0, #0x1
-.L341:
-.LM623:
+.L349:
+.LM631:
 
 	pop	{r4}
 	pop	{r1}
 	bx	r1
-.L343:
+.L351:
 	.align	2, 0
-.L342:
+.L350:
 	.word	sNamingScreen
 	.word	0x1e10
 .LFE70:
@@ -5754,25 +5814,25 @@ KeyboardKeyHandler_OK:
 	.thumb_func
 SwapKeyboardPage:
 .LFB71:
-.LM624:
+.LM632:
 
-.LM625:
+.LM633:
 
-	ldr	r0, .L345
+	ldr	r0, .L353
 	ldr	r0, [r0]
-	ldr	r1, .L345+0x4
+	ldr	r1, .L353+0x4
 	add	r0, r0, r1
 	mov	r1, #0x4
 	strb	r1, [r0]
-.LM626:
+.LM634:
 
 	mov	r0, #0x1
-.LM627:
+.LM635:
 
 	bx	lr
-.L346:
+.L354:
 	.align	2, 0
-.L345:
+.L353:
 	.word	sNamingScreen
 	.word	0x1e10
 .LFE71:
@@ -5792,21 +5852,21 @@ sInputFuncs:
 	.thumb_func
 CreateInputHandlerTask:
 .LFB72:
-.LM628:
+.LM636:
 
 	push	{lr}
-.LM629:
+.LM637:
 
-	ldr	r0, .L348
+	ldr	r0, .L356
 	mov	r1, #0x1
 	bl	CreateTask
-.LM630:
+.LM638:
 
 	pop	{r0}
 	bx	r0
-.L349:
+.L357:
 	.align	2, 0
-.L348:
+.L356:
 	.word	Task_HandleInput
 .LFE72:
 .Lfe72:
@@ -5816,32 +5876,32 @@ CreateInputHandlerTask:
 	.thumb_func
 GetInputEvent:
 .LFB73:
-.LM631:
+.LM639:
 
 	push	{lr}
-.LM632:
+.LM640:
 
 .LBB51:
-	ldr	r0, .L351
+	ldr	r0, .L359
 	bl	FindTaskIdByFunc
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM633:
+.LM641:
 
-	ldr	r2, .L351+0x4
+	ldr	r2, .L359+0x4
 	lsl	r1, r0, #0x2
 	add	r1, r1, r0
 	lsl	r1, r1, #0x3
 	add	r1, r1, r2
 	ldrb	r0, [r1, #0xa]
-.LM634:
+.LM642:
 
 .LBE51:
 	pop	{r1}
 	bx	r1
-.L352:
+.L360:
 	.align	2, 0
-.L351:
+.L359:
 	.word	Task_HandleInput
 	.word	gTasks
 .LFE73:
@@ -5852,36 +5912,36 @@ GetInputEvent:
 	.thumb_func
 SetInputState:
 .LFB74:
-.LM635:
+.LM643:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM636:
+.LM644:
 
 .LBB52:
-	ldr	r0, .L354
+	ldr	r0, .L362
 	bl	FindTaskIdByFunc
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM637:
+.LM645:
 
-	ldr	r2, .L354+0x4
+	ldr	r2, .L362+0x4
 	lsl	r1, r0, #0x2
 	add	r1, r1, r0
 	lsl	r1, r1, #0x3
 	add	r1, r1, r2
 	strh	r4, [r1, #0x8]
-.LM638:
+.LM646:
 
 .LBE52:
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.L355:
+.L363:
 	.align	2, 0
-.L354:
+.L362:
 	.word	Task_HandleInput
 	.word	gTasks
 .LFE74:
@@ -5892,16 +5952,16 @@ SetInputState:
 	.thumb_func
 Task_HandleInput:
 .LFB75:
-.LM639:
+.LM647:
 
 	push	{lr}
 	add	r1, r0, #0
 	lsl	r1, r1, #0x18
 	lsr	r1, r1, #0x18
-.LM640:
+.LM648:
 
-	ldr	r3, .L357
-	ldr	r2, .L357+0x4
+	ldr	r3, .L365
+	ldr	r2, .L365+0x4
 	lsl	r0, r1, #0x2
 	add	r0, r0, r1
 	lsl	r0, r0, #0x3
@@ -5912,13 +5972,13 @@ Task_HandleInput:
 	add	r1, r1, r3
 	ldr	r1, [r1]
 	bl	_call_via_r1
-.LM641:
+.LM649:
 
 	pop	{r0}
 	bx	r0
-.L358:
+.L366:
 	.align	2, 0
-.L357:
+.L365:
 	.word	sInputFuncs
 	.word	gTasks
 .LFE75:
@@ -5929,13 +5989,13 @@ Task_HandleInput:
 	.thumb_func
 Input_Disabled:
 .LFB76:
-.LM642:
+.LM650:
 
-.LM643:
+.LM651:
 
 	mov	r1, #0x0
 	strh	r1, [r0, #0xa]
-.LM644:
+.LM652:
 
 	bx	lr
 .LFE76:
@@ -5946,83 +6006,83 @@ Input_Disabled:
 	.thumb_func
 Input_Enabled:
 .LFB77:
-.LM645:
+.LM653:
 
 	push	{lr}
 	add	r2, r0, #0
-.LM646:
+.LM654:
 
 .LBB53:
 	mov	r0, #0x0
 	strh	r0, [r2, #0xa]
-.LM647:
+.LM655:
 
 .LBB54:
-	ldr	r0, .L369
+	ldr	r0, .L377
 	ldrh	r1, [r0, #0x2e]
 	mov	r0, #0x1
 	and	r0, r0, r1
 .LBE54:
 	cmp	r0, #0
-	beq	.L361	@cond_branch
-.LM648:
+	beq	.L369	@cond_branch
+.LM656:
 
 	mov	r0, #0x5
 	strh	r0, [r2, #0xa]
-	b	.L362
-.L370:
+	b	.L370
+.L378:
 	.align	2, 0
-.L369:
+.L377:
 	.word	gMain
-.L361:
-.LM649:
+.L369:
+.LM657:
 
 .LBB55:
 	mov	r0, #0x2
 	and	r0, r0, r1
 .LBE55:
 	cmp	r0, #0
-	beq	.L363	@cond_branch
-.LM650:
+	beq	.L371	@cond_branch
+.LM658:
 
 	mov	r0, #0x6
 	strh	r0, [r2, #0xa]
-	b	.L362
-.L363:
-.LM651:
+	b	.L370
+.L371:
+.LM659:
 
 .LBB56:
 	mov	r0, #0x4
 	and	r0, r0, r1
 .LBE56:
 	cmp	r0, #0
-	beq	.L365	@cond_branch
-.LM652:
+	beq	.L373	@cond_branch
+.LM660:
 
 	mov	r0, #0x8
 	strh	r0, [r2, #0xa]
-	b	.L362
-.L365:
-.LM653:
+	b	.L370
+.L373:
+.LM661:
 
 .LBB57:
 	mov	r0, #0x8
 	and	r0, r0, r1
 .LBE57:
 	cmp	r0, #0
-	beq	.L367	@cond_branch
-.LM654:
+	beq	.L375	@cond_branch
+.LM662:
 
 	mov	r0, #0x9
 	strh	r0, [r2, #0xa]
-	b	.L362
-.L367:
-.LM655:
+	b	.L370
+.L375:
+.LM663:
 
 	add	r0, r2, #0
 	bl	HandleDpadMovement
-.L362:
-.LM656:
+.L370:
+.LM664:
 
 .LBE53:
 	pop	{r0}
@@ -6035,13 +6095,13 @@ Input_Enabled:
 	.thumb_func
 Input_Override:
 .LFB78:
-.LM657:
+.LM665:
 
-.LM658:
+.LM666:
 
 	mov	r1, #0x0
 	strh	r1, [r0, #0xa]
-.LM659:
+.LM667:
 
 	bx	lr
 .LFE78:
@@ -6079,7 +6139,7 @@ Input_Override:
 	.thumb_func
 HandleDpadMovement:
 .LFB79:
-.LM660:
+.LM668:
 
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, sl
@@ -6088,39 +6148,39 @@ HandleDpadMovement:
 	push	{r5, r6, r7}
 	add	sp, sp, #-0x34
 	mov	r9, r0
-.LM661:
+.LM669:
 
 .LBB58:
-	ldr	r1, .L396
+	ldr	r1, .L404
 	mov	r0, sp
 	mov	r2, #0xa
 	bl	memcpy
-.LM662:
+.LM670:
 
 	add	r0, sp, #0xc
 	mov	sl, r0
-	ldr	r1, .L396+0x4
+	ldr	r1, .L404+0x4
 	mov	r2, #0xa
 	bl	memcpy
-.LM663:
+.LM671:
 
 	mov	r1, sp
 	add	r1, r1, #0x18
 	str	r1, [sp, #0x2c]
-	ldr	r1, .L396+0x8
+	ldr	r1, .L404+0x8
 	ldr	r0, [sp, #0x2c]
 	mov	r2, #0x8
 	bl	memcpy
-.LM664:
+.LM672:
 
 	mov	r2, sp
 	add	r2, r2, #0x20
 	str	r2, [sp, #0x30]
-	ldr	r1, .L396+0xc
+	ldr	r1, .L404+0xc
 	add	r0, r2, #0
 	mov	r2, #0x6
 	bl	memcpy
-.LM665:
+.LM673:
 
 	add	r4, sp, #0x28
 	mov	r5, sp
@@ -6128,10 +6188,10 @@ HandleDpadMovement:
 	add	r0, r4, #0
 	add	r1, r5, #0
 	bl	GetCursorPos
-.LM666:
+.LM674:
 
 .LBB59:
-	ldr	r0, .L396+0x10
+	ldr	r0, .L404+0x10
 	ldrh	r2, [r0, #0x30]
 	mov	r0, #0x40
 	and	r0, r0, r2
@@ -6140,7 +6200,7 @@ HandleDpadMovement:
 .LBE59:
 	neg	r0, r0
 	lsr	r1, r0, #0x1f
-.LM667:
+.LM675:
 
 .LBB60:
 	mov	r0, #0x80
@@ -6148,40 +6208,40 @@ HandleDpadMovement:
 .LBE60:
 	add	r6, r4, #0
 	cmp	r0, #0
-	beq	.L374	@cond_branch
-.LM668:
+	beq	.L382	@cond_branch
+.LM676:
 
 	mov	r1, #0x2
-.L374:
-.LM669:
+.L382:
+.LM677:
 
 .LBB61:
 	mov	r0, #0x20
 	and	r0, r0, r2
 .LBE61:
 	cmp	r0, #0
-	beq	.L375	@cond_branch
-.LM670:
+	beq	.L383	@cond_branch
+.LM678:
 
 	mov	r1, #0x3
-.L375:
-.LM671:
+.L383:
+.LM679:
 
 .LBB62:
 	mov	r0, #0x10
 	and	r0, r0, r2
 .LBE62:
 	cmp	r0, #0
-	beq	.L376	@cond_branch
-.LM672:
+	beq	.L384	@cond_branch
+.LM680:
 
 	mov	r1, #0x4
-.L376:
-.LM673:
+.L384:
+.LM681:
 
 	ldrh	r0, [r6]
 	mov	r8, r0
-.LM674:
+.LM682:
 
 	lsl	r1, r1, #0x1
 	mov	r2, sp
@@ -6189,27 +6249,27 @@ HandleDpadMovement:
 	ldrh	r0, [r7]
 	add	r0, r0, r8
 	strh	r0, [r6]
-.LM675:
+.LM683:
 
 	add	r1, r1, sl
 	ldrh	r0, [r1]
 	ldrh	r1, [r5]
 	add	r0, r0, r1
 	strh	r0, [r5]
-.LM676:
+.LM684:
 
 	mov	r2, #0x0
 	ldrsh	r0, [r6, r2]
 	cmp	r0, #0
-	bge	.L377	@cond_branch
-.LM677:
+	bge	.L385	@cond_branch
+.LM685:
 
 	bl	GetCurrentPageColumnCount
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	strh	r0, [r6]
-.L377:
-.LM678:
+.L385:
+.LM686:
 
 	mov	r0, #0x0
 	ldrsh	r4, [r6, r0]
@@ -6217,19 +6277,19 @@ HandleDpadMovement:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	cmp	r4, r0
-	ble	.L378	@cond_branch
-.LM679:
+	ble	.L386	@cond_branch
+.LM687:
 
 	mov	r0, #0x0
 	strh	r0, [r6]
-.L378:
-.LM680:
+.L386:
+.LM688:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r7, r1]
 	cmp	r0, #0
-	beq	.L379	@cond_branch
-.LM681:
+	beq	.L387	@cond_branch
+.LM689:
 
 	mov	r2, #0x0
 	ldrsh	r4, [r6, r2]
@@ -6237,32 +6297,32 @@ HandleDpadMovement:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	cmp	r4, r0
-	bne	.L380	@cond_branch
-.LM682:
+	bne	.L388	@cond_branch
+.LM690:
 
 	ldrh	r0, [r5]
 	mov	r1, r9
 	strh	r0, [r1, #0xc]
-.LM683:
+.LM691:
 
 	mov	r2, #0x0
 	ldrsh	r0, [r5, r2]
 	lsl	r0, r0, #0x1
 	ldr	r1, [sp, #0x2c]
 	add	r0, r1, r0
-.LM684:
+.LM692:
 
-	b	.L394
-.L397:
+	b	.L402
+.L405:
 	.align	2, 0
-.L396:
+.L404:
 	.word	.LC138
 	.word	.LC140
 	.word	.LC142
 	.word	.LC144
 	.word	gMain
-.L380:
-.LM685:
+.L388:
+.LM693:
 
 	mov	r2, r8
 	lsl	r4, r2, #0x10
@@ -6271,32 +6331,32 @@ HandleDpadMovement:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	cmp	r4, r0
-	bne	.L379	@cond_branch
-.LM686:
+	bne	.L387	@cond_branch
+.LM694:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r5, r1]
 	cmp	r0, #0x1
-	bne	.L383	@cond_branch
-.LM687:
+	bne	.L391	@cond_branch
+.LM695:
 
 	mov	r2, r9
 	ldrh	r0, [r2, #0xc]
-	b	.L395
-.L383:
-.LM688:
+	b	.L403
+.L391:
+.LM696:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r5, r1]
 	lsl	r0, r0, #0x1
 	ldr	r2, [sp, #0x30]
 	add	r0, r2, r0
-.L394:
+.L402:
 	ldrh	r0, [r0]
-.L395:
+.L403:
 	strh	r0, [r5]
-.L379:
-.LM689:
+.L387:
+.LM697:
 
 	mov	r0, #0x0
 	ldrsh	r4, [r6, r0]
@@ -6304,84 +6364,84 @@ HandleDpadMovement:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	cmp	r4, r0
-	bne	.L385	@cond_branch
-.LM690:
+	bne	.L393	@cond_branch
+.LM698:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r5, r1]
 	cmp	r0, #0
-	bge	.L386	@cond_branch
-.LM691:
+	bge	.L394	@cond_branch
+.LM699:
 
 	mov	r0, #0x2
 	strh	r0, [r5]
-.L386:
-.LM692:
+.L394:
+.LM700:
 
 	mov	r2, #0x0
 	ldrsh	r0, [r5, r2]
 	cmp	r0, #0x2
-	ble	.L387	@cond_branch
-.LM693:
+	ble	.L395	@cond_branch
+.LM701:
 
 	mov	r0, #0x0
 	strh	r0, [r5]
-.L387:
-.LM694:
+.L395:
+.LM702:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r5, r1]
 	cmp	r0, #0
-	bne	.L388	@cond_branch
-.LM695:
+	bne	.L396	@cond_branch
+.LM703:
 
 	mov	r0, #0x1
 	mov	r2, r9
 	strh	r0, [r2, #0xc]
-	b	.L391
-.L388:
-.LM696:
+	b	.L399
+.L396:
+.LM704:
 
 	cmp	r0, #0x2
-	bne	.L391	@cond_branch
-.LM697:
+	bne	.L399	@cond_branch
+.LM705:
 
 	mov	r1, r9
 	strh	r0, [r1, #0xc]
-.LM698:
+.LM706:
 
-	b	.L391
-.L385:
-.LM699:
+	b	.L399
+.L393:
+.LM707:
 
 	mov	r2, #0x0
 	ldrsh	r0, [r5, r2]
 	cmp	r0, #0
-	bge	.L392	@cond_branch
-.LM700:
+	bge	.L400	@cond_branch
+.LM708:
 
 	mov	r0, #0x3
 	strh	r0, [r5]
-.L392:
-.LM701:
+.L400:
+.LM709:
 
 	mov	r1, #0x0
 	ldrsh	r0, [r5, r1]
 	cmp	r0, #0x3
-	ble	.L391	@cond_branch
-.LM702:
+	ble	.L399	@cond_branch
+.LM710:
 
 	mov	r0, #0x0
 	strh	r0, [r5]
-.L391:
-.LM703:
+.L399:
+.LM711:
 
 	mov	r2, #0x0
 	ldrsh	r0, [r6, r2]
 	mov	r2, #0x0
 	ldrsh	r1, [r5, r2]
 	bl	SetCursorPos
-.LM704:
+.LM712:
 
 .LBE58:
 	add	sp, sp, #0x34
@@ -6400,25 +6460,25 @@ HandleDpadMovement:
 	.thumb_func
 DrawNormalTextEntryBox:
 .LFB80:
-.LM705:
+.LM713:
 
 	push	{r4, r5, lr}
 	add	sp, sp, #-0xc
-.LM706:
+.LM714:
 
-	ldr	r5, .L399
+	ldr	r5, .L407
 	ldr	r0, [r5]
-	ldr	r4, .L399+0x4
+	ldr	r4, .L407+0x4
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	mov	r1, #0x11
 	bl	FillWindowPixelBuffer
-.LM707:
+.LM715:
 
 	ldr	r1, [r5]
 	add	r0, r1, r4
 	ldrb	r0, [r0]
-	ldr	r2, .L399+0x8
+	ldr	r2, .L407+0x8
 	add	r1, r1, r2
 	ldr	r1, [r1]
 	ldr	r2, [r1, #0x8]
@@ -6430,21 +6490,21 @@ DrawNormalTextEntryBox:
 	mov	r1, #0x1
 	mov	r3, #0x8
 	bl	AddTextPrinterParameterized
-.LM708:
+.LM716:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	bl	PutWindowTilemap
-.LM709:
+.LM717:
 
 	add	sp, sp, #0xc
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L400:
+.L408:
 	.align	2, 0
-.L399:
+.L407:
 	.word	sNamingScreen
 	.word	0x1e14
 	.word	0x1e28
@@ -6456,45 +6516,45 @@ DrawNormalTextEntryBox:
 	.thumb_func
 DrawMonTextEntryBox:
 .LFB81:
-.LM710:
+.LM718:
 
 	push	{r4, r5, lr}
 	add	sp, sp, #-0x2c
-.LM711:
+.LM719:
 
 .LBB63:
-.LM712:
+.LM720:
 
-	ldr	r5, .L402
+	ldr	r5, .L410
 	ldr	r0, [r5]
-	ldr	r1, .L402+0x4
+	ldr	r1, .L410+0x4
 	add	r0, r0, r1
 	ldrh	r1, [r0]
 	mov	r0, #0xb
 	mul	r1, r1, r0
-	ldr	r0, .L402+0x8
+	ldr	r0, .L410+0x8
 	add	r1, r1, r0
 	add	r0, sp, #0xc
 	bl	StringCopy
-.LM713:
+.LM721:
 
 	ldr	r0, [r5]
-	ldr	r1, .L402+0xc
+	ldr	r1, .L410+0xc
 	add	r0, r0, r1
 	ldr	r0, [r0]
 	ldr	r1, [r0, #0x8]
 	add	r0, sp, #0xc
 	mov	r2, #0xf
 	bl	StringAppendN
-.LM714:
+.LM722:
 
 	ldr	r0, [r5]
-	ldr	r4, .L402+0x10
+	ldr	r4, .L410+0x10
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	mov	r1, #0x11
 	bl	FillWindowPixelBuffer
-.LM715:
+.LM723:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
@@ -6508,22 +6568,22 @@ DrawMonTextEntryBox:
 	add	r2, sp, #0xc
 	mov	r3, #0x8
 	bl	AddTextPrinterParameterized
-.LM716:
+.LM724:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	bl	PutWindowTilemap
-.LM717:
+.LM725:
 
 .LBE63:
 	add	sp, sp, #0x2c
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L403:
+.L411:
 	.align	2, 0
-.L402:
+.L410:
 	.word	sNamingScreen
 	.word	0x1e34
 	.word	gSpeciesNames
@@ -6549,28 +6609,28 @@ sDrawTextEntryBoxFuncs:
 	.thumb_func
 DrawTextEntryBox:
 .LFB82:
-.LM718:
+.LM726:
 
 	push	{lr}
-.LM719:
+.LM727:
 
-	ldr	r1, .L405
-	ldr	r0, .L405+0x4
+	ldr	r1, .L413
+	ldr	r0, .L413+0x4
 	ldr	r0, [r0]
-	ldr	r2, .L405+0x8
+	ldr	r2, .L413+0x8
 	add	r0, r0, r2
 	ldrb	r0, [r0]
 	lsl	r0, r0, #0x2
 	add	r0, r0, r1
 	ldr	r0, [r0]
 	bl	_call_via_r0
-.LM720:
+.LM728:
 
 	pop	{r0}
 	bx	r0
-.L406:
+.L414:
 	.align	2, 0
-.L405:
+.L413:
 	.word	sDrawTextEntryBoxFuncs
 	.word	sNamingScreen
 	.word	0x1e2c
@@ -6590,15 +6650,15 @@ sDrawGenderIconFuncs:
 	.thumb_func
 TryDrawGenderIcon:
 .LFB83:
-.LM721:
+.LM729:
 
 	push	{lr}
-.LM722:
+.LM730:
 
-	ldr	r1, .L408
-	ldr	r0, .L408+0x4
+	ldr	r1, .L416
+	ldr	r0, .L416+0x4
 	ldr	r0, [r0]
-	ldr	r2, .L408+0x8
+	ldr	r2, .L416+0x8
 	add	r0, r0, r2
 	ldr	r0, [r0]
 	ldrb	r0, [r0, #0x3]
@@ -6606,13 +6666,13 @@ TryDrawGenderIcon:
 	add	r0, r0, r1
 	ldr	r0, [r0]
 	bl	_call_via_r0
-.LM723:
+.LM731:
 
 	pop	{r0}
 	bx	r0
-.L409:
+.L417:
 	.align	2, 0
-.L408:
+.L416:
 	.word	sDrawGenderIconFuncs
 	.word	sNamingScreen
 	.word	0x1e28
@@ -6624,9 +6684,9 @@ TryDrawGenderIcon:
 	.thumb_func
 DummyGenderIcon:
 .LFB84:
-.LM724:
+.LM732:
 
-.LM725:
+.LM733:
 
 	bx	lr
 .LFE84:
@@ -6648,52 +6708,52 @@ sGenderColors:
 	.thumb_func
 DrawGenderIcon:
 .LFB85:
-.LM726:
+.LM734:
 
 	push	{r4, r5, lr}
 	add	sp, sp, #-0x10
-.LM727:
+.LM735:
 
 .LBB64:
-.LM728:
+.LM736:
 
 	mov	r4, #0x0
-.LM729:
+.LM737:
 
-	ldr	r1, .L414
+	ldr	r1, .L422
 	add	r0, sp, #0xc
 	bl	StringCopy
-.LM730:
+.LM738:
 
-	ldr	r5, .L414+0x4
+	ldr	r5, .L422+0x4
 	ldr	r0, [r5]
-	ldr	r1, .L414+0x8
+	ldr	r1, .L422+0x8
 	add	r0, r0, r1
 	ldrh	r0, [r0]
 	cmp	r0, #0xff
-	beq	.L412	@cond_branch
-.LM731:
+	beq	.L420	@cond_branch
+.LM739:
 
 	cmp	r0, #0xfe
-	bne	.L413	@cond_branch
-.LM732:
+	bne	.L421	@cond_branch
+.LM740:
 
-	ldr	r1, .L414+0xc
+	ldr	r1, .L422+0xc
 	add	r0, sp, #0xc
 	bl	StringCopy
-.LM733:
+.LM741:
 
 	mov	r4, #0x1
-.L413:
-.LM734:
+.L421:
+.LM742:
 
 	ldr	r0, [r5]
-	ldr	r1, .L414+0x10
+	ldr	r1, .L422+0x10
 	add	r0, r0, r1
 	ldrb	r0, [r0]
 	lsl	r1, r4, #0x1
 	add	r1, r1, r4
-	ldr	r2, .L414+0x14
+	ldr	r2, .L422+0x14
 	add	r1, r1, r2
 	str	r1, [sp]
 	mov	r1, #0x1
@@ -6705,17 +6765,17 @@ DrawGenderIcon:
 	mov	r2, #0x68
 	mov	r3, #0x1
 	bl	AddTextPrinterParameterized3
-.L412:
-.LM735:
+.L420:
+.LM743:
 
 .LBE64:
 	add	sp, sp, #0x10
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L415:
+.L423:
 	.align	2, 0
-.L414:
+.L422:
 	.word	gText_MaleSymbol
 	.word	sNamingScreen
 	.word	0x1e36
@@ -6730,7 +6790,7 @@ DrawGenderIcon:
 	.thumb_func
 GetCharAtKeyboardPos:
 .LFB86:
-.LM736:
+.LM744:
 
 	push	{r4, r5, r6, lr}
 	add	r4, r0, #0
@@ -6739,9 +6799,9 @@ GetCharAtKeyboardPos:
 	lsr	r4, r4, #0x10
 	lsl	r5, r5, #0x10
 	lsr	r5, r5, #0x10
-.LM737:
+.LM745:
 
-	ldr	r6, .L417
+	ldr	r6, .L425
 	bl	CurrentPageToKeyboardId
 	lsl	r4, r4, #0x10
 	asr	r4, r4, #0x10
@@ -6753,14 +6813,14 @@ GetCharAtKeyboardPos:
 	add	r4, r4, r0
 	add	r4, r4, r6
 	ldrb	r0, [r4]
-.LM738:
+.LM746:
 
 	pop	{r4, r5, r6}
 	pop	{r1}
 	bx	r1
-.L418:
+.L426:
 	.align	2, 0
-.L417:
+.L425:
 	.word	sKeyboardChars
 .LFE86:
 .Lfe86:
@@ -6770,72 +6830,72 @@ GetCharAtKeyboardPos:
 	.thumb_func
 GetTextEntryPosition:
 .LFB87:
-.LM739:
+.LM747:
 
 	push	{r4, r5, lr}
-.LM740:
+.LM748:
 
 .LBB65:
-.LM741:
+.LM749:
 
 	mov	r2, #0x0
-	ldr	r0, .L427
+	ldr	r0, .L435
 	ldr	r4, [r0]
-	ldr	r3, .L427+0x4
+	ldr	r3, .L435+0x4
 	add	r1, r4, r3
 	ldr	r1, [r1]
 	ldrb	r3, [r1, #0x1]
 	add	r5, r0, #0
 	cmp	r2, r3
-	bcs	.L421	@cond_branch
+	bcs	.L429	@cond_branch
 	mov	r0, #0xc0
 	lsl	r0, r0, #0x5
 	add	r1, r4, r0
-.L423:
-.LM742:
+.L431:
+.LM750:
 
 	add	r0, r1, r2
 	ldrb	r0, [r0]
 	cmp	r0, #0xff
-	bne	.L422	@cond_branch
-.LM743:
+	bne	.L430	@cond_branch
+.LM751:
 
 	add	r0, r2, #0
-	b	.L426
-.L428:
+	b	.L434
+.L436:
 	.align	2, 0
-.L427:
+.L435:
 	.word	sNamingScreen
 	.word	0x1e28
-.LM744:
+.LM752:
 
-.L422:
+.L430:
 	add	r0, r2, #0x1
 	lsl	r0, r0, #0x18
 	lsr	r2, r0, #0x18
 	cmp	r2, r3
-	bcc	.L423	@cond_branch
-.L421:
-.LM745:
+	bcc	.L431	@cond_branch
+.L429:
+.LM753:
 
 	ldr	r0, [r5]
-	ldr	r1, .L429
+	ldr	r1, .L437
 	add	r0, r0, r1
 	ldr	r0, [r0]
 	ldrb	r0, [r0, #0x1]
 	sub	r0, r0, #0x1
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.L426:
-.LM746:
+.L434:
+.LM754:
 
 .LBE65:
 	pop	{r4, r5}
 	pop	{r1}
 	bx	r1
-.L430:
+.L438:
 	.align	2, 0
-.L429:
+.L437:
 	.word	0x1e28
 .LFE87:
 .Lfe87:
@@ -6845,57 +6905,57 @@ GetTextEntryPosition:
 	.thumb_func
 GetPreviousTextCaretPosition:
 .LFB88:
-.LM747:
+.LM755:
 
 	push	{lr}
-.LM748:
+.LM756:
 
 .LBB66:
-.LM749:
+.LM757:
 
-	ldr	r0, .L439
+	ldr	r0, .L447
 	ldr	r2, [r0]
-	ldr	r1, .L439+0x4
+	ldr	r1, .L447+0x4
 	add	r0, r2, r1
 	ldr	r0, [r0]
 	ldrb	r0, [r0, #0x1]
 	sub	r0, r0, #0x1
 	lsl	r1, r0, #0x18
 	cmp	r1, #0
-	ble	.L433	@cond_branch
+	ble	.L441	@cond_branch
 	mov	r0, #0xc0
 	lsl	r0, r0, #0x5
 	add	r3, r2, r0
-.L435:
-.LM750:
+.L443:
+.LM758:
 
 	asr	r2, r1, #0x18
 	add	r0, r3, r2
 	ldrb	r0, [r0]
 	cmp	r0, #0xff
-	beq	.L434	@cond_branch
-.LM751:
+	beq	.L442	@cond_branch
+.LM759:
 
 	lsr	r0, r1, #0x18
-	b	.L438
-.L440:
+	b	.L446
+.L448:
 	.align	2, 0
-.L439:
+.L447:
 	.word	sNamingScreen
 	.word	0x1e28
-.LM752:
+.LM760:
 
-.L434:
+.L442:
 	sub	r0, r2, #0x1
 	lsl	r1, r0, #0x18
 	cmp	r1, #0
-	bgt	.L435	@cond_branch
-.L433:
-.LM753:
+	bgt	.L443	@cond_branch
+.L441:
+.LM761:
 
 	mov	r0, #0x0
-.L438:
-.LM754:
+.L446:
+.LM762:
 
 .LBE66:
 	pop	{r1}
@@ -6908,21 +6968,21 @@ GetPreviousTextCaretPosition:
 	.thumb_func
 DeleteTextCharacter:
 .LFB89:
-.LM755:
+.LM763:
 
 	push	{r4, r5, r6, lr}
-.LM756:
+.LM764:
 
 .LBB67:
-.LM757:
+.LM765:
 
 	bl	GetPreviousTextCaretPosition
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM758:
+.LM766:
 
-	ldr	r6, .L444
+	ldr	r6, .L452
 	ldr	r0, [r6]
 	mov	r5, #0xc0
 	lsl	r5, r5, #0x5
@@ -6930,52 +6990,52 @@ DeleteTextCharacter:
 	add	r0, r0, r4
 	mov	r1, #0x0
 	strb	r1, [r0]
-.LM759:
+.LM767:
 
 	bl	DrawTextEntry
-.LM760:
+.LM768:
 
 	mov	r0, #0x3
 	bl	CopyBgTilemapBufferToVram
-.LM761:
+.LM769:
 
 	ldr	r0, [r6]
 	add	r0, r0, r5
 	add	r0, r0, r4
 	mov	r1, #0xff
 	strb	r1, [r0]
-.LM762:
+.LM770:
 
 	bl	GetKeyRoleAtCursorPos
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM763:
+.LM771:
 
 	cmp	r0, #0
-	beq	.L443	@cond_branch
+	beq	.L451	@cond_branch
 	cmp	r0, #0x2
-	bne	.L442	@cond_branch
-.L443:
-.LM764:
+	bne	.L450	@cond_branch
+.L451:
+.LM772:
 
 	mov	r0, #0x1
 	mov	r1, #0x0
 	mov	r2, #0x1
 	bl	TryStartButtonFlash
-.L442:
-.LM765:
+.L450:
+.LM773:
 
 	mov	r0, #0x17
 	bl	PlaySE
-.LM766:
+.LM774:
 
 .LBE67:
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.L445:
+.L453:
 	.align	2, 0
-.L444:
+.L452:
 	.word	sNamingScreen
 .LFE89:
 .Lfe89:
@@ -6985,21 +7045,21 @@ DeleteTextCharacter:
 	.thumb_func
 AddTextCharacter:
 .LFB90:
-.LM767:
+.LM775:
 
 	push	{r4, lr}
 	add	sp, sp, #-0x4
-.LM768:
+.LM776:
 
 .LBB68:
-.LM769:
+.LM777:
 
 	mov	r4, sp
 	add	r4, r4, #0x2
 	mov	r0, sp
 	add	r1, r4, #0
 	bl	GetCursorPos
-.LM770:
+.LM778:
 
 	mov	r0, sp
 	mov	r1, #0x0
@@ -7010,46 +7070,46 @@ AddTextCharacter:
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
 	bl	BufferCharacter
-.LM771:
+.LM779:
 
 	bl	DrawTextEntry
-.LM772:
+.LM780:
 
 	mov	r0, #0x3
 	bl	CopyBgTilemapBufferToVram
-.LM773:
+.LM781:
 
 	mov	r0, #0x5
 	bl	PlaySE
-.LM774:
+.LM782:
 
 	bl	GetPreviousTextCaretPosition
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-	ldr	r1, .L450
+	ldr	r1, .L458
 	ldr	r1, [r1]
-	ldr	r2, .L450+0x4
+	ldr	r2, .L458+0x4
 	add	r1, r1, r2
 	ldr	r1, [r1]
 	ldrb	r1, [r1, #0x1]
 	sub	r1, r1, #0x1
 	cmp	r0, r1
-	bne	.L447	@cond_branch
-.LM775:
+	bne	.L455	@cond_branch
+.LM783:
 
 	mov	r0, #0x1
-	b	.L449
-.L451:
+	b	.L457
+.L459:
 	.align	2, 0
-.L450:
+.L458:
 	.word	sNamingScreen
 	.word	0x1e28
-.L447:
-.LM776:
+.L455:
+.LM784:
 
 	mov	r0, #0x0
-.L449:
-.LM777:
+.L457:
+.LM785:
 
 .LBE68:
 	add	sp, sp, #0x4
@@ -7064,36 +7124,36 @@ AddTextCharacter:
 	.thumb_func
 BufferCharacter:
 .LFB91:
-.LM778:
+.LM786:
 
 	push	{r4, lr}
 	add	r4, r0, #0
 	lsl	r4, r4, #0x18
 	lsr	r4, r4, #0x18
-.LM779:
+.LM787:
 
 .LBB69:
 	bl	GetTextEntryPosition
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM780:
+.LM788:
 
-	ldr	r1, .L453
+	ldr	r1, .L461
 	ldr	r1, [r1]
 	mov	r2, #0xc0
 	lsl	r2, r2, #0x5
 	add	r1, r1, r2
 	add	r1, r1, r0
 	strb	r4, [r1]
-.LM781:
+.LM789:
 
 .LBE69:
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.L454:
+.L462:
 	.align	2, 0
-.L453:
+.L461:
 	.word	sNamingScreen
 .LFE91:
 .Lfe91:
@@ -7103,29 +7163,29 @@ BufferCharacter:
 	.thumb_func
 SaveInputText:
 .LFB92:
-.LM782:
+.LM790:
 
 	push	{r4, r5, lr}
-.LM783:
+.LM791:
 
 .LBB70:
-.LM784:
+.LM792:
 
 	mov	r2, #0x0
-	ldr	r1, .L463
+	ldr	r1, .L471
 	ldr	r0, [r1]
-	ldr	r4, .L463+0x4
+	ldr	r4, .L471+0x4
 	add	r0, r0, r4
 	ldr	r0, [r0]
 	add	r5, r1, #0
-	b	.L462
-.L464:
+	b	.L470
+.L472:
 	.align	2, 0
-.L463:
+.L471:
 	.word	sNamingScreen
 	.word	0x1e28
-.L459:
-.LM785:
+.L467:
+.LM793:
 
 	ldr	r1, [r1]
 	mov	r0, #0xc0
@@ -7134,12 +7194,12 @@ SaveInputText:
 	add	r0, r3, r2
 	ldrb	r0, [r0]
 	cmp	r0, #0
-	beq	.L458	@cond_branch
+	beq	.L466	@cond_branch
 	cmp	r0, #0xff
-	beq	.L458	@cond_branch
-.LM786:
+	beq	.L466	@cond_branch
+.LM794:
 
-	ldr	r2, .L465
+	ldr	r2, .L473
 	add	r0, r1, r2
 	ldr	r0, [r0]
 	add	r1, r1, r4
@@ -7150,38 +7210,38 @@ SaveInputText:
 	lsr	r2, r2, #0x18
 	add	r1, r3, #0
 	bl	StringCopyN
-.LM787:
+.LM795:
 
-	b	.L457
-.L466:
+	b	.L465
+.L474:
 	.align	2, 0
-.L465:
+.L473:
 	.word	0x1e30
-.LM788:
+.LM796:
 
-.L458:
+.L466:
 	add	r0, r2, #0x1
 	lsl	r0, r0, #0x18
 	lsr	r2, r0, #0x18
 	add	r1, r5, #0
 	ldr	r0, [r1]
-	ldr	r4, .L467
+	ldr	r4, .L475
 	add	r0, r0, r4
 	ldr	r0, [r0]
-.L462:
+.L470:
 	ldrb	r0, [r0, #0x1]
 	cmp	r2, r0
-	bcc	.L459	@cond_branch
-.L457:
-.LM789:
+	bcc	.L467	@cond_branch
+.L465:
+.LM797:
 
 .LBE70:
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L468:
+.L476:
 	.align	2, 0
-.L467:
+.L475:
 	.word	0x1e28
 .LFE92:
 .Lfe92:
@@ -7191,18 +7251,18 @@ SaveInputText:
 	.thumb_func
 LoadGfx:
 .LFB93:
-.LM790:
+.LM798:
 
 	push	{r4, r5, r6, lr}
-.LM791:
+.LM799:
 
-	ldr	r0, .L470
-	ldr	r6, .L470+0x4
+	ldr	r0, .L478
+	ldr	r6, .L478+0x4
 	ldr	r1, [r6]
-	ldr	r4, .L470+0x8
+	ldr	r4, .L478+0x8
 	add	r1, r1, r4
 	bl	LZ77UnCompWram
-.LM792:
+.LM800:
 
 	ldr	r1, [r6]
 	add	r1, r1, r4
@@ -7212,7 +7272,7 @@ LoadGfx:
 	add	r2, r5, #0
 	mov	r3, #0x0
 	bl	LoadBgTiles
-.LM793:
+.LM801:
 
 	ldr	r1, [r6]
 	add	r1, r1, r4
@@ -7220,7 +7280,7 @@ LoadGfx:
 	add	r2, r5, #0
 	mov	r3, #0x0
 	bl	LoadBgTiles
-.LM794:
+.LM802:
 
 	ldr	r1, [r6]
 	add	r1, r1, r4
@@ -7228,22 +7288,22 @@ LoadGfx:
 	add	r2, r5, #0
 	mov	r3, #0x0
 	bl	LoadBgTiles
-.LM795:
+.LM803:
 
-	ldr	r0, .L470+0xc
+	ldr	r0, .L478+0xc
 	bl	LoadSpriteSheets
-.LM796:
+.LM804:
 
-	ldr	r0, .L470+0x10
+	ldr	r0, .L478+0x10
 	bl	LoadSpritePalettes
-.LM797:
+.LM805:
 
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.L471:
+.L479:
 	.align	2, 0
-.L470:
+.L478:
 	.word	gNamingScreenMenu_Gfx
 	.word	sNamingScreen
 	.word	0x1810
@@ -7257,16 +7317,16 @@ LoadGfx:
 	.thumb_func
 CreateHelperTasks:
 .LFB94:
-.LM798:
+.LM806:
 
 	push	{lr}
-.LM799:
+.LM807:
 
 	bl	CreateInputHandlerTask
-.LM800:
+.LM808:
 
 	bl	CreateButtonFlashTask
-.LM801:
+.LM809:
 
 	pop	{r0}
 	bx	r0
@@ -7278,35 +7338,35 @@ CreateHelperTasks:
 	.thumb_func
 LoadPalettes:
 .LFB95:
-.LM802:
+.LM810:
 
 	push	{lr}
-.LM803:
+.LM811:
 
-	ldr	r0, .L474
+	ldr	r0, .L482
 	mov	r1, #0x0
 	mov	r2, #0xc0
 	bl	LoadPalette
-.LM804:
+.LM812:
 
-	ldr	r0, .L474+0x4
+	ldr	r0, .L482+0x4
 	mov	r1, #0xa0
 	mov	r2, #0x20
 	bl	LoadPalette
-.LM805:
+.LM813:
 
 	mov	r0, #0x2
 	bl	GetTextWindowPalette
 	mov	r1, #0xb0
 	mov	r2, #0x20
 	bl	LoadPalette
-.LM806:
+.LM814:
 
 	pop	{r0}
 	bx	r0
-.L475:
+.L483:
 	.align	2, 0
-.L474:
+.L482:
 	.word	gNamingScreenMenu_Pal
 	.word	sKeyboard_Pal
 .LFE95:
@@ -7317,17 +7377,17 @@ LoadPalettes:
 	.thumb_func
 DrawBgTilemap:
 .LFB96:
-.LM807:
+.LM815:
 
 	push	{lr}
 	lsl	r0, r0, #0x18
 	lsr	r0, r0, #0x18
-.LM808:
+.LM816:
 
 	mov	r2, #0x0
 	mov	r3, #0x0
 	bl	CopyToBgTilemapBuffer
-.LM809:
+.LM817:
 
 	pop	{r0}
 	bx	r0
@@ -7339,9 +7399,9 @@ DrawBgTilemap:
 	.thumb_func
 NamingScreen_Dummy:
 .LFB97:
-.LM810:
+.LM818:
 
-.LM811:
+.LM819:
 
 	bx	lr
 .LFE97:
@@ -7352,7 +7412,7 @@ NamingScreen_Dummy:
 	.thumb_func
 DrawTextEntry:
 .LFB98:
-.LM812:
+.LM820:
 
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, sl
@@ -7360,18 +7420,18 @@ DrawTextEntry:
 	mov	r5, r8
 	push	{r5, r6, r7}
 	add	sp, sp, #-0x10
-.LM813:
+.LM821:
 
 .LBB71:
-.LM814:
+.LM822:
 
-	ldr	r7, .L486
+	ldr	r7, .L494
 	ldr	r1, [r7]
-	ldr	r2, .L486+0x4
+	ldr	r2, .L494+0x4
 	add	r0, r1, r2
 	ldr	r0, [r0]
 	ldrb	r6, [r0, #0x1]
-.LM815:
+.LM823:
 
 	sub	r2, r2, #0x12
 	add	r0, r1, r2
@@ -7380,25 +7440,25 @@ DrawTextEntry:
 	lsl	r0, r0, #0x10
 	lsr	r0, r0, #0x10
 	mov	r9, r0
-.LM816:
+.LM824:
 
-	ldr	r0, .L486+0x8
+	ldr	r0, .L494+0x8
 	add	r1, r1, r0
 	ldrb	r0, [r1]
 	mov	r1, #0x11
 	bl	FillWindowPixelBuffer
-.LM817:
+.LM825:
 
 	mov	r4, #0x0
 	cmp	r4, r6
-	bcs	.L480	@cond_branch
+	bcs	.L488	@cond_branch
 	add	r5, sp, #0xc
 	mov	sl, r4
-	ldr	r0, .L486+0xc
+	ldr	r0, .L494+0xc
 	ldrb	r0, [r0]
 	mov	r8, r0
-.L482:
-.LM818:
+.L490:
+.LM826:
 
 	ldr	r0, [r7]
 	mov	r1, #0xc0
@@ -7407,11 +7467,11 @@ DrawTextEntry:
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	strb	r0, [r5]
-.LM819:
+.LM827:
 
 	mov	r2, r8
 	strb	r2, [r5, #0x1]
-.LM820:
+.LM828:
 
 	ldrb	r0, [r5]
 	bl	IsWideLetter
@@ -7419,13 +7479,13 @@ DrawTextEntry:
 	lsr	r0, r0, #0x18
 	mov	r1, #0x0
 	cmp	r0, #0x1
-	bne	.L483	@cond_branch
+	bne	.L491	@cond_branch
 	mov	r1, #0x2
-.L483:
-.LM821:
+.L491:
+.LM829:
 
 	ldr	r0, [r7]
-	ldr	r2, .L486+0x8
+	ldr	r2, .L494+0x8
 	add	r0, r0, r2
 	ldrb	r0, [r0]
 	lsl	r3, r4, #0x3
@@ -7442,33 +7502,33 @@ DrawTextEntry:
 	mov	r1, #0x1
 	add	r2, sp, #0xc
 	bl	AddTextPrinterParameterized
-.LM822:
+.LM830:
 
 	add	r0, r4, #0x1
 	lsl	r0, r0, #0x18
 	lsr	r4, r0, #0x18
 	cmp	r4, r6
-	bcc	.L482	@cond_branch
-.L480:
-.LM823:
+	bcc	.L490	@cond_branch
+.L488:
+.LM831:
 
 	bl	TryDrawGenderIcon
-.LM824:
+.LM832:
 
-	ldr	r5, .L486
+	ldr	r5, .L494
 	ldr	r0, [r5]
-	ldr	r4, .L486+0x8
+	ldr	r4, .L494+0x8
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	mov	r1, #0x2
 	bl	CopyWindowToVram
-.LM825:
+.LM833:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	bl	PutWindowTilemap
-.LM826:
+.LM834:
 
 .LBE71:
 	add	sp, sp, #0x10
@@ -7479,9 +7539,9 @@ DrawTextEntry:
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.L487:
+.L495:
 	.align	2, 0
-.L486:
+.L494:
 	.word	sNamingScreen
 	.word	0x1e28
 	.word	0x1e13
@@ -7525,7 +7585,7 @@ sKeyboardTextColors:
 	.thumb_func
 PrintKeyboardKeys:
 .LFB99:
-.LM827:
+.LM835:
 
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
@@ -7535,27 +7595,27 @@ PrintKeyboardKeys:
 	lsr	r6, r0, #0x18
 	lsl	r1, r1, #0x18
 	lsr	r5, r1, #0x18
-.LM828:
+.LM836:
 
 .LBB72:
-.LM829:
+.LM837:
 
-	ldr	r0, .L494
+	ldr	r0, .L502
 	add	r0, r5, r0
 	ldrb	r1, [r0]
 	add	r0, r6, #0
 	bl	FillWindowPixelBuffer
-.LM830:
+.LM838:
 
 	mov	r4, #0x0
-	ldr	r1, .L494+0x4
+	ldr	r1, .L502+0x4
 	lsl	r0, r5, #0x2
 	add	r0, r0, r1
 	ldr	r7, [r0]
-	ldr	r0, .L494+0x8
+	ldr	r0, .L502+0x8
 	mov	r8, r0
-.L492:
-.LM831:
+.L500:
+.LM839:
 
 	lsl	r3, r4, #0x4
 	add	r3, r3, #0x1
@@ -7574,18 +7634,18 @@ PrintKeyboardKeys:
 	mov	r1, #0x1
 	mov	r2, #0x0
 	bl	AddTextPrinterParameterized3
-.LM832:
+.LM840:
 
 	add	r0, r4, #0x1
 	lsl	r0, r0, #0x18
 	lsr	r4, r0, #0x18
 	cmp	r4, #0x3
-	bls	.L492	@cond_branch
-.LM833:
+	bls	.L500	@cond_branch
+.LM841:
 
 	add	r0, r6, #0
 	bl	PutWindowTilemap
-.LM834:
+.LM842:
 
 .LBE72:
 	add	sp, sp, #0xc
@@ -7594,9 +7654,9 @@ PrintKeyboardKeys:
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.L495:
+.L503:
 	.align	2, 0
-.L494:
+.L502:
 	.word	sFillValues
 	.word	sKeyboardTextColors
 	.word	sNamingScreenKeyboardText
@@ -7617,68 +7677,68 @@ sNextKeyboardPageTilemaps:
 	.thumb_func
 DrawKeyboardPageOnDeck:
 .LFB100:
-.LM835:
+.LM843:
 
 	push	{r4, r5, r6, lr}
-.LM836:
+.LM844:
 
 .LBB73:
-.LM837:
+.LM845:
 
 	mov	r0, #0xa
 	bl	GetGpuReg
 	add	r4, r0, #0
 	mov	r5, #0x3
 	and	r4, r4, r5
-.LM838:
+.LM846:
 
 	mov	r0, #0xc
 	bl	GetGpuReg
 	and	r0, r0, r5
-.LM839:
+.LM847:
 
 	cmp	r4, r0
-	bls	.L497	@cond_branch
-.LM840:
+	bls	.L505	@cond_branch
+.LM848:
 
 	mov	r5, #0x1
-.LM841:
+.LM849:
 
 	mov	r6, #0x1
-.LM842:
+.LM850:
 
-	ldr	r1, .L500
+	ldr	r1, .L508
 	ldr	r0, [r1]
-	ldr	r2, .L500+0x4
-.LM843:
+	ldr	r2, .L508+0x4
+.LM851:
 
-	b	.L499
-.L501:
+	b	.L507
+.L509:
 	.align	2, 0
-.L500:
+.L508:
 	.word	sNamingScreen
 	.word	0x1e11
-.L497:
-.LM844:
+.L505:
+.LM852:
 
 	mov	r5, #0x2
-.LM845:
+.LM853:
 
 	mov	r6, #0x2
-.LM846:
+.LM854:
 
-	ldr	r1, .L502
+	ldr	r1, .L510
 	ldr	r0, [r1]
-	ldr	r2, .L502+0x4
-.L499:
+	ldr	r2, .L510+0x4
+.L507:
 	add	r0, r0, r2
 	ldrb	r4, [r0]
 	add	r0, r1, #0
-.LM847:
+.LM855:
 
-	ldr	r1, .L502+0x8
+	ldr	r1, .L510+0x8
 	ldr	r0, [r0]
-	ldr	r2, .L502+0xc
+	ldr	r2, .L510+0xc
 	add	r0, r0, r2
 	ldrb	r0, [r0]
 	lsl	r0, r0, #0x2
@@ -7686,7 +7746,7 @@ DrawKeyboardPageOnDeck:
 	ldr	r1, [r0]
 	add	r0, r5, #0
 	bl	DrawBgTilemap
-.LM848:
+.LM856:
 
 	bl	CurrentPageToNextKeyboardId
 	add	r1, r0, #0
@@ -7694,7 +7754,7 @@ DrawKeyboardPageOnDeck:
 	lsr	r1, r1, #0x18
 	add	r0, r4, #0
 	bl	PrintKeyboardKeys
-.LM849:
+.LM857:
 
 	bl	CurrentPageToNextKeyboardId
 	add	r1, r0, #0
@@ -7702,19 +7762,19 @@ DrawKeyboardPageOnDeck:
 	lsr	r1, r1, #0x18
 	add	r0, r5, #0
 	bl	NamingScreen_Dummy
-.LM850:
+.LM858:
 
 	add	r0, r6, #0
 	bl	CopyBgTilemapBufferToVram
-.LM851:
+.LM859:
 
 .LBE73:
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.L503:
+.L511:
 	.align	2, 0
-.L502:
+.L510:
 	.word	sNamingScreen
 	.word	0x1e12
 	.word	sNextKeyboardPageTilemaps
@@ -7733,27 +7793,27 @@ DrawKeyboardPageOnDeck:
 	.thumb_func
 PrintControls:
 .LFB101:
-.LM852:
+.LM860:
 
 	push	{r4, r5, lr}
 	add	sp, sp, #-0x10
-.LM853:
+.LM861:
 
 .LBB74:
-	ldr	r1, .L505
+	ldr	r1, .L513
 	add	r0, sp, #0xc
 	mov	r2, #0x3
 	bl	memcpy
-.LM854:
+.LM862:
 
-	ldr	r5, .L505+0x4
+	ldr	r5, .L513+0x4
 	ldr	r0, [r5]
-	ldr	r4, .L505+0x8
+	ldr	r4, .L513+0x8
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	mov	r1, #0xff
 	bl	FillWindowPixelBuffer
-.LM855:
+.LM863:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
@@ -7762,35 +7822,35 @@ PrintControls:
 	str	r1, [sp]
 	mov	r1, #0x0
 	str	r1, [sp, #0x4]
-	ldr	r1, .L505+0xc
+	ldr	r1, .L513+0xc
 	str	r1, [sp, #0x8]
 	mov	r1, #0x0
 	mov	r2, #0x2
 	mov	r3, #0x1
 	bl	AddTextPrinterParameterized3
-.LM856:
+.LM864:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	bl	PutWindowTilemap
-.LM857:
+.LM865:
 
 	ldr	r0, [r5]
 	add	r0, r0, r4
 	ldrb	r0, [r0]
 	mov	r1, #0x3
 	bl	CopyWindowToVram
-.LM858:
+.LM866:
 
 .LBE74:
 	add	sp, sp, #0x10
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L506:
+.L514:
 	.align	2, 0
-.L505:
+.L513:
 	.word	.LC179
 	.word	sNamingScreen
 	.word	0x1e15
@@ -7803,22 +7863,22 @@ PrintControls:
 	.thumb_func
 CB2_NamingScreen:
 .LFB102:
-.LM859:
+.LM867:
 
 	push	{lr}
-.LM860:
+.LM868:
 
 	bl	RunTasks
-.LM861:
+.LM869:
 
 	bl	AnimateSprites
-.LM862:
+.LM870:
 
 	bl	BuildOamBuffer
-.LM863:
+.LM871:
 
 	bl	UpdatePaletteFade
-.LM864:
+.LM872:
 
 	pop	{r0}
 	bx	r0
@@ -7830,18 +7890,18 @@ CB2_NamingScreen:
 	.thumb_func
 ResetVHBlank:
 .LFB103:
-.LM865:
+.LM873:
 
 	push	{lr}
-.LM866:
+.LM874:
 
 	mov	r0, #0x0
 	bl	SetVBlankCallback
-.LM867:
+.LM875:
 
 	mov	r0, #0x0
 	bl	SetHBlankCallback
-.LM868:
+.LM876:
 
 	pop	{r0}
 	bx	r0
@@ -7853,20 +7913,20 @@ ResetVHBlank:
 	.thumb_func
 SetVBlank:
 .LFB104:
-.LM869:
+.LM877:
 
 	push	{lr}
-.LM870:
+.LM878:
 
-	ldr	r0, .L510
+	ldr	r0, .L518
 	bl	SetVBlankCallback
-.LM871:
+.LM879:
 
 	pop	{r0}
 	bx	r0
-.L511:
+.L519:
 	.align	2, 0
-.L510:
+.L518:
 	.word	VBlankCB_NamingScreen
 .LFE104:
 .Lfe104:
@@ -7876,53 +7936,53 @@ SetVBlank:
 	.thumb_func
 VBlankCB_NamingScreen:
 .LFB105:
-.LM872:
+.LM880:
 
 	push	{r4, r5, lr}
-.LM873:
+.LM881:
 
 	bl	LoadOam
-.LM874:
+.LM882:
 
 	bl	ProcessSpriteCopyRequests
-.LM875:
+.LM883:
 
 	bl	TransferPlttBuffer
-.LM876:
+.LM884:
 
-	ldr	r5, .L513
+	ldr	r5, .L521
 	ldr	r0, [r5]
-	ldr	r1, .L513+0x4
+	ldr	r1, .L521+0x4
 	add	r0, r0, r1
 	ldrh	r1, [r0]
 	mov	r0, #0x16
 	bl	SetGpuReg
-.LM877:
+.LM885:
 
 	ldr	r0, [r5]
-	ldr	r1, .L513+0x8
+	ldr	r1, .L521+0x8
 	add	r0, r0, r1
 	ldrh	r1, [r0]
 	mov	r0, #0x1a
 	bl	SetGpuReg
-.LM878:
+.LM886:
 
 	mov	r0, #0xa
 	bl	GetGpuReg
-	ldr	r4, .L513+0xc
+	ldr	r4, .L521+0xc
 	add	r1, r4, #0
 	and	r1, r1, r0
 	mov	r0, #0xa
 	bl	SetGpuReg
-.LM879:
+.LM887:
 
 	ldr	r0, [r5]
-	ldr	r1, .L513+0x10
+	ldr	r1, .L521+0x10
 	add	r0, r0, r1
 	ldrh	r1, [r0]
 	mov	r0, #0xa
 	bl	SetGpuRegBits
-.LM880:
+.LM888:
 
 	mov	r0, #0xc
 	bl	GetGpuReg
@@ -7930,22 +7990,22 @@ VBlankCB_NamingScreen:
 	mov	r0, #0xc
 	add	r1, r4, #0
 	bl	SetGpuReg
-.LM881:
+.LM889:
 
 	ldr	r0, [r5]
-	ldr	r1, .L513+0x14
+	ldr	r1, .L521+0x14
 	add	r0, r0, r1
 	ldrh	r1, [r0]
 	mov	r0, #0xc
 	bl	SetGpuRegBits
-.LM882:
+.LM890:
 
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L514:
+.L522:
 	.align	2, 0
-.L513:
+.L521:
 	.word	sNamingScreen
 	.word	0x1e18
 	.word	0x1e1a
@@ -7960,26 +8020,26 @@ VBlankCB_NamingScreen:
 	.thumb_func
 NamingScreen_ShowBgs:
 .LFB106:
-.LM883:
+.LM891:
 
 	push	{lr}
-.LM884:
+.LM892:
 
 	mov	r0, #0x0
 	bl	ShowBg
-.LM885:
+.LM893:
 
 	mov	r0, #0x1
 	bl	ShowBg
-.LM886:
+.LM894:
 
 	mov	r0, #0x2
 	bl	ShowBg
-.LM887:
+.LM895:
 
 	mov	r0, #0x3
 	bl	ShowBg
-.LM888:
+.LM896:
 
 	pop	{r0}
 	bx	r0
@@ -7991,31 +8051,31 @@ NamingScreen_ShowBgs:
 	.thumb_func
 IsWideLetter:
 .LFB107:
-.LM889:
+.LM897:
 
 	push	{r4, lr}
 	lsl	r0, r0, #0x18
 	lsr	r4, r0, #0x18
-.LM890:
+.LM898:
 
 .LBB75:
-.LM891:
+.LM899:
 
 	mov	r2, #0x0
-	ldr	r0, .L524
+	ldr	r0, .L532
 	ldrb	r1, [r0]
 	add	r3, r0, #0
 	cmp	r1, #0xff
-	beq	.L518	@cond_branch
+	beq	.L526	@cond_branch
 	add	r1, r3, #0
-.L520:
-.LM892:
+.L528:
+.LM900:
 
 	add	r0, r2, r1
 	ldrb	r0, [r0]
 	cmp	r4, r0
-	beq	.L518	@cond_branch
-.LM893:
+	beq	.L526	@cond_branch
+.LM901:
 
 	add	r0, r2, #0x1
 	lsl	r0, r0, #0x18
@@ -8023,20 +8083,20 @@ IsWideLetter:
 	add	r0, r2, r3
 	ldrb	r0, [r0]
 	cmp	r0, #0xff
-	bne	.L520	@cond_branch
-.L518:
-.LM894:
+	bne	.L528	@cond_branch
+.L526:
+.LM902:
 
 	mov	r0, #0x0
-.LM895:
+.LM903:
 
 .LBE75:
 	pop	{r4}
 	pop	{r1}
 	bx	r1
-.L525:
+.L533:
 	.align	2, 0
-.L524:
+.L532:
 	.word	sText_AlphabetUpperLower
 .LFE107:
 .Lfe107:
@@ -8046,30 +8106,30 @@ IsWideLetter:
 	.thumb_func
 Debug_NamingScreenPlayer:
 .LFB108:
-.LM896:
+.LM904:
 
 	push	{lr}
 	add	sp, sp, #-0x8
-.LM897:
+.LM905:
 
-	ldr	r0, .L527
+	ldr	r0, .L535
 	ldr	r1, [r0]
 	ldrb	r2, [r1, #0x8]
 	mov	r0, #0x0
 	str	r0, [sp]
-	ldr	r0, .L527+0x4
+	ldr	r0, .L535+0x4
 	str	r0, [sp, #0x4]
 	mov	r0, #0x0
 	mov	r3, #0x0
 	bl	DoNamingScreen
-.LM898:
+.LM906:
 
 	add	sp, sp, #0x8
 	pop	{r0}
 	bx	r0
-.L528:
+.L536:
 	.align	2, 0
-.L527:
+.L535:
 	.word	gSaveBlock2Ptr
 	.word	CB2_ReturnToFieldWithOpenMenu
 .LFE108:
@@ -8080,30 +8140,30 @@ Debug_NamingScreenPlayer:
 	.thumb_func
 Debug_NamingScreenBox:
 .LFB109:
-.LM899:
+.LM907:
 
 	push	{lr}
 	add	sp, sp, #-0x8
-.LM900:
+.LM908:
 
-	ldr	r0, .L530
+	ldr	r0, .L538
 	ldr	r1, [r0]
 	ldrb	r2, [r1, #0x8]
 	mov	r0, #0x0
 	str	r0, [sp]
-	ldr	r0, .L530+0x4
+	ldr	r0, .L538+0x4
 	str	r0, [sp, #0x4]
 	mov	r0, #0x1
 	mov	r3, #0x0
 	bl	DoNamingScreen
-.LM901:
+.LM909:
 
 	add	sp, sp, #0x8
 	pop	{r0}
 	bx	r0
-.L531:
+.L539:
 	.align	2, 0
-.L530:
+.L538:
 	.word	gSaveBlock2Ptr
 	.word	CB2_ReturnToFieldWithOpenMenu
 .LFE109:
@@ -8114,30 +8174,30 @@ Debug_NamingScreenBox:
 	.thumb_func
 Debug_NamingScreenCaughtMon:
 .LFB110:
-.LM902:
+.LM910:
 
 	push	{lr}
 	add	sp, sp, #-0x8
-.LM903:
+.LM911:
 
-	ldr	r0, .L533
+	ldr	r0, .L541
 	ldr	r1, [r0]
 	ldrb	r2, [r1, #0x8]
 	mov	r0, #0x0
 	str	r0, [sp]
-	ldr	r0, .L533+0x4
+	ldr	r0, .L541+0x4
 	str	r0, [sp, #0x4]
 	mov	r0, #0x2
 	mov	r3, #0x0
 	bl	DoNamingScreen
-.LM904:
+.LM912:
 
 	add	sp, sp, #0x8
 	pop	{r0}
 	bx	r0
-.L534:
+.L542:
 	.align	2, 0
-.L533:
+.L541:
 	.word	gSaveBlock2Ptr
 	.word	CB2_ReturnToFieldWithOpenMenu
 .LFE110:
@@ -8148,30 +8208,30 @@ Debug_NamingScreenCaughtMon:
 	.thumb_func
 Debug_NamingScreenNickname:
 .LFB111:
-.LM905:
+.LM913:
 
 	push	{lr}
 	add	sp, sp, #-0x8
-.LM906:
+.LM914:
 
-	ldr	r0, .L536
+	ldr	r0, .L544
 	ldr	r1, [r0]
 	ldrb	r2, [r1, #0x8]
 	mov	r0, #0x0
 	str	r0, [sp]
-	ldr	r0, .L536+0x4
+	ldr	r0, .L544+0x4
 	str	r0, [sp, #0x4]
 	mov	r0, #0x3
 	mov	r3, #0x0
 	bl	DoNamingScreen
-.LM907:
+.LM915:
 
 	add	sp, sp, #0x8
 	pop	{r0}
 	bx	r0
-.L537:
+.L545:
 	.align	2, 0
-.L536:
+.L544:
 	.word	gSaveBlock2Ptr
 	.word	CB2_ReturnToFieldWithOpenMenu
 .LFE111:
@@ -8183,24 +8243,24 @@ Debug_NamingScreenNickname:
 	.thumb_func
 NameRival:
 .LFB112:
-.LM908:
+.LM916:
 
 	push	{r4, r5, lr}
 	add	sp, sp, #-0x8
-.LM909:
+.LM917:
 
-	ldr	r0, .L541
+	ldr	r0, .L549
 	ldr	r0, [r0]
 	ldrb	r0, [r0, #0x8]
 	cmp	r0, #0
-	bne	.L539	@cond_branch
-.LM910:
+	bne	.L547	@cond_branch
+.LM918:
 
-	ldr	r0, .L541+0x4
+	ldr	r0, .L549+0x4
 	ldr	r4, [r0]
-	ldr	r0, .L541+0x8
+	ldr	r0, .L549+0x8
 	add	r4, r4, r0
-	ldr	r5, .L541+0xc
+	ldr	r5, .L549+0xc
 	bl	Random
 	lsl	r0, r0, #0x10
 	lsr	r0, r0, #0x10
@@ -8212,22 +8272,22 @@ NameRival:
 	ldr	r1, [r0]
 	add	r0, r4, #0
 	bl	StringCopy
-	b	.L540
-.L542:
+	b	.L548
+.L550:
 	.align	2, 0
-.L541:
+.L549:
 	.word	gSaveBlock2Ptr
 	.word	gSaveBlock1Ptr
 	.word	0x3d85
 	.word	gFemalePresetNames
-.L539:
-.LM911:
+.L547:
+.LM919:
 
-	ldr	r0, .L543
+	ldr	r0, .L551
 	ldr	r4, [r0]
-	ldr	r0, .L543+0x4
+	ldr	r0, .L551+0x4
 	add	r4, r4, r0
-	ldr	r5, .L543+0x8
+	ldr	r5, .L551+0x8
 	bl	Random
 	lsl	r0, r0, #0x10
 	lsr	r0, r0, #0x10
@@ -8239,30 +8299,30 @@ NameRival:
 	ldr	r1, [r0]
 	add	r0, r4, #0
 	bl	StringCopy
-.L540:
-.LM912:
+.L548:
+.LM920:
 
-	ldr	r0, .L543
+	ldr	r0, .L551
 	ldr	r1, [r0]
-	ldr	r0, .L543+0x4
+	ldr	r0, .L551+0x4
 	add	r1, r1, r0
 	mov	r0, #0x0
 	str	r0, [sp]
-	ldr	r0, .L543+0xc
+	ldr	r0, .L551+0xc
 	str	r0, [sp, #0x4]
 	mov	r0, #0x5
 	mov	r2, #0x0
 	mov	r3, #0x0
 	bl	DoNamingScreen
-.LM913:
+.LM921:
 
 	add	sp, sp, #0x8
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.L544:
+.L552:
 	.align	2, 0
-.L543:
+.L551:
 	.word	gSaveBlock1Ptr
 	.word	0x3d85
 	.word	gMalePresetNames
@@ -8768,7 +8828,7 @@ sSpritePalettes:
 .Letext0:
 
 	.section	.debug_line
-	.4byte	0x1f49
+	.4byte	0x1f89
 	.2byte	0x2
 	.4byte	0x2a7
 	.byte	0x4
@@ -11672,12 +11732,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM548
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM549
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11707,17 +11767,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM555
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM556
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM557
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11727,7 +11787,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM559
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11737,7 +11797,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM561
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11747,7 +11807,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM563
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11757,7 +11817,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM565
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11767,7 +11827,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM567
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11777,7 +11837,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM569
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11787,7 +11847,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM571
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11797,7 +11857,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM573
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11807,7 +11867,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM575
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11817,12 +11877,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM577
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM578
-	.byte	0x29
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11837,62 +11897,62 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM581
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM582
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM583
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM584
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM585
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM586
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM587
-	.byte	0x1b
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM588
-	.byte	0xf
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM589
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM590
-	.byte	0x1a
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM591
 	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
-	.4byte	.LM592
+	.4byte	.LM583
 	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM584
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM585
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM586
+	.byte	0x29
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM587
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM588
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM589
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM590
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM591
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM592
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11907,27 +11967,27 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM595
-	.byte	0x16
+	.byte	0x1b
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM596
-	.byte	0x15
+	.byte	0xf
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM597
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM598
 	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
+	.4byte	.LM598
+	.byte	0x1a
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
 	.4byte	.LM599
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11937,27 +11997,27 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM601
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM602
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM603
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM604
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM605
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11967,22 +12027,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM607
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM608
-	.byte	0x12
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM609
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM610
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -11992,7 +12052,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM612
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12007,32 +12067,32 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM615
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM616
 	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
+	.4byte	.LM616
+	.byte	0x12
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
 	.4byte	.LM617
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM618
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM619
-	.byte	0x1b
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM620
-	.byte	0xf
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12047,7 +12107,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM623
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12067,12 +12127,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM627
-	.byte	0x15
+	.byte	0x1b
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM628
-	.byte	0x2e
+	.byte	0xf
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12087,17 +12147,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM631
-	.byte	0x17
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM632
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM633
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12107,17 +12167,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM635
-	.byte	0x17
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM636
 	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
+	.4byte	.LM636
+	.byte	0x2e
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
 	.4byte	.LM637
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12137,17 +12197,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM641
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM642
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM643
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12157,7 +12217,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM645
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12167,7 +12227,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM647
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12182,7 +12242,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM650
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12197,7 +12257,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM653
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12217,7 +12277,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM657
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12232,7 +12292,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM660
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12242,12 +12302,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM662
-	.byte	0x1d
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM663
-	.byte	0x1d
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12257,22 +12317,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM665
-	.byte	0x1b
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM666
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM667
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM668
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12282,12 +12342,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM670
-	.byte	0x15
+	.byte	0x1d
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM671
-	.byte	0x15
+	.byte	0x1d
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12297,22 +12357,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM673
-	.byte	0x17
+	.byte	0x1b
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM674
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM675
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM676
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12332,17 +12392,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM680
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM681
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM682
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12352,7 +12412,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM684
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12362,7 +12422,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM686
-	.byte	0x19
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12372,12 +12432,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM688
-	.byte	0x16
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM689
-	.byte	0x19
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12402,7 +12462,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM694
-	.byte	0x16
+	.byte	0x19
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12412,22 +12472,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM696
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM697
-	.byte	0x15
+	.byte	0x19
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM698
-	.byte	0x15
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM699
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12442,12 +12502,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM702
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM703
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12457,7 +12517,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM705
-	.byte	0x1b
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12467,7 +12527,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM707
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12482,22 +12542,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM710
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM711
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM712
 	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
-	.4byte	.LM713
+	.4byte	.LM712
 	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM713
+	.byte	0x1b
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12522,7 +12582,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM718
-	.byte	0x21
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12532,12 +12592,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM720
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM721
-	.byte	0x20
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12552,17 +12612,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM724
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM725
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM726
-	.byte	0x1d
+	.byte	0x21
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12577,7 +12637,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM729
-	.byte	0x16
+	.byte	0x20
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12587,37 +12647,37 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM731
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM732
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM733
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM734
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM735
-	.byte	0x16
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM736
 	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
-	.4byte	.LM737
+	.4byte	.LM733
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM734
+	.byte	0x1d
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM735
 	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM736
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM737
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12627,17 +12687,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM739
-	.byte	0x18
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM740
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM741
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12647,17 +12707,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM743
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM744
-	.byte	0x11
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM745
-	.byte	0x19
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12667,7 +12727,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM747
-	.byte	0x17
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12717,12 +12777,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM757
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM758
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12732,12 +12792,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM760
-	.byte	0x15
+	.byte	0x11
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM761
-	.byte	0x15
+	.byte	0x19
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12747,7 +12807,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM763
-	.byte	0x18
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12757,7 +12817,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM765
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12767,7 +12827,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM767
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12777,7 +12837,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM769
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12787,7 +12847,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM771
-	.byte	0x15
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12802,17 +12862,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM774
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM775
-	.byte	0x17
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM776
-	.byte	0x12
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12822,7 +12882,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM778
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12842,27 +12902,27 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM782
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM783
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM784
-	.byte	0x16
+	.byte	0x12
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM785
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM786
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12872,12 +12932,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM788
-	.byte	0xf
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM789
-	.byte	0x1c
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12892,17 +12952,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM792
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM793
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM794
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12912,12 +12972,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM796
-	.byte	0x15
+	.byte	0xf
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM797
-	.byte	0x15
+	.byte	0x1c
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12942,7 +13002,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM802
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12962,12 +13022,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM806
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM807
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -12987,12 +13047,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM811
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM812
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13002,72 +13062,72 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM814
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM815
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM816
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM817
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM818
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM819
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM820
-	.byte	0x15
-	.byte	0x0
-	.byte	0x5
-	.byte	0x2
-	.4byte	.LM821
 	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
+	.4byte	.LM820
+	.byte	0x17
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM821
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
 	.4byte	.LM822
-	.byte	0xe
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM823
-	.byte	0x1d
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM824
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM825
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM826
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM827
-	.byte	0x33
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13082,22 +13142,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM830
-	.byte	0x16
+	.byte	0xe
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM831
-	.byte	0x15
+	.byte	0x1d
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM832
-	.byte	0x13
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM833
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13107,7 +13167,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM835
-	.byte	0x20
+	.byte	0x33
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13117,27 +13177,27 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM837
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM838
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM839
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM840
-	.byte	0x16
+	.byte	0x13
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM841
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13147,17 +13207,17 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM843
-	.byte	0x15
+	.byte	0x20
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM844
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM845
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13167,12 +13227,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM847
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM848
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13202,12 +13262,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM854
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM855
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13227,12 +13287,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM859
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM860
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13242,7 +13302,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM862
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13257,7 +13317,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM865
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13267,7 +13327,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM867
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13277,7 +13337,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM869
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13292,12 +13352,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM872
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM873
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13317,7 +13377,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM877
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13332,7 +13392,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM880
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13347,7 +13407,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM883
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13377,7 +13437,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM889
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13387,22 +13447,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM891
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM892
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM893
-	.byte	0x12
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM894
-	.byte	0x19
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13412,12 +13472,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM896
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM897
-	.byte	0x15
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13427,22 +13487,22 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM899
-	.byte	0x17
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM900
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM901
-	.byte	0x15
+	.byte	0x12
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM902
-	.byte	0x17
+	.byte	0x19
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13452,12 +13512,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM904
-	.byte	0x15
+	.byte	0x18
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM905
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13467,12 +13527,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM907
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM908
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13482,12 +13542,12 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM910
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM911
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.byte	0x5
 	.byte	0x2
@@ -13497,6 +13557,46 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x2
 	.4byte	.LM913
+	.byte	0x17
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM914
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM915
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM916
+	.byte	0x17
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM917
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM918
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM919
+	.byte	0x16
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM920
+	.byte	0x15
+	.byte	0x0
+	.byte	0x5
+	.byte	0x2
+	.4byte	.LM921
 	.byte	0x15
 	.byte	0x0
 	.byte	0x5
@@ -14149,7 +14249,7 @@ sSpritePalettes:
 	.byte	0,0
 
 	.section	.debug_info
-	.4byte	0xfa03
+	.4byte	0xf9e1
 	.2byte	0x2
 	.4byte	.debug_abbrev
 	.byte	0x4
@@ -17012,7 +17112,7 @@ sSpritePalettes:
 	.byte	0x1
 	.byte	0x5d
 	.byte	0x8
-	.4byte	0x1be8
+	.4byte	0x1bd7
 	.ascii	"NamingScreen_CreatePlayerIcon\000"
 
 	.byte	0x1
@@ -17022,25 +17122,21 @@ sSpritePalettes:
 	.4byte	.LFE61
 	.byte	0x1
 	.byte	0x5d
-	.byte	0xb
-	.ascii	"rivalGfxId\000"
+	.byte	0x9
+	.ascii	"spriteId\000"
 
 	.byte	0x1
 	.2byte	0x5ac
 	.4byte	0x107
-	.byte	0xb
-	.ascii	"spriteId\000"
-
 	.byte	0x1
-	.2byte	0x5ad
-	.4byte	0x107
+	.byte	0x52
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1c27
+	.4byte	0x1c16
 	.ascii	"NamingScreen_CreatePCIcon\000"
 
 	.byte	0x1
-	.2byte	0x5b6
+	.2byte	0x5bd
 	.byte	0x1
 	.4byte	.LFB62
 	.4byte	.LFE62
@@ -17050,15 +17146,15 @@ sSpritePalettes:
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x5b7
+	.2byte	0x5be
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1c67
+	.4byte	0x1c56
 	.ascii	"NamingScreen_CreateMonIcon\000"
 
 	.byte	0x1
-	.2byte	0x5bf
+	.2byte	0x5c6
 	.byte	0x1
 	.4byte	.LFB63
 	.4byte	.LFE63
@@ -17068,15 +17164,15 @@ sSpritePalettes:
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x5c0
+	.2byte	0x5c7
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1cac
+	.4byte	0x1c9b
 	.ascii	"NamingScreen_CreateWaldaDadIcon\000"
 
 	.byte	0x1
-	.2byte	0x5c8
+	.2byte	0x5cf
 	.byte	0x1
 	.4byte	.LFB64
 	.4byte	.LFE64
@@ -17086,39 +17182,35 @@ sSpritePalettes:
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x5c9
+	.2byte	0x5d0
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1d01
+	.4byte	0x1cdf
 	.ascii	"NamingScreen_CreateRivalIcon\000"
 
 	.byte	0x1
-	.2byte	0x5d1
+	.2byte	0x5d8
 	.byte	0x1
 	.4byte	.LFB65
 	.4byte	.LFE65
 	.byte	0x1
 	.byte	0x5d
-	.byte	0xb
-	.ascii	"rivalGfxId\000"
-
-	.byte	0x1
-	.2byte	0x5d2
-	.4byte	0x107
-	.byte	0xb
+	.byte	0x9
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x5d3
+	.2byte	0x5d9
 	.4byte	0x107
+	.byte	0x1
+	.byte	0x52
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x1d4f
+	.4byte	0x1d2d
 	.ascii	"HandleKeyboardEvent\000"
 
 	.byte	0x1
-	.2byte	0x5ee
+	.2byte	0x5fc
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB66
@@ -17129,7 +17221,7 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x5ef
+	.2byte	0x5fd
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x55
@@ -17137,17 +17229,17 @@ sSpritePalettes:
 	.ascii	"keyRole\000"
 
 	.byte	0x1
-	.2byte	0x5f0
+	.2byte	0x5fe
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x50
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x1db3
+	.4byte	0x1d91
 	.ascii	"KeyboardKeyHandler_Character\000"
 
 	.byte	0x1
-	.2byte	0x607
+	.2byte	0x615
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB67
@@ -17158,28 +17250,28 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x606
+	.2byte	0x614
 	.4byte	0x107
 	.byte	0xa
-	.4byte	0x1db2
+	.4byte	0x1d90
 	.4byte	.LBB50
 	.4byte	.LBE50
 	.byte	0x9
 	.ascii	"textFull\000"
 
 	.byte	0x1
-	.2byte	0x60b
+	.2byte	0x619
 	.4byte	0x499
 	.byte	0x1
 	.byte	0x54
 	.byte	0x0
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x1df1
+	.4byte	0x1dcf
 	.ascii	"KeyboardKeyHandler_Page\000"
 
 	.byte	0x1
-	.2byte	0x61b
+	.2byte	0x629
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB68
@@ -17190,15 +17282,15 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x61a
+	.2byte	0x628
 	.4byte	0x107
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x1e34
+	.4byte	0x1e12
 	.ascii	"KeyboardKeyHandler_Backspace\000"
 
 	.byte	0x1
-	.2byte	0x624
+	.2byte	0x632
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB69
@@ -17209,15 +17301,15 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x623
+	.2byte	0x631
 	.4byte	0x107
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x1e70
+	.4byte	0x1e4e
 	.ascii	"KeyboardKeyHandler_OK\000"
 
 	.byte	0x1
-	.2byte	0x62c
+	.2byte	0x63a
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB70
@@ -17228,14 +17320,14 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x62b
+	.2byte	0x639
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x10
 	.ascii	"SwapKeyboardPage\000"
 
 	.byte	0x1
-	.2byte	0x639
+	.2byte	0x647
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB71
@@ -17246,18 +17338,18 @@ sSpritePalettes:
 	.ascii	"CreateInputHandlerTask\000"
 
 	.byte	0x1
-	.2byte	0x656
+	.2byte	0x664
 	.byte	0x1
 	.4byte	.LFB72
 	.4byte	.LFE72
 	.byte	0x1
 	.byte	0x5d
 	.byte	0xf
-	.4byte	0x1eef
+	.4byte	0x1ecd
 	.ascii	"GetInputEvent\000"
 
 	.byte	0x1
-	.2byte	0x65b
+	.2byte	0x669
 	.byte	0x1
 	.4byte	0x107
 	.4byte	.LFB73
@@ -17268,15 +17360,15 @@ sSpritePalettes:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x65c
+	.2byte	0x66a
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1f2e
+	.4byte	0x1f0c
 	.ascii	"SetInputState\000"
 
 	.byte	0x1
-	.2byte	0x662
+	.2byte	0x670
 	.byte	0x1
 	.4byte	.LFB74
 	.4byte	.LFE74
@@ -17286,21 +17378,21 @@ sSpritePalettes:
 	.ascii	"state\000"
 
 	.byte	0x1
-	.2byte	0x661
+	.2byte	0x66f
 	.4byte	0x107
 	.byte	0xb
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x663
+	.2byte	0x671
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1f62
+	.4byte	0x1f40
 	.ascii	"Task_HandleInput\000"
 
 	.byte	0x1
-	.2byte	0x669
+	.2byte	0x677
 	.byte	0x1
 	.4byte	.LFB75
 	.4byte	.LFE75
@@ -17310,15 +17402,15 @@ sSpritePalettes:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x668
+	.2byte	0x676
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1f94
+	.4byte	0x1f72
 	.ascii	"Input_Disabled\000"
 
 	.byte	0x1
-	.2byte	0x66e
+	.2byte	0x67c
 	.byte	0x1
 	.4byte	.LFB76
 	.4byte	.LFE76
@@ -17328,17 +17420,17 @@ sSpritePalettes:
 	.ascii	"task\000"
 
 	.byte	0x1
-	.2byte	0x66d
+	.2byte	0x67b
 	.4byte	0x800
 	.byte	0x1
 	.byte	0x50
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1fc5
+	.4byte	0x1fa3
 	.ascii	"Input_Enabled\000"
 
 	.byte	0x1
-	.2byte	0x673
+	.2byte	0x681
 	.byte	0x1
 	.4byte	.LFB77
 	.4byte	.LFE77
@@ -17348,17 +17440,17 @@ sSpritePalettes:
 	.ascii	"task\000"
 
 	.byte	0x1
-	.2byte	0x672
+	.2byte	0x680
 	.4byte	0x800
 	.byte	0x1
 	.byte	0x52
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x1ff7
+	.4byte	0x1fd5
 	.ascii	"Input_Override\000"
 
 	.byte	0x1
-	.2byte	0x683
+	.2byte	0x691
 	.byte	0x1
 	.4byte	.LFB78
 	.4byte	.LFE78
@@ -17368,17 +17460,17 @@ sSpritePalettes:
 	.ascii	"task\000"
 
 	.byte	0x1
-	.2byte	0x682
+	.2byte	0x690
 	.4byte	0x800
 	.byte	0x1
 	.byte	0x50
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x20e3
+	.4byte	0x20c1
 	.ascii	"HandleDpadMovement\000"
 
 	.byte	0x1
-	.2byte	0x688
+	.2byte	0x696
 	.byte	0x1
 	.4byte	.LFB79
 	.4byte	.LFE79
@@ -17388,7 +17480,7 @@ sSpritePalettes:
 	.ascii	"task\000"
 
 	.byte	0x1
-	.2byte	0x687
+	.2byte	0x695
 	.4byte	0x800
 	.byte	0x1
 	.byte	0x59
@@ -17396,8 +17488,8 @@ sSpritePalettes:
 	.ascii	"sDpadDeltaX\000"
 
 	.byte	0x1
-	.2byte	0x689
-	.4byte	0x20ef
+	.2byte	0x697
+	.4byte	0x20cd
 	.byte	0x2
 	.byte	0x91
 	.byte	0x0
@@ -17405,8 +17497,8 @@ sSpritePalettes:
 	.ascii	"sDpadDeltaY\000"
 
 	.byte	0x1
-	.2byte	0x692
-	.4byte	0x2100
+	.2byte	0x6a0
+	.4byte	0x20de
 	.byte	0x2
 	.byte	0x91
 	.byte	0xc
@@ -17414,8 +17506,8 @@ sSpritePalettes:
 	.ascii	"sKeyRowToButtonRow\000"
 
 	.byte	0x1
-	.2byte	0x69b
-	.4byte	0x2111
+	.2byte	0x6a9
+	.4byte	0x20ef
 	.byte	0x2
 	.byte	0x91
 	.byte	0x18
@@ -17423,8 +17515,8 @@ sSpritePalettes:
 	.ascii	"sButtonRowToKeyRow\000"
 
 	.byte	0x1
-	.2byte	0x69c
-	.4byte	0x2122
+	.2byte	0x6aa
+	.4byte	0x2100
 	.byte	0x2
 	.byte	0x91
 	.byte	0x20
@@ -17432,7 +17524,7 @@ sSpritePalettes:
 	.ascii	"cursorX\000"
 
 	.byte	0x1
-	.2byte	0x69e
+	.2byte	0x6ac
 	.4byte	0x6a0
 	.byte	0x2
 	.byte	0x91
@@ -17441,7 +17533,7 @@ sSpritePalettes:
 	.ascii	"cursorY\000"
 
 	.byte	0x1
-	.2byte	0x69f
+	.2byte	0x6ad
 	.4byte	0x6a0
 	.byte	0x2
 	.byte	0x91
@@ -17450,7 +17542,7 @@ sSpritePalettes:
 	.ascii	"input\000"
 
 	.byte	0x1
-	.2byte	0x6a0
+	.2byte	0x6ae
 	.4byte	0x113
 	.byte	0x1
 	.byte	0x51
@@ -17458,16 +17550,32 @@ sSpritePalettes:
 	.ascii	"prevCursorX\000"
 
 	.byte	0x1
-	.2byte	0x6a1
+	.2byte	0x6af
 	.4byte	0x6a0
 	.byte	0x1
 	.byte	0x58
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x20ef
+	.4byte	0x20cd
 	.4byte	0x1584
 	.byte	0x16
 	.byte	0x4
+	.byte	0x0
+	.byte	0x17
+	.4byte	0x20c1
+	.byte	0x15
+	.4byte	0x20de
+	.4byte	0x1584
+	.byte	0x16
+	.byte	0x4
+	.byte	0x0
+	.byte	0x17
+	.4byte	0x20d2
+	.byte	0x15
+	.4byte	0x20ef
+	.4byte	0x1584
+	.byte	0x16
+	.byte	0x3
 	.byte	0x0
 	.byte	0x17
 	.4byte	0x20e3
@@ -17475,42 +17583,26 @@ sSpritePalettes:
 	.4byte	0x2100
 	.4byte	0x1584
 	.byte	0x16
-	.byte	0x4
-	.byte	0x0
-	.byte	0x17
-	.4byte	0x20f4
-	.byte	0x15
-	.4byte	0x2111
-	.4byte	0x1584
-	.byte	0x16
-	.byte	0x3
-	.byte	0x0
-	.byte	0x17
-	.4byte	0x2105
-	.byte	0x15
-	.4byte	0x2122
-	.4byte	0x1584
-	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x2116
+	.4byte	0x20f4
 	.byte	0x7
 	.ascii	"DrawNormalTextEntryBox\000"
 
 	.byte	0x1
-	.2byte	0x6ee
+	.2byte	0x6fc
 	.byte	0x1
 	.4byte	.LFB80
 	.4byte	.LFE80
 	.byte	0x1
 	.byte	0x5d
 	.byte	0x8
-	.4byte	0x2187
+	.4byte	0x2165
 	.ascii	"DrawMonTextEntryBox\000"
 
 	.byte	0x1
-	.2byte	0x6f5
+	.2byte	0x703
 	.byte	0x1
 	.4byte	.LFB81
 	.4byte	.LFE81
@@ -17520,14 +17612,14 @@ sSpritePalettes:
 	.ascii	"buffer\000"
 
 	.byte	0x1
-	.2byte	0x6f6
-	.4byte	0x2187
+	.2byte	0x704
+	.4byte	0x2165
 	.byte	0x2
 	.byte	0x91
 	.byte	0xc
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x2193
+	.4byte	0x2171
 	.4byte	0x107
 	.byte	0x16
 	.byte	0x1f
@@ -17536,7 +17628,7 @@ sSpritePalettes:
 	.ascii	"DrawTextEntryBox\000"
 
 	.byte	0x1
-	.2byte	0x70a
+	.2byte	0x718
 	.byte	0x1
 	.4byte	.LFB82
 	.4byte	.LFE82
@@ -17546,7 +17638,7 @@ sSpritePalettes:
 	.ascii	"TryDrawGenderIcon\000"
 
 	.byte	0x1
-	.2byte	0x718
+	.2byte	0x726
 	.byte	0x1
 	.4byte	.LFB83
 	.4byte	.LFE83
@@ -17556,18 +17648,18 @@ sSpritePalettes:
 	.ascii	"DummyGenderIcon\000"
 
 	.byte	0x1
-	.2byte	0x71d
+	.2byte	0x72b
 	.byte	0x1
 	.4byte	.LFB84
 	.4byte	.LFE84
 	.byte	0x1
 	.byte	0x5d
 	.byte	0x8
-	.4byte	0x2239
+	.4byte	0x2217
 	.ascii	"DrawGenderIcon\000"
 
 	.byte	0x1
-	.2byte	0x728
+	.2byte	0x736
 	.byte	0x1
 	.4byte	.LFB85
 	.4byte	.LFE85
@@ -17577,8 +17669,8 @@ sSpritePalettes:
 	.ascii	"text\000"
 
 	.byte	0x1
-	.2byte	0x729
-	.4byte	0x2239
+	.2byte	0x737
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x91
 	.byte	0xc
@@ -17586,23 +17678,23 @@ sSpritePalettes:
 	.ascii	"isFemale\000"
 
 	.byte	0x1
-	.2byte	0x72a
+	.2byte	0x738
 	.4byte	0x499
 	.byte	0x1
 	.byte	0x54
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x2245
+	.4byte	0x2223
 	.4byte	0x107
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x2286
+	.4byte	0x2264
 	.ascii	"GetCharAtKeyboardPos\000"
 
 	.byte	0x1
-	.2byte	0x739
+	.2byte	0x747
 	.byte	0x1
 	.4byte	0x107
 	.4byte	.LFB86
@@ -17613,21 +17705,21 @@ sSpritePalettes:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x738
+	.2byte	0x746
 	.4byte	0x6a0
 	.byte	0xe
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x738
+	.2byte	0x746
 	.4byte	0x6a0
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x22bf
+	.4byte	0x229d
 	.ascii	"GetTextEntryPosition\000"
 
 	.byte	0x1
-	.2byte	0x73f
+	.2byte	0x74d
 	.byte	0x1
 	.4byte	0x107
 	.4byte	.LFB87
@@ -17638,17 +17730,17 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x740
+	.2byte	0x74e
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x52
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x22fe
+	.4byte	0x22dc
 	.ascii	"GetPreviousTextCaretPosition\000"
 
 	.byte	0x1
-	.2byte	0x74b
+	.2byte	0x759
 	.byte	0x1
 	.4byte	0x107
 	.4byte	.LFB88
@@ -17659,15 +17751,15 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x74c
+	.2byte	0x75a
 	.4byte	0xf40
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x2344
+	.4byte	0x2322
 	.ascii	"DeleteTextCharacter\000"
 
 	.byte	0x1
-	.2byte	0x757
+	.2byte	0x765
 	.byte	0x1
 	.4byte	.LFB89
 	.4byte	.LFE89
@@ -17677,21 +17769,21 @@ sSpritePalettes:
 	.ascii	"index\000"
 
 	.byte	0x1
-	.2byte	0x758
+	.2byte	0x766
 	.4byte	0x107
 	.byte	0xb
 	.ascii	"keyRole\000"
 
 	.byte	0x1
-	.2byte	0x759
+	.2byte	0x767
 	.4byte	0x107
 	.byte	0x0
 	.byte	0xf
-	.4byte	0x2387
+	.4byte	0x2365
 	.ascii	"AddTextCharacter\000"
 
 	.byte	0x1
-	.2byte	0x76b
+	.2byte	0x779
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB90
@@ -17702,7 +17794,7 @@ sSpritePalettes:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x76c
+	.2byte	0x77a
 	.4byte	0x6a0
 	.byte	0x2
 	.byte	0x91
@@ -17711,18 +17803,18 @@ sSpritePalettes:
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x76d
+	.2byte	0x77b
 	.4byte	0x6a0
 	.byte	0x2
 	.byte	0x91
 	.byte	0x2
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x23c4
+	.4byte	0x23a2
 	.ascii	"BufferCharacter\000"
 
 	.byte	0x1
-	.2byte	0x77c
+	.2byte	0x78a
 	.byte	0x1
 	.4byte	.LFB91
 	.4byte	.LFE91
@@ -17732,21 +17824,21 @@ sSpritePalettes:
 	.ascii	"ch\000"
 
 	.byte	0x1
-	.2byte	0x77b
+	.2byte	0x789
 	.4byte	0x107
 	.byte	0xb
 	.ascii	"index\000"
 
 	.byte	0x1
-	.2byte	0x77d
+	.2byte	0x78b
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x23f2
+	.4byte	0x23d0
 	.ascii	"SaveInputText\000"
 
 	.byte	0x1
-	.2byte	0x782
+	.2byte	0x790
 	.byte	0x1
 	.4byte	.LFB92
 	.4byte	.LFE92
@@ -17756,7 +17848,7 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x783
+	.2byte	0x791
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x52
@@ -17765,7 +17857,7 @@ sSpritePalettes:
 	.ascii	"LoadGfx\000"
 
 	.byte	0x1
-	.2byte	0x790
+	.2byte	0x79e
 	.byte	0x1
 	.4byte	.LFB93
 	.4byte	.LFE93
@@ -17775,7 +17867,7 @@ sSpritePalettes:
 	.ascii	"CreateHelperTasks\000"
 
 	.byte	0x1
-	.2byte	0x79a
+	.2byte	0x7a8
 	.byte	0x1
 	.4byte	.LFB94
 	.4byte	.LFE94
@@ -17785,18 +17877,18 @@ sSpritePalettes:
 	.ascii	"LoadPalettes\000"
 
 	.byte	0x1
-	.2byte	0x7a0
+	.2byte	0x7ae
 	.byte	0x1
 	.4byte	.LFB95
 	.4byte	.LFE95
 	.byte	0x1
 	.byte	0x5d
 	.byte	0x8
-	.4byte	0x2481
+	.4byte	0x245f
 	.ascii	"DrawBgTilemap\000"
 
 	.byte	0x1
-	.2byte	0x7a7
+	.2byte	0x7b5
 	.byte	0x1
 	.4byte	.LFB96
 	.4byte	.LFE96
@@ -17806,23 +17898,23 @@ sSpritePalettes:
 	.ascii	"bg\000"
 
 	.byte	0x1
-	.2byte	0x7a6
+	.2byte	0x7b4
 	.4byte	0x107
 	.byte	0x3
 	.ascii	"src\000"
 
 	.byte	0x1
-	.2byte	0x7a6
+	.2byte	0x7b4
 	.4byte	0x144c
 	.byte	0x1
 	.byte	0x51
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x24c0
+	.4byte	0x249e
 	.ascii	"NamingScreen_Dummy\000"
 
 	.byte	0x1
-	.2byte	0x7ac
+	.2byte	0x7ba
 	.byte	0x1
 	.4byte	.LFB97
 	.4byte	.LFE97
@@ -17832,21 +17924,21 @@ sSpritePalettes:
 	.ascii	"bg\000"
 
 	.byte	0x1
-	.2byte	0x7ab
+	.2byte	0x7b9
 	.4byte	0x107
 	.byte	0xe
 	.ascii	"page\000"
 
 	.byte	0x1
-	.2byte	0x7ab
+	.2byte	0x7b9
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x2530
+	.4byte	0x250e
 	.ascii	"DrawTextEntry\000"
 
 	.byte	0x1
-	.2byte	0x7b1
+	.2byte	0x7bf
 	.byte	0x1
 	.4byte	.LFB98
 	.4byte	.LFE98
@@ -17856,7 +17948,7 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x7b2
+	.2byte	0x7c0
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x54
@@ -17864,8 +17956,8 @@ sSpritePalettes:
 	.ascii	"temp\000"
 
 	.byte	0x1
-	.2byte	0x7b3
-	.4byte	0x2239
+	.2byte	0x7c1
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x91
 	.byte	0xc
@@ -17873,13 +17965,13 @@ sSpritePalettes:
 	.ascii	"extraWidth\000"
 
 	.byte	0x1
-	.2byte	0x7b4
+	.2byte	0x7c2
 	.4byte	0x113
 	.byte	0x9
 	.ascii	"maxChars\000"
 
 	.byte	0x1
-	.2byte	0x7b5
+	.2byte	0x7c3
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x56
@@ -17887,17 +17979,17 @@ sSpritePalettes:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x7b6
+	.2byte	0x7c4
 	.4byte	0x113
 	.byte	0x1
 	.byte	0x59
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x2582
+	.4byte	0x2560
 	.ascii	"PrintKeyboardKeys\000"
 
 	.byte	0x1
-	.2byte	0x7e5
+	.2byte	0x7f3
 	.byte	0x1
 	.4byte	.LFB99
 	.4byte	.LFE99
@@ -17907,7 +17999,7 @@ sSpritePalettes:
 	.ascii	"window\000"
 
 	.byte	0x1
-	.2byte	0x7e4
+	.2byte	0x7f2
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x56
@@ -17915,7 +18007,7 @@ sSpritePalettes:
 	.ascii	"page\000"
 
 	.byte	0x1
-	.2byte	0x7e4
+	.2byte	0x7f2
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x55
@@ -17923,17 +18015,17 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x7e6
+	.2byte	0x7f4
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x54
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x2603
+	.4byte	0x25e1
 	.ascii	"DrawKeyboardPageOnDeck\000"
 
 	.byte	0x1
-	.2byte	0x7fa
+	.2byte	0x808
 	.byte	0x1
 	.4byte	.LFB100
 	.4byte	.LFE100
@@ -17943,7 +18035,7 @@ sSpritePalettes:
 	.ascii	"bg\000"
 
 	.byte	0x1
-	.2byte	0x7fb
+	.2byte	0x809
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x55
@@ -17951,7 +18043,7 @@ sSpritePalettes:
 	.ascii	"bg_\000"
 
 	.byte	0x1
-	.2byte	0x7fc
+	.2byte	0x80a
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x56
@@ -17959,7 +18051,7 @@ sSpritePalettes:
 	.ascii	"windowId\000"
 
 	.byte	0x1
-	.2byte	0x7fd
+	.2byte	0x80b
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x54
@@ -17967,21 +18059,21 @@ sSpritePalettes:
 	.ascii	"bg1Priority\000"
 
 	.byte	0x1
-	.2byte	0x7fe
+	.2byte	0x80c
 	.4byte	0x107
 	.byte	0xb
 	.ascii	"bg2Priority\000"
 
 	.byte	0x1
-	.2byte	0x7ff
+	.2byte	0x80d
 	.4byte	0x107
 	.byte	0x0
 	.byte	0x8
-	.4byte	0x2636
+	.4byte	0x2614
 	.ascii	"PrintControls\000"
 
 	.byte	0x1
-	.2byte	0x815
+	.2byte	0x823
 	.byte	0x1
 	.4byte	.LFB101
 	.4byte	.LFE101
@@ -17991,27 +18083,27 @@ sSpritePalettes:
 	.ascii	"color\000"
 
 	.byte	0x1
-	.2byte	0x816
-	.4byte	0x2647
+	.2byte	0x824
+	.4byte	0x2625
 	.byte	0x2
 	.byte	0x91
 	.byte	0xc
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x2642
-	.4byte	0x2642
+	.4byte	0x2620
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x17
 	.4byte	0x107
 	.byte	0x17
-	.4byte	0x2636
+	.4byte	0x2614
 	.byte	0x7
 	.ascii	"CB2_NamingScreen\000"
 
 	.byte	0x1
-	.2byte	0x81f
+	.2byte	0x82d
 	.byte	0x1
 	.4byte	.LFB102
 	.4byte	.LFE102
@@ -18021,7 +18113,7 @@ sSpritePalettes:
 	.ascii	"ResetVHBlank\000"
 
 	.byte	0x1
-	.2byte	0x827
+	.2byte	0x835
 	.byte	0x1
 	.4byte	.LFB103
 	.4byte	.LFE103
@@ -18031,7 +18123,7 @@ sSpritePalettes:
 	.ascii	"SetVBlank\000"
 
 	.byte	0x1
-	.2byte	0x82d
+	.2byte	0x83b
 	.byte	0x1
 	.4byte	.LFB104
 	.4byte	.LFE104
@@ -18041,7 +18133,7 @@ sSpritePalettes:
 	.ascii	"VBlankCB_NamingScreen\000"
 
 	.byte	0x1
-	.2byte	0x832
+	.2byte	0x840
 	.byte	0x1
 	.4byte	.LFB105
 	.4byte	.LFE105
@@ -18051,18 +18143,18 @@ sSpritePalettes:
 	.ascii	"NamingScreen_ShowBgs\000"
 
 	.byte	0x1
-	.2byte	0x83f
+	.2byte	0x84d
 	.byte	0x1
 	.4byte	.LFB106
 	.4byte	.LFE106
 	.byte	0x1
 	.byte	0x5d
 	.byte	0xf
-	.4byte	0x272f
+	.4byte	0x270d
 	.ascii	"IsWideLetter\000"
 
 	.byte	0x1
-	.2byte	0x848
+	.2byte	0x856
 	.byte	0x1
 	.4byte	0x499
 	.4byte	.LFB107
@@ -18073,7 +18165,7 @@ sSpritePalettes:
 	.ascii	"character\000"
 
 	.byte	0x1
-	.2byte	0x847
+	.2byte	0x855
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x54
@@ -18081,7 +18173,7 @@ sSpritePalettes:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x849
+	.2byte	0x857
 	.4byte	0x107
 	.byte	0x1
 	.byte	0x52
@@ -18090,7 +18182,7 @@ sSpritePalettes:
 	.ascii	"Debug_NamingScreenPlayer\000"
 
 	.byte	0x1
-	.2byte	0x855
+	.2byte	0x863
 	.byte	0x1
 	.4byte	.LFB108
 	.4byte	.LFE108
@@ -18100,7 +18192,7 @@ sSpritePalettes:
 	.ascii	"Debug_NamingScreenBox\000"
 
 	.byte	0x1
-	.2byte	0x85a
+	.2byte	0x868
 	.byte	0x1
 	.4byte	.LFB109
 	.4byte	.LFE109
@@ -18110,7 +18202,7 @@ sSpritePalettes:
 	.ascii	"Debug_NamingScreenCaughtMon\000"
 
 	.byte	0x1
-	.2byte	0x85f
+	.2byte	0x86d
 	.byte	0x1
 	.4byte	.LFB110
 	.4byte	.LFE110
@@ -18120,7 +18212,7 @@ sSpritePalettes:
 	.ascii	"Debug_NamingScreenNickname\000"
 
 	.byte	0x1
-	.2byte	0x864
+	.2byte	0x872
 	.byte	0x1
 	.4byte	.LFB111
 	.4byte	.LFE111
@@ -18131,7 +18223,7 @@ sSpritePalettes:
 	.ascii	"NameRival\000"
 
 	.byte	0x1
-	.2byte	0x869
+	.2byte	0x877
 	.byte	0x1
 	.4byte	.LFB112
 	.4byte	.LFE112
@@ -18142,7 +18234,7 @@ sSpritePalettes:
 
 	.byte	0x7
 	.byte	0x67
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x4
 	.ascii	"int\000"
 
@@ -18159,7 +18251,7 @@ sSpritePalettes:
 
 	.byte	0x8
 	.byte	0x6
-	.4byte	0x2826
+	.4byte	0x2804
 	.byte	0x4
 	.ascii	"long int\000"
 
@@ -18170,7 +18262,7 @@ sSpritePalettes:
 
 	.byte	0x8
 	.byte	0xa
-	.4byte	0x2840
+	.4byte	0x281e
 	.byte	0x4
 	.ascii	"long unsigned int\000"
 
@@ -18181,13 +18273,13 @@ sSpritePalettes:
 
 	.byte	0x8
 	.byte	0x11
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int8_t\000"
 
 	.byte	0x9
 	.byte	0x23
-	.4byte	0x2872
+	.4byte	0x2850
 	.byte	0x4
 	.ascii	"signed char\000"
 
@@ -18198,7 +18290,7 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x24
-	.4byte	0x2890
+	.4byte	0x286e
 	.byte	0x4
 	.ascii	"short int\000"
 
@@ -18209,13 +18301,13 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x25
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int64_t\000"
 
 	.byte	0x9
 	.byte	0x26
-	.4byte	0x28bb
+	.4byte	0x2899
 	.byte	0x4
 	.ascii	"long long int\000"
 
@@ -18226,7 +18318,7 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x27
-	.4byte	0x28db
+	.4byte	0x28b9
 	.byte	0x4
 	.ascii	"unsigned char\000"
 
@@ -18249,7 +18341,7 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x2a
-	.4byte	0x291c
+	.4byte	0x28fa
 	.byte	0x4
 	.ascii	"long long unsigned int\000"
 
@@ -18260,31 +18352,31 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x2e
-	.4byte	0x2872
+	.4byte	0x2850
 	.byte	0x1d
 	.ascii	"int_least16_t\000"
 
 	.byte	0x9
 	.byte	0x2f
-	.4byte	0x2890
+	.4byte	0x286e
 	.byte	0x1d
 	.ascii	"int_least32_t\000"
 
 	.byte	0x9
 	.byte	0x30
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int_least64_t\000"
 
 	.byte	0x9
 	.byte	0x31
-	.4byte	0x28bb
+	.4byte	0x2899
 	.byte	0x1d
 	.ascii	"uint_least8_t\000"
 
 	.byte	0x9
 	.byte	0x32
-	.4byte	0x28db
+	.4byte	0x28b9
 	.byte	0x1d
 	.ascii	"uint_least16_t\000"
 
@@ -18302,31 +18394,31 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x35
-	.4byte	0x291c
+	.4byte	0x28fa
 	.byte	0x1d
 	.ascii	"int_fast8_t\000"
 
 	.byte	0x9
 	.byte	0x39
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int_fast16_t\000"
 
 	.byte	0x9
 	.byte	0x3a
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int_fast32_t\000"
 
 	.byte	0x9
 	.byte	0x3b
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"int_fast64_t\000"
 
 	.byte	0x9
 	.byte	0x3c
-	.4byte	0x28bb
+	.4byte	0x2899
 	.byte	0x1d
 	.ascii	"uint_fast8_t\000"
 
@@ -18350,13 +18442,13 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x40
-	.4byte	0x291c
+	.4byte	0x28fa
 	.byte	0x1d
 	.ascii	"intptr_t\000"
 
 	.byte	0x9
 	.byte	0x44
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x1d
 	.ascii	"uintptr_t\000"
 
@@ -18368,131 +18460,131 @@ sSpritePalettes:
 
 	.byte	0x9
 	.byte	0x49
-	.4byte	0x28bb
+	.4byte	0x2899
 	.byte	0x1d
 	.ascii	"uintmax_t\000"
 
 	.byte	0x9
 	.byte	0x4a
-	.4byte	0x291c
+	.4byte	0x28fa
 	.byte	0x1d
 	.ascii	"u8\000"
 
 	.byte	0x6
 	.byte	0x6
-	.4byte	0x28cc
+	.4byte	0x28aa
 	.byte	0x1d
 	.ascii	"u16\000"
 
 	.byte	0x6
 	.byte	0x7
-	.4byte	0x28ec
+	.4byte	0x28ca
 	.byte	0x1d
 	.ascii	"u32\000"
 
 	.byte	0x6
 	.byte	0x8
-	.4byte	0x28fc
+	.4byte	0x28da
 	.byte	0x1d
 	.ascii	"u64\000"
 
 	.byte	0x6
 	.byte	0x9
-	.4byte	0x290c
+	.4byte	0x28ea
 	.byte	0x1d
 	.ascii	"s8\000"
 
 	.byte	0x6
 	.byte	0xa
-	.4byte	0x2864
+	.4byte	0x2842
 	.byte	0x1d
 	.ascii	"s16\000"
 
 	.byte	0x6
 	.byte	0xb
-	.4byte	0x2881
+	.4byte	0x285f
 	.byte	0x1d
 	.ascii	"s32\000"
 
 	.byte	0x6
 	.byte	0xc
-	.4byte	0x289d
+	.4byte	0x287b
 	.byte	0x1d
 	.ascii	"s64\000"
 
 	.byte	0x6
 	.byte	0xd
-	.4byte	0x28ac
+	.4byte	0x288a
 	.byte	0x1d
 	.ascii	"vu8\000"
 
 	.byte	0x6
 	.byte	0xf
-	.4byte	0x2b25
+	.4byte	0x2b03
 	.byte	0xd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1d
 	.ascii	"vu16\000"
 
 	.byte	0x6
 	.byte	0x10
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0xd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x1d
 	.ascii	"vu32\000"
 
 	.byte	0x6
 	.byte	0x11
-	.4byte	0x2b47
+	.4byte	0x2b25
 	.byte	0xd
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x1d
 	.ascii	"vu64\000"
 
 	.byte	0x6
 	.byte	0x12
-	.4byte	0x2b58
+	.4byte	0x2b36
 	.byte	0xd
-	.4byte	0x2ae4
+	.4byte	0x2ac2
 	.byte	0x1d
 	.ascii	"vs8\000"
 
 	.byte	0x6
 	.byte	0x13
-	.4byte	0x2b68
+	.4byte	0x2b46
 	.byte	0xd
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x1d
 	.ascii	"vs16\000"
 
 	.byte	0x6
 	.byte	0x14
-	.4byte	0x2b79
+	.4byte	0x2b57
 	.byte	0xd
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x1d
 	.ascii	"vs32\000"
 
 	.byte	0x6
 	.byte	0x15
-	.4byte	0x2b8a
+	.4byte	0x2b68
 	.byte	0xd
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x1d
 	.ascii	"vs64\000"
 
 	.byte	0x6
 	.byte	0x16
-	.4byte	0x2b9b
+	.4byte	0x2b79
 	.byte	0xd
-	.4byte	0x2b0f
+	.4byte	0x2aed
 	.byte	0x1d
 	.ascii	"f32\000"
 
 	.byte	0x6
 	.byte	0x18
-	.4byte	0x2bab
+	.4byte	0x2b89
 	.byte	0x4
 	.ascii	"float\000"
 
@@ -18503,7 +18595,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x19
-	.4byte	0x2bbf
+	.4byte	0x2b9d
 	.byte	0x4
 	.ascii	"double\000"
 
@@ -18514,27 +18606,27 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x1b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1d
 	.ascii	"bool16\000"
 
 	.byte	0x6
 	.byte	0x1c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x1d
 	.ascii	"bool32\000"
 
 	.byte	0x6
 	.byte	0x1d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x1d
 	.ascii	"vbool8\000"
 
 	.byte	0x6
 	.byte	0x1e
-	.4byte	0x2c00
+	.4byte	0x2bde
 	.byte	0xd
-	.4byte	0x28db
+	.4byte	0x28b9
 	.byte	0x1d
 	.ascii	"vbool16\000"
 
@@ -18548,7 +18640,7 @@ sSpritePalettes:
 	.byte	0x20
 	.4byte	0x370
 	.byte	0x11
-	.4byte	0x2cf3
+	.4byte	0x2cd1
 	.ascii	"BgCnt\000"
 
 	.byte	0x4
@@ -18559,7 +18651,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x24
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xe
@@ -18571,7 +18663,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x25
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xc
@@ -18583,7 +18675,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x26
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xa
@@ -18595,7 +18687,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x27
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -18607,7 +18699,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x28
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -18619,7 +18711,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x29
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x3
@@ -18631,7 +18723,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x2a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -18643,7 +18735,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x2b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x0
@@ -18656,11 +18748,11 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x2d
-	.4byte	0x2d01
+	.4byte	0x2cdf
 	.byte	0xd
-	.4byte	0x2c23
+	.4byte	0x2c01
 	.byte	0x11
-	.4byte	0x2d5c
+	.4byte	0x2d3a
 	.ascii	"PlttData\000"
 
 	.byte	0x4
@@ -18671,7 +18763,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x31
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0xb
@@ -18683,7 +18775,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x32
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x6
@@ -18695,7 +18787,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x33
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x1
@@ -18707,7 +18799,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x34
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x0
@@ -18716,7 +18808,7 @@ sSpritePalettes:
 	.byte	0x0
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x2ddb
+	.4byte	0x2db9
 	.ascii	"BgAffineSrcData\000"
 
 	.byte	0x14
@@ -18727,7 +18819,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7a
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -18736,7 +18828,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7b
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -18745,7 +18837,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7c
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -18754,7 +18846,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7d
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -18763,7 +18855,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7e
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -18772,7 +18864,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x7f
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -18781,13 +18873,13 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x80
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x2e42
+	.4byte	0x2e20
 	.ascii	"BgAffineDstData\000"
 
 	.byte	0x10
@@ -18798,7 +18890,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x85
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -18807,7 +18899,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x86
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -18816,7 +18908,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x87
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -18825,7 +18917,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x88
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -18834,7 +18926,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x89
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -18843,13 +18935,13 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x8a
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x2e91
+	.4byte	0x2e6f
 	.ascii	"ObjAffineSrcData\000"
 
 	.byte	0x8
@@ -18860,7 +18952,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x8f
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -18869,7 +18961,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x90
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -18878,13 +18970,13 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x91
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x2f7c
+	.4byte	0x2f5a
 	.ascii	"SioMultiCnt\000"
 
 	.byte	0x4
@@ -18895,7 +18987,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x97
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xe
@@ -18907,7 +18999,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x98
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -18919,7 +19011,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x99
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -18931,7 +19023,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xa
@@ -18943,7 +19035,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -18955,7 +19047,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -18967,7 +19059,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x4
@@ -18979,7 +19071,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x2
@@ -18991,7 +19083,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0x9f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -19003,7 +19095,7 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0xa0
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x0
@@ -19015,13 +19107,13 @@ sSpritePalettes:
 
 	.byte	0x6
 	.byte	0xa1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3132
+	.4byte	0x3110
 	.ascii	"MultiBootParam\000"
 
 	.byte	0x4c
@@ -19032,7 +19124,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0xb
-	.4byte	0x3132
+	.4byte	0x3110
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19041,7 +19133,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0xc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -19050,7 +19142,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0xd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -19059,7 +19151,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0xe
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -19068,7 +19160,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0xf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -19077,7 +19169,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x10
-	.4byte	0x313e
+	.4byte	0x311c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x19
@@ -19086,7 +19178,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x11
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -19095,7 +19187,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x12
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -19104,7 +19196,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x13
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -19113,7 +19205,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
@@ -19122,7 +19214,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x15
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -19131,7 +19223,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x16
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -19140,7 +19232,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x17
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -19149,7 +19241,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x18
-	.4byte	0x3150
+	.4byte	0x312e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -19158,7 +19250,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x19
-	.4byte	0x315c
+	.4byte	0x313a
 	.byte	0x2
 	.byte	0x23
 	.byte	0x38
@@ -19167,7 +19259,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x1a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x48
@@ -19176,7 +19268,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x1b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x49
@@ -19185,7 +19277,7 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x1c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4a
@@ -19194,40 +19286,40 @@ sSpritePalettes:
 
 	.byte	0xa
 	.byte	0x1d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4b
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x313e
-	.4byte	0x2ad9
+	.4byte	0x311c
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x314a
-	.4byte	0x2ac4
+	.4byte	0x3128
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x2642
+	.4byte	0x2620
 	.byte	0x15
-	.4byte	0x315c
+	.4byte	0x313a
 	.4byte	0x10d
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x3168
-	.4byte	0x2ad9
+	.4byte	0x3146
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3191
+	.4byte	0x316f
 	.ascii	"Coords8\000"
 
 	.byte	0x4
@@ -19238,7 +19330,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x88
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19247,13 +19339,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x89
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x31bb
+	.4byte	0x3199
 	.ascii	"UCoords8\000"
 
 	.byte	0x4
@@ -19264,7 +19356,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x8e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19273,13 +19365,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x8f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x31e6
+	.4byte	0x31c4
 	.ascii	"UCoords16\000"
 
 	.byte	0x4
@@ -19290,7 +19382,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x9a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19299,13 +19391,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0x9b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3210
+	.4byte	0x31ee
 	.ascii	"Coords32\000"
 
 	.byte	0x8
@@ -19316,7 +19408,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xa0
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19325,13 +19417,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xa1
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x323b
+	.4byte	0x3219
 	.ascii	"UCoords32\000"
 
 	.byte	0x8
@@ -19342,7 +19434,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xa6
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19351,13 +19443,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xa7
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x328c
+	.4byte	0x326a
 	.ascii	"Time\000"
 
 	.byte	0x8
@@ -19368,7 +19460,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xac
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19377,7 +19469,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xad
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19386,7 +19478,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xae
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -19395,13 +19487,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xaf
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3342
+	.4byte	0x3320
 	.ascii	"Pokedex\000"
 
 	.byte	0x78
@@ -19412,7 +19504,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19421,7 +19513,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -19430,7 +19522,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19439,7 +19531,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -19448,7 +19540,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb8
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -19457,7 +19549,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xb9
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -19466,7 +19558,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xba
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -19475,19 +19567,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xbb
-	.4byte	0x3342
+	.4byte	0x3320
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x334e
-	.4byte	0x2ac4
+	.4byte	0x332c
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x67
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x33e4
+	.4byte	0x33c2
 	.ascii	"PokemonJumpResults\000"
 
 	.byte	0x10
@@ -19498,7 +19590,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc0
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19507,7 +19599,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19516,7 +19608,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc2
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -19525,7 +19617,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -19534,7 +19626,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc4
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -19543,13 +19635,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xc5
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x34da
+	.4byte	0x34b8
 	.ascii	"BerryPickingResults\000"
 
 	.byte	0x10
@@ -19560,7 +19652,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xca
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19569,7 +19661,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xcb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -19578,7 +19670,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xcc
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -19587,7 +19679,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xcd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -19596,7 +19688,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xce
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -19605,7 +19697,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xcf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -19614,7 +19706,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xd0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -19623,7 +19715,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xd1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -19632,7 +19724,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xd2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -19641,7 +19733,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xd3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -19650,13 +19742,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xd4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3512
+	.4byte	0x34f0
 	.ascii	"PyramidBag\000"
 
 	.byte	0x3c
@@ -19667,7 +19759,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xda
-	.4byte	0x3512
+	.4byte	0x34f0
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19676,29 +19768,29 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xdb
-	.4byte	0x3520
+	.4byte	0x34fe
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x3520
-	.4byte	0x2ace
+	.4byte	0x34fe
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x9
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x352e
-	.4byte	0x2ac4
+	.4byte	0x350c
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x9
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x3588
+	.4byte	0x3566
 	.ascii	"BerryCrush\000"
 
 	.byte	0x10
@@ -19709,7 +19801,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe0
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19718,7 +19810,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -19727,19 +19819,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x3594
-	.4byte	0x2ace
+	.4byte	0x3572
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x35dc
+	.4byte	0x35ba
 	.ascii	"ApprenticeMon\000"
 
 	.byte	0xc
@@ -19750,7 +19842,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe7
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19759,7 +19851,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe8
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19768,13 +19860,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xe9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x36af
+	.4byte	0x368d
 	.ascii	"Apprentice\000"
 
 	.byte	0x44
@@ -19785,7 +19877,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -19797,7 +19889,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x1
@@ -19809,7 +19901,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -19818,7 +19910,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19827,7 +19919,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf4
-	.4byte	0x36af
+	.4byte	0x368d
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -19836,7 +19928,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf5
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -19845,7 +19937,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf6
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
@@ -19854,7 +19946,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf7
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x38
@@ -19863,7 +19955,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3f
@@ -19872,37 +19964,37 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xf9
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x40
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x36bb
-	.4byte	0x3594
+	.4byte	0x3699
+	.4byte	0x3572
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x36c7
-	.4byte	0x2ace
+	.4byte	0x36a5
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x36d3
-	.4byte	0x2ac4
+	.4byte	0x36b1
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x36df
-	.4byte	0x2ac4
+	.4byte	0x36bd
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x6
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.ascii	"BattleTowerPokemon\000"
 
 	.byte	0x2c
@@ -19913,7 +20005,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xfe
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -19922,7 +20014,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.byte	0xff
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -19931,7 +20023,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x100
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -19940,7 +20032,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x101
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -19949,7 +20041,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x102
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -19958,7 +20050,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x103
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -19967,7 +20059,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x104
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -19976,7 +20068,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x105
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -19985,7 +20077,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x106
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -19994,7 +20086,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x107
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -20003,7 +20095,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x108
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -20012,7 +20104,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x109
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -20021,7 +20113,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10a
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x1b
@@ -20033,7 +20125,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x16
@@ -20045,7 +20137,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x11
@@ -20057,7 +20149,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0xc
@@ -20069,7 +20161,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10e
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x7
@@ -20081,7 +20173,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x10f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x2
@@ -20093,7 +20185,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x110
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1
@@ -20105,7 +20197,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x111
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x0
@@ -20117,7 +20209,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x112
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -20126,7 +20218,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x113
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -20135,19 +20227,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x114
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2b
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x38e3
-	.4byte	0x2ac4
+	.4byte	0x38c1
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xa
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.ascii	"EmeraldBattleTowerRecord\000"
 
 	.byte	0xec
@@ -20158,7 +20250,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x11b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20167,7 +20259,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x11c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -20176,7 +20268,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x11d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -20185,7 +20277,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x11e
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -20194,7 +20286,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x11f
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -20203,7 +20295,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x120
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -20212,7 +20304,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x121
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -20221,7 +20313,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x122
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -20230,7 +20322,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x123
-	.4byte	0x39f2
+	.4byte	0x39d0
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
@@ -20239,7 +20331,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x124
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x1
@@ -20248,25 +20340,25 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x125
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe8,0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x39f2
-	.4byte	0x2ac4
+	.4byte	0x39d0
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x7
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x39fe
-	.4byte	0x36df
+	.4byte	0x39dc
+	.4byte	0x36bd
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x3aa4
+	.4byte	0x3a82
 	.ascii	"BattleTowerInterview\000"
 
 	.byte	0x18
@@ -20277,7 +20369,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x12a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20286,7 +20378,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x12b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -20295,7 +20387,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x12c
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -20304,7 +20396,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x12d
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -20313,13 +20405,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x12e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x3ba0
+	.4byte	0x3b7e
 	.ascii	"BattleTowerEReaderTrainer\000"
 
 	.byte	0xbc
@@ -20330,7 +20422,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x133
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20339,7 +20431,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x134
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -20348,7 +20440,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x135
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -20357,7 +20449,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x136
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -20366,7 +20458,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x137
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -20375,7 +20467,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x138
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -20384,7 +20476,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x139
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -20393,7 +20485,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x13a
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -20402,7 +20494,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x13b
-	.4byte	0x3ba0
+	.4byte	0x3b7e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
@@ -20411,19 +20503,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x13c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x3bac
-	.4byte	0x36df
+	.4byte	0x3b8a
+	.4byte	0x36bd
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.ascii	"DomeMonData\000"
 
 	.byte	0x10
@@ -20434,7 +20526,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x142
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20443,7 +20535,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x143
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -20452,19 +20544,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x144
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x3c00
-	.4byte	0x2ac4
+	.4byte	0x3bde
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x3c61
+	.4byte	0x3c3f
 	.ascii	"RentalMon\000"
 
 	.byte	0xc
@@ -20475,7 +20567,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x149
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20484,7 +20576,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x14a
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -20493,7 +20585,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x14b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -20502,13 +20594,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x14c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x3ce3
+	.4byte	0x3cc1
 	.ascii	"BattleDomeTrainer\000"
 
 	.byte	0x4
@@ -20519,7 +20611,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x151
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0xa
 	.byte	0x6
@@ -20531,7 +20623,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x152
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -20543,7 +20635,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x153
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x3
@@ -20555,7 +20647,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x154
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x3
 	.byte	0x0
@@ -20564,7 +20656,7 @@ sSpritePalettes:
 	.byte	0x0
 	.byte	0x0
 	.byte	0x21
-	.4byte	0x45d9
+	.4byte	0x45b7
 	.ascii	"BattleFrontier\000"
 
 	.2byte	0x8e0
@@ -20575,7 +20667,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x15c
-	.4byte	0x38e3
+	.4byte	0x38c1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -20584,7 +20676,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x15d
-	.4byte	0x45d9
+	.4byte	0x45b7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xec,0x1
@@ -20593,7 +20685,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x15e
-	.4byte	0x39fe
+	.4byte	0x39dc
 	.byte	0x3
 	.byte	0x23
 	.byte	0x88,0xb
@@ -20602,7 +20694,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x15f
-	.4byte	0x3aa4
+	.4byte	0x3a82
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa0,0xb
@@ -20611,7 +20703,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x160
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xdc,0xc
@@ -20620,7 +20712,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x161
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x6
@@ -20632,7 +20724,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x162
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -20644,7 +20736,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x163
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x4
@@ -20656,7 +20748,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x164
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x3
 	.byte	0x23
 	.byte	0xde,0xc
@@ -20665,7 +20757,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x165
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe6,0xc
@@ -20674,7 +20766,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x166
-	.4byte	0x45e5
+	.4byte	0x45c3
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe8,0xc
@@ -20683,7 +20775,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x167
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0xd
@@ -20692,7 +20784,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x168
-	.4byte	0x45f1
+	.4byte	0x45cf
 	.byte	0x3
 	.byte	0x23
 	.byte	0x94,0xd
@@ -20701,7 +20793,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x169
-	.4byte	0x45f1
+	.4byte	0x45cf
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa4,0xd
@@ -20710,7 +20802,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb4,0xd
@@ -20719,7 +20811,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb6,0xd
@@ -20728,7 +20820,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0xd
@@ -20737,7 +20829,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xba,0xd
@@ -20746,7 +20838,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbb,0xd
@@ -20755,7 +20847,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x16f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -20767,7 +20859,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x170
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -20779,7 +20871,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x171
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -20791,7 +20883,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x172
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x4
@@ -20803,7 +20895,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x173
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x3
@@ -20815,7 +20907,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x174
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x2
@@ -20827,7 +20919,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x175
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
@@ -20839,7 +20931,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x176
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -20851,7 +20943,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x177
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbd,0xd
@@ -20860,7 +20952,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x178
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbe,0xd
@@ -20869,7 +20961,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x179
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbf,0xd
@@ -20878,7 +20970,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17a
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0xd
@@ -20887,7 +20979,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17b
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc8,0xd
@@ -20896,7 +20988,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17c
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd0,0xd
@@ -20905,7 +20997,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17d
-	.4byte	0x460d
+	.4byte	0x45eb
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd8,0xd
@@ -20914,7 +21006,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17e
-	.4byte	0x4619
+	.4byte	0x45f7
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0xe
@@ -20923,7 +21015,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x17f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf8,0xe
@@ -20932,7 +21024,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x180
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfa,0xe
@@ -20941,7 +21033,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x181
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfc,0xe
@@ -20950,7 +21042,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x182
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0x84,0xf
@@ -20959,7 +21051,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x183
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x8c,0xf
@@ -20968,7 +21060,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x184
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0x8e,0xf
@@ -20977,7 +21069,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x185
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0x92,0xf
@@ -20986,7 +21078,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x186
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0x96,0xf
@@ -20995,7 +21087,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x187
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9e,0xf
@@ -21004,7 +21096,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x188
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa6,0xf
@@ -21013,7 +21105,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x189
-	.4byte	0x45ff
+	.4byte	0x45dd
 	.byte	0x3
 	.byte	0x23
 	.byte	0xae,0xf
@@ -21022,7 +21114,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb6,0xf
@@ -21031,7 +21123,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18b
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0xf
@@ -21040,7 +21132,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18c
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbc,0xf
@@ -21049,7 +21141,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18d
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0xf
@@ -21058,7 +21150,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x5
@@ -21070,7 +21162,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x18f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x1
@@ -21082,7 +21174,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x190
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -21094,7 +21186,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x191
-	.4byte	0x4633
+	.4byte	0x4611
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc6,0xf
@@ -21103,7 +21195,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x192
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xcc,0xf
@@ -21112,7 +21204,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x193
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0xce,0xf
@@ -21121,7 +21213,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x194
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd2,0xf
@@ -21130,7 +21222,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x195
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd6,0xf
@@ -21139,7 +21231,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x196
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xde,0xf
@@ -21148,7 +21240,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x197
-	.4byte	0x34da
+	.4byte	0x34b8
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0xf
@@ -21157,7 +21249,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x198
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9c,0x10
@@ -21166,7 +21258,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x199
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9e,0x10
@@ -21175,7 +21267,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa0,0x10
@@ -21184,7 +21276,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa2,0x10
@@ -21193,7 +21285,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19c
-	.4byte	0x463f
+	.4byte	0x461d
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa4,0x10
@@ -21202,7 +21294,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xec,0x10
@@ -21211,7 +21303,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xee,0x10
@@ -21220,7 +21312,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x19f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf0,0x10
@@ -21229,7 +21321,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a0
-	.4byte	0x464b
+	.4byte	0x4629
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf4,0x10
@@ -21238,7 +21330,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x94,0x11
@@ -21247,7 +21339,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a2
-	.4byte	0x4657
+	.4byte	0x4635
 	.byte	0x3
 	.byte	0x23
 	.byte	0x95,0x11
@@ -21256,7 +21348,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a3
-	.4byte	0x4665
+	.4byte	0x4643
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa5,0x11
@@ -21265,7 +21357,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x7
 	.byte	0x1
@@ -21277,7 +21369,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -21289,7 +21381,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xae,0x11
@@ -21298,7 +21390,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xaf,0x11
@@ -21307,101 +21399,101 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1a8
-	.4byte	0x4673
+	.4byte	0x4651
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb0,0x11
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x45e5
-	.4byte	0x38e3
+	.4byte	0x45c3
+	.4byte	0x38c1
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x45f1
-	.4byte	0x2ace
+	.4byte	0x45cf
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x45ff
-	.4byte	0x2ace
+	.4byte	0x45dd
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x3
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x460d
-	.4byte	0x2ace
+	.4byte	0x45eb
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4619
-	.4byte	0x3c61
+	.4byte	0x45f7
+	.4byte	0x3c3f
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4627
-	.4byte	0x2ace
+	.4byte	0x4605
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0xf
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4633
-	.4byte	0x2ace
+	.4byte	0x4611
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x463f
-	.4byte	0x2ace
+	.4byte	0x461d
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x464b
-	.4byte	0x3c00
+	.4byte	0x4629
+	.4byte	0x3bde
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4657
-	.4byte	0x2ace
+	.4byte	0x4635
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4665
-	.4byte	0x2ac4
+	.4byte	0x4643
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x7
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4673
-	.4byte	0x2ac4
+	.4byte	0x4651
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x467f
-	.4byte	0x3bac
+	.4byte	0x465d
+	.4byte	0x3b8a
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x470e
+	.4byte	0x46ec
 	.ascii	"ApprenticeQuestion\000"
 
 	.byte	0x4
@@ -21412,7 +21504,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ad
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x6
@@ -21424,7 +21516,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ae
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x4
@@ -21436,7 +21528,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1af
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x2
@@ -21448,7 +21540,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x0
@@ -21460,13 +21552,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x47ec
+	.4byte	0x47ca
 	.ascii	"PlayersApprentice\000"
 
 	.byte	0x2c
@@ -21477,7 +21569,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -21486,7 +21578,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x6
@@ -21498,7 +21590,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x2
@@ -21510,7 +21602,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1b9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x0
@@ -21522,7 +21614,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ba
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x5
@@ -21534,7 +21626,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1bb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x3
@@ -21546,7 +21638,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1bc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -21555,7 +21647,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1bd
-	.4byte	0x313e
+	.4byte	0x311c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -21564,19 +21656,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1be
-	.4byte	0x47ec
+	.4byte	0x47ca
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x47f8
-	.4byte	0x467f
+	.4byte	0x47d6
+	.4byte	0x465d
 	.byte	0x16
 	.byte	0x8
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x4857
+	.4byte	0x4835
 	.ascii	"RankingHall1P\000"
 
 	.byte	0x10
@@ -21587,7 +21679,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1c3
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -21596,7 +21688,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1c4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -21605,7 +21697,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1c5
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -21614,13 +21706,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1c6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x48d8
+	.4byte	0x48b6
 	.ascii	"RankingHall2P\000"
 
 	.byte	0x1c
@@ -21631,7 +21723,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1cb
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -21640,7 +21732,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1cc
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -21649,7 +21741,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1cd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -21658,7 +21750,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ce
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -21667,7 +21759,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1cf
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -21676,13 +21768,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1d0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
 	.byte	0x0
 	.byte	0x21
-	.4byte	0x4c56
+	.4byte	0x4c34
 	.ascii	"SaveBlock2\000"
 
 	.2byte	0xf80
@@ -21693,7 +21785,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1d9
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -21702,7 +21794,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1da
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -21711,7 +21803,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1db
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -21720,7 +21812,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1dc
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -21729,7 +21821,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1dd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -21738,7 +21830,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1de
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -21747,7 +21839,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1df
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -21756,7 +21848,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -21765,7 +21857,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -21774,7 +21866,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e2
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x3
 	.byte	0xd
@@ -21786,7 +21878,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x8
@@ -21798,7 +21890,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -21810,7 +21902,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e5
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -21822,7 +21914,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -21834,7 +21926,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e7
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -21846,7 +21938,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -21858,7 +21950,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1e9
-	.4byte	0x328c
+	.4byte	0x326a
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -21867,7 +21959,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ea
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x1
@@ -21876,7 +21968,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1eb
-	.4byte	0x323b
+	.4byte	0x3219
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x1
@@ -21885,7 +21977,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ec
-	.4byte	0x323b
+	.4byte	0x3219
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa0,0x1
@@ -21894,7 +21986,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ed
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa8,0x1
@@ -21903,7 +21995,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ee
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xac,0x1
@@ -21912,7 +22004,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1ef
-	.4byte	0x470e
+	.4byte	0x46ec
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb0,0x1
@@ -21921,7 +22013,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f0
-	.4byte	0x4c56
+	.4byte	0x4c34
 	.byte	0x3
 	.byte	0x23
 	.byte	0xdc,0x1
@@ -21930,7 +22022,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f1
-	.4byte	0x352e
+	.4byte	0x350c
 	.byte	0x3
 	.byte	0x23
 	.byte	0xec,0x3
@@ -21939,7 +22031,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f2
-	.4byte	0x334e
+	.4byte	0x332c
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfc,0x3
@@ -21948,7 +22040,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f3
-	.4byte	0x33e4
+	.4byte	0x33c2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x8c,0x4
@@ -21957,7 +22049,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f4
-	.4byte	0x4c62
+	.4byte	0x4c40
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9c,0x4
@@ -21966,7 +22058,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f5
-	.4byte	0x4c72
+	.4byte	0x4c50
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfc,0xa
@@ -21975,7 +22067,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f6
-	.4byte	0x4c80
+	.4byte	0x4c5e
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa4,0xc
@@ -21984,7 +22076,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f7
-	.4byte	0x3ce3
+	.4byte	0x3cc1
 	.byte	0x3
 	.byte	0x23
 	.byte	0xcc,0xc
@@ -21993,7 +22085,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f8
-	.4byte	0x4c8e
+	.4byte	0x4c6c
 	.byte	0x3
 	.byte	0x23
 	.byte	0xac,0x1e
@@ -22002,20 +22094,20 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1f9
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfe,0x1e
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4c62
-	.4byte	0x35dc
+	.4byte	0x4c40
+	.4byte	0x35ba
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4c72
-	.4byte	0x47f8
+	.4byte	0x4c50
+	.4byte	0x47d6
 	.byte	0x16
 	.byte	0x8
 	.byte	0x16
@@ -22024,24 +22116,24 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4c80
-	.4byte	0x4857
+	.4byte	0x4c5e
+	.4byte	0x4835
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4c8e
-	.4byte	0x2ace
+	.4byte	0x4c6c
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x4
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4c9a
-	.4byte	0x2ac4
+	.4byte	0x4c78
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x51
 	.byte	0x0
@@ -22050,14 +22142,14 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x1fc
-	.4byte	0x4cb3
+	.4byte	0x4c91
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x48d8
+	.4byte	0x48b6
 	.byte	0x20
-	.4byte	0x4d44
+	.4byte	0x4d22
 	.ascii	"SecretBaseParty\000"
 
 	.byte	0x6c
@@ -22068,7 +22160,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x200
-	.4byte	0x4d44
+	.4byte	0x4d22
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22077,7 +22169,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x201
-	.4byte	0x4d50
+	.4byte	0x4d2e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -22086,7 +22178,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x202
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x48
@@ -22095,7 +22187,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x203
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x54
@@ -22104,7 +22196,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x204
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x60
@@ -22113,25 +22205,25 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x205
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x66
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4d50
-	.4byte	0x2ad9
+	.4byte	0x4d2e
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4d5c
-	.4byte	0x2ace
+	.4byte	0x4d3a
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x17
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.ascii	"SecretBase\000"
 
 	.byte	0xa0
@@ -22142,7 +22234,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22151,7 +22243,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -22163,7 +22255,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x3
@@ -22175,7 +22267,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x2
@@ -22187,7 +22279,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x0
@@ -22199,7 +22291,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x20f
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22208,7 +22300,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x210
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -22217,7 +22309,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x211
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -22226,7 +22318,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x212
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -22235,7 +22327,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x213
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -22244,7 +22336,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x214
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -22253,7 +22345,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x215
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -22262,7 +22354,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x216
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x22
@@ -22271,19 +22363,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x217
-	.4byte	0x4cb9
+	.4byte	0x4c97
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x4edf
-	.4byte	0x2ac4
+	.4byte	0x4ebd
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x23
-	.4byte	0x4f58
+	.4byte	0x4f36
 	.byte	0x4
 	.byte	0x5
 	.byte	0xe
@@ -22317,12 +22409,12 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x17
-	.4byte	0x4f69
+	.4byte	0x4f47
 	.byte	0x5
 	.byte	0x4
 	.4byte	0x121
 	.byte	0x11
-	.4byte	0x5014
+	.4byte	0x4ff2
 	.ascii	"Tileset\000"
 
 	.byte	0x18
@@ -22333,7 +22425,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x1b
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22342,7 +22434,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x1c
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -22387,13 +22479,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x21
-	.4byte	0x4f58
+	.4byte	0x4f36
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x509b
+	.4byte	0x5079
 	.ascii	"MapLayout\000"
 
 	.byte	0x18
@@ -22404,7 +22496,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x26
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22413,7 +22505,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x27
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22440,7 +22532,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x2a
-	.4byte	0x509b
+	.4byte	0x5079
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -22449,16 +22541,16 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x2b
-	.4byte	0x509b
+	.4byte	0x5079
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x4f6f
+	.4byte	0x4f4d
 	.byte	0x11
-	.4byte	0x50e9
+	.4byte	0x50c7
 	.ascii	"BackupMapLayout\000"
 
 	.byte	0xc
@@ -22469,7 +22561,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x30
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22478,7 +22570,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x31
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22493,7 +22585,7 @@ sSpritePalettes:
 	.byte	0x8
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x521a
+	.4byte	0x51f8
 	.ascii	"ObjectEventTemplate\000"
 
 	.byte	0x18
@@ -22504,7 +22596,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x37
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22513,7 +22605,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x38
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -22522,7 +22614,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x39
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22531,7 +22623,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3a
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22540,7 +22632,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3b
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -22549,7 +22641,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -22558,7 +22650,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -22567,7 +22659,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0xc
@@ -22579,7 +22671,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x3f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x8
@@ -22591,7 +22683,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x40
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -22600,7 +22692,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x41
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -22609,7 +22701,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x42
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -22618,13 +22710,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x43
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x528e
+	.4byte	0x526c
 	.ascii	"WarpEvent\000"
 
 	.byte	0x8
@@ -22635,7 +22727,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x48
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22644,7 +22736,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x48
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22653,7 +22745,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x49
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22662,7 +22754,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x4a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -22671,7 +22763,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x4b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -22680,13 +22772,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x4c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x5301
+	.4byte	0x52df
 	.ascii	"CoordEvent\000"
 
 	.byte	0x10
@@ -22697,7 +22789,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x51
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22706,7 +22798,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x51
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22715,7 +22807,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x52
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22724,7 +22816,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x53
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -22733,7 +22825,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x54
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -22748,7 +22840,7 @@ sSpritePalettes:
 	.byte	0xc
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x535f
+	.4byte	0x533d
 	.ascii	"BgEvent\000"
 
 	.byte	0xc
@@ -22759,7 +22851,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x5a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22768,7 +22860,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x5a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22777,7 +22869,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x5b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22786,7 +22878,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x5c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -22795,13 +22887,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x64
-	.4byte	0x535f
+	.4byte	0x533d
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x25
-	.4byte	0x539c
+	.4byte	0x537a
 	.byte	0x4
 	.byte	0x5
 	.byte	0x64
@@ -22816,16 +22908,16 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x62
-	.4byte	0x539c
+	.4byte	0x537a
 	.byte	0x1a
 	.ascii	"secretBaseId\000"
 
 	.byte	0x5
 	.byte	0x63
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x53cb
+	.4byte	0x53a9
 	.byte	0x4
 	.byte	0x5
 	.byte	0x62
@@ -22834,7 +22926,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x60
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22843,13 +22935,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x61
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x548e
+	.4byte	0x546c
 	.ascii	"MapEvents\000"
 
 	.byte	0x14
@@ -22860,7 +22952,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x69
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22869,7 +22961,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -22878,7 +22970,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -22887,7 +22979,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -22896,7 +22988,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6d
-	.4byte	0x548e
+	.4byte	0x546c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22905,7 +22997,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6e
-	.4byte	0x5494
+	.4byte	0x5472
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -22914,7 +23006,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x6f
-	.4byte	0x549a
+	.4byte	0x5478
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -22923,25 +23015,25 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x70
-	.4byte	0x54a0
+	.4byte	0x547e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x50e9
+	.4byte	0x50c7
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x521a
+	.4byte	0x51f8
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x528e
+	.4byte	0x526c
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x5301
+	.4byte	0x52df
 	.byte	0x11
-	.4byte	0x5506
+	.4byte	0x54e4
 	.ascii	"MapConnection\000"
 
 	.byte	0xc
@@ -22952,7 +23044,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x75
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -22961,7 +23053,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x76
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -22970,7 +23062,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x77
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -22979,13 +23071,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x78
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x5544
+	.4byte	0x5522
 	.ascii	"MapConnections\000"
 
 	.byte	0x8
@@ -22996,7 +23088,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x7d
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -23005,16 +23097,16 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x7e
-	.4byte	0x5544
+	.4byte	0x5522
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x54a6
+	.4byte	0x5484
 	.byte	0x11
-	.4byte	0x565c
+	.4byte	0x563a
 	.ascii	"MapHeader\000"
 
 	.byte	0x1c
@@ -23025,7 +23117,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x83
-	.4byte	0x565c
+	.4byte	0x563a
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -23034,7 +23126,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x84
-	.4byte	0x5667
+	.4byte	0x5645
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -23043,7 +23135,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x85
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -23052,7 +23144,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x86
-	.4byte	0x5672
+	.4byte	0x5650
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -23061,7 +23153,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x87
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -23070,7 +23162,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x88
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -23079,7 +23171,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x89
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -23088,7 +23180,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -23097,7 +23189,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -23106,7 +23198,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -23115,7 +23207,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8d
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -23124,7 +23216,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -23133,28 +23225,28 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x8f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x5662
+	.4byte	0x5640
 	.byte	0x17
-	.4byte	0x5014
+	.4byte	0x4ff2
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x566d
+	.4byte	0x564b
 	.byte	0x17
-	.4byte	0x53cb
+	.4byte	0x53a9
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x5678
+	.4byte	0x5656
 	.byte	0x17
-	.4byte	0x5506
+	.4byte	0x54e4
 	.byte	0x11
-	.4byte	0x5c67
+	.4byte	0x5c45
 	.ascii	"ObjectEvent\000"
 
 	.byte	0x24
@@ -23165,7 +23257,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x9e
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1f
@@ -23177,7 +23269,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0x9f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1e
@@ -23189,7 +23281,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa0
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1d
@@ -23201,7 +23293,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1c
@@ -23213,7 +23305,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1b
@@ -23225,7 +23317,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa3
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1a
@@ -23237,7 +23329,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa4
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x19
@@ -23249,7 +23341,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa5
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x18
@@ -23261,7 +23353,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa6
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x17
@@ -23273,7 +23365,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa7
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x16
@@ -23285,7 +23377,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa8
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x15
@@ -23297,7 +23389,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xa9
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x14
@@ -23309,7 +23401,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xaa
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x13
@@ -23321,7 +23413,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xab
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x12
@@ -23333,7 +23425,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xac
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x11
@@ -23345,7 +23437,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xad
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x10
@@ -23357,7 +23449,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xae
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xf
@@ -23369,7 +23461,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xaf
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xe
@@ -23381,7 +23473,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb0
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xd
@@ -23393,7 +23485,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xc
@@ -23405,7 +23497,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xb
@@ -23417,7 +23509,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb3
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xa
@@ -23429,7 +23521,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb4
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x9
@@ -23441,7 +23533,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb5
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x8
@@ -23453,7 +23545,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb6
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x7
@@ -23465,7 +23557,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb7
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x6
@@ -23477,7 +23569,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb8
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x5
@@ -23489,7 +23581,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xb9
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x4
@@ -23501,7 +23593,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xba
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -23510,7 +23602,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xbb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -23519,7 +23611,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xbc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -23528,7 +23620,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xbd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -23537,7 +23629,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xbe
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -23546,7 +23638,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xbf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -23555,7 +23647,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -23564,7 +23656,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -23576,7 +23668,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -23615,7 +23707,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0xc
@@ -23627,7 +23719,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc7
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x8
@@ -23639,7 +23731,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x4
@@ -23651,7 +23743,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xc9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x0
@@ -23663,7 +23755,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xca
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -23672,7 +23764,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xcb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -23681,7 +23773,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xcc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -23690,7 +23782,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xcd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -23699,7 +23791,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xce
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -23708,7 +23800,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xcf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
@@ -23717,7 +23809,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xd0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -23726,7 +23818,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xd1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x21
@@ -23735,13 +23827,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xd2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x22
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x5de0
+	.4byte	0x5dbe
 	.ascii	"ObjectEventGraphicsInfo\000"
 
 	.byte	0x24
@@ -23752,7 +23844,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xd8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -23761,7 +23853,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xd9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -23770,7 +23862,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xda
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -23779,7 +23871,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xdb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -23788,7 +23880,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xdc
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -23797,7 +23889,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xdd
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -23806,7 +23898,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xde
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -23818,7 +23910,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xdf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x2
@@ -23830,7 +23922,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xe0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
@@ -23842,7 +23934,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xe1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -23854,7 +23946,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.byte	0xe2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -23905,7 +23997,7 @@ sSpritePalettes:
 	.byte	0x20
 	.byte	0x0
 	.byte	0x23
-	.4byte	0x5ee3
+	.4byte	0x5ec1
 	.byte	0x4
 	.byte	0x5
 	.byte	0xea
@@ -23943,7 +24035,7 @@ sSpritePalettes:
 	.byte	0x7
 	.byte	0x0
 	.byte	0x23
-	.4byte	0x5f87
+	.4byte	0x5f65
 	.byte	0x4
 	.byte	0x5
 	.byte	0xff
@@ -23977,7 +24069,7 @@ sSpritePalettes:
 	.byte	0x6
 	.byte	0x0
 	.byte	0x27
-	.4byte	0x611d
+	.4byte	0x60fb
 	.byte	0x4
 	.byte	0x5
 	.2byte	0x10a
@@ -24043,7 +24135,7 @@ sSpritePalettes:
 	.byte	0xe
 	.byte	0x0
 	.byte	0x27
-	.4byte	0x614e
+	.4byte	0x612c
 	.byte	0x4
 	.byte	0x5
 	.2byte	0x11e
@@ -24061,7 +24153,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x27
-	.4byte	0x618b
+	.4byte	0x6169
 	.byte	0x4
 	.byte	0x5
 	.2byte	0x126
@@ -24079,7 +24171,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x6339
+	.4byte	0x6317
 	.ascii	"PlayerAvatar\000"
 
 	.byte	0x24
@@ -24090,7 +24182,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x12e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24099,7 +24191,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x12f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -24108,7 +24200,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x130
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -24117,7 +24209,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x131
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -24126,7 +24218,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x132
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -24135,7 +24227,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x133
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -24144,7 +24236,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x134
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -24153,7 +24245,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x135
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -24162,7 +24254,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x136
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -24171,7 +24263,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x137
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -24180,7 +24272,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x138
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -24189,7 +24281,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x139
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -24198,7 +24290,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x13b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -24207,7 +24299,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x13c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -24216,7 +24308,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x13e
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -24225,13 +24317,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x13f
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x6379
+	.4byte	0x6357
 	.ascii	"Camera\000"
 
 	.byte	0xc
@@ -24242,7 +24334,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x144
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -24254,7 +24346,7 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x145
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -24263,13 +24355,13 @@ sSpritePalettes:
 
 	.byte	0x5
 	.2byte	0x146
-	.4byte	0x2b04
+	.4byte	0x2ae2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x6488
+	.4byte	0x6466
 	.ascii	"Berry\000"
 
 	.byte	0x1c
@@ -24280,7 +24372,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x9
-	.4byte	0x6494
+	.4byte	0x6472
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24289,7 +24381,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xa
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -24298,7 +24390,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -24307,7 +24399,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -24316,7 +24408,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -24325,7 +24417,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xe
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -24334,7 +24426,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0xf
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -24343,7 +24435,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x10
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -24352,7 +24444,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x11
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -24361,7 +24453,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x12
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -24370,7 +24462,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x13
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -24379,7 +24471,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -24388,7 +24480,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x15
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x19
@@ -24397,21 +24489,21 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x16
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x6494
-	.4byte	0x2642
+	.4byte	0x6472
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x6
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x6488
+	.4byte	0x6466
 	.byte	0x11
-	.4byte	0x65a9
+	.4byte	0x6587
 	.ascii	"Berry2\000"
 
 	.byte	0x1c
@@ -24422,7 +24514,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x1d
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24431,7 +24523,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x1e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -24440,7 +24532,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x1f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -24449,7 +24541,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x20
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -24458,7 +24550,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x21
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -24485,7 +24577,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x24
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -24494,7 +24586,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x25
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -24503,7 +24595,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x26
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -24512,7 +24604,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x27
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -24521,7 +24613,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x28
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -24530,7 +24622,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x29
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x19
@@ -24539,13 +24631,13 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x2a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x6625
+	.4byte	0x6603
 	.ascii	"EnigmaBerry\000"
 
 	.byte	0x34
@@ -24556,7 +24648,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x2f
-	.4byte	0x6499
+	.4byte	0x6477
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24565,7 +24657,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x30
-	.4byte	0x6625
+	.4byte	0x6603
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -24574,7 +24666,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x31
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2e
@@ -24583,7 +24675,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x32
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2f
@@ -24592,19 +24684,19 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x33
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x30
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x6631
-	.4byte	0x2ac4
+	.4byte	0x660f
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x11
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x669f
+	.4byte	0x667d
 	.ascii	"BattleEnigmaBerry\000"
 
 	.byte	0x1c
@@ -24615,7 +24707,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x38
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24624,7 +24716,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x39
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -24633,7 +24725,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x3a
-	.4byte	0x6625
+	.4byte	0x6603
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -24642,13 +24734,13 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x3b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x6798
+	.4byte	0x6776
 	.ascii	"BerryTree\000"
 
 	.byte	0x8
@@ -24659,7 +24751,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x40
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24668,7 +24760,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x41
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x7
 	.byte	0x1
@@ -24680,7 +24772,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x42
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -24692,7 +24784,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x43
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -24701,7 +24793,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x44
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -24710,7 +24802,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x45
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -24722,7 +24814,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x46
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x3
@@ -24734,7 +24826,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x47
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x2
@@ -24746,7 +24838,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x48
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
@@ -24758,7 +24850,7 @@ sSpritePalettes:
 
 	.byte	0xb
 	.byte	0x49
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -24767,7 +24859,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6897
+	.4byte	0x6875
 	.byte	0x24
 	.byte	0xc
 	.byte	0x13
@@ -24776,7 +24868,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24785,7 +24877,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x9
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -24794,7 +24886,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa
-	.4byte	0x6897
+	.4byte	0x6875
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -24803,7 +24895,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -24812,7 +24904,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -24821,7 +24913,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -24830,7 +24922,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
@@ -24839,7 +24931,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -24848,7 +24940,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x10
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x21
@@ -24857,7 +24949,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x11
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x22
@@ -24866,19 +24958,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x12
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x23
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x68a3
-	.4byte	0x2ac4
+	.4byte	0x6881
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x19
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x68dc
+	.4byte	0x68ba
 	.byte	0x24
 	.byte	0xc
 	.byte	0x1a
@@ -24887,7 +24979,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x17
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24896,7 +24988,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x18
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -24905,19 +24997,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x19
-	.4byte	0x68dc
+	.4byte	0x68ba
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x68e8
-	.4byte	0x2ac4
+	.4byte	0x68c6
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x21
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x695b
+	.4byte	0x6939
 	.byte	0x1c
 	.byte	0xc
 	.byte	0x25
@@ -24926,7 +25018,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x1f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24935,7 +25027,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x20
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -24944,7 +25036,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x21
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -24953,7 +25045,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x22
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -24962,7 +25054,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x23
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -24971,13 +25063,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x24
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x69cc
+	.4byte	0x69aa
 	.byte	0x1c
 	.byte	0xc
 	.byte	0x2f
@@ -24986,7 +25078,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x29
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -24995,7 +25087,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x2a
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25004,7 +25096,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x2b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25013,7 +25105,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x2c
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25022,7 +25114,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x2d
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -25031,13 +25123,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x2e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6ad3
+	.4byte	0x6ab1
 	.byte	0x24
 	.byte	0xc
 	.byte	0x3f
@@ -25046,7 +25138,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x33
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25055,7 +25147,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x34
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25064,7 +25156,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x35
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25073,7 +25165,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x36
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -25085,7 +25177,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x37
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -25097,7 +25189,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x38
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -25106,7 +25198,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x39
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -25115,7 +25207,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x3a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -25124,7 +25216,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x3b
-	.4byte	0x6ad3
+	.4byte	0x6ab1
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -25133,7 +25225,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x3c
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -25142,7 +25234,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x3d
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -25151,19 +25243,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x3e
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x6adf
-	.4byte	0x2ac4
+	.4byte	0x6abd
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x18
 	.byte	0xc
 	.byte	0x4a
@@ -25172,7 +25264,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x43
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25181,7 +25273,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x44
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25190,7 +25282,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x45
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25199,7 +25291,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x46
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -25208,7 +25300,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x47
-	.4byte	0x313e
+	.4byte	0x311c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -25217,7 +25309,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x48
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -25226,19 +25318,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x49
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x6b6c
-	.4byte	0x2ac4
+	.4byte	0x6b4a
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xb
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6c3f
+	.4byte	0x6c1d
 	.byte	0x20
 	.byte	0xc
 	.byte	0x58
@@ -25247,7 +25339,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x4e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25256,7 +25348,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x4f
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25265,7 +25357,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x50
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25274,7 +25366,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x51
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25283,7 +25375,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x52
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -25292,7 +25384,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x53
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -25301,7 +25393,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x54
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -25310,7 +25402,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x55
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -25319,7 +25411,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x56
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -25328,13 +25420,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x57
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6d4a
+	.4byte	0x6d28
 	.byte	0x20
 	.byte	0xc
 	.byte	0x68
@@ -25343,7 +25435,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x5c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25352,7 +25444,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x5d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25361,7 +25453,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x5e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25370,7 +25462,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x5f
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25379,7 +25471,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x60
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -25388,7 +25480,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x61
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x5
@@ -25400,7 +25492,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x62
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x3
@@ -25412,7 +25504,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x63
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x1
@@ -25424,7 +25516,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x64
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25433,7 +25525,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x65
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -25442,7 +25534,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x66
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -25451,13 +25543,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x67
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6e68
+	.4byte	0x6e46
 	.byte	0x20
 	.byte	0xc
 	.byte	0x79
@@ -25466,7 +25558,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x6c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25475,7 +25567,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x6d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25484,7 +25576,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x6e
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25493,7 +25585,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x6f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -25502,7 +25594,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x70
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -25511,7 +25603,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x71
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25520,7 +25612,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x72
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -25529,7 +25621,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x73
-	.4byte	0x6e68
+	.4byte	0x6e46
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -25538,7 +25630,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x74
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -25547,7 +25639,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x75
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -25556,7 +25648,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x76
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -25565,7 +25657,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x77
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -25574,19 +25666,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x78
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x6e74
-	.4byte	0x2ace
+	.4byte	0x6e52
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x6fcf
+	.4byte	0x6fad
 	.byte	0x20
 	.byte	0xc
 	.byte	0x8b
@@ -25595,7 +25687,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x7d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25604,7 +25696,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x7e
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25613,7 +25705,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x7f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25622,7 +25714,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x80
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25631,7 +25723,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x81
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -25640,7 +25732,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x82
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -25649,7 +25741,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x83
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -25658,7 +25750,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x84
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -25667,7 +25759,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x85
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -25676,7 +25768,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x86
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -25685,7 +25777,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x87
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25694,7 +25786,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x88
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -25703,7 +25795,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x89
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -25712,13 +25804,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x8a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x7091
+	.4byte	0x706f
 	.byte	0x18
 	.byte	0xc
 	.byte	0x98
@@ -25727,7 +25819,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x8f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25736,7 +25828,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x90
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25745,7 +25837,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x91
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25754,7 +25846,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x92
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x5
@@ -25766,7 +25858,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x93
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x3
@@ -25778,7 +25870,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x94
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25787,7 +25879,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x95
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -25796,7 +25888,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x96
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25805,13 +25897,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x97
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x7172
+	.4byte	0x7150
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xa6
@@ -25820,7 +25912,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x9c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25829,7 +25921,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x9d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25838,7 +25930,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x9e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25847,7 +25939,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x9f
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -25856,7 +25948,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa0
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -25865,7 +25957,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25874,7 +25966,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa2
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -25883,7 +25975,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -25892,7 +25984,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x19
@@ -25901,13 +25993,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xa5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x722f
+	.4byte	0x720d
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xb4
@@ -25916,7 +26008,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xaa
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -25925,7 +26017,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xab
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -25934,7 +26026,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xac
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -25943,7 +26035,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xad
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -25952,7 +26044,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xae
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -25961,7 +26053,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xaf
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -25970,7 +26062,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb0
-	.4byte	0x6e68
+	.4byte	0x6e46
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -25979,7 +26071,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -25988,7 +26080,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -25997,13 +26089,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x72e4
+	.4byte	0x72c2
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xc0
@@ -26012,7 +26104,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26021,7 +26113,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xb9
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26030,7 +26122,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xba
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26039,7 +26131,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xbb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -26048,7 +26140,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xbc
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -26057,7 +26149,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xbd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -26066,7 +26158,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xbe
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -26075,13 +26167,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xbf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x7392
+	.4byte	0x7370
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xce
@@ -26090,7 +26182,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26099,7 +26191,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc6
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26108,7 +26200,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26117,7 +26209,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -26126,7 +26218,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xc9
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26135,7 +26227,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xca
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -26144,7 +26236,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xcb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -26153,7 +26245,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xcc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -26162,13 +26254,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xcd
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x7449
+	.4byte	0x7427
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xdb
@@ -26177,7 +26269,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26186,7 +26278,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd3
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26195,7 +26287,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26204,7 +26296,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -26213,7 +26305,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd6
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26222,7 +26314,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd7
-	.4byte	0x4633
+	.4byte	0x4611
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26231,7 +26323,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd8
-	.4byte	0x4633
+	.4byte	0x4611
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -26240,7 +26332,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xd9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -26249,13 +26341,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xda
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x7509
+	.4byte	0x74e7
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xe9
@@ -26264,7 +26356,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xdf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26273,7 +26365,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe0
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26282,7 +26374,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26291,7 +26383,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe2
-	.4byte	0x7509
+	.4byte	0x74e7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -26300,7 +26392,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -26309,7 +26401,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -26318,7 +26410,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -26327,7 +26419,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -26336,7 +26428,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -26345,19 +26437,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xe8
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x7515
-	.4byte	0x2ac4
+	.4byte	0x74f3
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x8
 	.byte	0x0
 	.byte	0x26
-	.4byte	0x75aa
+	.4byte	0x7588
 	.byte	0x1c
 	.byte	0xc
 	.byte	0xf5
@@ -26366,7 +26458,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xed
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26375,7 +26467,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xee
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26384,7 +26476,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xef
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26393,7 +26485,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -26402,7 +26494,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26411,7 +26503,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26420,7 +26512,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf3
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -26429,13 +26521,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf4
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7671
+	.4byte	0x764f
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x103
@@ -26444,7 +26536,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xf9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26453,7 +26545,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xfa
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26462,7 +26554,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xfb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26471,7 +26563,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xfc
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26480,7 +26572,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xfd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26489,7 +26581,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xfe
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26498,7 +26590,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0xff
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -26507,7 +26599,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x100
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -26516,7 +26608,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x101
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -26525,13 +26617,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x102
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x777b
+	.4byte	0x7759
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x113
@@ -26540,7 +26632,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x107
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26549,7 +26641,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x108
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26558,7 +26650,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x109
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26567,7 +26659,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26576,7 +26668,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -26585,7 +26677,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26594,7 +26686,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -26603,7 +26695,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26612,7 +26704,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x10f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -26621,7 +26713,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x110
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -26630,7 +26722,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x111
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -26639,13 +26731,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x112
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x781e
+	.4byte	0x77fc
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x11f
@@ -26654,7 +26746,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x117
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26663,7 +26755,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x118
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26672,7 +26764,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x119
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26681,7 +26773,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x11a
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26690,7 +26782,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x11b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26699,7 +26791,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x11c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -26708,7 +26800,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x11d
-	.4byte	0x7509
+	.4byte	0x74e7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -26717,13 +26809,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x11e
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x78c4
+	.4byte	0x78a2
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x12b
@@ -26732,7 +26824,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x123
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26741,7 +26833,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x124
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26750,7 +26842,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x125
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26759,7 +26851,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x126
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26768,7 +26860,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x127
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -26777,7 +26869,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x128
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26786,7 +26878,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x129
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26795,13 +26887,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x12a
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x138
@@ -26810,7 +26902,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x12f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26819,7 +26911,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x130
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26828,7 +26920,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x131
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26837,7 +26929,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x132
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -26846,7 +26938,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x133
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26855,7 +26947,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x134
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26864,7 +26956,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x135
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26873,7 +26965,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x136
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -26882,19 +26974,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x137
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x7986
-	.4byte	0x2ac4
+	.4byte	0x7964
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x9
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7a91
+	.4byte	0x7a6f
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x148
@@ -26903,7 +26995,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x13c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -26912,7 +27004,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x13d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -26921,7 +27013,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x13e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -26930,7 +27022,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x13f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -26939,7 +27031,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x140
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -26948,7 +27040,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x141
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -26957,7 +27049,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x142
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -26966,7 +27058,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x143
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -26975,7 +27067,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x144
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -26984,7 +27076,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x145
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -26993,7 +27085,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x146
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -27002,13 +27094,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x147
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7b62
+	.4byte	0x7b40
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x156
@@ -27017,7 +27109,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x14c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27026,7 +27118,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x14d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27035,7 +27127,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x14e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27044,7 +27136,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x14f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -27053,7 +27145,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x150
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27062,7 +27154,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x151
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -27071,7 +27163,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x152
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -27080,7 +27172,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x153
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -27089,7 +27181,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x154
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -27098,13 +27190,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x155
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7bf3
+	.4byte	0x7bd1
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x161
@@ -27113,7 +27205,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27122,7 +27214,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15b
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27131,7 +27223,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27140,7 +27232,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27149,7 +27241,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -27158,7 +27250,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x15f
-	.4byte	0x7bf3
+	.4byte	0x7bd1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -27167,19 +27259,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x160
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x7bff
-	.4byte	0x2ac4
+	.4byte	0x7bdd
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xc
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7ce6
+	.4byte	0x7cc4
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x170
@@ -27188,7 +27280,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x165
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27197,7 +27289,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x166
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27206,7 +27298,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x167
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27215,7 +27307,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x168
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27224,7 +27316,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x169
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -27233,7 +27325,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16a
-	.4byte	0x4633
+	.4byte	0x4611
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -27242,7 +27334,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -27251,7 +27343,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -27260,7 +27352,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -27269,7 +27361,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16e
-	.4byte	0x6ad3
+	.4byte	0x6ab1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -27278,13 +27370,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x16f
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7d77
+	.4byte	0x7d55
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x17b
@@ -27293,7 +27385,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x174
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27302,7 +27394,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x175
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27311,7 +27403,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x176
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27320,7 +27412,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x177
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27329,7 +27421,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x178
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -27338,7 +27430,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x179
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -27347,13 +27439,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x17a
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7e43
+	.4byte	0x7e21
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x188
@@ -27362,7 +27454,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x17f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27371,7 +27463,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x180
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27380,7 +27472,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x181
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27389,7 +27481,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x182
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -27398,7 +27490,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x183
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27407,7 +27499,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x184
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -27416,7 +27508,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x185
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -27425,7 +27517,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x186
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -27434,13 +27526,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x187
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7f27
+	.4byte	0x7f05
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x197
@@ -27449,7 +27541,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x18c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27458,7 +27550,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x18d
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27467,7 +27559,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x18e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27476,7 +27568,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x18f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27485,7 +27577,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x190
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -27494,7 +27586,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x191
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -27503,7 +27595,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x192
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -27512,7 +27604,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x193
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -27521,7 +27613,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x194
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -27530,7 +27622,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x195
-	.4byte	0x7f27
+	.4byte	0x7f05
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -27539,19 +27631,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x196
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x7f33
-	.4byte	0x2ac4
+	.4byte	0x7f11
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x7fc4
+	.4byte	0x7fa2
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x1a2
@@ -27560,7 +27652,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x19b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27569,7 +27661,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x19c
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27578,7 +27670,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x19d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27587,7 +27679,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x19e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27596,7 +27688,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x19f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -27605,7 +27697,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a0
-	.4byte	0x7bf3
+	.4byte	0x7bd1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -27614,13 +27706,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a1
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x80a4
+	.4byte	0x8082
 	.byte	0x20
 	.byte	0xc
 	.2byte	0x1b0
@@ -27629,7 +27721,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27638,7 +27730,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a7
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27647,7 +27739,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27656,7 +27748,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1a9
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27665,7 +27757,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1aa
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -27674,7 +27766,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ab
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -27683,7 +27775,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ac
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -27692,7 +27784,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ad
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -27701,7 +27793,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ae
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -27710,13 +27802,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1af
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x813c
+	.4byte	0x811a
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x1bb
@@ -27725,7 +27817,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27734,7 +27826,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b5
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27743,7 +27835,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27752,7 +27844,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -27761,7 +27853,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27770,7 +27862,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1b9
-	.4byte	0x813c
+	.4byte	0x811a
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -27779,19 +27871,19 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ba
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x8148
-	.4byte	0x2ac4
+	.4byte	0x8126
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xd
 	.byte	0x0
 	.byte	0x28
-	.4byte	0x8273
+	.4byte	0x8251
 	.byte	0x1c
 	.byte	0xc
 	.2byte	0x1cf
@@ -27800,7 +27892,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -27809,7 +27901,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c1
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -27818,7 +27910,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -27827,7 +27919,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -27836,7 +27928,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c4
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -27845,7 +27937,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c5
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -27854,7 +27946,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -27863,7 +27955,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -27872,7 +27964,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -27881,7 +27973,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1c9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -27890,7 +27982,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ca
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -27899,7 +27991,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1cb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -27908,7 +28000,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1cc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -27917,7 +28009,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1cd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -27926,13 +28018,13 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ce
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
 	.byte	0x0
 	.byte	0x29
-	.4byte	0x855b
+	.4byte	0x8539
 	.byte	0x24
 	.byte	0xc
 	.2byte	0x1d0
@@ -27941,214 +28033,214 @@ sSpritePalettes:
 
 	.byte	0xc
 	.byte	0x13
-	.4byte	0x6798
+	.4byte	0x6776
 	.byte	0x1a
 	.ascii	"commonInit\000"
 
 	.byte	0xc
 	.byte	0x1a
-	.4byte	0x68a3
+	.4byte	0x6881
 	.byte	0x1a
 	.ascii	"fanclubLetter\000"
 
 	.byte	0xc
 	.byte	0x25
-	.4byte	0x68e8
+	.4byte	0x68c6
 	.byte	0x1a
 	.ascii	"recentHappenings\000"
 
 	.byte	0xc
 	.byte	0x2f
-	.4byte	0x695b
+	.4byte	0x6939
 	.byte	0x1a
 	.ascii	"fanclubOpinions\000"
 
 	.byte	0xc
 	.byte	0x3f
-	.4byte	0x69cc
+	.4byte	0x69aa
 	.byte	0x1a
 	.ascii	"unkShow04\000"
 
 	.byte	0xc
 	.byte	0x4a
-	.4byte	0x6adf
+	.4byte	0x6abd
 	.byte	0x1a
 	.ascii	"nameRaterShow\000"
 
 	.byte	0xc
 	.byte	0x58
-	.4byte	0x6b6c
+	.4byte	0x6b4a
 	.byte	0x1a
 	.ascii	"bravoTrainer\000"
 
 	.byte	0xc
 	.byte	0x68
-	.4byte	0x6c3f
+	.4byte	0x6c1d
 	.byte	0x1a
 	.ascii	"bravoTrainerTower\000"
 
 	.byte	0xc
 	.byte	0x79
-	.4byte	0x6d4a
+	.4byte	0x6d28
 	.byte	0x1a
 	.ascii	"contestLiveUpdates\000"
 
 	.byte	0xc
 	.byte	0x8b
-	.4byte	0x6e74
+	.4byte	0x6e52
 	.byte	0x1a
 	.ascii	"threeCheers\000"
 
 	.byte	0xc
 	.byte	0x98
-	.4byte	0x6fcf
+	.4byte	0x6fad
 	.byte	0x1a
 	.ascii	"battleUpdate\000"
 
 	.byte	0xc
 	.byte	0xa6
-	.4byte	0x7091
+	.4byte	0x706f
 	.byte	0x1a
 	.ascii	"fanClubSpecial\000"
 
 	.byte	0xc
 	.byte	0xb4
-	.4byte	0x7172
+	.4byte	0x7150
 	.byte	0x1a
 	.ascii	"contestLiveUpdates2\000"
 
 	.byte	0xc
 	.byte	0xc0
-	.4byte	0x722f
+	.4byte	0x720d
 	.byte	0x1a
 	.ascii	"pokemonToday\000"
 
 	.byte	0xc
 	.byte	0xce
-	.4byte	0x72e4
+	.4byte	0x72c2
 	.byte	0x1a
 	.ascii	"smartshopperShow\000"
 
 	.byte	0xc
 	.byte	0xdb
-	.4byte	0x7392
+	.4byte	0x7370
 	.byte	0x1a
 	.ascii	"pokemonTodayFailed\000"
 
 	.byte	0xc
 	.byte	0xe9
-	.4byte	0x7449
+	.4byte	0x7427
 	.byte	0x1a
 	.ascii	"pokemonAngler\000"
 
 	.byte	0xc
 	.byte	0xf5
-	.4byte	0x7515
+	.4byte	0x74f3
 	.byte	0x2a
 	.ascii	"worldOfMasters\000"
 
 	.byte	0xc
 	.2byte	0x103
-	.4byte	0x75aa
+	.4byte	0x7588
 	.byte	0x2a
 	.ascii	"rivalTrainer\000"
 
 	.byte	0xc
 	.2byte	0x113
-	.4byte	0x7671
+	.4byte	0x764f
 	.byte	0x2a
 	.ascii	"trendWatcher\000"
 
 	.byte	0xc
 	.2byte	0x11f
-	.4byte	0x777b
+	.4byte	0x7759
 	.byte	0x2a
 	.ascii	"treasureInvestigators\000"
 
 	.byte	0xc
 	.2byte	0x12b
-	.4byte	0x781e
+	.4byte	0x77fc
 	.byte	0x2a
 	.ascii	"findThatGamer\000"
 
 	.byte	0xc
 	.2byte	0x138
-	.4byte	0x78c4
+	.4byte	0x78a2
 	.byte	0x2a
 	.ascii	"breakingNews\000"
 
 	.byte	0xc
 	.2byte	0x148
-	.4byte	0x7986
+	.4byte	0x7964
 	.byte	0x2a
 	.ascii	"secretBaseVisit\000"
 
 	.byte	0xc
 	.2byte	0x156
-	.4byte	0x7a91
+	.4byte	0x7a6f
 	.byte	0x2a
 	.ascii	"lottoWinner\000"
 
 	.byte	0xc
 	.2byte	0x161
-	.4byte	0x7b62
+	.4byte	0x7b40
 	.byte	0x2a
 	.ascii	"battleSeminar\000"
 
 	.byte	0xc
 	.2byte	0x170
-	.4byte	0x7bff
+	.4byte	0x7bdd
 	.byte	0x2a
 	.ascii	"trainerFanClub\000"
 
 	.byte	0xc
 	.2byte	0x17b
-	.4byte	0x7ce6
+	.4byte	0x7cc4
 	.byte	0x2a
 	.ascii	"cuties\000"
 
 	.byte	0xc
 	.2byte	0x188
-	.4byte	0x7d77
+	.4byte	0x7d55
 	.byte	0x2a
 	.ascii	"frontier\000"
 
 	.byte	0xc
 	.2byte	0x197
-	.4byte	0x7e43
+	.4byte	0x7e21
 	.byte	0x2a
 	.ascii	"numberOne\000"
 
 	.byte	0xc
 	.2byte	0x1a2
-	.4byte	0x7f33
+	.4byte	0x7f11
 	.byte	0x2a
 	.ascii	"secretBaseSecrets\000"
 
 	.byte	0xc
 	.2byte	0x1b0
-	.4byte	0x7fc4
+	.4byte	0x7fa2
 	.byte	0x2a
 	.ascii	"safariFanClub\000"
 
 	.byte	0xc
 	.2byte	0x1bb
-	.4byte	0x80a4
+	.4byte	0x8082
 	.byte	0x2a
 	.ascii	"massOutbreak\000"
 
 	.byte	0xc
 	.2byte	0x1cf
-	.4byte	0x8148
+	.4byte	0x8126
 	.byte	0x0
 	.byte	0x2b
 	.ascii	"TVShow\000"
 
 	.byte	0xc
 	.2byte	0x1d0
-	.4byte	0x8273
+	.4byte	0x8251
 	.byte	0x28
-	.4byte	0x85a5
+	.4byte	0x8583
 	.byte	0x4
 	.byte	0xc
 	.2byte	0x1d7
@@ -28157,7 +28249,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1d4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28166,7 +28258,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1d5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -28175,7 +28267,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1d6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28185,9 +28277,9 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1d7
-	.4byte	0x856a
+	.4byte	0x8548
 	.byte	0x20
-	.4byte	0x878d
+	.4byte	0x876b
 	.ascii	"GabbyAndTyData\000"
 
 	.byte	0xc
@@ -28198,7 +28290,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1db
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28207,7 +28299,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1dc
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28216,7 +28308,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1dd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28225,7 +28317,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1de
-	.4byte	0x6e68
+	.4byte	0x6e46
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -28234,7 +28326,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1df
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -28243,7 +28335,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -28252,7 +28344,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -28264,7 +28356,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -28276,7 +28368,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -28288,7 +28380,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x4
@@ -28300,7 +28392,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x3
@@ -28312,7 +28404,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x0
@@ -28324,7 +28416,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -28336,7 +28428,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -28348,7 +28440,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1e9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -28360,7 +28452,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1ea
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x4
@@ -28372,7 +28464,7 @@ sSpritePalettes:
 
 	.byte	0xc
 	.2byte	0x1eb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -28381,7 +28473,7 @@ sSpritePalettes:
 	.byte	0xb
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x87ce
+	.4byte	0x87ac
 	.ascii	"SpriteSheet\000"
 
 	.byte	0x8
@@ -28401,7 +28493,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xa
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28410,13 +28502,13 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x8819
+	.4byte	0x87f7
 	.ascii	"CompressedSpriteSheet\000"
 
 	.byte	0x8
@@ -28427,7 +28519,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x10
-	.4byte	0x8819
+	.4byte	0x87f7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28436,7 +28528,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x11
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28445,18 +28537,18 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x12
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0x881f
+	.4byte	0x87fd
 	.byte	0x17
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x11
-	.4byte	0x8858
+	.4byte	0x8836
 	.ascii	"SpritePalette\000"
 
 	.byte	0x8
@@ -28467,7 +28559,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x21
-	.4byte	0x8858
+	.4byte	0x8836
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28476,7 +28568,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x22
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28485,7 +28577,7 @@ sSpritePalettes:
 	.byte	0x4
 	.4byte	0xabc
 	.byte	0x11
-	.4byte	0x889c
+	.4byte	0x887a
 	.ascii	"CompressedSpritePalette\000"
 
 	.byte	0x8
@@ -28496,7 +28588,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x27
-	.4byte	0x8819
+	.4byte	0x87f7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28505,13 +28597,13 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x28
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x8940
+	.4byte	0x891e
 	.ascii	"AffineAnimState\000"
 
 	.byte	0xc
@@ -28522,7 +28614,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28531,7 +28623,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -28540,7 +28632,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28549,7 +28641,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -28558,7 +28650,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8e
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28567,7 +28659,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x8f
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -28576,13 +28668,13 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0x90
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x23
-	.4byte	0x8987
+	.4byte	0x8965
 	.byte	0x4
 	.byte	0x3
 	.byte	0x94
@@ -28604,12 +28696,12 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xac
-	.4byte	0x899d
+	.4byte	0x897b
 	.byte	0x5
 	.byte	0x4
 	.4byte	0x1253
 	.byte	0x11
-	.4byte	0x89e6
+	.4byte	0x89c4
 	.ascii	"OamMatrix\000"
 
 	.byte	0x8
@@ -28620,7 +28712,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xf1
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28629,7 +28721,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xf2
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28638,7 +28730,7 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xf3
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28647,13 +28739,13 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xf4
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x89f2
+	.4byte	0x89d0
 	.4byte	0x1150
 	.byte	0x16
 	.byte	0x0
@@ -28663,13 +28755,13 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xf9
-	.4byte	0x8a17
+	.4byte	0x89f5
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0x89e6
+	.4byte	0x89c4
 	.byte	0x15
-	.4byte	0x8a28
+	.4byte	0x8a06
 	.4byte	0xbc8
 	.byte	0x16
 	.byte	0x0
@@ -28679,11 +28771,11 @@ sSpritePalettes:
 
 	.byte	0x3
 	.byte	0xfd
-	.4byte	0x8a1c
+	.4byte	0x89fa
 	.byte	0x1
 	.byte	0x1
 	.byte	0x11
-	.4byte	0x8ae2
+	.4byte	0x8ac0
 	.ascii	"PokemonSubstruct0\000"
 
 	.byte	0xc
@@ -28694,7 +28786,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x10
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28703,7 +28795,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x11
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28712,7 +28804,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x12
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28721,7 +28813,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x13
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -28730,7 +28822,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -28739,7 +28831,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x15
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0xb
@@ -28751,7 +28843,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x16
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0xb
 	.byte	0x0
@@ -28760,7 +28852,7 @@ sSpritePalettes:
 	.byte	0xa
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x8b1a
+	.4byte	0x8af8
 	.ascii	"PokemonSubstruct1\000"
 
 	.byte	0xc
@@ -28771,7 +28863,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x1b
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28780,13 +28872,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x1c
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x8c07
+	.4byte	0x8be5
 	.ascii	"PokemonSubstruct2\000"
 
 	.byte	0xc
@@ -28797,7 +28889,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x21
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28806,7 +28898,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x22
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -28815,7 +28907,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x23
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -28824,7 +28916,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x24
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -28833,7 +28925,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x25
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -28842,7 +28934,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x26
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -28851,7 +28943,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x27
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -28860,7 +28952,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x28
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -28869,7 +28961,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x29
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -28878,7 +28970,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x2a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -28887,7 +28979,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x2b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -28896,13 +28988,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x2c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x8f37
+	.4byte	0x8f15
 	.ascii	"PokemonSubstruct3\000"
 
 	.byte	0xc
@@ -28913,7 +29005,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x31
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -28922,7 +29014,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x32
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -28931,7 +29023,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x34
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x7
 	.byte	0x9
@@ -28943,7 +29035,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x35
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x5
@@ -28955,7 +29047,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x36
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x4
 	.byte	0x1
@@ -28967,7 +29059,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x37
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x0
@@ -28979,7 +29071,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x39
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x1b
@@ -28991,7 +29083,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3a
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x16
@@ -29003,7 +29095,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x11
@@ -29015,7 +29107,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0xc
@@ -29027,7 +29119,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x7
@@ -29039,7 +29131,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3e
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x2
@@ -29051,7 +29143,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x3f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1
@@ -29063,7 +29155,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x41
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x3
 	.byte	0x1e
@@ -29075,7 +29167,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x42
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x3
 	.byte	0x1b
@@ -29087,7 +29179,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x43
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x3
 	.byte	0x18
@@ -29099,7 +29191,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x44
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x3
 	.byte	0x15
@@ -29111,7 +29203,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x45
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x3
 	.byte	0x12
@@ -29123,7 +29215,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x46
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x11
@@ -29135,7 +29227,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x47
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x10
@@ -29147,7 +29239,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x48
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xf
@@ -29159,7 +29251,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x49
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xe
@@ -29171,7 +29263,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4a
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xd
@@ -29183,7 +29275,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xc
@@ -29195,7 +29287,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xb
@@ -29207,7 +29299,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0xa
@@ -29219,7 +29311,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4e
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x9
@@ -29231,7 +29323,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x4f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x8
@@ -29243,7 +29335,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x50
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x7
@@ -29255,7 +29347,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x51
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x6
@@ -29267,7 +29359,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x52
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x2
 	.byte	0x4
@@ -29279,7 +29371,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x53
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x2
 	.byte	0x2
@@ -29291,7 +29383,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x54
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x1
@@ -29300,7 +29392,7 @@ sSpritePalettes:
 	.byte	0x8
 	.byte	0x0
 	.byte	0x19
-	.4byte	0x8f90
+	.4byte	0x8f6e
 	.ascii	"PokemonSubstruct\000"
 
 	.byte	0xc
@@ -29311,34 +29403,34 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x59
-	.4byte	0x8a3a
+	.4byte	0x8a18
 	.byte	0x1a
 	.ascii	"type1\000"
 
 	.byte	0xd
 	.byte	0x5a
-	.4byte	0x8ae2
+	.4byte	0x8ac0
 	.byte	0x1a
 	.ascii	"type2\000"
 
 	.byte	0xd
 	.byte	0x5b
-	.4byte	0x8b1a
+	.4byte	0x8af8
 	.byte	0x1a
 	.ascii	"type3\000"
 
 	.byte	0xd
 	.byte	0x5c
-	.4byte	0x8c07
+	.4byte	0x8be5
 	.byte	0x1a
 	.ascii	"raw\000"
 
 	.byte	0xd
 	.byte	0x5d
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x909e
+	.4byte	0x907c
 	.ascii	"BoxPokemon\000"
 
 	.byte	0x50
@@ -29349,7 +29441,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x62
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -29358,7 +29450,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x63
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -29367,7 +29459,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x64
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -29376,7 +29468,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x65
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -29385,7 +29477,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x66
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -29397,7 +29489,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x67
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -29409,7 +29501,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x68
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -29421,7 +29513,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x69
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x0
@@ -29433,7 +29525,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x6a
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -29442,7 +29534,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x6b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -29451,7 +29543,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x6c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -29460,7 +29552,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x6d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -29469,13 +29561,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x73
-	.4byte	0x909e
+	.4byte	0x907c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
 	.byte	0x0
 	.byte	0x25
-	.4byte	0x90c4
+	.4byte	0x90a2
 	.byte	0x30
 	.byte	0xd
 	.byte	0x73
@@ -29484,28 +29576,28 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x71
-	.4byte	0x90c4
+	.4byte	0x90a2
 	.byte	0x1a
 	.ascii	"substructs\000"
 
 	.byte	0xd
 	.byte	0x72
-	.4byte	0x90d0
+	.4byte	0x90ae
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x90d0
-	.4byte	0x2ad9
+	.4byte	0x90ae
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0xb
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x90dc
-	.4byte	0x8f37
+	.4byte	0x90ba
+	.4byte	0x8f15
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x91a2
+	.4byte	0x9180
 	.ascii	"Pokemon\000"
 
 	.byte	0x64
@@ -29516,7 +29608,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x78
-	.4byte	0x8f90
+	.4byte	0x8f6e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -29525,7 +29617,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x79
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x50
@@ -29534,7 +29626,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x54
@@ -29543,7 +29635,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x55
@@ -29552,7 +29644,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x56
@@ -29561,7 +29653,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x58
@@ -29570,7 +29662,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5a
@@ -29579,7 +29671,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x7f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5c
@@ -29588,7 +29680,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x80
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5e
@@ -29597,7 +29689,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x81
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x60
@@ -29606,13 +29698,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x82
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x62
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x9295
+	.4byte	0x9273
 	.ascii	"Unknown_806F160_Struct\000"
 
 	.byte	0x14
@@ -29623,7 +29715,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x87
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x4
 	.byte	0x1c
@@ -29635,7 +29727,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x88
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x4
 	.byte	0x18
@@ -29647,7 +29739,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x89
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x8
 	.byte	0x10
@@ -29659,7 +29751,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x8a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x8
 	.byte	0x8
@@ -29671,7 +29763,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x8b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x4
 	.byte	0x4
@@ -29683,7 +29775,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x8c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x4
 	.byte	0x0
@@ -29704,7 +29796,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x8e
-	.4byte	0x9295
+	.4byte	0x9273
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -29713,7 +29805,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x8f
-	.4byte	0x929b
+	.4byte	0x9279
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -29722,7 +29814,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x90
-	.4byte	0x92a1
+	.4byte	0x927f
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -29737,7 +29829,7 @@ sSpritePalettes:
 	.byte	0x4
 	.4byte	0x10b4
 	.byte	0x11
-	.4byte	0x9522
+	.4byte	0x9500
 	.ascii	"BattlePokemon\000"
 
 	.byte	0x5c
@@ -29748,7 +29840,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x95
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -29757,7 +29849,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x96
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -29766,7 +29858,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x97
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -29775,7 +29867,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x98
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -29784,7 +29876,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x99
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -29793,7 +29885,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -29802,7 +29894,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9b
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -29811,7 +29903,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x1b
@@ -29823,7 +29915,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x16
@@ -29835,7 +29927,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9e
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x11
@@ -29847,7 +29939,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0x9f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0xc
@@ -29859,7 +29951,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa0
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x7
@@ -29871,7 +29963,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x5
 	.byte	0x2
@@ -29883,7 +29975,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x4
 	.byte	0x2
 	.byte	0x0
@@ -29895,7 +29987,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa3
-	.4byte	0x9522
+	.4byte	0x9500
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -29904,7 +29996,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -29913,7 +30005,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x22
@@ -29922,7 +30014,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x23
@@ -29931,7 +30023,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -29940,7 +30032,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa8
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x25
@@ -29949,7 +30041,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xa9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2a
@@ -29958,7 +30050,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xaa
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -29967,7 +30059,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xab
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2d
@@ -29976,7 +30068,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xac
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2e
@@ -29985,7 +30077,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xad
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x30
@@ -29994,7 +30086,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xae
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x32
@@ -30003,7 +30095,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xaf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3d
@@ -30012,7 +30104,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb0
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3e
@@ -30021,7 +30113,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x48
@@ -30030,7 +30122,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4c
@@ -30039,7 +30131,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb3
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x50
@@ -30048,7 +30140,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb4
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x54
@@ -30057,19 +30149,19 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xb5
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x58
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x952e
-	.4byte	0x2aef
+	.4byte	0x950c
+	.4byte	0x2acd
 	.byte	0x16
 	.byte	0x7
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x97d0
+	.4byte	0x97ae
 	.ascii	"BaseStats\000"
 
 	.byte	0x24
@@ -30080,7 +30172,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xba
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30089,7 +30181,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xbb
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -30098,7 +30190,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xbc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30107,7 +30199,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xbd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -30116,7 +30208,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xbe
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -30125,7 +30217,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xbf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -30134,7 +30226,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -30143,7 +30235,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -30152,7 +30244,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -30161,7 +30253,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -30170,7 +30262,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xe
@@ -30182,7 +30274,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc5
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xc
@@ -30194,7 +30286,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xa
@@ -30206,7 +30298,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc7
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x8
@@ -30218,7 +30310,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x6
@@ -30230,7 +30322,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xc9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x4
@@ -30242,7 +30334,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xca
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -30251,7 +30343,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xcb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -30260,7 +30352,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xcc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -30269,7 +30361,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xcd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -30278,7 +30370,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xce
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -30287,7 +30379,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xcf
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -30296,7 +30388,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -30305,7 +30397,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x17
@@ -30314,7 +30406,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd2
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -30323,7 +30415,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -30332,7 +30424,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -30341,7 +30433,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x7
 	.byte	0x1
@@ -30353,7 +30445,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -30365,13 +30457,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xd9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x98ab
+	.4byte	0x9889
 	.ascii	"BattleMove\000"
 
 	.byte	0x14
@@ -30382,7 +30474,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xdf
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30391,7 +30483,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30400,7 +30492,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -30409,7 +30501,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -30418,7 +30510,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -30427,7 +30519,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe4
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -30436,7 +30528,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -30445,7 +30537,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe6
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -30454,7 +30546,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe7
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -30463,7 +30555,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -30472,13 +30564,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xe9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x98e7
+	.4byte	0x98c5
 	.ascii	"SpindaSpot\000"
 
 	.byte	0x24
@@ -30489,7 +30581,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xee
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30498,7 +30590,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xee
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -30507,13 +30599,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xef
-	.4byte	0x464b
+	.4byte	0x4629
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x991b
+	.4byte	0x98f9
 	.ascii	"LevelUpMove\000"
 
 	.byte	0x4
@@ -30524,7 +30616,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xf4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30533,13 +30625,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xf5
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0x9967
+	.4byte	0x9945
 	.ascii	"Evolution\000"
 
 	.byte	0x8
@@ -30550,7 +30642,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xfa
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30559,7 +30651,7 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xfb
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30568,13 +30660,13 @@ sSpritePalettes:
 
 	.byte	0xd
 	.byte	0xfc
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x99cc
+	.4byte	0x99aa
 	.ascii	"WarpData\000"
 
 	.byte	0x8
@@ -30585,7 +30677,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x222
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30594,7 +30686,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x223
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -30603,7 +30695,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x224
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30612,7 +30704,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x225
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -30621,13 +30713,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x225
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9a05
+	.4byte	0x99e3
 	.ascii	"ItemSlot\000"
 
 	.byte	0x4
@@ -30638,7 +30730,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x22a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30647,13 +30739,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x22b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9a8d
+	.4byte	0x9a6b
 	.ascii	"Pokeblock\000"
 
 	.byte	0x8
@@ -30664,7 +30756,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x230
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30673,7 +30765,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x231
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -30682,7 +30774,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x232
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30691,7 +30783,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x233
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -30700,7 +30792,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x234
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -30709,7 +30801,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x235
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -30718,13 +30810,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x236
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9b80
+	.4byte	0x9b5e
 	.ascii	"Roamer\000"
 
 	.byte	0x1c
@@ -30735,7 +30827,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x23b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30744,7 +30836,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x23c
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -30753,7 +30845,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x23d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -30762,7 +30854,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x23e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -30771,7 +30863,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x23f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -30780,7 +30872,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x240
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -30789,7 +30881,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x241
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -30798,7 +30890,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x242
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xf
@@ -30807,7 +30899,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x243
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -30816,7 +30908,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x244
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x11
@@ -30825,7 +30917,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x245
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -30834,7 +30926,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x246
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x13
@@ -30843,13 +30935,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x247
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
 	.byte	0x0
 	.byte	0x21
-	.4byte	0x9bf6
+	.4byte	0x9bd4
 	.ascii	"RamScriptData\000"
 
 	.2byte	0x3e8
@@ -30860,7 +30952,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x24c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30869,7 +30961,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x24d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -30878,7 +30970,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x24e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30887,7 +30979,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x24f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -30896,19 +30988,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x250
-	.4byte	0x9bf6
+	.4byte	0x9bd4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x9c03
-	.4byte	0x2ac4
+	.4byte	0x9be1
+	.4byte	0x2aa2
 	.byte	0x2d
 	.2byte	0x3e2
 	.byte	0x0
 	.byte	0x21
-	.4byte	0x9c3c
+	.4byte	0x9c1a
 	.ascii	"RamScript\000"
 
 	.2byte	0x3ec
@@ -30919,7 +31011,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x255
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -30928,13 +31020,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x256
-	.4byte	0x9b80
+	.4byte	0x9b5e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9cb3
+	.4byte	0x9c91
 	.ascii	"EasyChatPair\000"
 
 	.byte	0x8
@@ -30945,7 +31037,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x25b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x7
 	.byte	0x9
@@ -30957,7 +31049,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x25c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x7
 	.byte	0x2
@@ -30969,7 +31061,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x25d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -30981,7 +31073,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x25e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -30990,13 +31082,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x25f
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9d29
+	.4byte	0x9d07
 	.ascii	"MailStruct\000"
 
 	.byte	0x24
@@ -31007,7 +31099,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x264
-	.4byte	0x9d29
+	.4byte	0x9d07
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31016,7 +31108,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x265
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
@@ -31025,7 +31117,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x266
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -31034,7 +31126,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x267
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -31043,19 +31135,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x268
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x9d35
-	.4byte	0x2ace
+	.4byte	0x9d13
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x8
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9d5f
+	.4byte	0x9d3d
 	.ascii	"MauvilleManCommon\000"
 
 	.byte	0x4
@@ -31066,13 +31158,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x26d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9e2e
+	.4byte	0x9e0c
 	.ascii	"MauvilleManBard\000"
 
 	.byte	0x2c
@@ -31083,7 +31175,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x272
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31092,7 +31184,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x273
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -31101,7 +31193,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x274
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -31110,7 +31202,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x275
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1a
@@ -31119,7 +31211,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x276
-	.4byte	0x313e
+	.4byte	0x311c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x22
@@ -31128,7 +31220,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x277
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x25
@@ -31137,7 +31229,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x278
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x29
@@ -31146,13 +31238,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x279
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2a
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9ee4
+	.4byte	0x9ec2
 	.ascii	"MauvilleManStoryteller\000"
 
 	.byte	0x38
@@ -31163,7 +31255,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x27e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31172,7 +31264,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x27f
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31181,7 +31273,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x280
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -31190,7 +31282,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x281
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -31199,7 +31291,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x282
-	.4byte	0x9ee4
+	.4byte	0x9ec2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -31208,7 +31300,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x283
-	.4byte	0x9ef2
+	.4byte	0x9ed0
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -31217,29 +31309,29 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x284
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x9ef2
-	.4byte	0x2ac4
+	.4byte	0x9ed0
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3
 	.byte	0x16
 	.byte	0x6
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x9f00
-	.4byte	0x2ac4
+	.4byte	0x9ede
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9f9a
+	.4byte	0x9f78
 	.ascii	"MauvilleManGiddy\000"
 
 	.byte	0x24
@@ -31250,7 +31342,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x289
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31259,7 +31351,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x28a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31268,7 +31360,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x28b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -31277,7 +31369,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x28c
-	.4byte	0x9f9a
+	.4byte	0x9f78
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -31286,7 +31378,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x28d
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -31295,19 +31387,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x28e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
 	.byte	0x0
 	.byte	0x15
-	.4byte	0x9fa6
-	.4byte	0x2ace
+	.4byte	0x9f84
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x9
 	.byte	0x0
 	.byte	0x20
-	.4byte	0x9ffe
+	.4byte	0x9fdc
 	.ascii	"MauvilleManHipster\000"
 
 	.byte	0x4
@@ -31318,7 +31410,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x293
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31327,7 +31419,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x294
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31336,13 +31428,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x295
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa086
+	.4byte	0xa064
 	.ascii	"MauvilleOldManTrader\000"
 
 	.byte	0x38
@@ -31353,7 +31445,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x29a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31362,7 +31454,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x29b
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31371,7 +31463,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x29c
-	.4byte	0xa086
+	.4byte	0xa064
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -31380,7 +31472,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x29d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x31
@@ -31389,21 +31481,21 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x29e
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x32
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa094
-	.4byte	0x2ac4
+	.4byte	0xa072
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3
 	.byte	0x16
 	.byte	0xa
 	.byte	0x0
 	.byte	0x2e
-	.4byte	0xa111
+	.4byte	0xa0ef
 	.ascii	"OldMan\000"
 
 	.byte	0x40
@@ -31414,47 +31506,47 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2a3
-	.4byte	0x9d35
+	.4byte	0x9d13
 	.byte	0x2a
 	.ascii	"bard\000"
 
 	.byte	0x4
 	.2byte	0x2a4
-	.4byte	0x9d5f
+	.4byte	0x9d3d
 	.byte	0x2a
 	.ascii	"giddy\000"
 
 	.byte	0x4
 	.2byte	0x2a5
-	.4byte	0x9f00
+	.4byte	0x9ede
 	.byte	0x2a
 	.ascii	"hipster\000"
 
 	.byte	0x4
 	.2byte	0x2a6
-	.4byte	0x9fa6
+	.4byte	0x9f84
 	.byte	0x2a
 	.ascii	"trader\000"
 
 	.byte	0x4
 	.2byte	0x2a7
-	.4byte	0x9ffe
+	.4byte	0x9fdc
 	.byte	0x2a
 	.ascii	"storyteller\000"
 
 	.byte	0x4
 	.2byte	0x2a8
-	.4byte	0x9e2e
+	.4byte	0x9e0c
 	.byte	0x2a
 	.ascii	"filler\000"
 
 	.byte	0x4
 	.2byte	0x2a9
-	.4byte	0xa111
+	.4byte	0xa0ef
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa11d
-	.4byte	0x2ac4
+	.4byte	0xa0fb
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3f
 	.byte	0x0
@@ -31463,9 +31555,9 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2aa
-	.4byte	0xa094
+	.4byte	0xa072
 	.byte	0x20
-	.4byte	0xa174
+	.4byte	0xa152
 	.ascii	"RecordMixing_UnknownStructSub\000"
 
 	.byte	0x38
@@ -31476,7 +31568,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2ae
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31485,19 +31577,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2af
-	.4byte	0xa174
+	.4byte	0xa152
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa180
-	.4byte	0x2ac4
+	.4byte	0xa15e
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x33
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa1d7
+	.4byte	0xa1b5
 	.ascii	"RecordMixing_UnknownStruct\000"
 
 	.byte	0x78
@@ -31508,7 +31600,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2b5
-	.4byte	0xa1d7
+	.4byte	0xa1b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31517,7 +31609,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2b6
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x70
@@ -31526,19 +31618,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2b7
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x74
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa1e3
-	.4byte	0xa12c
+	.4byte	0xa1c1
+	.4byte	0xa10a
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa256
+	.4byte	0xa234
 	.ascii	"LinkBattleRecord\000"
 
 	.byte	0x10
@@ -31549,7 +31641,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2be
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31558,7 +31650,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2bf
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -31567,7 +31659,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2c0
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -31576,7 +31668,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2c1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -31585,13 +31677,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2c2
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa29a
+	.4byte	0xa278
 	.ascii	"LinkBattleRecords\000"
 
 	.byte	0x58
@@ -31602,7 +31694,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2c7
-	.4byte	0xa29a
+	.4byte	0xa278
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31611,19 +31703,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2c8
-	.4byte	0x7f27
+	.4byte	0x7f05
 	.byte	0x2
 	.byte	0x23
 	.byte	0x50
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa2a6
-	.4byte	0xa1e3
+	.4byte	0xa284
+	.4byte	0xa1c1
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa30e
+	.4byte	0xa2ec
 	.ascii	"RecordMixingGiftData\000"
 
 	.byte	0xc
@@ -31634,7 +31726,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2cd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31643,7 +31735,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2ce
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31652,7 +31744,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2cf
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -31661,13 +31753,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2d0
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa34d
+	.4byte	0xa32b
 	.ascii	"RecordMixingGift\000"
 
 	.byte	0x10
@@ -31678,7 +31770,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2d5
-	.4byte	0x27fc
+	.4byte	0x27da
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31687,13 +31779,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2d6
-	.4byte	0xa2a6
+	.4byte	0xa284
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa400
+	.4byte	0xa3de
 	.ascii	"ContestWinner\000"
 
 	.byte	0x20
@@ -31704,7 +31796,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2db
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31713,7 +31805,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2dc
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -31722,7 +31814,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2dd
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -31731,7 +31823,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2de
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -31740,7 +31832,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2df
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -31749,7 +31841,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e0
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -31758,13 +31850,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa484
+	.4byte	0xa462
 	.ascii	"DayCareMail\000"
 
 	.byte	0x38
@@ -31775,7 +31867,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e6
-	.4byte	0x9cb3
+	.4byte	0x9c91
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31784,7 +31876,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e7
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -31793,7 +31885,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e8
-	.4byte	0x38d7
+	.4byte	0x38b5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -31802,7 +31894,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2e9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -31814,7 +31906,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2ea
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -31823,7 +31915,7 @@ sSpritePalettes:
 	.byte	0x37
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa4ca
+	.4byte	0xa4a8
 	.ascii	"DaycareMon\000"
 
 	.byte	0x8c
@@ -31834,7 +31926,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2ef
-	.4byte	0x8f90
+	.4byte	0x8f6e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31843,7 +31935,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2f0
-	.4byte	0xa400
+	.4byte	0xa3de
 	.byte	0x2
 	.byte	0x23
 	.byte	0x50
@@ -31852,13 +31944,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2f1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0x88,0x1
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xa526
+	.4byte	0xa504
 	.ascii	"DayCare\000"
 
 	.2byte	0x120
@@ -31869,7 +31961,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2f6
-	.4byte	0xa526
+	.4byte	0xa504
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31878,7 +31970,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2f7
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x2
@@ -31887,19 +31979,19 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2f8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9c,0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa532
-	.4byte	0xa484
+	.4byte	0xa510
+	.4byte	0xa462
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa593
+	.4byte	0xa571
 	.ascii	"RecordMixingDayCareMail\000"
 
 	.byte	0x78
@@ -31910,7 +32002,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2fd
-	.4byte	0xa593
+	.4byte	0xa571
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31919,7 +32011,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2fe
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x70
@@ -31928,25 +32020,25 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x2ff
-	.4byte	0xa59f
+	.4byte	0xa57d
 	.byte	0x2
 	.byte	0x23
 	.byte	0x74
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa59f
-	.4byte	0xa400
+	.4byte	0xa57d
+	.4byte	0xa3de
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xa5ab
-	.4byte	0x2bd6
+	.4byte	0xa589
+	.4byte	0x2bb4
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa6d0
+	.4byte	0xa6ae
 	.ascii	"LilycoveLadyQuiz\000"
 
 	.byte	0x30
@@ -31957,7 +32049,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x304
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -31966,7 +32058,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x305
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -31975,7 +32067,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x306
-	.4byte	0x9d29
+	.4byte	0x9d07
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -31984,7 +32076,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x307
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -31993,7 +32085,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x308
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
@@ -32002,7 +32094,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x309
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -32011,7 +32103,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30a
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -32020,7 +32112,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -32029,7 +32121,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30c
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2a
@@ -32038,7 +32130,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2b
@@ -32047,7 +32139,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -32056,13 +32148,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x30f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2d
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa79c
+	.4byte	0xa77a
 	.ascii	"LilycoveLadyFavor\000"
 
 	.byte	0x14
@@ -32073,7 +32165,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x314
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32082,7 +32174,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x315
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -32091,7 +32183,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x316
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -32100,7 +32192,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x317
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -32109,7 +32201,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x318
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32118,7 +32210,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x319
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -32127,7 +32219,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x31a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
@@ -32136,7 +32228,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x31b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -32145,13 +32237,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x31c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x12
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa879
+	.4byte	0xa857
 	.ascii	"LilycoveLadyContest\000"
 
 	.byte	0x10
@@ -32162,7 +32254,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x321
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32171,7 +32263,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x322
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -32180,7 +32272,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x323
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -32189,7 +32281,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x324
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -32198,7 +32290,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x325
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32207,7 +32299,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x326
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -32216,7 +32308,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x327
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xd
@@ -32225,13 +32317,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x328
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
 	.byte	0x0
 	.byte	0x29
-	.4byte	0xa8c5
+	.4byte	0xa8a3
 	.byte	0x40
 	.byte	0x4
 	.2byte	0x332
@@ -32240,40 +32332,40 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x32d
-	.4byte	0xa5ab
+	.4byte	0xa589
 	.byte	0x2a
 	.ascii	"favor\000"
 
 	.byte	0x4
 	.2byte	0x32e
-	.4byte	0xa6d0
+	.4byte	0xa6ae
 	.byte	0x2a
 	.ascii	"contest\000"
 
 	.byte	0x4
 	.2byte	0x32f
-	.4byte	0xa79c
+	.4byte	0xa77a
 	.byte	0x2a
 	.ascii	"id\000"
 
 	.byte	0x4
 	.2byte	0x330
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2a
 	.ascii	"pad\000"
 
 	.byte	0x4
 	.2byte	0x331
-	.4byte	0xa111
+	.4byte	0xa0ef
 	.byte	0x0
 	.byte	0x2b
 	.ascii	"LilycoveLady\000"
 
 	.byte	0x4
 	.2byte	0x332
-	.4byte	0xa879
+	.4byte	0xa857
 	.byte	0x20
-	.4byte	0xa954
+	.4byte	0xa932
 	.ascii	"WaldaPhrase\000"
 
 	.byte	0x18
@@ -32284,7 +32376,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x336
-	.4byte	0x4627
+	.4byte	0x4605
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32293,7 +32385,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x337
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32302,7 +32394,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x338
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -32311,7 +32403,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x339
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x15
@@ -32320,13 +32412,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x33a
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x16
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xa99c
+	.4byte	0xa97a
 	.ascii	"TrainerNameRecord\000"
 
 	.byte	0xc
@@ -32337,7 +32429,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x33f
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32346,13 +32438,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x340
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xaac7
+	.4byte	0xaaa5
 	.ascii	"SaveTrainerHill\000"
 
 	.byte	0xc
@@ -32363,7 +32455,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x345
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32372,7 +32464,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x346
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32381,7 +32473,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x347
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -32390,7 +32482,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x348
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -32399,7 +32491,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x349
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -32411,7 +32503,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -32423,7 +32515,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -32435,7 +32527,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -32447,7 +32539,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -32459,7 +32551,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -32471,7 +32563,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x34f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x8
@@ -32480,7 +32572,7 @@ sSpritePalettes:
 	.byte	0xa
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xab37
+	.4byte	0xab15
 	.ascii	"MysteryEventStruct\000"
 
 	.byte	0x4
@@ -32491,7 +32583,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x354
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x6
@@ -32503,7 +32595,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x355
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x3
@@ -32515,7 +32607,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x356
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x0
@@ -32527,13 +32619,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x357
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xaba7
+	.4byte	0xab85
 	.ascii	"WonderNews\000"
 
 	.2byte	0x1bc
@@ -32544,7 +32636,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x35c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32553,7 +32645,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x35d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -32562,7 +32654,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x35e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -32571,7 +32663,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x35f
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32580,27 +32672,27 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x360
-	.4byte	0xabb3
+	.4byte	0xab91
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xabb3
-	.4byte	0x2ac4
+	.4byte	0xab91
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x27
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xabc1
-	.4byte	0x2ac4
+	.4byte	0xab9f
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x9
 	.byte	0x16
 	.byte	0x27
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xac00
+	.4byte	0xabde
 	.ascii	"WonderNewsSaveStruct\000"
 
 	.2byte	0x1c0
@@ -32611,7 +32703,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x365
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32620,13 +32712,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x366
-	.4byte	0xab37
+	.4byte	0xab15
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xad00
+	.4byte	0xacde
 	.ascii	"WonderCard\000"
 
 	.2byte	0x14c
@@ -32637,7 +32729,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x36b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32646,7 +32738,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x36c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -32655,7 +32747,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x36d
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32664,7 +32756,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x36e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x6
@@ -32676,7 +32768,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x36f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x2
@@ -32688,7 +32780,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x370
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x0
@@ -32700,7 +32792,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x371
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -32709,7 +32801,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x372
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -32718,7 +32810,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x373
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x2
 	.byte	0x23
 	.byte	0x32
@@ -32727,7 +32819,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x374
-	.4byte	0xad00
+	.4byte	0xacde
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5a
@@ -32736,7 +32828,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x375
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfa,0x1
@@ -32745,21 +32837,21 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x376
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa2,0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xad0e
-	.4byte	0x2ac4
+	.4byte	0xacec
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x3
 	.byte	0x16
 	.byte	0x27
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xad4d
+	.4byte	0xad2b
 	.ascii	"WonderCardSaveStruct\000"
 
 	.2byte	0x150
@@ -32770,7 +32862,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x37b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32779,13 +32871,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x37c
-	.4byte	0xac00
+	.4byte	0xabde
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xadc7
+	.4byte	0xada5
 	.ascii	"MEventBuffer_3430_Sub\000"
 
 	.byte	0x24
@@ -32796,7 +32888,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x381
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32805,7 +32897,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x382
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -32814,7 +32906,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x383
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32823,7 +32915,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x384
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -32832,21 +32924,21 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x385
-	.4byte	0xadc7
+	.4byte	0xada5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xadd5
-	.4byte	0x2ace
+	.4byte	0xadb3
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x6
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xae10
+	.4byte	0xadee
 	.ascii	"MEventBuffer_3430\000"
 
 	.byte	0x28
@@ -32857,7 +32949,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x38a
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32866,13 +32958,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x38b
-	.4byte	0xad4d
+	.4byte	0xad2b
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xaea9
+	.4byte	0xae87
 	.ascii	"MEventBuffers\000"
 
 	.2byte	0x36c
@@ -32883,7 +32975,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x390
-	.4byte	0xabc1
+	.4byte	0xab9f
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -32892,7 +32984,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x391
-	.4byte	0xad0e
+	.4byte	0xacec
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0x3
@@ -32901,7 +32993,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x392
-	.4byte	0xadd5
+	.4byte	0xadb3
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x6
@@ -32910,7 +33002,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x393
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x6
@@ -32919,7 +33011,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x394
-	.4byte	0xaac7
+	.4byte	0xaaa5
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0x6
@@ -32928,21 +33020,21 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x395
-	.4byte	0xaea9
+	.4byte	0xae87
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc4,0x6
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xaeb7
-	.4byte	0x2ad9
+	.4byte	0xae95
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x21
-	.4byte	0xb827
+	.4byte	0xb805
 	.ascii	"SaveBlock1\000"
 
 	.2byte	0x3d90
@@ -32962,7 +33054,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x39f
-	.4byte	0x9967
+	.4byte	0x9945
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -32971,7 +33063,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a0
-	.4byte	0x9967
+	.4byte	0x9945
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -32980,7 +33072,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a1
-	.4byte	0x9967
+	.4byte	0x9945
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -32989,7 +33081,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a2
-	.4byte	0x9967
+	.4byte	0x9945
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -32998,7 +33090,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a3
-	.4byte	0x9967
+	.4byte	0x9945
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -33007,7 +33099,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -33016,7 +33108,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a5
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2e
@@ -33025,7 +33117,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2f
@@ -33034,7 +33126,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x30
@@ -33043,7 +33135,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x32
@@ -33052,7 +33144,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3a9
-	.4byte	0xb827
+	.4byte	0xb805
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
@@ -33061,7 +33153,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3aa
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb4,0x4
@@ -33070,7 +33162,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ab
-	.4byte	0xb833
+	.4byte	0xb811
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x4
@@ -33079,7 +33171,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ac
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x9
@@ -33088,7 +33180,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ad
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x94,0x9
@@ -33097,7 +33189,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ae
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x96,0x9
@@ -33106,7 +33198,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3af
-	.4byte	0xb83f
+	.4byte	0xb81d
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x9
@@ -33115,7 +33207,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b0
-	.4byte	0xb84b
+	.4byte	0xb829
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0xa
@@ -33124,7 +33216,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b1
-	.4byte	0xb84b
+	.4byte	0xb829
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd8,0xb
@@ -33133,7 +33225,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b2
-	.4byte	0xb857
+	.4byte	0xb835
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd0,0xc
@@ -33142,7 +33234,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b3
-	.4byte	0xb863
+	.4byte	0xb841
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0xd
@@ -33151,7 +33243,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b4
-	.4byte	0xb86f
+	.4byte	0xb84d
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd8,0x10
@@ -33160,7 +33252,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b5
-	.4byte	0xb87b
+	.4byte	0xb859
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x12
@@ -33169,7 +33261,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b6
-	.4byte	0xa174
+	.4byte	0xa152
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd0,0x14
@@ -33178,7 +33270,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b7
-	.4byte	0x4633
+	.4byte	0x4611
 	.byte	0x3
 	.byte	0x23
 	.byte	0x84,0x15
@@ -33187,7 +33279,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b8
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x8a,0x15
@@ -33196,7 +33288,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3b9
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x15
@@ -33205,7 +33297,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ba
-	.4byte	0xb887
+	.4byte	0xb865
 	.byte	0x3
 	.byte	0x23
 	.byte	0x92,0x15
@@ -33214,7 +33306,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3bb
-	.4byte	0xb893
+	.4byte	0xb871
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf8,0x15
@@ -33223,7 +33315,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3bc
-	.4byte	0xb89f
+	.4byte	0xb87d
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x1a
@@ -33232,7 +33324,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3bd
-	.4byte	0xb8ab
+	.4byte	0xb889
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x26
@@ -33241,7 +33333,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3be
-	.4byte	0xb827
+	.4byte	0xb805
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x28
@@ -33250,7 +33342,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3bf
-	.4byte	0xb8b8
+	.4byte	0xb896
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x2c
@@ -33259,7 +33351,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c0
-	.4byte	0xb8c4
+	.4byte	0xb8a2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x2e
@@ -33268,7 +33360,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c1
-	.4byte	0xb8d0
+	.4byte	0xb8ae
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x36
@@ -33277,7 +33369,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c2
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe4,0x4f
@@ -33286,7 +33378,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c3
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf0,0x4f
@@ -33295,7 +33387,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c4
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfc,0x4f
@@ -33304,7 +33396,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c5
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x3
 	.byte	0x23
 	.byte	0x86,0x50
@@ -33313,7 +33405,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c6
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x50
@@ -33322,7 +33414,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c7
-	.4byte	0xb8dc
+	.4byte	0xb8ba
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9a,0x50
@@ -33331,7 +33423,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c8
-	.4byte	0xb8dc
+	.4byte	0xb8ba
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x50
@@ -33340,7 +33432,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3c9
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd6,0x50
@@ -33349,7 +33441,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ca
-	.4byte	0xaba7
+	.4byte	0xab85
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0x50
@@ -33358,7 +33450,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3cb
-	.4byte	0x797a
+	.4byte	0x7958
 	.byte	0x3
 	.byte	0x23
 	.byte	0x88,0x51
@@ -33367,7 +33459,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3cc
-	.4byte	0x2239
+	.4byte	0x2217
 	.byte	0x3
 	.byte	0x23
 	.byte	0x92,0x51
@@ -33376,7 +33468,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3cd
-	.4byte	0xb8e8
+	.4byte	0xb8c6
 	.byte	0x3
 	.byte	0x23
 	.byte	0x94,0x51
@@ -33385,7 +33477,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ce
-	.4byte	0xb8f4
+	.4byte	0xb8d2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x58
@@ -33394,7 +33486,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3cf
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd8,0x58
@@ -33403,7 +33495,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xda,0x58
@@ -33412,7 +33504,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xdb,0x58
@@ -33421,7 +33513,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d2
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xdc,0x58
@@ -33430,7 +33522,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d3
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xdd,0x58
@@ -33439,7 +33531,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xde,0x58
@@ -33448,7 +33540,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d5
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0x58
@@ -33457,7 +33549,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d6
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe8,0x58
@@ -33466,7 +33558,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe9,0x58
@@ -33475,7 +33567,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d8
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xea,0x58
@@ -33484,7 +33576,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3d9
-	.4byte	0x85b6
+	.4byte	0x8594
 	.byte	0x3
 	.byte	0x23
 	.byte	0xec,0x58
@@ -33493,7 +33585,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3da
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf8,0x58
@@ -33502,7 +33594,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3db
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x3
 	.byte	0x23
 	.byte	0x84,0x59
@@ -33511,7 +33603,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3dc
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x59
@@ -33520,7 +33612,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3dd
-	.4byte	0x36bb
+	.4byte	0x3699
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9c,0x59
@@ -33529,7 +33621,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3de
-	.4byte	0xb900
+	.4byte	0xb8de
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa8,0x59
@@ -33538,7 +33630,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3df
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe8,0x5d
@@ -33547,7 +33639,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e0
-	.4byte	0xa11d
+	.4byte	0xa0fb
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf0,0x5d
@@ -33556,7 +33648,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e1
-	.4byte	0xb90c
+	.4byte	0xb8ea
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb0,0x5e
@@ -33565,7 +33657,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e2
-	.4byte	0xb918
+	.4byte	0xb8f6
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd8,0x5e
@@ -33574,7 +33666,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e3
-	.4byte	0xa4ca
+	.4byte	0xa4a8
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf8,0x61
@@ -33583,7 +33675,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e4
-	.4byte	0xa256
+	.4byte	0xa234
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x64
@@ -33592,7 +33684,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e5
-	.4byte	0xa174
+	.4byte	0xa152
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf0,0x64
@@ -33601,7 +33693,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e6
-	.4byte	0x9a8d
+	.4byte	0x9a6b
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa4,0x65
@@ -33610,7 +33702,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e7
-	.4byte	0x65a9
+	.4byte	0x6587
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0x65
@@ -33619,7 +33711,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e8
-	.4byte	0xae10
+	.4byte	0xadee
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf4,0x65
@@ -33628,7 +33720,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3e9
-	.4byte	0xb924
+	.4byte	0xb902
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0x6c
@@ -33637,7 +33729,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ea
-	.4byte	0xb924
+	.4byte	0xb902
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd1,0x6d
@@ -33646,7 +33738,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3eb
-	.4byte	0x315c
+	.4byte	0x313a
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc4,0x6e
@@ -33655,7 +33747,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ec
-	.4byte	0x9c03
+	.4byte	0x9be1
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd4,0x6e
@@ -33664,7 +33756,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ed
-	.4byte	0xa30e
+	.4byte	0xa2ec
 	.byte	0x3
 	.byte	0x23
 	.byte	0xc0,0x76
@@ -33673,7 +33765,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ee
-	.4byte	0xa8c5
+	.4byte	0xa8a3
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd0,0x76
@@ -33682,7 +33774,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3ef
-	.4byte	0xb930
+	.4byte	0xb90e
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x77
@@ -33691,7 +33783,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f0
-	.4byte	0xb93c
+	.4byte	0xb91a
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x79
@@ -33700,7 +33792,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f1
-	.4byte	0xa99c
+	.4byte	0xa97a
 	.byte	0x3
 	.byte	0x23
 	.byte	0xd4,0x7a
@@ -33709,7 +33801,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f2
-	.4byte	0xa8da
+	.4byte	0xa8b8
 	.byte	0x3
 	.byte	0x23
 	.byte	0xe0,0x7a
@@ -33718,7 +33810,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xf8,0x7a
@@ -33727,7 +33819,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfa,0x7a
@@ -33736,7 +33828,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f5
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x3
 	.byte	0x23
 	.byte	0xfc,0x7a
@@ -33745,7 +33837,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f6
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x7b
@@ -33754,7 +33846,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x84,0x7b
@@ -33763,152 +33855,152 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3f8
-	.4byte	0x39e6
+	.4byte	0x39c4
 	.byte	0x3
 	.byte	0x23
 	.byte	0x85,0x7b
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb833
-	.4byte	0x2ace
+	.4byte	0xb811
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0xff
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb83f
-	.4byte	0x90dc
+	.4byte	0xb81d
+	.4byte	0x90ba
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb84b
-	.4byte	0x99cc
+	.4byte	0xb829
+	.4byte	0x99aa
 	.byte	0x16
 	.byte	0x31
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb857
-	.4byte	0x99cc
+	.4byte	0xb835
+	.4byte	0x99aa
 	.byte	0x16
 	.byte	0x1d
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb863
-	.4byte	0x99cc
+	.4byte	0xb841
+	.4byte	0x99aa
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb86f
-	.4byte	0x99cc
+	.4byte	0xb84d
+	.4byte	0x99aa
 	.byte	0x16
 	.byte	0x71
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb87b
-	.4byte	0x99cc
+	.4byte	0xb859
+	.4byte	0x99aa
 	.byte	0x16
 	.byte	0x2d
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb887
-	.4byte	0x9a05
+	.4byte	0xb865
+	.4byte	0x99e3
 	.byte	0x16
 	.byte	0x27
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb893
-	.4byte	0x2ac4
+	.4byte	0xb871
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x63
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb89f
-	.4byte	0x567d
+	.4byte	0xb87d
+	.4byte	0x565b
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8ab
-	.4byte	0x50e9
+	.4byte	0xb889
+	.4byte	0x50c7
 	.byte	0x16
 	.byte	0x3f
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8b8
-	.4byte	0x2ac4
+	.4byte	0xb896
+	.4byte	0x2aa2
 	.byte	0x2d
 	.2byte	0x12b
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8c4
-	.4byte	0x2ad9
+	.4byte	0xb8a2
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x3f
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8d0
-	.4byte	0x669f
+	.4byte	0xb8ae
+	.4byte	0x667d
 	.byte	0x16
 	.byte	0x7f
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8dc
-	.4byte	0x4d5c
+	.4byte	0xb8ba
+	.4byte	0x4d3a
 	.byte	0x16
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8e8
-	.4byte	0x2ac4
+	.4byte	0xb8c6
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x1d
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb8f4
-	.4byte	0x855b
+	.4byte	0xb8d2
+	.4byte	0x8539
 	.byte	0x16
 	.byte	0x18
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb900
-	.4byte	0x85a5
+	.4byte	0xb8de
+	.4byte	0x8583
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb90c
-	.4byte	0x9cb3
+	.4byte	0xb8ea
+	.4byte	0x9c91
 	.byte	0x16
 	.byte	0xf
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb918
-	.4byte	0x9c3c
+	.4byte	0xb8f6
+	.4byte	0x9c1a
 	.byte	0x16
 	.byte	0x4
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb924
-	.4byte	0xa34d
+	.4byte	0xb902
+	.4byte	0xa32b
 	.byte	0x16
 	.byte	0xc
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb930
-	.4byte	0x2ac4
+	.4byte	0xb90e
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x70
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb93c
-	.4byte	0xa954
+	.4byte	0xb91a
+	.4byte	0xa932
 	.byte	0x16
 	.byte	0x13
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xb94a
-	.4byte	0x2ac4
+	.4byte	0xb928
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x9
 	.byte	0x16
@@ -33919,14 +34011,14 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x3fc
-	.4byte	0xb963
+	.4byte	0xb941
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xaeb7
+	.4byte	0xae95
 	.byte	0x20
-	.4byte	0xb9ab
+	.4byte	0xb989
 	.ascii	"MapPosition\000"
 
 	.byte	0x8
@@ -33937,7 +34029,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x400
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -33946,7 +34038,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x401
-	.4byte	0x2af9
+	.4byte	0x2ad7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -33955,13 +34047,13 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x402
-	.4byte	0x2aef
+	.4byte	0x2acd
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xba33
+	.4byte	0xba11
 	.ascii	"TradeRoomPlayer\000"
 
 	.byte	0x10
@@ -33972,7 +34064,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x407
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -33981,7 +34073,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x408
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -33990,7 +34082,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x409
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -33999,7 +34091,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x40a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -34008,7 +34100,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x40b
-	.4byte	0xb969
+	.4byte	0xb947
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -34017,7 +34109,7 @@ sSpritePalettes:
 
 	.byte	0x4
 	.2byte	0x40c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -34027,21 +34119,21 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x4
-	.4byte	0x4f69
+	.4byte	0x4f47
 	.byte	0x1d
 	.ascii	"IntrCallback\000"
 
 	.byte	0xe
 	.byte	0x5
-	.4byte	0x4f69
+	.4byte	0x4f47
 	.byte	0x1d
 	.ascii	"IntrFunc\000"
 
 	.byte	0xe
 	.byte	0x6
-	.4byte	0x4f69
+	.4byte	0x4f47
 	.byte	0x2f
-	.4byte	0xbc98
+	.4byte	0xbc76
 	.ascii	"Main\000"
 
 	.2byte	0x43c
@@ -34052,7 +34144,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0xa
-	.4byte	0xba33
+	.4byte	0xba11
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -34061,7 +34153,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0xb
-	.4byte	0xba33
+	.4byte	0xba11
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -34070,7 +34162,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0xd
-	.4byte	0xba33
+	.4byte	0xba11
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -34079,7 +34171,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0xf
-	.4byte	0xba47
+	.4byte	0xba25
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -34088,7 +34180,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x10
-	.4byte	0xba47
+	.4byte	0xba25
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -34097,7 +34189,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x11
-	.4byte	0xba47
+	.4byte	0xba25
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -34106,7 +34198,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x12
-	.4byte	0xba47
+	.4byte	0xba25
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -34124,7 +34216,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x16
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -34133,7 +34225,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x17
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
@@ -34142,7 +34234,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x19
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x28
@@ -34151,7 +34243,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2a
@@ -34160,7 +34252,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2c
@@ -34169,7 +34261,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1c
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2e
@@ -34178,7 +34270,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x30
@@ -34187,7 +34279,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x32
@@ -34196,7 +34288,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x1f
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x23
 	.byte	0x34
@@ -34205,7 +34297,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x20
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x36
@@ -34214,7 +34306,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x22
-	.4byte	0xbc98
+	.4byte	0xbc76
 	.byte	0x2
 	.byte	0x23
 	.byte	0x38
@@ -34223,7 +34315,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x24
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x8
@@ -34232,7 +34324,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x26
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -34244,7 +34336,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x27
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -34256,7 +34348,7 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x28
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -34265,7 +34357,7 @@ sSpritePalettes:
 	.byte	0xb9,0x8
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xbca4
+	.4byte	0xbc82
 	.4byte	0xf46
 	.byte	0x16
 	.byte	0x7f
@@ -34275,7 +34367,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xb7
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x1
 	.byte	0x1
 	.byte	0x2c
@@ -34283,11 +34375,11 @@ sSpritePalettes:
 
 	.byte	0xe
 	.byte	0x32
-	.4byte	0xba6b
+	.4byte	0xba49
 	.byte	0x1
 	.byte	0x1
 	.byte	0x23
-	.4byte	0xbd65
+	.4byte	0xbd43
 	.byte	0x4
 	.byte	0xf
 	.byte	0x6
@@ -34317,7 +34409,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xbdd4
+	.4byte	0xbdb2
 	.byte	0x4
 	.byte	0x10
 	.byte	0x12
@@ -34339,7 +34431,7 @@ sSpritePalettes:
 	.byte	0x3
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xbf9e
+	.4byte	0xbf7c
 	.ascii	"PaletteFadeControl\000"
 
 	.byte	0xc
@@ -34350,7 +34442,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x1b
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -34359,7 +34451,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x1c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x6
 	.byte	0x2
@@ -34371,7 +34463,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x1d
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x5
@@ -34383,7 +34475,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x1e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x0
@@ -34395,7 +34487,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x1f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0xf
 	.byte	0x1
@@ -34407,7 +34499,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x20
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0x0
@@ -34419,7 +34511,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x21
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x6
 	.byte	0xa
@@ -34431,7 +34523,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x22
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -34443,7 +34535,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x23
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -34455,7 +34547,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x24
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x6
@@ -34467,7 +34559,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x25
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -34479,7 +34571,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x26
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -34491,7 +34583,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x27
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0xf
@@ -34503,7 +34595,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x28
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -34515,7 +34607,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x29
-	.4byte	0x2bd6
+	.4byte	0x2bb4
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -34527,7 +34619,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x2a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x1
@@ -34540,12 +34632,12 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x2d
-	.4byte	0xbdd4
+	.4byte	0xbdb2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xbfc0
-	.4byte	0x2ace
+	.4byte	0xbf9e
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34554,12 +34646,12 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x30
-	.4byte	0xbfb4
+	.4byte	0xbf92
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xbfe8
-	.4byte	0x2ace
+	.4byte	0xbfc6
+	.4byte	0x2aac
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34568,7 +34660,7 @@ sSpritePalettes:
 
 	.byte	0x10
 	.byte	0x31
-	.4byte	0xbfdc
+	.4byte	0xbfba
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1d
@@ -34576,12 +34668,12 @@ sSpritePalettes:
 
 	.byte	0x2
 	.byte	0xa
-	.4byte	0xc012
+	.4byte	0xbff0
 	.byte	0x5
 	.byte	0x4
 	.4byte	0x806
 	.byte	0x15
-	.4byte	0xc024
+	.4byte	0xc002
 	.4byte	0x790
 	.byte	0x16
 	.byte	0x0
@@ -34591,12 +34683,12 @@ sSpritePalettes:
 
 	.byte	0x2
 	.byte	0x16
-	.4byte	0xc018
+	.4byte	0xbff6
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xc040
-	.4byte	0x2ac4
+	.4byte	0xc01e
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34605,12 +34697,12 @@ sSpritePalettes:
 
 	.byte	0x11
 	.byte	0x4
-	.4byte	0xc034
+	.4byte	0xc012
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xc061
-	.4byte	0x2ac4
+	.4byte	0xc03f
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34619,12 +34711,12 @@ sSpritePalettes:
 
 	.byte	0x11
 	.byte	0x5
-	.4byte	0xc055
+	.4byte	0xc033
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xc082
-	.4byte	0x2ac4
+	.4byte	0xc060
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34633,12 +34725,12 @@ sSpritePalettes:
 
 	.byte	0x11
 	.byte	0x6
-	.4byte	0xc076
+	.4byte	0xc054
 	.byte	0x1
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xc0a3
-	.4byte	0x2ac4
+	.4byte	0xc081
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -34647,11 +34739,11 @@ sSpritePalettes:
 
 	.byte	0x11
 	.byte	0x7
-	.4byte	0xc097
+	.4byte	0xc075
 	.byte	0x1
 	.byte	0x1
 	.byte	0x30
-	.4byte	0xc128
+	.4byte	0xc106
 	.ascii	"StringConvertMode\000"
 
 	.byte	0x4
@@ -34671,7 +34763,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xc1c3
+	.4byte	0xc1a1
 	.byte	0x4
 	.byte	0x12
 	.byte	0x7
@@ -34709,7 +34801,7 @@ sSpritePalettes:
 	.byte	0x7
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc25d
+	.4byte	0xc23b
 	.ascii	"WindowTemplate\000"
 
 	.byte	0x8
@@ -34720,7 +34812,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -34729,7 +34821,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x15
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -34738,7 +34830,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x16
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -34747,7 +34839,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x17
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -34756,7 +34848,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x18
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -34765,7 +34857,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x19
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -34774,13 +34866,13 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x1a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc291
+	.4byte	0xc26f
 	.ascii	"Window\000"
 
 	.byte	0xc
@@ -34791,7 +34883,7 @@ sSpritePalettes:
 
 	.byte	0x12
 	.byte	0x2a
-	.4byte	0xc1c3
+	.4byte	0xc1a1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -34806,7 +34898,7 @@ sSpritePalettes:
 	.byte	0x8
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc33f
+	.4byte	0xc31d
 	.ascii	"BGCntrlBitfield\000"
 
 	.byte	0x4
@@ -34817,7 +34909,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x6
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x2
 	.byte	0xe
@@ -34829,7 +34921,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x7
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x2
 	.byte	0xc
@@ -34841,7 +34933,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x8
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x4
 	.byte	0x8
@@ -34853,7 +34945,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x9
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x5
 	.byte	0x3
@@ -34865,7 +34957,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0xa
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -34877,7 +34969,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0xb
-	.4byte	0x2b36
+	.4byte	0x2b14
 	.byte	0x2
 	.byte	0x2
 	.byte	0x0
@@ -34886,7 +34978,7 @@ sSpritePalettes:
 	.byte	0x0
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xc40e
+	.4byte	0xc3ec
 	.byte	0x4
 	.byte	0x13
 	.byte	0xf
@@ -34932,7 +35024,7 @@ sSpritePalettes:
 	.byte	0xa
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc4c4
+	.4byte	0xc4a2
 	.ascii	"BgTemplate\000"
 
 	.byte	0x4
@@ -34943,7 +35035,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x1e
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xe
@@ -34955,7 +35047,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x1f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0xc
@@ -34967,7 +35059,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x20
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x5
 	.byte	0x7
@@ -34979,7 +35071,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x21
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x5
@@ -34991,7 +35083,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x22
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -35003,7 +35095,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x23
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x2
 	.byte	0x2
@@ -35015,7 +35107,7 @@ sSpritePalettes:
 
 	.byte	0x13
 	.byte	0x24
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0xa
 	.byte	0x8
@@ -35024,7 +35116,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x30
-	.4byte	0xc5f5
+	.4byte	0xc5d3
 	.ascii	"SpinnerRunnerFollowPatterns\000"
 
 	.byte	0x4
@@ -35076,7 +35168,7 @@ sSpritePalettes:
 	.byte	0xa
 	.byte	0x0
 	.byte	0x30
-	.4byte	0xc658
+	.4byte	0xc636
 	.ascii	"ReflectionTypes\000"
 
 	.byte	0x4
@@ -35100,7 +35192,7 @@ sSpritePalettes:
 	.byte	0x3
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc696
+	.4byte	0xc674
 	.ascii	"UnkStruct_085094AC\000"
 
 	.byte	0x8
@@ -35120,13 +35212,13 @@ sSpritePalettes:
 
 	.byte	0x14
 	.byte	0x35
-	.4byte	0x36c7
+	.4byte	0x36a5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc6cb
+	.4byte	0xc6a9
 	.ascii	"PairedPalettes\000"
 
 	.byte	0x8
@@ -35137,7 +35229,7 @@ sSpritePalettes:
 
 	.byte	0x14
 	.byte	0x3a
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35146,13 +35238,13 @@ sSpritePalettes:
 
 	.byte	0x14
 	.byte	0x3b
-	.4byte	0x8858
+	.4byte	0x8836
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xc714
+	.4byte	0xc6f2
 	.ascii	"LockedAnimObjectEvents\000"
 
 	.byte	0x14
@@ -35163,7 +35255,7 @@ sSpritePalettes:
 
 	.byte	0x14
 	.byte	0x40
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35172,13 +35264,13 @@ sSpritePalettes:
 
 	.byte	0x14
 	.byte	0x41
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
 	.byte	0x0
 	.byte	0x2f
-	.4byte	0xc781
+	.4byte	0xc75f
 	.ascii	"PokemonStorage\000"
 
 	.2byte	0x83d0
@@ -35189,7 +35281,7 @@ sSpritePalettes:
 
 	.byte	0x15
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35198,7 +35290,7 @@ sSpritePalettes:
 
 	.byte	0x15
 	.byte	0x15
-	.4byte	0xc781
+	.4byte	0xc75f
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -35207,7 +35299,7 @@ sSpritePalettes:
 
 	.byte	0x15
 	.byte	0x16
-	.4byte	0xc78f
+	.4byte	0xc76d
 	.byte	0x4
 	.byte	0x23
 	.byte	0xc4,0x86,0x2
@@ -35216,29 +35308,29 @@ sSpritePalettes:
 
 	.byte	0x15
 	.byte	0x17
-	.4byte	0x813c
+	.4byte	0x811a
 	.byte	0x4
 	.byte	0x23
 	.byte	0xc2,0x87,0x2
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xc78f
-	.4byte	0x8f90
+	.4byte	0xc76d
+	.4byte	0x8f6e
 	.byte	0x16
 	.byte	0xd
 	.byte	0x16
 	.byte	0x1d
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xc79d
-	.4byte	0x2ac4
+	.4byte	0xc77b
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0xd
 	.byte	0x16
 	.byte	0x8
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xc7a9
+	.4byte	0xc787
 	.4byte	0xabc
 	.byte	0x16
 	.byte	0x0
@@ -35248,14 +35340,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1ffa
-	.4byte	0xc7c9
+	.4byte	0xc7a7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc79d
+	.4byte	0xc77b
 	.byte	0x15
-	.4byte	0xc7da
-	.4byte	0x881f
+	.4byte	0xc7b8
+	.4byte	0x87fd
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35264,14 +35356,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1ffb
-	.4byte	0xc7fa
+	.4byte	0xc7d8
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc7ce
+	.4byte	0xc7ac
 	.byte	0x15
-	.4byte	0xc80b
-	.4byte	0x881f
+	.4byte	0xc7e9
+	.4byte	0x87fd
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35280,14 +35372,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1ffc
-	.4byte	0xc835
+	.4byte	0xc813
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc7ff
+	.4byte	0xc7dd
 	.byte	0x15
-	.4byte	0xc846
-	.4byte	0x2642
+	.4byte	0xc824
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35296,14 +35388,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1ffd
-	.4byte	0xc873
+	.4byte	0xc851
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc83a
+	.4byte	0xc818
 	.byte	0x15
-	.4byte	0xc884
-	.4byte	0x2642
+	.4byte	0xc862
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35312,14 +35404,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1ffe
-	.4byte	0xc8b1
+	.4byte	0xc88f
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc878
+	.4byte	0xc856
 	.byte	0x15
-	.4byte	0xc8c2
-	.4byte	0x2642
+	.4byte	0xc8a0
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35328,14 +35420,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x1fff
-	.4byte	0xc8f1
+	.4byte	0xc8cf
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc8b6
+	.4byte	0xc894
 	.byte	0x15
-	.4byte	0xc902
-	.4byte	0x2642
+	.4byte	0xc8e0
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35344,14 +35436,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2000
-	.4byte	0xc925
+	.4byte	0xc903
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc8f6
+	.4byte	0xc8d4
 	.byte	0x15
-	.4byte	0xc936
-	.4byte	0x2642
+	.4byte	0xc914
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35360,14 +35452,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2001
-	.4byte	0xc95c
+	.4byte	0xc93a
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc92a
+	.4byte	0xc908
 	.byte	0x15
-	.4byte	0xc96d
-	.4byte	0x2642
+	.4byte	0xc94b
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35376,14 +35468,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2002
-	.4byte	0xc991
+	.4byte	0xc96f
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc961
+	.4byte	0xc93f
 	.byte	0x15
-	.4byte	0xc9a2
-	.4byte	0x2642
+	.4byte	0xc980
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35392,14 +35484,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2003
-	.4byte	0xc9c4
+	.4byte	0xc9a2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc996
+	.4byte	0xc974
 	.byte	0x15
-	.4byte	0xc9d5
-	.4byte	0x2642
+	.4byte	0xc9b3
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35408,14 +35500,14 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2004
-	.4byte	0xc9fb
+	.4byte	0xc9d9
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xc9c9
+	.4byte	0xc9a7
 	.byte	0x15
-	.4byte	0xca0c
-	.4byte	0x2642
+	.4byte	0xc9ea
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35424,13 +35516,13 @@ sSpritePalettes:
 
 	.byte	0x16
 	.2byte	0x2005
-	.4byte	0xca32
+	.4byte	0xca10
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xca00
+	.4byte	0xc9de
 	.byte	0x11
-	.4byte	0xca6c
+	.4byte	0xca4a
 	.ascii	"MonCoords\000"
 
 	.byte	0x4
@@ -35441,7 +35533,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0xc
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35450,13 +35542,13 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0xd
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xcae3
+	.4byte	0xcac1
 	.ascii	"TrainerMonNoItemDefaultMoves\000"
 
 	.byte	0xc
@@ -35467,7 +35559,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x12
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35476,7 +35568,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x13
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -35485,7 +35577,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x14
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -35494,7 +35586,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x15
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -35503,13 +35595,13 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x16
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xcb6b
+	.4byte	0xcb49
 	.ascii	"TrainerMonItemDefaultMoves\000"
 
 	.byte	0x10
@@ -35520,7 +35612,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x1b
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35529,7 +35621,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x1c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -35538,7 +35630,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x1d
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -35547,7 +35639,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x1e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -35556,7 +35648,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x1f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -35565,13 +35657,13 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x20
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xcbf1
+	.4byte	0xcbcf
 	.ascii	"TrainerMonNoItemCustomMoves\000"
 
 	.byte	0x14
@@ -35582,7 +35674,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x25
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35591,7 +35683,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x26
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -35600,7 +35692,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x27
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -35609,7 +35701,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x28
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -35618,7 +35710,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x29
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -35627,13 +35719,13 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x2a
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xcc88
+	.4byte	0xcc66
 	.ascii	"TrainerMonItemCustomMoves\000"
 
 	.byte	0x18
@@ -35644,7 +35736,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x2f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35653,7 +35745,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x30
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -35662,7 +35754,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x31
-	.4byte	0x3bf4
+	.4byte	0x3bd2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -35671,7 +35763,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x32
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -35680,7 +35772,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x33
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -35689,7 +35781,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x34
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0xc
@@ -35698,13 +35790,13 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x35
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0xe
 	.byte	0x0
 	.byte	0x19
-	.4byte	0xcd01
+	.4byte	0xccdf
 	.ascii	"TrainerMonPtr\000"
 
 	.byte	0x4
@@ -35715,48 +35807,48 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x3a
-	.4byte	0xcd01
+	.4byte	0xccdf
 	.byte	0x1a
 	.ascii	"NoItemCustomMoves\000"
 
 	.byte	0x17
 	.byte	0x3b
-	.4byte	0xcd0c
+	.4byte	0xccea
 	.byte	0x1a
 	.ascii	"ItemDefaultMoves\000"
 
 	.byte	0x17
 	.byte	0x3c
-	.4byte	0xcd17
+	.4byte	0xccf5
 	.byte	0x1a
 	.ascii	"ItemCustomMoves\000"
 
 	.byte	0x17
 	.byte	0x3d
-	.4byte	0xcd22
+	.4byte	0xcd00
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xcd07
+	.4byte	0xcce5
 	.byte	0x17
-	.4byte	0xca6c
+	.4byte	0xca4a
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xcd12
+	.4byte	0xccf0
 	.byte	0x17
-	.4byte	0xcb6b
+	.4byte	0xcb49
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xcd1d
+	.4byte	0xccfb
 	.byte	0x17
-	.4byte	0xcae3
+	.4byte	0xcac1
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xcd28
+	.4byte	0xcd06
 	.byte	0x17
-	.4byte	0xcbf1
+	.4byte	0xcbcf
 	.byte	0x11
-	.4byte	0xce12
+	.4byte	0xcdf0
 	.ascii	"Trainer\000"
 
 	.byte	0x28
@@ -35767,7 +35859,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x42
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -35776,7 +35868,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x43
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -35785,7 +35877,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x44
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -35794,7 +35886,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x45
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -35803,7 +35895,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x46
-	.4byte	0x6b60
+	.4byte	0x6b3e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -35812,7 +35904,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x47
-	.4byte	0x3588
+	.4byte	0x3566
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -35821,7 +35913,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x48
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x18
@@ -35830,7 +35922,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x49
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -35839,7 +35931,7 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x4a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -35848,14 +35940,14 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x4b
-	.4byte	0xcc88
+	.4byte	0xcc66
 	.byte	0x2
 	.byte	0x23
 	.byte	0x24
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xce20
-	.4byte	0x2642
+	.4byte	0xcdfe
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x16
@@ -35866,14 +35958,14 @@ sSpritePalettes:
 
 	.byte	0x17
 	.byte	0x7f
-	.4byte	0xce37
+	.4byte	0xce15
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xce12
+	.4byte	0xcdf0
 	.byte	0x15
-	.4byte	0xce48
-	.4byte	0x2642
+	.4byte	0xce26
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35882,14 +35974,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.byte	0x5
-	.4byte	0xce71
+	.4byte	0xce4f
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xce3c
+	.4byte	0xce1a
 	.byte	0x15
-	.4byte	0xce82
-	.4byte	0x2642
+	.4byte	0xce60
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35898,14 +35990,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.byte	0x11
-	.4byte	0xcead
+	.4byte	0xce8b
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xce76
+	.4byte	0xce54
 	.byte	0x15
-	.4byte	0xcebe
-	.4byte	0x2642
+	.4byte	0xce9c
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35914,14 +36006,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.byte	0x12
-	.4byte	0xcee5
+	.4byte	0xcec3
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xceb2
+	.4byte	0xce90
 	.byte	0x15
-	.4byte	0xcef6
-	.4byte	0x2642
+	.4byte	0xced4
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35930,14 +36022,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x140
-	.4byte	0xcf11
+	.4byte	0xceef
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xceea
+	.4byte	0xcec8
 	.byte	0x15
-	.4byte	0xcf22
-	.4byte	0x2642
+	.4byte	0xcf00
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35946,14 +36038,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x141
-	.4byte	0xcf3f
+	.4byte	0xcf1d
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xcf16
+	.4byte	0xcef4
 	.byte	0x15
-	.4byte	0xcf50
-	.4byte	0x2642
+	.4byte	0xcf2e
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35962,14 +36054,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x163
-	.4byte	0xcf6f
+	.4byte	0xcf4d
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xcf44
+	.4byte	0xcf22
 	.byte	0x15
-	.4byte	0xcf80
-	.4byte	0x2642
+	.4byte	0xcf5e
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35978,14 +36070,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x164
-	.4byte	0xcfa2
+	.4byte	0xcf80
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xcf74
+	.4byte	0xcf52
 	.byte	0x15
-	.4byte	0xcfb3
-	.4byte	0x2642
+	.4byte	0xcf91
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -35994,14 +36086,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x165
-	.4byte	0xcfd2
+	.4byte	0xcfb0
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xcfa7
+	.4byte	0xcf85
 	.byte	0x15
-	.4byte	0xcfe3
-	.4byte	0x2642
+	.4byte	0xcfc1
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36010,14 +36102,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x166
-	.4byte	0xd004
+	.4byte	0xcfe2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xcfd7
+	.4byte	0xcfb5
 	.byte	0x15
-	.4byte	0xd015
-	.4byte	0x2642
+	.4byte	0xcff3
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36026,14 +36118,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x167
-	.4byte	0xd035
+	.4byte	0xd013
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd009
+	.4byte	0xcfe7
 	.byte	0x15
-	.4byte	0xd046
-	.4byte	0x2642
+	.4byte	0xd024
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36042,14 +36134,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x168
-	.4byte	0xd066
+	.4byte	0xd044
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd03a
+	.4byte	0xd018
 	.byte	0x15
-	.4byte	0xd077
-	.4byte	0x2642
+	.4byte	0xd055
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36058,14 +36150,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x169
-	.4byte	0xd099
+	.4byte	0xd077
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd06b
+	.4byte	0xd049
 	.byte	0x15
-	.4byte	0xd0aa
-	.4byte	0x2642
+	.4byte	0xd088
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36074,14 +36166,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16a
-	.4byte	0xd0cc
+	.4byte	0xd0aa
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd09e
+	.4byte	0xd07c
 	.byte	0x15
-	.4byte	0xd0dd
-	.4byte	0x2642
+	.4byte	0xd0bb
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36090,14 +36182,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16b
-	.4byte	0xd0ff
+	.4byte	0xd0dd
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd0d1
+	.4byte	0xd0af
 	.byte	0x15
-	.4byte	0xd110
-	.4byte	0x2642
+	.4byte	0xd0ee
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36106,14 +36198,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16c
-	.4byte	0xd130
+	.4byte	0xd10e
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd104
+	.4byte	0xd0e2
 	.byte	0x15
-	.4byte	0xd141
-	.4byte	0x2642
+	.4byte	0xd11f
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36122,14 +36214,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16d
-	.4byte	0xd163
+	.4byte	0xd141
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd135
+	.4byte	0xd113
 	.byte	0x15
-	.4byte	0xd174
-	.4byte	0x2642
+	.4byte	0xd152
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36138,14 +36230,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16e
-	.4byte	0xd195
+	.4byte	0xd173
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd168
+	.4byte	0xd146
 	.byte	0x15
-	.4byte	0xd1a6
-	.4byte	0x2642
+	.4byte	0xd184
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36154,14 +36246,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x16f
-	.4byte	0xd1c6
+	.4byte	0xd1a4
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd19a
+	.4byte	0xd178
 	.byte	0x15
-	.4byte	0xd1d7
-	.4byte	0x2642
+	.4byte	0xd1b5
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36170,14 +36262,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x170
-	.4byte	0xd1f8
+	.4byte	0xd1d6
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd1cb
+	.4byte	0xd1a9
 	.byte	0x15
-	.4byte	0xd209
-	.4byte	0x2642
+	.4byte	0xd1e7
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36186,14 +36278,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x171
-	.4byte	0xd22a
+	.4byte	0xd208
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd1fd
+	.4byte	0xd1db
 	.byte	0x15
-	.4byte	0xd23b
-	.4byte	0x2642
+	.4byte	0xd219
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36202,14 +36294,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x172
-	.4byte	0xd25d
+	.4byte	0xd23b
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd22f
+	.4byte	0xd20d
 	.byte	0x15
-	.4byte	0xd26e
-	.4byte	0x2642
+	.4byte	0xd24c
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36218,14 +36310,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x173
-	.4byte	0xd290
+	.4byte	0xd26e
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd262
+	.4byte	0xd240
 	.byte	0x15
-	.4byte	0xd2a1
-	.4byte	0x2642
+	.4byte	0xd27f
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36234,14 +36326,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x174
-	.4byte	0xd2c3
+	.4byte	0xd2a1
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd295
+	.4byte	0xd273
 	.byte	0x15
-	.4byte	0xd2d4
-	.4byte	0x2642
+	.4byte	0xd2b2
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36250,14 +36342,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x175
-	.4byte	0xd2f7
+	.4byte	0xd2d5
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd2c8
+	.4byte	0xd2a6
 	.byte	0x15
-	.4byte	0xd308
-	.4byte	0x2642
+	.4byte	0xd2e6
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36266,14 +36358,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x176
-	.4byte	0xd32a
+	.4byte	0xd308
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd2fc
+	.4byte	0xd2da
 	.byte	0x15
-	.4byte	0xd33b
-	.4byte	0x2642
+	.4byte	0xd319
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36282,14 +36374,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x177
-	.4byte	0xd35c
+	.4byte	0xd33a
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd32f
+	.4byte	0xd30d
 	.byte	0x15
-	.4byte	0xd36d
-	.4byte	0x2642
+	.4byte	0xd34b
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36298,14 +36390,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x178
-	.4byte	0xd38e
+	.4byte	0xd36c
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd361
+	.4byte	0xd33f
 	.byte	0x15
-	.4byte	0xd39f
-	.4byte	0x2642
+	.4byte	0xd37d
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36314,14 +36406,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x179
-	.4byte	0xd3c0
+	.4byte	0xd39e
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd393
+	.4byte	0xd371
 	.byte	0x15
-	.4byte	0xd3d1
-	.4byte	0x2642
+	.4byte	0xd3af
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36330,14 +36422,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17a
-	.4byte	0xd3f2
+	.4byte	0xd3d0
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd3c5
+	.4byte	0xd3a3
 	.byte	0x15
-	.4byte	0xd403
-	.4byte	0x2642
+	.4byte	0xd3e1
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36346,14 +36438,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17b
-	.4byte	0xd424
+	.4byte	0xd402
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd3f7
+	.4byte	0xd3d5
 	.byte	0x15
-	.4byte	0xd435
-	.4byte	0x2642
+	.4byte	0xd413
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36362,14 +36454,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17c
-	.4byte	0xd457
+	.4byte	0xd435
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd429
+	.4byte	0xd407
 	.byte	0x15
-	.4byte	0xd468
-	.4byte	0x2642
+	.4byte	0xd446
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36378,14 +36470,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17d
-	.4byte	0xd488
+	.4byte	0xd466
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd45c
+	.4byte	0xd43a
 	.byte	0x15
-	.4byte	0xd499
-	.4byte	0x2642
+	.4byte	0xd477
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36394,14 +36486,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17e
-	.4byte	0xd4bb
+	.4byte	0xd499
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd48d
+	.4byte	0xd46b
 	.byte	0x15
-	.4byte	0xd4cc
-	.4byte	0x2642
+	.4byte	0xd4aa
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36410,14 +36502,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x17f
-	.4byte	0xd4ee
+	.4byte	0xd4cc
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd4c0
+	.4byte	0xd49e
 	.byte	0x15
-	.4byte	0xd4ff
-	.4byte	0x2642
+	.4byte	0xd4dd
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36426,14 +36518,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x180
-	.4byte	0xd521
+	.4byte	0xd4ff
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd4f3
+	.4byte	0xd4d1
 	.byte	0x15
-	.4byte	0xd532
-	.4byte	0x2642
+	.4byte	0xd510
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36442,14 +36534,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x181
-	.4byte	0xd554
+	.4byte	0xd532
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd526
+	.4byte	0xd504
 	.byte	0x15
-	.4byte	0xd565
-	.4byte	0x2642
+	.4byte	0xd543
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36458,14 +36550,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x182
-	.4byte	0xd586
+	.4byte	0xd564
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd559
+	.4byte	0xd537
 	.byte	0x15
-	.4byte	0xd597
-	.4byte	0x2642
+	.4byte	0xd575
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36474,14 +36566,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x183
-	.4byte	0xd5b9
+	.4byte	0xd597
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd58b
+	.4byte	0xd569
 	.byte	0x15
-	.4byte	0xd5ca
-	.4byte	0x2642
+	.4byte	0xd5a8
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36490,14 +36582,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x184
-	.4byte	0xd5eb
+	.4byte	0xd5c9
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd5be
+	.4byte	0xd59c
 	.byte	0x15
-	.4byte	0xd5fc
-	.4byte	0x2642
+	.4byte	0xd5da
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36506,14 +36598,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x185
-	.4byte	0xd61e
+	.4byte	0xd5fc
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd5f0
+	.4byte	0xd5ce
 	.byte	0x15
-	.4byte	0xd62f
-	.4byte	0x2642
+	.4byte	0xd60d
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36522,14 +36614,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x186
-	.4byte	0xd651
+	.4byte	0xd62f
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd623
+	.4byte	0xd601
 	.byte	0x15
-	.4byte	0xd662
-	.4byte	0x2642
+	.4byte	0xd640
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36538,14 +36630,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x187
-	.4byte	0xd684
+	.4byte	0xd662
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd656
+	.4byte	0xd634
 	.byte	0x15
-	.4byte	0xd695
-	.4byte	0x2642
+	.4byte	0xd673
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36554,14 +36646,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x188
-	.4byte	0xd6b6
+	.4byte	0xd694
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd689
+	.4byte	0xd667
 	.byte	0x15
-	.4byte	0xd6c7
-	.4byte	0x2642
+	.4byte	0xd6a5
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36570,14 +36662,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x189
-	.4byte	0xd6e7
+	.4byte	0xd6c5
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd6bb
+	.4byte	0xd699
 	.byte	0x15
-	.4byte	0xd6f8
-	.4byte	0x2642
+	.4byte	0xd6d6
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36586,14 +36678,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x18a
-	.4byte	0xd719
+	.4byte	0xd6f7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd6ec
+	.4byte	0xd6ca
 	.byte	0x15
-	.4byte	0xd72a
-	.4byte	0x2642
+	.4byte	0xd708
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36602,14 +36694,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x80d
-	.4byte	0xd75b
+	.4byte	0xd739
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd71e
+	.4byte	0xd6fc
 	.byte	0x15
-	.4byte	0xd76c
-	.4byte	0x2642
+	.4byte	0xd74a
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36618,14 +36710,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x80e
-	.4byte	0xd79d
+	.4byte	0xd77b
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd760
+	.4byte	0xd73e
 	.byte	0x15
-	.4byte	0xd7ae
-	.4byte	0x2642
+	.4byte	0xd78c
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36634,14 +36726,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x80f
-	.4byte	0xd7d8
+	.4byte	0xd7b6
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd7a2
+	.4byte	0xd780
 	.byte	0x15
-	.4byte	0xd7e9
-	.4byte	0x2642
+	.4byte	0xd7c7
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36650,14 +36742,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0x810
-	.4byte	0xd813
+	.4byte	0xd7f1
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd7dd
+	.4byte	0xd7bb
 	.byte	0x15
-	.4byte	0xd824
-	.4byte	0x2642
+	.4byte	0xd802
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36666,14 +36758,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa80
-	.4byte	0xd850
+	.4byte	0xd82e
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd818
+	.4byte	0xd7f6
 	.byte	0x15
-	.4byte	0xd861
-	.4byte	0x2642
+	.4byte	0xd83f
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36682,14 +36774,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa81
-	.4byte	0xd88d
+	.4byte	0xd86b
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd855
+	.4byte	0xd833
 	.byte	0x15
-	.4byte	0xd89e
-	.4byte	0x2642
+	.4byte	0xd87c
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36698,14 +36790,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa82
-	.4byte	0xd8cb
+	.4byte	0xd8a9
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd892
+	.4byte	0xd870
 	.byte	0x15
-	.4byte	0xd8dc
-	.4byte	0x2642
+	.4byte	0xd8ba
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36714,14 +36806,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa83
-	.4byte	0xd909
+	.4byte	0xd8e7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd8d0
+	.4byte	0xd8ae
 	.byte	0x15
-	.4byte	0xd91a
-	.4byte	0x2642
+	.4byte	0xd8f8
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36730,14 +36822,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa84
-	.4byte	0xd946
+	.4byte	0xd924
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd90e
+	.4byte	0xd8ec
 	.byte	0x15
-	.4byte	0xd957
-	.4byte	0x2642
+	.4byte	0xd935
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36746,14 +36838,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa85
-	.4byte	0xd983
+	.4byte	0xd961
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd94b
+	.4byte	0xd929
 	.byte	0x15
-	.4byte	0xd994
-	.4byte	0x2642
+	.4byte	0xd972
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36762,14 +36854,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa86
-	.4byte	0xd9c1
+	.4byte	0xd99f
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd988
+	.4byte	0xd966
 	.byte	0x15
-	.4byte	0xd9d2
-	.4byte	0x2642
+	.4byte	0xd9b0
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36778,14 +36870,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa87
-	.4byte	0xd9ff
+	.4byte	0xd9dd
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xd9c6
+	.4byte	0xd9a4
 	.byte	0x15
-	.4byte	0xda10
-	.4byte	0x2642
+	.4byte	0xd9ee
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36794,14 +36886,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa88
-	.4byte	0xda3b
+	.4byte	0xda19
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xda04
+	.4byte	0xd9e2
 	.byte	0x15
-	.4byte	0xda4c
-	.4byte	0x2642
+	.4byte	0xda2a
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36810,14 +36902,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa89
-	.4byte	0xda77
+	.4byte	0xda55
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xda40
+	.4byte	0xda1e
 	.byte	0x15
-	.4byte	0xda88
-	.4byte	0x2642
+	.4byte	0xda66
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36826,14 +36918,14 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa8a
-	.4byte	0xdab6
+	.4byte	0xda94
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xda7c
+	.4byte	0xda5a
 	.byte	0x15
-	.4byte	0xdac7
-	.4byte	0x2642
+	.4byte	0xdaa5
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -36842,13 +36934,13 @@ sSpritePalettes:
 
 	.byte	0x18
 	.2byte	0xa8b
-	.4byte	0xdaf5
+	.4byte	0xdad3
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xdabb
+	.4byte	0xda99
 	.byte	0x27
-	.4byte	0xdbd2
+	.4byte	0xdbb0
 	.byte	0x4
 	.byte	0x19
 	.2byte	0x111
@@ -36886,7 +36978,7 @@ sSpritePalettes:
 	.byte	0x7
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xdcb1
+	.4byte	0xdc8f
 	.ascii	"TextPrinterSubStruct\000"
 
 	.byte	0x4
@@ -36897,7 +36989,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x11e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -36909,7 +37001,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x11f
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x3
@@ -36921,7 +37013,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x120
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x3
 	.byte	0x0
@@ -36933,7 +37025,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x121
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -36945,7 +37037,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x122
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x2
 	.byte	0x1
@@ -36957,7 +37049,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x123
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -36969,13 +37061,13 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x124
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xddd6
+	.4byte	0xddb4
 	.ascii	"TextPrinterTemplate\000"
 
 	.byte	0x10
@@ -36986,7 +37078,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x129
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -36995,7 +37087,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12a
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -37004,7 +37096,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -37013,7 +37105,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -37022,7 +37114,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -37031,7 +37123,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
@@ -37040,7 +37132,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x12f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x9
@@ -37049,7 +37141,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x130
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xa
@@ -37058,7 +37150,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x131
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0xb
@@ -37067,7 +37159,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x132
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -37079,7 +37171,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x133
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -37091,7 +37183,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x134
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -37103,7 +37195,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x135
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -37112,7 +37204,7 @@ sSpritePalettes:
 	.byte	0xd
 	.byte	0x0
 	.byte	0x20
-	.4byte	0xded0
+	.4byte	0xdeae
 	.ascii	"TextPrinter\000"
 
 	.byte	0x24
@@ -37123,7 +37215,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x13a
-	.4byte	0xdcb1
+	.4byte	0xdc8f
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37132,7 +37224,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x13c
-	.4byte	0xdee7
+	.4byte	0xdec5
 	.byte	0x2
 	.byte	0x23
 	.byte	0x10
@@ -37141,7 +37233,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x13e
-	.4byte	0x36d3
+	.4byte	0x36b1
 	.byte	0x2
 	.byte	0x23
 	.byte	0x14
@@ -37150,7 +37242,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x13f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1b
@@ -37159,7 +37251,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x140
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1c
@@ -37168,7 +37260,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x141
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1d
@@ -37177,7 +37269,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x142
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1e
@@ -37186,7 +37278,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x143
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1f
@@ -37195,7 +37287,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x144
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -37204,27 +37296,27 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x145
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x21
 	.byte	0x0
 	.byte	0x13
-	.4byte	0xdee1
+	.4byte	0xdebf
 	.byte	0x1
 	.byte	0x14
-	.4byte	0xdee1
+	.4byte	0xdebf
 	.byte	0x14
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xdcb1
+	.4byte	0xdc8f
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xded0
+	.4byte	0xdeae
 	.byte	0x20
-	.4byte	0xdfd5
+	.4byte	0xdfb3
 	.ascii	"FontInfo\000"
 
 	.byte	0xc
@@ -37235,7 +37327,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14a
-	.4byte	0xdfeb
+	.4byte	0xdfc9
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37244,7 +37336,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14b
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -37253,7 +37345,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14c
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -37262,7 +37354,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14d
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x6
@@ -37271,7 +37363,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14e
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x7
@@ -37280,7 +37372,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x14f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -37292,7 +37384,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x150
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -37304,7 +37396,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x151
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x4
@@ -37316,7 +37408,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x152
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x1
 	.byte	0x4
 	.byte	0x0
@@ -37325,20 +37417,20 @@ sSpritePalettes:
 	.byte	0x9
 	.byte	0x0
 	.byte	0x31
-	.4byte	0xdfe5
+	.4byte	0xdfc3
 	.byte	0x1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x14
-	.4byte	0xdfe5
+	.4byte	0xdfc3
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xddd6
+	.4byte	0xddb4
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xdfd5
+	.4byte	0xdfb3
 	.byte	0x20
-	.4byte	0xe02c
+	.4byte	0xe00a
 	.ascii	"GlyphWidthFunc\000"
 
 	.byte	0x8
@@ -37349,7 +37441,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x159
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37358,25 +37450,25 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x15a
-	.4byte	0xe041
+	.4byte	0xe01f
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x31
-	.4byte	0xe041
+	.4byte	0xe01f
 	.byte	0x1
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x14
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x14
-	.4byte	0x2be4
+	.4byte	0x2bc2
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xe02c
+	.4byte	0xe00a
 	.byte	0x20
-	.4byte	0xe095
+	.4byte	0xe073
 	.ascii	"KeypadIcon\000"
 
 	.byte	0x4
@@ -37387,7 +37479,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x15f
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37396,7 +37488,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x160
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -37405,13 +37497,13 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x161
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
 	.byte	0x0
 	.byte	0x28
-	.4byte	0xe11c
+	.4byte	0xe0fa
 	.byte	0x4
 	.byte	0x19
 	.2byte	0x169
@@ -37420,7 +37512,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x165
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x7
@@ -37432,7 +37524,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x166
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x6
@@ -37444,7 +37536,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x167
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x5
@@ -37456,7 +37548,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x168
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x1
 	.byte	0x1
 	.byte	0x4
@@ -37469,9 +37561,9 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x169
-	.4byte	0xe095
+	.4byte	0xe073
 	.byte	0x20
-	.4byte	0xe1b0
+	.4byte	0xe18e
 	.ascii	"Struct_03002F90\000"
 
 	.byte	0x84
@@ -37482,7 +37574,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x16d
-	.4byte	0xe1b0
+	.4byte	0xe18e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37491,7 +37583,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x16e
-	.4byte	0xe1b0
+	.4byte	0xe18e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x20
@@ -37500,7 +37592,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x16f
-	.4byte	0xe1b0
+	.4byte	0xe18e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x40
@@ -37509,7 +37601,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x170
-	.4byte	0xe1b0
+	.4byte	0xe18e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x60
@@ -37518,7 +37610,7 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x171
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x1
@@ -37527,14 +37619,14 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x172
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x81,0x1
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xe1bc
-	.4byte	0x2ad9
+	.4byte	0xe19a
+	.4byte	0x2ab7
 	.byte	0x16
 	.byte	0x7
 	.byte	0x0
@@ -37543,11 +37635,11 @@ sSpritePalettes:
 
 	.byte	0x19
 	.2byte	0x175
-	.4byte	0xe11c
+	.4byte	0xe0fa
 	.byte	0x1
 	.byte	0x1
 	.byte	0x23
-	.4byte	0xe23c
+	.4byte	0xe21a
 	.byte	0x4
 	.byte	0x1a
 	.byte	0x1b
@@ -37573,7 +37665,7 @@ sSpritePalettes:
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xe26e
+	.4byte	0xe24c
 	.ascii	"MenuAction\000"
 
 	.byte	0x8
@@ -37584,7 +37676,7 @@ sSpritePalettes:
 
 	.byte	0x1a
 	.byte	0x25
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37593,13 +37685,13 @@ sSpritePalettes:
 
 	.byte	0x1a
 	.byte	0x29
-	.4byte	0xe26e
+	.4byte	0xe24c
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x25
-	.4byte	0xe295
+	.4byte	0xe273
 	.byte	0x4
 	.byte	0x1a
 	.byte	0x29
@@ -37608,22 +37700,22 @@ sSpritePalettes:
 
 	.byte	0x1a
 	.byte	0x27
-	.4byte	0xc012
+	.4byte	0xbff0
 	.byte	0x1a
 	.ascii	"u8_void\000"
 
 	.byte	0x1a
 	.byte	0x28
-	.4byte	0xe29b
+	.4byte	0xe279
 	.byte	0x0
 	.byte	0x32
 	.byte	0x1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xe295
+	.4byte	0xe273
 	.byte	0x11
-	.4byte	0xe2d1
+	.4byte	0xe2af
 	.ascii	"TilesPal\000"
 
 	.byte	0x8
@@ -37634,7 +37726,7 @@ sSpritePalettes:
 
 	.byte	0x1b
 	.byte	0x8
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37643,13 +37735,13 @@ sSpritePalettes:
 
 	.byte	0x1b
 	.byte	0x9
-	.4byte	0x8858
+	.4byte	0x8836
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xe321
+	.4byte	0xe2ff
 	.ascii	"InitialPlayerAvatarState\000"
 
 	.byte	0x4
@@ -37660,7 +37752,7 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x1f
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37669,13 +37761,13 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x20
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xe394
+	.4byte	0xe372
 	.ascii	"LinkPlayerObjectEvent\000"
 
 	.byte	0x4
@@ -37686,7 +37778,7 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x25
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -37695,7 +37787,7 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x26
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -37704,7 +37796,7 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x27
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -37713,13 +37805,13 @@ sSpritePalettes:
 
 	.byte	0x1c
 	.byte	0x28
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe442
+	.4byte	0xe420
 	.byte	0x4
 	.byte	0x1
 	.byte	0x20
@@ -37765,7 +37857,7 @@ sSpritePalettes:
 	.byte	0x9
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe55b
+	.4byte	0xe539
 	.byte	0x4
 	.byte	0x1
 	.byte	0x30
@@ -37819,7 +37911,7 @@ sSpritePalettes:
 	.byte	0xb
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe60c
+	.4byte	0xe5ea
 	.byte	0x4
 	.byte	0x1
 	.byte	0x3f
@@ -37857,7 +37949,7 @@ sSpritePalettes:
 	.byte	0x7
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe674
+	.4byte	0xe652
 	.byte	0x4
 	.byte	0x1
 	.byte	0x4a
@@ -37887,7 +37979,7 @@ sSpritePalettes:
 	.byte	0x5
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe6cb
+	.4byte	0xe6a9
 	.byte	0x4
 	.byte	0x1
 	.byte	0x55
@@ -37909,7 +38001,7 @@ sSpritePalettes:
 	.byte	0x3
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe719
+	.4byte	0xe6f7
 	.byte	0x4
 	.byte	0x1
 	.byte	0x5d
@@ -37927,7 +38019,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe759
+	.4byte	0xe737
 	.byte	0x4
 	.byte	0x1
 	.byte	0x64
@@ -37945,7 +38037,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe7a5
+	.4byte	0xe783
 	.byte	0x4
 	.byte	0x1
 	.byte	0x6a
@@ -37967,7 +38059,7 @@ sSpritePalettes:
 	.byte	0x3
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe7e5
+	.4byte	0xe7c3
 	.byte	0x4
 	.byte	0x1
 	.byte	0x71
@@ -37989,7 +38081,7 @@ sSpritePalettes:
 	.byte	0x3
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe8c2
+	.4byte	0xe8a0
 	.byte	0x4
 	.byte	0x1
 	.byte	0x79
@@ -38035,7 +38127,7 @@ sSpritePalettes:
 	.byte	0x9
 	.byte	0x0
 	.byte	0x23
-	.4byte	0xe90f
+	.4byte	0xe8ed
 	.byte	0x4
 	.byte	0x1
 	.byte	0x88
@@ -38053,7 +38145,7 @@ sSpritePalettes:
 	.byte	0x2
 	.byte	0x0
 	.byte	0x11
-	.4byte	0xe9c3
+	.4byte	0xe9a1
 	.ascii	"NamingScreenTemplate\000"
 
 	.byte	0xc
@@ -38064,7 +38156,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x90
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -38073,7 +38165,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x91
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x1
@@ -38082,7 +38174,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x92
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x2
@@ -38091,7 +38183,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x93
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x3
@@ -38100,7 +38192,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x94
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x4
@@ -38109,7 +38201,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x95
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x2
 	.byte	0x23
 	.byte	0x5
@@ -38118,13 +38210,13 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x96
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x2
 	.byte	0x23
 	.byte	0x8
 	.byte	0x0
 	.byte	0x2f
-	.4byte	0xec30
+	.4byte	0xec0e
 	.ascii	"NamingScreenData\000"
 
 	.2byte	0x1e40
@@ -38135,7 +38227,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x9b
-	.4byte	0xec30
+	.4byte	0xec0e
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
@@ -38144,7 +38236,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xec30
+	.4byte	0xec0e
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x10
@@ -38153,7 +38245,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x9d
-	.4byte	0xec30
+	.4byte	0xec0e
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x20
@@ -38162,7 +38254,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x9e
-	.4byte	0x4ed3
+	.4byte	0x4eb1
 	.byte	0x3
 	.byte	0x23
 	.byte	0x80,0x30
@@ -38171,7 +38263,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0x9f
-	.4byte	0xec3d
+	.4byte	0xec1b
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x30
@@ -38180,7 +38272,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa0
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0x90,0x3c
@@ -38189,7 +38281,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa1
-	.4byte	0x7f27
+	.4byte	0x7f05
 	.byte	0x3
 	.byte	0x23
 	.byte	0x91,0x3c
@@ -38198,7 +38290,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa2
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x96,0x3c
@@ -38207,7 +38299,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa3
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x98,0x3c
@@ -38216,7 +38308,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa4
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9a,0x3c
@@ -38225,7 +38317,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa5
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9c,0x3c
@@ -38234,7 +38326,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa6
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0x9e,0x3c
@@ -38243,7 +38335,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa7
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa0,0x3c
@@ -38252,7 +38344,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa8
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa1,0x3c
@@ -38261,7 +38353,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xa9
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa2,0x3c
@@ -38270,7 +38362,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xaa
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa3,0x3c
@@ -38279,7 +38371,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xab
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa4,0x3c
@@ -38288,7 +38380,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xac
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa5,0x3c
@@ -38297,7 +38389,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xad
-	.4byte	0xec4a
+	.4byte	0xec28
 	.byte	0x3
 	.byte	0x23
 	.byte	0xa8,0x3c
@@ -38306,7 +38398,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xae
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x3
 	.byte	0x23
 	.byte	0xac,0x3c
@@ -38324,7 +38416,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xb0
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb4,0x3c
@@ -38333,7 +38425,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xb1
-	.4byte	0x2ace
+	.4byte	0x2aac
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb6,0x3c
@@ -38342,7 +38434,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xb2
-	.4byte	0x2ad9
+	.4byte	0x2ab7
 	.byte	0x3
 	.byte	0x23
 	.byte	0xb8,0x3c
@@ -38351,43 +38443,43 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xb3
-	.4byte	0xba33
+	.4byte	0xba11
 	.byte	0x3
 	.byte	0x23
 	.byte	0xbc,0x3c
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xec3d
-	.4byte	0x2ac4
+	.4byte	0xec1b
+	.4byte	0x2aa2
 	.byte	0x2d
 	.2byte	0x7ff
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xec4a
-	.4byte	0x2ac4
+	.4byte	0xec28
+	.4byte	0x2aa2
 	.byte	0x2d
 	.2byte	0x5ff
 	.byte	0x0
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xec50
+	.4byte	0xec2e
 	.byte	0x17
-	.4byte	0xe90f
+	.4byte	0xe8ed
 	.byte	0x33
 	.ascii	"sNamingScreen\000"
 
 	.byte	0x1
 	.byte	0xb6
-	.4byte	0xec70
+	.4byte	0xec4e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sNamingScreen
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xe9c3
+	.4byte	0xe9a1
 	.byte	0x15
-	.4byte	0xec82
-	.4byte	0x2642
+	.4byte	0xec60
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -38396,14 +38488,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xba
-	.4byte	0xec9c
+	.4byte	0xec7a
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xec76
+	.4byte	0xec54
 	.byte	0x15
-	.4byte	0xecad
-	.4byte	0x2642
+	.4byte	0xec8b
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -38412,14 +38504,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xbb
-	.4byte	0xecc5
+	.4byte	0xeca3
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xeca1
+	.4byte	0xec7f
 	.byte	0x15
-	.4byte	0xecd6
-	.4byte	0x2642
+	.4byte	0xecb4
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -38428,14 +38520,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xbc
-	.4byte	0xeced
+	.4byte	0xeccb
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xecca
+	.4byte	0xeca8
 	.byte	0x15
-	.4byte	0xecfe
-	.4byte	0x2642
+	.4byte	0xecdc
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -38444,14 +38536,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xbd
-	.4byte	0xed1b
+	.4byte	0xecf9
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xecf2
+	.4byte	0xecd0
 	.byte	0x15
-	.4byte	0xed2c
-	.4byte	0x2642
+	.4byte	0xed0a
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x0
 	.byte	0x0
@@ -38460,14 +38552,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xbe
-	.4byte	0xed4b
+	.4byte	0xed29
 	.byte	0x1
 	.byte	0x1
 	.byte	0x17
-	.4byte	0xed20
+	.4byte	0xecfe
 	.byte	0x15
-	.4byte	0xed5c
-	.4byte	0x2642
+	.4byte	0xed3a
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0xbf
 	.byte	0x0
@@ -38476,15 +38568,15 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xc2
-	.4byte	0xed78
+	.4byte	0xed56
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPCIconOff_Gfx
 	.byte	0x17
-	.4byte	0xed50
+	.4byte	0xed2e
 	.byte	0x15
-	.4byte	0xed89
-	.4byte	0x2642
+	.4byte	0xed67
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0xbf
 	.byte	0x0
@@ -38493,14 +38585,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xc3
-	.4byte	0xeda4
+	.4byte	0xed82
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPCIconOn_Gfx
 	.byte	0x17
-	.4byte	0xed7d
+	.4byte	0xed5b
 	.byte	0x15
-	.4byte	0xedb5
+	.4byte	0xed93
 	.4byte	0xabc
 	.byte	0x16
 	.byte	0xf
@@ -38510,14 +38602,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xc4
-	.4byte	0xedd0
+	.4byte	0xedae
 	.byte	0x5
 	.byte	0x3
 	.4byte	sKeyboard_Pal
 	.byte	0x17
-	.4byte	0xeda9
+	.4byte	0xed87
 	.byte	0x15
-	.4byte	0xede1
+	.4byte	0xedbf
 	.4byte	0xabc
 	.byte	0x16
 	.byte	0xf
@@ -38527,34 +38619,34 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xc5
-	.4byte	0xedfa
+	.4byte	0xedd8
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnused_Pal
 	.byte	0x17
-	.4byte	0xedd5
+	.4byte	0xedb3
 	.byte	0x15
-	.4byte	0xee0b
-	.4byte	0xee0b
+	.4byte	0xede9
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x314a
+	.4byte	0x3128
 	.byte	0x33
 	.ascii	"sTransferredToPCMessages\000"
 
 	.byte	0x1
 	.byte	0xc7
-	.4byte	0xee36
+	.4byte	0xee14
 	.byte	0x5
 	.byte	0x3
 	.4byte	sTransferredToPCMessages
 	.byte	0x17
-	.4byte	0xedff
+	.4byte	0xeddd
 	.byte	0x15
-	.4byte	0xee47
-	.4byte	0x2642
+	.4byte	0xee25
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x35
 	.byte	0x0
@@ -38563,53 +38655,53 @@ sSpritePalettes:
 
 	.byte	0x1
 	.byte	0xcf
-	.4byte	0xee6d
+	.4byte	0xee4b
 	.byte	0x5
 	.byte	0x3
 	.4byte	sText_AlphabetUpperLower
 	.byte	0x17
-	.4byte	0xee3b
+	.4byte	0xee19
 	.byte	0x15
-	.4byte	0xee7e
-	.4byte	0xee7e
+	.4byte	0xee5c
+	.4byte	0xee5c
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xc40e
+	.4byte	0xc3ec
 	.byte	0x33
 	.ascii	"sBgTemplates\000"
 
 	.byte	0x1
 	.byte	0xd1
-	.4byte	0xee9d
+	.4byte	0xee7b
 	.byte	0x5
 	.byte	0x3
 	.4byte	sBgTemplates
 	.byte	0x17
-	.4byte	0xee72
+	.4byte	0xee50
 	.byte	0x15
-	.4byte	0xeeae
-	.4byte	0xeeae
+	.4byte	0xee8c
+	.4byte	0xee8c
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xc1c3
+	.4byte	0xc1a1
 	.byte	0x33
 	.ascii	"sWindowTemplates\000"
 
 	.byte	0x1
 	.byte	0xed
-	.4byte	0xeed1
+	.4byte	0xeeaf
 	.byte	0x5
 	.byte	0x3
 	.4byte	sWindowTemplates
 	.byte	0x17
-	.4byte	0xeea2
+	.4byte	0xee80
 	.byte	0x15
-	.4byte	0xeee2
-	.4byte	0x2642
+	.4byte	0xeec0
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x5f
 	.byte	0x0
@@ -38618,24 +38710,24 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x121
-	.4byte	0xeeff
+	.4byte	0xeedd
 	.byte	0x5
 	.byte	0x3
 	.4byte	sKeyboardChars
 	.byte	0x17
-	.4byte	0xeed6
+	.4byte	0xeeb4
 	.byte	0x9
 	.ascii	"sPageColumnCounts\000"
 
 	.byte	0x1
 	.2byte	0x12f
-	.4byte	0x2647
+	.4byte	0x2625
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageColumnCounts
 	.byte	0x15
-	.4byte	0xef30
-	.4byte	0x2642
+	.4byte	0xef0e
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x17
 	.byte	0x0
@@ -38644,15 +38736,15 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x134
-	.4byte	0xef4e
+	.4byte	0xef2c
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageColumnXPos
 	.byte	0x17
-	.4byte	0xef24
+	.4byte	0xef02
 	.byte	0x15
-	.4byte	0xef5f
-	.4byte	0xee0b
+	.4byte	0xef3d
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x14
 	.byte	0x0
@@ -38661,15 +38753,15 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x13a
-	.4byte	0xef7e
+	.4byte	0xef5c
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMalePresetNames
 	.byte	0x17
-	.4byte	0xef53
+	.4byte	0xef31
 	.byte	0x15
-	.4byte	0xef8f
-	.4byte	0xee0b
+	.4byte	0xef6d
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x14
 	.byte	0x0
@@ -38678,33 +38770,33 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x152
-	.4byte	0xefb0
+	.4byte	0xef8e
 	.byte	0x5
 	.byte	0x3
 	.4byte	gFemalePresetNames
 	.byte	0x17
-	.4byte	0xef83
+	.4byte	0xef61
 	.byte	0x15
-	.4byte	0xefc1
-	.4byte	0xefc1
+	.4byte	0xef9f
+	.4byte	0xef9f
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xec4a
+	.4byte	0xec28
 	.byte	0x9
 	.ascii	"sNamingScreenTemplates\000"
 
 	.byte	0x1
-	.2byte	0x8b0
-	.4byte	0xefeb
+	.2byte	0x8be
+	.4byte	0xefc9
 	.byte	0x5
 	.byte	0x3
 	.4byte	sNamingScreenTemplates
 	.byte	0x17
-	.4byte	0xefb5
+	.4byte	0xef93
 	.byte	0x15
-	.4byte	0xeffc
+	.4byte	0xefda
 	.4byte	0x124e
 	.byte	0x16
 	.byte	0x0
@@ -38713,15 +38805,15 @@ sSpritePalettes:
 	.ascii	"sSubspriteTable_PageSwapFrame\000"
 
 	.byte	0x1
-	.2byte	0x98c
-	.4byte	0xf028
+	.2byte	0x99a
+	.4byte	0xf006
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubspriteTable_PageSwapFrame
 	.byte	0x17
-	.4byte	0xeff0
+	.4byte	0xefce
 	.byte	0x15
-	.4byte	0xf039
+	.4byte	0xf017
 	.4byte	0x124e
 	.byte	0x16
 	.byte	0x2
@@ -38730,15 +38822,15 @@ sSpritePalettes:
 	.ascii	"sSubspriteTable_PageSwapText\000"
 
 	.byte	0x1
-	.2byte	0x991
-	.4byte	0xf064
+	.2byte	0x99f
+	.4byte	0xf042
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubspriteTable_PageSwapText
 	.byte	0x17
-	.4byte	0xf02d
+	.4byte	0xf00b
 	.byte	0x15
-	.4byte	0xf075
+	.4byte	0xf053
 	.4byte	0x124e
 	.byte	0x16
 	.byte	0x0
@@ -38747,15 +38839,15 @@ sSpritePalettes:
 	.ascii	"sSubspriteTable_Button\000"
 
 	.byte	0x1
-	.2byte	0x998
-	.4byte	0xf09a
+	.2byte	0x9a6
+	.4byte	0xf078
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubspriteTable_Button
 	.byte	0x17
-	.4byte	0xf069
+	.4byte	0xf047
 	.byte	0x15
-	.4byte	0xf0ab
+	.4byte	0xf089
 	.4byte	0x124e
 	.byte	0x16
 	.byte	0x0
@@ -38764,18 +38856,18 @@ sSpritePalettes:
 	.ascii	"sSubspriteTable_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0x99d
-	.4byte	0xf0d0
+	.2byte	0x9ab
+	.4byte	0xf0ae
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubspriteTable_PCIcon
 	.byte	0x17
-	.4byte	0xf09f
+	.4byte	0xf07d
 	.byte	0x9
 	.ascii	"sSpriteTemplate_PageSwapFrame\000"
 
 	.byte	0x1
-	.2byte	0x9cc
+	.2byte	0x9da
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38784,7 +38876,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_PageSwapButton\000"
 
 	.byte	0x1
-	.2byte	0x9d7
+	.2byte	0x9e5
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38793,7 +38885,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_PageSwapText\000"
 
 	.byte	0x1
-	.2byte	0x9e2
+	.2byte	0x9f0
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38802,7 +38894,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_BackButton\000"
 
 	.byte	0x1
-	.2byte	0x9ed
+	.2byte	0x9fb
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38811,7 +38903,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_OkButton\000"
 
 	.byte	0x1
-	.2byte	0x9f8
+	.2byte	0xa06
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38820,7 +38912,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_Cursor\000"
 
 	.byte	0x1
-	.2byte	0xa03
+	.2byte	0xa11
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38829,7 +38921,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_InputArrow\000"
 
 	.byte	0x1
-	.2byte	0xa0e
+	.2byte	0xa1c
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38838,7 +38930,7 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_Underscore\000"
 
 	.byte	0x1
-	.2byte	0xa19
+	.2byte	0xa27
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
@@ -38847,14 +38939,14 @@ sSpritePalettes:
 	.ascii	"sSpriteTemplate_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0xa24
+	.2byte	0xa32
 	.4byte	0x11fd
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSpriteTemplate_PCIcon
 	.byte	0x15
-	.4byte	0xf253
-	.4byte	0xee0b
+	.4byte	0xf231
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x2
 	.byte	0x16
@@ -38864,57 +38956,57 @@ sSpritePalettes:
 	.ascii	"sNamingScreenKeyboardText\000"
 
 	.byte	0x1
-	.2byte	0xa2f
-	.4byte	0xf27b
+	.2byte	0xa3d
+	.4byte	0xf259
 	.byte	0x5
 	.byte	0x3
 	.4byte	sNamingScreenKeyboardText
 	.byte	0x17
-	.4byte	0xf245
+	.4byte	0xf223
 	.byte	0x15
-	.4byte	0xf28c
-	.4byte	0xf28c
+	.4byte	0xf26a
+	.4byte	0xf26a
 	.byte	0x16
 	.byte	0xc
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x878d
+	.4byte	0x876b
 	.byte	0x9
 	.ascii	"sSpriteSheets\000"
 
 	.byte	0x1
-	.2byte	0xa48
-	.4byte	0xf2ad
+	.2byte	0xa56
+	.4byte	0xf28b
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSpriteSheets
 	.byte	0x17
-	.4byte	0xf280
+	.4byte	0xf25e
 	.byte	0x15
-	.4byte	0xf2be
-	.4byte	0xf2be
+	.4byte	0xf29c
+	.4byte	0xf29c
 	.byte	0x16
 	.byte	0x8
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x8824
+	.4byte	0x8802
 	.byte	0x9
 	.ascii	"sSpritePalettes\000"
 
 	.byte	0x1
-	.2byte	0xa59
-	.4byte	0xf2e1
+	.2byte	0xa67
+	.4byte	0xf2bf
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSpritePalettes
 	.byte	0x17
-	.4byte	0xf2b2
+	.4byte	0xf290
 	.byte	0x9
 	.ascii	"sPageToNextGfxId\000"
 
 	.byte	0x1
 	.2byte	0x27c
-	.4byte	0x2647
+	.4byte	0x2625
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageToNextGfxId
@@ -38923,7 +39015,7 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x283
-	.4byte	0x2647
+	.4byte	0x2625
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageToNextKeyboardId
@@ -38932,42 +39024,42 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x28a
-	.4byte	0x2647
+	.4byte	0x2625
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageToKeyboardId
 	.byte	0x15
-	.4byte	0xf355
-	.4byte	0xf365
+	.4byte	0xf333
+	.4byte	0xf343
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x31
-	.4byte	0xf365
+	.4byte	0xf343
 	.byte	0x1
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x14
 	.4byte	0x800
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xf36a
+	.4byte	0xf348
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xf355
+	.4byte	0xf333
 	.byte	0x9
 	.ascii	"sPageSwapAnimStateFuncs\000"
 
 	.byte	0x1
 	.2byte	0x358
-	.4byte	0xf396
+	.4byte	0xf374
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageSwapAnimStateFuncs
 	.byte	0x17
-	.4byte	0xf349
+	.4byte	0xf327
 	.byte	0x15
-	.4byte	0xf3a7
-	.4byte	0x2642
+	.4byte	0xf385
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
@@ -38976,43 +39068,43 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x4d2
-	.4byte	0xf3c5
+	.4byte	0xf3a3
 	.byte	0x5
 	.byte	0x3
 	.4byte	sButtonKeyRoles
 	.byte	0x17
-	.4byte	0xf39b
+	.4byte	0xf379
 	.byte	0x15
-	.4byte	0xf3d6
-	.4byte	0xf3e6
+	.4byte	0xf3b4
+	.4byte	0xf3c4
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x31
-	.4byte	0xf3e6
+	.4byte	0xf3c4
 	.byte	0x1
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x14
 	.4byte	0xf3a
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xf3eb
+	.4byte	0xf3c9
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xf3d6
+	.4byte	0xf3b4
 	.byte	0x9
 	.ascii	"sPageSwapSpriteFuncs\000"
 
 	.byte	0x1
 	.2byte	0x518
-	.4byte	0xf414
+	.4byte	0xf3f2
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageSwapSpriteFuncs
 	.byte	0x17
-	.4byte	0xf3ca
+	.4byte	0xf3a8
 	.byte	0x15
-	.4byte	0xf425
+	.4byte	0xf403
 	.4byte	0xabc
 	.byte	0x16
 	.byte	0x2
@@ -39022,14 +39114,14 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x552
-	.4byte	0xf444
+	.4byte	0xf422
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageSwapPalTags
 	.byte	0x17
-	.4byte	0xf419
+	.4byte	0xf3f7
 	.byte	0x15
-	.4byte	0xf455
+	.4byte	0xf433
 	.4byte	0xabc
 	.byte	0x16
 	.byte	0x2
@@ -39039,91 +39131,91 @@ sSpritePalettes:
 
 	.byte	0x1
 	.2byte	0x558
-	.4byte	0xf474
+	.4byte	0xf452
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPageSwapGfxTags
 	.byte	0x17
-	.4byte	0xf449
+	.4byte	0xf427
 	.byte	0x15
-	.4byte	0xf485
-	.4byte	0xf485
+	.4byte	0xf463
+	.4byte	0xf463
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
 	.byte	0x17
-	.4byte	0x4f69
+	.4byte	0x4f47
 	.byte	0x9
 	.ascii	"sIconFunctions\000"
 
 	.byte	0x1
 	.2byte	0x596
-	.4byte	0xf4a7
+	.4byte	0xf485
 	.byte	0x5
 	.byte	0x3
 	.4byte	sIconFunctions
 	.byte	0x17
-	.4byte	0xf479
+	.4byte	0xf457
 	.byte	0x15
-	.4byte	0xf4b8
-	.4byte	0xf4c8
+	.4byte	0xf496
+	.4byte	0xf4a6
 	.byte	0x16
 	.byte	0x3
 	.byte	0x0
 	.byte	0x31
-	.4byte	0xf4c8
+	.4byte	0xf4a6
 	.byte	0x1
-	.4byte	0x2bc9
+	.4byte	0x2ba7
 	.byte	0x14
-	.4byte	0x2ac4
+	.4byte	0x2aa2
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xf4cd
+	.4byte	0xf4ab
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xf4b8
+	.4byte	0xf496
 	.byte	0x9
 	.ascii	"sKeyboardKeyHandlers\000"
 
 	.byte	0x1
-	.2byte	0x5e5
-	.4byte	0xf4f6
+	.2byte	0x5f3
+	.4byte	0xf4d4
 	.byte	0x5
 	.byte	0x3
 	.4byte	sKeyboardKeyHandlers
 	.byte	0x17
-	.4byte	0xf4ac
+	.4byte	0xf48a
 	.byte	0x15
-	.4byte	0xf507
-	.4byte	0xf513
+	.4byte	0xf4e5
+	.4byte	0xf4f1
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
 	.byte	0x13
-	.4byte	0xf513
+	.4byte	0xf4f1
 	.byte	0x1
 	.byte	0x14
 	.4byte	0x800
 	.byte	0x0
 	.byte	0x17
-	.4byte	0xf518
+	.4byte	0xf4f6
 	.byte	0x5
 	.byte	0x4
-	.4byte	0xf507
+	.4byte	0xf4e5
 	.byte	0x9
 	.ascii	"sInputFuncs\000"
 
 	.byte	0x1
-	.2byte	0x64b
-	.4byte	0xf538
+	.2byte	0x659
+	.4byte	0xf516
 	.byte	0x5
 	.byte	0x3
 	.4byte	sInputFuncs
 	.byte	0x17
-	.4byte	0xf4fb
+	.4byte	0xf4d9
 	.byte	0x15
-	.4byte	0xf549
-	.4byte	0xf485
+	.4byte	0xf527
+	.4byte	0xf463
 	.byte	0x16
 	.byte	0x5
 	.byte	0x0
@@ -39131,16 +39223,16 @@ sSpritePalettes:
 	.ascii	"sDrawTextEntryBoxFuncs\000"
 
 	.byte	0x1
-	.2byte	0x6ff
-	.4byte	0xf56e
+	.2byte	0x70d
+	.4byte	0xf54c
 	.byte	0x5
 	.byte	0x3
 	.4byte	sDrawTextEntryBoxFuncs
 	.byte	0x17
-	.4byte	0xf53d
+	.4byte	0xf51b
 	.byte	0x15
-	.4byte	0xf57f
-	.4byte	0xf485
+	.4byte	0xf55d
+	.4byte	0xf463
 	.byte	0x16
 	.byte	0x1
 	.byte	0x0
@@ -39148,16 +39240,16 @@ sSpritePalettes:
 	.ascii	"sDrawGenderIconFuncs\000"
 
 	.byte	0x1
-	.2byte	0x711
-	.4byte	0xf5a2
+	.2byte	0x71f
+	.4byte	0xf580
 	.byte	0x5
 	.byte	0x3
 	.4byte	sDrawGenderIconFuncs
 	.byte	0x17
-	.4byte	0xf573
+	.4byte	0xf551
 	.byte	0x15
-	.4byte	0xf5b5
-	.4byte	0x2642
+	.4byte	0xf593
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0x1
 	.byte	0x16
@@ -39167,33 +39259,33 @@ sSpritePalettes:
 	.ascii	"sGenderColors\000"
 
 	.byte	0x1
-	.2byte	0x721
-	.4byte	0xf5d1
+	.2byte	0x72f
+	.4byte	0xf5af
 	.byte	0x5
 	.byte	0x3
 	.4byte	sGenderColors
 	.byte	0x17
-	.4byte	0xf5a7
+	.4byte	0xf585
 	.byte	0x20
-	.4byte	0xf5fc
+	.4byte	0xf5da
 	.ascii	"TextColor\000"
 
 	.byte	0xc
 	.byte	0x1
-	.2byte	0x7c9
+	.2byte	0x7d7
 	.byte	0x1e
 	.ascii	"colors\000"
 
 	.byte	0x1
-	.2byte	0x7ca
-	.4byte	0xf5fc
+	.2byte	0x7d8
+	.4byte	0xf5da
 	.byte	0x2
 	.byte	0x23
 	.byte	0x0
 	.byte	0x0
 	.byte	0x15
-	.4byte	0xf60a
-	.4byte	0x2ac4
+	.4byte	0xf5e8
+	.4byte	0x2aa2
 	.byte	0x16
 	.byte	0x2
 	.byte	0x16
@@ -39203,25 +39295,25 @@ sSpritePalettes:
 	.ascii	"sTextColorStruct\000"
 
 	.byte	0x1
-	.2byte	0x7cd
-	.4byte	0xf629
+	.2byte	0x7db
+	.4byte	0xf607
 	.byte	0x5
 	.byte	0x3
 	.4byte	sTextColorStruct
 	.byte	0x17
-	.4byte	0xf5d6
+	.4byte	0xf5b4
 	.byte	0x9
 	.ascii	"sFillValues\000"
 
 	.byte	0x1
-	.2byte	0x7d6
-	.4byte	0x2647
+	.2byte	0x7e4
+	.4byte	0x2625
 	.byte	0x5
 	.byte	0x3
 	.4byte	sFillValues
 	.byte	0x15
-	.4byte	0xf654
-	.4byte	0xee0b
+	.4byte	0xf632
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
@@ -39229,16 +39321,16 @@ sSpritePalettes:
 	.ascii	"sKeyboardTextColors\000"
 
 	.byte	0x1
-	.2byte	0x7dd
-	.4byte	0xf676
+	.2byte	0x7eb
+	.4byte	0xf654
 	.byte	0x5
 	.byte	0x3
 	.4byte	sKeyboardTextColors
 	.byte	0x17
-	.4byte	0xf648
+	.4byte	0xf626
 	.byte	0x15
-	.4byte	0xf687
-	.4byte	0xee0b
+	.4byte	0xf665
+	.4byte	0xede9
 	.byte	0x16
 	.byte	0x2
 	.byte	0x0
@@ -39246,19 +39338,19 @@ sSpritePalettes:
 	.ascii	"sNextKeyboardPageTilemaps\000"
 
 	.byte	0x1
-	.2byte	0x7f0
-	.4byte	0xf6af
+	.2byte	0x7fe
+	.4byte	0xf68d
 	.byte	0x5
 	.byte	0x3
 	.4byte	sNextKeyboardPageTilemaps
 	.byte	0x17
-	.4byte	0xf67b
+	.4byte	0xf659
 	.byte	0x9
 	.ascii	"sPlayerNamingScreenTemplate\000"
 
 	.byte	0x1
-	.2byte	0x877
-	.4byte	0xec50
+	.2byte	0x885
+	.4byte	0xec2e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPlayerNamingScreenTemplate
@@ -39266,8 +39358,8 @@ sSpritePalettes:
 	.ascii	"sPCBoxNamingTemplate\000"
 
 	.byte	0x1
-	.2byte	0x882
-	.4byte	0xec50
+	.2byte	0x890
+	.4byte	0xec2e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPCBoxNamingTemplate
@@ -39275,8 +39367,8 @@ sSpritePalettes:
 	.ascii	"sMonNamingScreenTemplate\000"
 
 	.byte	0x1
-	.2byte	0x88d
-	.4byte	0xec50
+	.2byte	0x89b
+	.4byte	0xec2e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sMonNamingScreenTemplate
@@ -39284,14 +39376,14 @@ sSpritePalettes:
 	.ascii	"sWaldaWordsScreenTemplate\000"
 
 	.byte	0x1
-	.2byte	0x898
-	.4byte	0xec50
+	.2byte	0x8a6
+	.4byte	0xec2e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sWaldaWordsScreenTemplate
 	.byte	0x15
-	.4byte	0xf75c
-	.4byte	0x2642
+	.4byte	0xf73a
+	.4byte	0x2620
 	.byte	0x16
 	.byte	0xd
 	.byte	0x0
@@ -39299,19 +39391,19 @@ sSpritePalettes:
 	.ascii	"sText_RivalsName\000"
 
 	.byte	0x1
-	.2byte	0x8a3
-	.4byte	0xf77b
+	.2byte	0x8b1
+	.4byte	0xf759
 	.byte	0x5
 	.byte	0x3
 	.4byte	sText_RivalsName
 	.byte	0x17
-	.4byte	0xf750
+	.4byte	0xf72e
 	.byte	0x9
 	.ascii	"sRivalNamingScreenTemplate\000"
 
 	.byte	0x1
-	.2byte	0x8a4
-	.4byte	0xec50
+	.2byte	0x8b2
+	.4byte	0xec2e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sRivalNamingScreenTemplate
@@ -39319,7 +39411,7 @@ sSpritePalettes:
 	.ascii	"sOam_8x8\000"
 
 	.byte	0x1
-	.2byte	0x8ba
+	.2byte	0x8c8
 	.4byte	0x1334
 	.byte	0x5
 	.byte	0x3
@@ -39328,7 +39420,7 @@ sSpritePalettes:
 	.ascii	"sOam_16x16\000"
 
 	.byte	0x1
-	.2byte	0x8c8
+	.2byte	0x8d6
 	.4byte	0x1334
 	.byte	0x5
 	.byte	0x3
@@ -39337,13 +39429,13 @@ sSpritePalettes:
 	.ascii	"sOam_32x16\000"
 
 	.byte	0x1
-	.2byte	0x8d6
+	.2byte	0x8e4
 	.4byte	0x1334
 	.byte	0x5
 	.byte	0x3
 	.4byte	sOam_32x16
 	.byte	0x15
-	.4byte	0xf7fe
+	.4byte	0xf7dc
 	.4byte	0x1329
 	.byte	0x16
 	.byte	0x7
@@ -39352,15 +39444,15 @@ sSpritePalettes:
 	.ascii	"sSubsprites_PageSwapFrame\000"
 
 	.byte	0x1
-	.2byte	0x8e4
-	.4byte	0xf826
+	.2byte	0x8f2
+	.4byte	0xf804
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubsprites_PageSwapFrame
 	.byte	0x17
-	.4byte	0xf7f2
+	.4byte	0xf7d0
 	.byte	0x15
-	.4byte	0xf837
+	.4byte	0xf815
 	.4byte	0x1329
 	.byte	0x16
 	.byte	0x1
@@ -39369,15 +39461,15 @@ sSpritePalettes:
 	.ascii	"sSubsprites_PageSwapText\000"
 
 	.byte	0x1
-	.2byte	0x928
-	.4byte	0xf85e
+	.2byte	0x936
+	.4byte	0xf83c
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubsprites_PageSwapText
 	.byte	0x17
-	.4byte	0xf82b
+	.4byte	0xf809
 	.byte	0x15
-	.4byte	0xf86f
+	.4byte	0xf84d
 	.4byte	0x1329
 	.byte	0x16
 	.byte	0x5
@@ -39386,15 +39478,15 @@ sSpritePalettes:
 	.ascii	"sSubsprites_Button\000"
 
 	.byte	0x1
-	.2byte	0x93c
-	.4byte	0xf890
+	.2byte	0x94a
+	.4byte	0xf86e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubsprites_Button
 	.byte	0x17
-	.4byte	0xf863
+	.4byte	0xf841
 	.byte	0x15
-	.4byte	0xf8a1
+	.4byte	0xf87f
 	.4byte	0x1329
 	.byte	0x16
 	.byte	0x2
@@ -39403,15 +39495,15 @@ sSpritePalettes:
 	.ascii	"sSubsprites_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0x970
-	.4byte	0xf8c2
+	.2byte	0x97e
+	.4byte	0xf8a0
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSubsprites_PCIcon
 	.byte	0x17
-	.4byte	0xf895
+	.4byte	0xf873
 	.byte	0x15
-	.4byte	0xf8d3
+	.4byte	0xf8b1
 	.4byte	0x10f2
 	.byte	0x16
 	.byte	0x1
@@ -39420,15 +39512,15 @@ sSpritePalettes:
 	.ascii	"sImageTable_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0x9a2
-	.4byte	0xf8f4
+	.2byte	0x9b0
+	.4byte	0xf8d2
 	.byte	0x5
 	.byte	0x3
 	.4byte	sImageTable_PCIcon
 	.byte	0x17
-	.4byte	0xf8c7
+	.4byte	0xf8a5
 	.byte	0x15
-	.4byte	0xf905
+	.4byte	0xf8e3
 	.4byte	0x10af
 	.byte	0x16
 	.byte	0x1
@@ -39437,15 +39529,15 @@ sSpritePalettes:
 	.ascii	"sAnim_Loop\000"
 
 	.byte	0x1
-	.2byte	0x9a8
-	.4byte	0xf91e
+	.2byte	0x9b6
+	.4byte	0xf8fc
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnim_Loop
 	.byte	0x17
-	.4byte	0xf8f9
+	.4byte	0xf8d7
 	.byte	0x15
-	.4byte	0xf92f
+	.4byte	0xf90d
 	.4byte	0x10af
 	.byte	0x16
 	.byte	0x2
@@ -39454,15 +39546,15 @@ sSpritePalettes:
 	.ascii	"sAnim_CursorSquish\000"
 
 	.byte	0x1
-	.2byte	0x9ae
-	.4byte	0xf950
+	.2byte	0x9bc
+	.4byte	0xf92e
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnim_CursorSquish
 	.byte	0x17
-	.4byte	0xf923
+	.4byte	0xf901
 	.byte	0x15
-	.4byte	0xf961
+	.4byte	0xf93f
 	.4byte	0x10af
 	.byte	0x16
 	.byte	0x2
@@ -39471,15 +39563,15 @@ sSpritePalettes:
 	.ascii	"sAnim_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0x9b5
-	.4byte	0xf97c
+	.2byte	0x9c3
+	.4byte	0xf95a
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnim_PCIcon
 	.byte	0x17
-	.4byte	0xf955
+	.4byte	0xf933
 	.byte	0x15
-	.4byte	0xf98d
+	.4byte	0xf96b
 	.4byte	0x10a4
 	.byte	0x16
 	.byte	0x0
@@ -39488,15 +39580,15 @@ sSpritePalettes:
 	.ascii	"sAnims_Loop\000"
 
 	.byte	0x1
-	.2byte	0x9bc
-	.4byte	0xf9a7
+	.2byte	0x9ca
+	.4byte	0xf985
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnims_Loop
 	.byte	0x17
-	.4byte	0xf981
+	.4byte	0xf95f
 	.byte	0x15
-	.4byte	0xf9b8
+	.4byte	0xf996
 	.4byte	0x10a4
 	.byte	0x16
 	.byte	0x1
@@ -39505,15 +39597,15 @@ sSpritePalettes:
 	.ascii	"sAnims_Cursor\000"
 
 	.byte	0x1
-	.2byte	0x9c1
-	.4byte	0xf9d4
+	.2byte	0x9cf
+	.4byte	0xf9b2
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnims_Cursor
 	.byte	0x17
-	.4byte	0xf9ac
+	.4byte	0xf98a
 	.byte	0x15
-	.4byte	0xf9e5
+	.4byte	0xf9c3
 	.4byte	0x10a4
 	.byte	0x16
 	.byte	0x0
@@ -39522,24 +39614,24 @@ sSpritePalettes:
 	.ascii	"sAnims_PCIcon\000"
 
 	.byte	0x1
-	.2byte	0x9c7
-	.4byte	0xfa01
+	.2byte	0x9d5
+	.4byte	0xf9df
 	.byte	0x5
 	.byte	0x3
 	.4byte	sAnims_PCIcon
 	.byte	0x17
-	.4byte	0xf9d9
+	.4byte	0xf9b7
 	.byte	0x0
 
 	.section	.debug_pubnames
 	.4byte	0x2f
 	.2byte	0x2
 	.4byte	.debug_info
-	.4byte	0xfa07
+	.4byte	0xf9e5
 	.4byte	0x5c
 	.ascii	"DoNamingScreen\000"
 
-	.4byte	0x27d1
+	.4byte	0x27af
 	.ascii	"NameRival\000"
 
 	.4byte	0x0

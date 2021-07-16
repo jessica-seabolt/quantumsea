@@ -4,7 +4,7 @@
   "layout": "LAYOUT_MT_PYRE_4F",
   "music": "MUS_SEALED_CHAMBER",
   "region_map_section": "MAPSEC_MT_PYRE",
-  "requires_flash": true,
+  "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
@@ -19,17 +19,93 @@
   "warp_events": [
     {
       "x": 7,
-      "y": 7,
+      "y": 12,
       "elevation": 3,
-      "dest_map": "MAP_MT_PYRE_3F",
+      "dest_map": "MAP_MT_PYRE_2F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 13,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_RUSTBORO_CITY",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 14,
+      "y": 12,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_2F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 0,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_2F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_2F",
       "dest_warp_id": 1
     }
   ],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 7,
-      "y": 6,
+      "x": 13,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_MT_PYRE_STATE",
+      "var_value": "0",
+      "script": "StartBattleSpiritomb"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_MT_PYRE_STATE",
+      "var_value": "0",
+      "script": "StartBattleSpiritomb"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_MT_PYRE_STATE",
+      "var_value": "0",
+      "script": "StartBattleSpiritomb"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 2,
       "elevation": 0,
       "var": "VAR_MT_PYRE_STATE",
       "var_value": "0",

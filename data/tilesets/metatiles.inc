@@ -621,3 +621,31 @@ gMetatiles_PokeCenterNew::
 	.align 1
 gMetatileAttributes_PokeCenterNew::
 	.incbin "data/tilesets/secondary/pokecenternew/metatile_attributes.bin"
+	.align 1
+gMetatiles_Forest::
+	.incbin "data/tilesets/secondary/forest/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Forest::
+	.incbin "data/tilesets/secondary/forest/metatile_attributes.bin"
+	.align 1
+gMetatiles_Main2::
+	.incbin "data/tilesets/primary/main2/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Main2::
+	.incbin "data/tilesets/primary/main2/metatile_attributes.bin"
+	.align 1
+gMetatiles_MetalMeadows::
+	.incbin "data/tilesets/secondary/metalmeadows/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_MetalMeadows::
+	.incbin "data/tilesets/secondary/metalmeadows/metatile_attributes.bin"
+	.align 1
+gMetatiles_Gym2::
+	.incbin "data/tilesets/secondary/gym2/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Gym2::
+	.incbin "data/tilesets/secondary/gym2/metatile_attributes.bin"

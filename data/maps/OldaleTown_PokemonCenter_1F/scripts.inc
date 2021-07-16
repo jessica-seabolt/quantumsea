@@ -40,13 +40,13 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable:: @ 81FC04F
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC: @ 81FC059
-	.string "Nurse Joy works day and night to make sure\n"
-	.string "our Pokémon are healthy.\p"
+	.string "Nurse Joy works day and night to make\n"
+	.string "sure our Pokémon are healthy.\p"
 	.string "When does that young lady ever sleep?$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat: @ 81FC0CD
 	.string "I love the Pokémon Center! It's a great\n"
-	.string "hub for Trainers like me to relax."
+	.string "hub for Trainers like me to relax.\p"
 	.string "Plus, I see all sorts of cool people!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable: @ 81FC148

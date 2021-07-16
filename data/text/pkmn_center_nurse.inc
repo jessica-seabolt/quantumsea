@@ -6,7 +6,7 @@ gText_WouldYouLikeToRestYourPkmn:: @ 82726EB
     .string "Would you like to rest your POKéMON?$"
 
 gText_IllTakeYourPkmn:: @ 8272768
-    .string "Okay, I'll take your POKéMON\n"
+    .string "Okay, I'll take your Pokémon\n"
     .string "for a few seconds.$"
 
 gText_RestoredPkmnToFullHealth:: @ 8272798
@@ -41,7 +41,7 @@ gText_YouWantTheUsual:: @ 8272982
     .string "You want the usual, am I right?$"
 
 gText_IllTakeYourPkmn2:: @ 82729C0
-    .string "Okay, I'll take your POKéMON\n"
+    .string "Okay, I'll take your Pokémon\n"
     .string "for a few seconds.$"
 
 gText_ThankYouForWaiting:: @ 82729F0

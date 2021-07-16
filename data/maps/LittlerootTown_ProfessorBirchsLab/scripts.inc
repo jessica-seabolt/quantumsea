@@ -138,12 +138,14 @@ GiveYouAPokemon:
 	.string "Sakura: Let me get this straight.\p"
 	.string "You two recklessly entered an area with\n"
 	.string "wild Pokémon... to ask me for a Pokémon?\p"
-	.string "And then you still expect me to just\n"
-	.string "hand {PLAYER} a Pokémon of their own?\p"
-	.string "{PLAYER}, your mother told me not to\n"
-	.string "give you one yet. I'm supposed to be in\l"
-	.string "charge of you... I really ought to tell\l"
-	.string "your mom about this incident.$"
+	.string "I hope you've learned a valuable lesson.\n"
+	.string "Pulling a stunt like that is a perfect\l"
+	.string "way to be admitted into a hospital.\p"
+	.string "And {PLAYER}, your mother told me not to\n"
+	.string "give you your own Pokémon yet. I'm in\l"
+	.string "charge of you while she's gone...\p"
+	.string "Honestly, I ought to just tell your Mom\n"
+	.string "about this incident.$"
 
 ThinkAboutPokemon:
 	jump_in_place_down
@@ -151,20 +153,20 @@ ThinkAboutPokemon:
 	step_end
 
 OfCourse:
-	.string "Sakura: I like you, {RIVAL}! You're funny!\p"
+	.string "Sakura: I like you, {RIVAL}! You're fun!\p"
 	.string "Sakura: {PLAYER}, I was just teasing you.\n"
 	.string "Of course I'll give you a Pokémon!\p"
-	.string "Just don't tell your mom on me, either!\n"
+	.string "Just don't tell your Mom on me, either!\n"
 	.string "Deal?\p"
-	.string "Well? Come on then, you two! Let's see\n"
-	.string "what Pokémon {PLAYER} wants to pick!$"
+	.string "Well? Come on then, you two! Let me\n"
+	.string "show you what your options are!$"
 
 PleaseGiveUsAPokemon:
-	.string "{RIVAL}: I'm sorry Prof. Sakura, it was\n"
-	.string "me who convinced {PLAYER} to go in there.\p"
-	.string "I understand if you don't want to give\n"
-	.string "{PLAYER} a Pokémon, but don't tell their\l"
-	.string "mom about something I made them do!$"
+	.string "{RIVAL}: Prof. Sakura, perhaps you ought\n"
+	.string "to wonder what might happen to you if\l"
+	.string "their Mum found out about all of this.\p"
+	.string "After all, this whole incident happened\n"
+	.string "while {PLAYER} was under your watch.$"
 
 
 @ The starter is technically given prior to this on Route 101 by special ChooseStarter
@@ -178,8 +180,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent:: @ 81F9DDB
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon, MSGBOX_DEFAULT
-	closemessage
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_NicknameJohtoStarter, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter
@@ -857,8 +857,8 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork: @ 81FA641
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo: @ 81FA6CE
 	.string "Prof. Sakura and I wish you the best of\n"
-	.string "luck, {PLAYER}! I hear that {RIVAL} is\l"
-	.string "already catching a lot of Pokémon!$"
+	.string "luck, {PLAYER}! I hope you catch a lot\l"
+	.string "of rare Pokémon!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon: @ 81FA74D
 	.string "Sakura: {PLAYER}, I have no doubt in my\n"
@@ -908,7 +908,7 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
 	.string "In other words... I want you to catch\n"
 	.string "every Pokémon and record their data!\p"
 	.string "And {PLAYER}, don't think about saying\n"
-	.string "no to me- I'll tell your mom about what\l"
+	.string "no to me- I'll tell your Mom about what\l"
 	.string "you did today!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex: @ 81FAC32

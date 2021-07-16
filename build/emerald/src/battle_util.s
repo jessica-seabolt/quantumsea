@@ -3759,7 +3759,7 @@ sTypeEffectivenessTable:
 	.short	0x2000
 	.short	0x800
 	.short	0x1000
-	.short	0x1000
+	.short	0x800
 	.short	0x1000
 	.short	0x1000
 	.short	0x1000
@@ -3826,7 +3826,7 @@ sTypeEffectivenessTable:
 	.short	0x800
 	.short	0x1000
 	.short	0x1000
-	.short	0x1000
+	.short	0x800
 	.short	0x800
 	.short	0x800
 	.short	0x1000
@@ -3930,7 +3930,7 @@ sTypeEffectivenessTable:
 	.short	0x800
 	.short	0x1000
 	.short	0x1000
-	.short	0x1000
+	.short	0x800
 	.short	0x800
 	.short	0x1000
 	.short	0x1000
@@ -3997,12 +3997,12 @@ sTypeEffectivenessTable:
 	.short	0x1000
 	.short	0x2000
 	.short	0x1000
-	.short	0x1000
-	.short	0x1000
-	.short	0x800
+	.short	0x2000
 	.short	0x1000
 	.short	0x800
+	.short	0x1000
 	.short	0x800
+	.short	0x2000
 	.short	0x2000
 	.short	0x1000
 	.short	0x1000

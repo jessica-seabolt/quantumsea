@@ -4,7 +4,7 @@
   "layout": "LAYOUT_MT_PYRE_1F",
   "music": "MUS_SEALED_CHAMBER",
   "region_map_section": "MAPSEC_MT_PYRE",
-  "requires_flash": true,
+  "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
@@ -32,10 +32,24 @@
       "dest_warp_id": 3
     },
     {
-      "x": 12,
+      "x": 4,
       "y": 1,
       "elevation": 3,
       "dest_map": "MAP_MT_PYRE_2F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MT_PYRE_1F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MT_PYRE_1F",
       "dest_warp_id": 0
     }
   ],

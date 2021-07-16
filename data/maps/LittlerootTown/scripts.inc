@@ -65,6 +65,7 @@ LittlerootTown_EventScript_GetStarter::
 	lockall
 	msgbox ChooseAStarter, MSGBOX_DEFAULT
 	closemessage
+	clearflag FLAG_HIDE_SPRINGROCK_NURSE
 	applymovement LOCALID_RIVAL2, RivalExcitedForPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
@@ -78,8 +79,8 @@ LittlerootTown_EventScript_GetStarter::
 ChooseAStarter:
 	.string "Sakura: Alright, {PLAYER}! This bag has\n"
 	.string "three Pokémon inside.\p"
-	.string "They aren't your traditional choices for\n"
-	.string "a starter, but I promise they're great!\p"
+	.string "They come from three different regions.\n"
+	.string "I promise they're great!\p"
 	.string "Go ahead, take your pick! Just make sure\n"
 	.string "it's a good one!$"
 

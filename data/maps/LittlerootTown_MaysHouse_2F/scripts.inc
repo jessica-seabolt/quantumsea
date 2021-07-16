@@ -8,11 +8,12 @@ LittlerootTown_MaysHouse_2F_MapScripts:: @ 81F9296
 LittlerootTown_MaysHouse_2F_OnTransition: @ 81F92A1
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
-	goto_if_set FLAG_SET_WALL_CLOCK, LittlerootTown_MaysHouse_2F_EventScript_Ending
 	setvar VAR_LITTLEROOT_INTRO_STATE, 0
+	goto_if_unset FLAG_SET_WALL_CLOCK, LittlerootTown_MaysHouse_2F_EventScript_Ending
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_Ending::
+	setflag FLAG_HIDE_SPRINGROCK_NURSE
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos:: @ 81F92CD

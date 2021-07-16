@@ -17,10 +17,11 @@ RustboroCity_OnTransition: @ 81E06C8
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	call Common_EventScript_SetupRivalGfxId
 	call_if_set FLAG_BADGE01_GET, MoveDevonGuySpectre
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
 	end
 
 MoveDevonGuySpectre::
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 24, 12
+	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 33, 44
 	return
 
 RustboroCity_EventScript_PositionScientistForExit:: @ 81E06EC
@@ -196,6 +197,10 @@ RustboroCity_EventScript_Man1HaveBadge:: @ 81E08A8
 	msgbox Text_ReceivedZorua, MSGBOX_DEFAULT
 	waitfanfare
 	setflag FLAG_OBTAINED_ZORUA
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq Common_EventScript_GetGiftMonPartySlot
+	call_if_eq Common_EventScript_NameReceivedPartyMon
 	release
 	end
 
@@ -305,7 +310,7 @@ CatchAMimikyuQuestText1::
 	.string "Hey, can I ask you something?\p"
 	.string "Have you ever heard of a Mimikyu? It's a\n"
 	.string "super rare Ghost Pokémon, and I really\l"
-	.string "want to see one."
+	.string "want to see one.$"
 
 CatchAMimikyuQuestText2::
 	.string "If you can show me a Mimikyu, I can give\n"
@@ -405,6 +410,8 @@ RivalSpectreCityTrigger0::
 	playbgm MUS_ENCOUNTER_BRENDAN, 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox RivalSpectreCityBattle, MSGBOX_DEFAULT
@@ -437,6 +444,41 @@ RivalSpectreCityTrigger1::
 	playse SE_PIN
 	playbgm MUS_ENCOUNTER_BRENDAN, 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox RivalSpectreCityBattle, MSGBOX_DEFAULT
+	closemessage
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq RivalBattleSpectreCityMale
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq RivalBattleSpectreCityFemale
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	msgbox RivalSpectreCityDefeated, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL, RivalSpectreCityLeaves1
+	waitmovement 0
+	removeobject LOCALID_RIVAL
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	setvar VAR_RUSTBORO_CITY_STATE, 1
+	fadedefaultbgm
+	releaseall
+	end
+
+RivalSpectreCityTrigger2::
+	lockall
+	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+	addobject LOCALID_RIVAL
+	playse SE_EXIT
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	playse SE_PIN
+	playbgm MUS_ENCOUNTER_BRENDAN, 0
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
@@ -878,9 +920,6 @@ RustboroCity_EventScript_ReturnGoodsTrigger3:: @ 81E0C4F
 
 RustboroCity_EventScript_ReturnGoods:: @ 81E0C5B
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
-	compare VAR_RESULT, FALSE
-	call_if_eq RustboroCity_EventScript_BagFull
 	releaseall
 	end
 
@@ -1301,36 +1340,41 @@ RustboroCity_Movement_RivalApproachPlayer7: @ 81E1230
 QuantumQuest4Script::
 	lockall
 	faceplayer
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_4
+	compare VAR_RESULT, FALSE
+	goto_if_eq Quest4NotUnlocked
 	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
 	compare VAR_RESULT, SIDE_QUEST_4
 	goto_if_eq QuantumBattleForQuest4
-	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_4
-	compare VAR_RESULT, TRUE
-	goto_if_eq ActivateQuest4Script
+	goto ActivateQuest4Script
+	end
+
+Quest4NotUnlocked::
+	msgbox SpectreCityQuantumWhat, MSGBOX_DEFAULT
+	closemessage
 	releaseall
 	end
 
 QuantumBattleForQuest4::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_1, SpectreCity_Text_QuantumIntro, SpectreCity_Text_QuantumDefeat
-	setflag FLAG_QUEST_4_QUANTUM_DEFEATED
+	closemessage
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_1, SpectreCity_Text_QuantumIntro, SpectreCity_Text_QuantumDefeat, QuantumDefeatedQuest4
+	end
+
+QuantumDefeatedQuest4::
 	msgbox SpectreCity_Text_QuantumPostBattle, MSGBOX_DEFAULT
 	closemessage
+	setflag FLAG_QUEST_4_QUANTUM_DEFEATED
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_QUANTUM
 	playse SE_EXIT
 	setflag FLAG_HIDE_QUANTUM_QUEST_4
 	fadescreen FADE_FROM_BLACK
-	release
-	end
-
-ActivateQuest4Script::
-	goto_if_set FLAG_QUEST_4_QUANTUM_DEFEATED, QuantumDefeatedQuest4
-	msgbox ActivateQuest4, MSGBOX_NPC
 	releaseall
 	end
 
-QuantumDefeatedQuest4::
-	msgbox SpectreCity_Text_QuantumPostBattle, MSGBOX_NPC
+ActivateQuest4Script::
+	msgbox ActivateQuest4, MSGBOX_NPC
+	releaseall
 	end
 
 ActivateQuest4:
@@ -1466,12 +1510,25 @@ ForestSign2::
 	msgbox SpectreWoodsSign, MSGBOX_SIGN
 	end
 
+RustboroCity_EventScript_BugCatcher::
+	lock
+	faceplayer
+	msgbox CantGoInSpectreForest, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+CantGoInSpectreForest:
+	.string "Sorry, you can't go in here.\p"
+	.string "There's rumors that a Pokémon Thief is\n"
+	.string "nearby. It's too dangerous.$"
+
 SpectreForestSign:
 	.string "Spectre Forest\p"
 	.string "Route 4 {UP_ARROW}$"
 
 SpectreWoodsSign:
-	.string "Spectre Woods\p"
+	.string "Spectre Forest\p"
 	.string "Route 9 {UP_ARROW}$"
 
 Quest5IsntStartedText:
@@ -1494,11 +1551,10 @@ SideQuest5Inactive:
 Quest4StartDialogue:
 	.string "Hi, um... can you help me?\p"
 	.string "This mean scary woman came and took my\n"
-	.string "Escape Rope. I think she was with that\n"
+	.string "Escape Rope. I think she was with that\l"
 	.string "awful Team Quantum gang.\p"
-	.string "I don't really use it, but it was a\n"
-	.string "gift from my father. It means a lot to\l"
-	.string "me... I would hate to lose it.\p"
+	.string "I don't really use it, but I was going\n"
+	.string "to give it to my friend as a gift...\p"
 	.string "Please, can you help me get it back?$"
 
 Quest4AlreadyStartedDialogue:
@@ -1516,9 +1572,10 @@ Quest4ObjectiveCompleteDialogue:
 	.string "Oh, how can I ever repay you? I haven't\n"
 	.string "got much money...\p"
 	.string "I know! You can keep that Escape Rope\n"
-	.string "you got back for me. I'll be happy\l"
-	.string "knowing someone as kind as you is\l"
-	.string "getting good use out of it.\p"
+	.string "you got back for me.\p"
+	.string "I know I was going to give it to my\n"
+	.string "friend, but I think you could get more\l"
+	.string "use out of it.$"
 	.string "Please, I insist!$"
 
 Quest5ObjectiveCompleteDialogue:
@@ -1646,8 +1703,7 @@ RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel: @ 81E1904
 
 RustboroCity_Text_YouGotItThankYou: @ 81E194D
 	.string "Oh, the investigation? It's all over.\n"
-	.string "Here, you can have this for being so\l"
-	.string "patient for us.$"
+	.string "Thanks for being so patient for us!$"
 
 RustboroCity_Text_YoureLoadedWithItems: @ 81E19E5
 	.string "You're loaded with items.\n"
@@ -1815,3 +1871,6 @@ RustboroCity_Text_YouCanHave2On2Battle: @ 81E249D
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"
+
+SpectreCityQuantumWhat:
+	.string "Huh? What are you lookin' at, kid?$"

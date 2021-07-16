@@ -10271,7 +10271,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -10365,7 +10365,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -18639,13 +18639,20 @@ static void NamingScreen_NoIcon(void)
 
 static void NamingScreen_CreatePlayerIcon(void)
 {
-    u8 rivalGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies);
-    spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
+    if (gSaveBlock2Ptr->playerGender != 0)
+    {
+    spriteId = AddPseudoObjectEvent(89, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);
+    }
+    else
+    {
+    spriteId = AddPseudoObjectEvent(0, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], 4);
+    }
 }
 
 static void NamingScreen_CreatePCIcon(void)
@@ -18677,13 +18684,20 @@ static void NamingScreen_CreateWaldaDadIcon(void)
 
 static void NamingScreen_CreateRivalIcon(void)
 {
-    u8 rivalGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender ^ 1);
-    spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
+    if (gSaveBlock2Ptr->playerGender != 0)
+    {
+    spriteId = AddPseudoObjectEvent(0, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);
+    }
+    else
+    {
+    spriteId = AddPseudoObjectEvent(89, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], 4);
+    }
 }
 
 
@@ -18784,7 +18798,7 @@ static bool8 SwapKeyboardPage(void)
     sNamingScreen->state = STATE_START_PAGE_SWAP;
     return 1;
 }
-# 1607 "src/naming_screen.c"
+# 1621 "src/naming_screen.c"
 static void Input_Disabled(struct Task *);
 static void Input_Enabled(struct Task *);
 static void Input_Override(struct Task *);

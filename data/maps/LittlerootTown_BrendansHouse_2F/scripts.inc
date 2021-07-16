@@ -325,8 +325,9 @@ PlayersHouse_2F_Text_IKnowYouWantAPokemon:
 	.string "Well, we can talk about it when I'm\n"
 	.string "back from Sinnoh, okay? Prof. Rowan will\l"
 	.string "get annoyed if I don't make it on time.\p"
-	.string "Mom: Be good, ok? Don't burn down the\n"
-	.string "house while I'm gone!$"
+	.string "Mom: Be good, ok? I'm going to go grab\n"
+	.string "my bags and head out!\p"
+	.string "Have fun!$"
 
 PlayersHouse_2F_Text_Notebook: @ 81F877F
 	.string "{PLAYER} flipped open the notebook.\p"

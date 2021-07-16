@@ -17140,7 +17140,7 @@ Snow_InitVars:
 
 	ldr	r0, .L249+0x10
 	add	r2, r1, r0
-	mov	r0, #0x10
+	mov	r0, #0x20
 	strb	r0, [r2]
 .LM310:
 

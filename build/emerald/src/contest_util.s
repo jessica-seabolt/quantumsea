@@ -10683,7 +10683,7 @@ LoadLinkContestPlayerPalettes:
 .L988:
 	.align	2, 0
 .L987:
-	.word	gObjectEventPalette8
+	.word	gObjectEventPaletteQuinn
 .L979:
 .LM1351:
 
@@ -20042,7 +20042,7 @@ IsWirelessContest:
 	.byte	0,0
 
 	.section	.debug_info
-	.4byte	0x16a8c
+	.4byte	0x16a90
 	.2byte	0x2
 	.4byte	.debug_abbrev
 	.byte	0x4
@@ -56404,17 +56404,17 @@ IsWirelessContest:
 	.byte	0x0
 	.byte	0x0
 	.byte	0x2d
-	.ascii	"gObjectEventPalette8\000"
+	.ascii	"gObjectEventPaletteQuinn\000"
 
 	.byte	0x1
 	.byte	0xa9
-	.4byte	0x16752
+	.4byte	0x16756
 	.byte	0x1
 	.byte	0x1
 	.byte	0x10
 	.4byte	0x16728
 	.byte	0xa
-	.4byte	0x16763
+	.4byte	0x16767
 	.4byte	0x9a2e
 	.byte	0xb
 	.byte	0x0
@@ -56424,13 +56424,13 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xaa
-	.4byte	0x16782
+	.4byte	0x16786
 	.byte	0x1
 	.byte	0x1
 	.byte	0x10
-	.4byte	0x16757
+	.4byte	0x1675b
 	.byte	0xa
-	.4byte	0x16793
+	.4byte	0x16797
 	.4byte	0x9a2e
 	.byte	0xb
 	.byte	0x0
@@ -56440,13 +56440,13 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xab
-	.4byte	0x167b2
+	.4byte	0x167b6
 	.byte	0x1
 	.byte	0x1
 	.byte	0x10
-	.4byte	0x16787
+	.4byte	0x1678b
 	.byte	0xa
-	.4byte	0x167c3
+	.4byte	0x167c7
 	.4byte	0x9a2e
 	.byte	0xb
 	.byte	0x0
@@ -56456,13 +56456,13 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xac
-	.4byte	0x167e2
+	.4byte	0x167e6
 	.byte	0x1
 	.byte	0x1
 	.byte	0x10
-	.4byte	0x167b7
+	.4byte	0x167bb
 	.byte	0xa
-	.4byte	0x167f3
+	.4byte	0x167f7
 	.4byte	0x9a2e
 	.byte	0xb
 	.byte	0xf
@@ -56472,14 +56472,14 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xae
-	.4byte	0x16812
+	.4byte	0x16816
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnknown_0858D6B0
 	.byte	0x10
-	.4byte	0x167e7
+	.4byte	0x167eb
 	.byte	0xa
-	.4byte	0x16823
+	.4byte	0x16827
 	.4byte	0xb24
 	.byte	0xb
 	.byte	0xff
@@ -56489,14 +56489,14 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xaf
-	.4byte	0x16842
+	.4byte	0x16846
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnknown_0858D6D0
 	.byte	0x10
-	.4byte	0x16817
+	.4byte	0x1681b
 	.byte	0xa
-	.4byte	0x16853
+	.4byte	0x16857
 	.4byte	0x9a2e
 	.byte	0xb
 	.byte	0xf
@@ -56506,12 +56506,12 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xb0
-	.4byte	0x1686f
+	.4byte	0x16873
 	.byte	0x5
 	.byte	0x3
 	.4byte	sMiscBlank_Pal
 	.byte	0x10
-	.4byte	0x16847
+	.4byte	0x1684b
 	.byte	0x39
 	.ascii	"sOamData_858D7F0\000"
 
@@ -56531,8 +56531,8 @@ IsWirelessContest:
 	.byte	0x3
 	.4byte	sSpriteTemplate_858D7F8
 	.byte	0xa
-	.4byte	0x168c3
-	.4byte	0x168c3
+	.4byte	0x168c7
+	.4byte	0x168c7
 	.byte	0xb
 	.byte	0x7
 	.byte	0x0
@@ -56543,18 +56543,18 @@ IsWirelessContest:
 
 	.byte	0x1
 	.byte	0xce
-	.4byte	0x168e7
+	.4byte	0x168eb
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnknown_0858D810
 	.byte	0x10
-	.4byte	0x168b7
+	.4byte	0x168bb
 	.byte	0x39
 	.ascii	"sUnknown_0858D850\000"
 
 	.byte	0x1
 	.byte	0xda
-	.4byte	0x1690b
+	.4byte	0x1690f
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnknown_0858D850
@@ -56597,8 +56597,8 @@ IsWirelessContest:
 	.byte	0x3
 	.4byte	sSpritePalette_Confetti
 	.byte	0xa
-	.4byte	0x169aa
-	.4byte	0x169aa
+	.4byte	0x169ae
+	.4byte	0x169ae
 	.byte	0xb
 	.byte	0x3
 	.byte	0x0
@@ -56609,15 +56609,15 @@ IsWirelessContest:
 
 	.byte	0x1
 	.2byte	0x10a
-	.4byte	0x169ca
+	.4byte	0x169ce
 	.byte	0x5
 	.byte	0x3
 	.4byte	sBgTemplates
 	.byte	0x10
-	.4byte	0x1699e
+	.4byte	0x169a2
 	.byte	0xa
-	.4byte	0x169db
-	.4byte	0x169db
+	.4byte	0x169df
+	.4byte	0x169df
 	.byte	0xb
 	.byte	0x4
 	.byte	0x0
@@ -56628,12 +56628,12 @@ IsWirelessContest:
 
 	.byte	0x1
 	.2byte	0x132
-	.4byte	0x169ff
+	.4byte	0x16a03
 	.byte	0x5
 	.byte	0x3
 	.4byte	sWindowTemplates
 	.byte	0x10
-	.4byte	0x169cf
+	.4byte	0x169d3
 	.byte	0x3
 	.ascii	"sUnknown_0858D8C0\000"
 
@@ -56657,7 +56657,7 @@ IsWirelessContest:
 
 	.byte	0x1
 	.2byte	0x178
-	.4byte	0x168c3
+	.4byte	0x168c7
 	.byte	0x5
 	.byte	0x3
 	.4byte	sUnknown_0858D8E0
@@ -56676,7 +56676,7 @@ IsWirelessContest:
 	.4byte	0x4b2
 	.2byte	0x2
 	.4byte	.debug_info
-	.4byte	0x16a90
+	.4byte	0x16a94
 	.4byte	0x23aa
 	.ascii	"TryEnterContestMon\000"
 

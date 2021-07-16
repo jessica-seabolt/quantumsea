@@ -435,6 +435,11 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_34 0x1123
 #define OBJ_EVENT_PAL_TAG_SAKURA 0x1124
 #define OBJ_EVENT_PAL_TAG_CUBONE 0x1125
+#define OBJ_EVENT_PAL_TAG_LASS 0x1126
+#define OBJ_EVENT_PAL_TAG_YOUNGSTER 0x1127
+#define OBJ_EVENT_PAL_TAG_CYNTHIA 0x1128
+#define OBJ_EVENT_PAL_TAG_WORKER 0x1129
+#define OBJ_EVENT_PAL_TAG_QUINN 0x112A
 #define OBJ_EVENT_PAL_TAG_NONE 0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -483,6 +488,11 @@ const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette34, OBJ_EVENT_PAL_TAG_34},
     {gObjectEventPaletteSakura, OBJ_EVENT_PAL_TAG_SAKURA},
     {gObjectEventPaletteCubone, OBJ_EVENT_PAL_TAG_CUBONE},
+    {gObjectEventPaletteLass, OBJ_EVENT_PAL_TAG_LASS},
+    {gObjectEventPaletteYoungster, OBJ_EVENT_PAL_TAG_YOUNGSTER},
+    {gObjectEventPaletteCynthia, OBJ_EVENT_PAL_TAG_CYNTHIA},
+    {gObjectEventPaletteWorker, OBJ_EVENT_PAL_TAG_WORKER},
+    {gObjectEventPaletteQuinn, OBJ_EVENT_PAL_TAG_QUINN},
     {NULL,                  0x0000},
 };
 

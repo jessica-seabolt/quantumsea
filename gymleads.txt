@@ -108,22 +108,22 @@ Hydeira
 Type = Dragon
 Items: Max Potion, Max Potion, Full Heal, Full Heal
 
-Pokemon: M Ampharos Lv 45 [Mold Breaker] [Ampharosite]
+Pokemon: M Ampharos Lv 47 [Mold Breaker] [Ampharosite]
 						-Dragon Tail
 						-Thunderbolt
 						-Toxic
 						-Flamethrower
-					Turtonator Lv 43 [Shell Armor] [Jaboca Berry]
+					Turtonator Lv 45 [Shell Armor] [Jaboca Berry]
 						-Dragon Tail
 						-Shell Trap
 						-Sunny Day
 						-Rest
-					Drampa Lv 43 [Berserk] [Sticky Barb]
+					Drampa Lv 45 [Berserk] [Sticky Barb]
 						-Dragon Tail
 						-Fly
 						-Sunny Day
 						-Flamethrower
-					Dracozolt Lv 44 [Hustle] [Wide Lens]
+					Dracozolt Lv 46 [Hustle] [Wide Lens]
 						-Dragon Tail
 						-Body Slam
 						-Flamethrower
@@ -133,27 +133,27 @@ Dusty
 Type = Ground
 Items: Full Restore, Full Restore, Full Heal, Full Heal
 
-Pokemon:	M Camerupt Lv 50 [Sheer Force] [Cameruptite]
+Pokemon:	M Camerupt Lv 53 [Sheer Force] [Cameruptite]
 						-Scorching Sands
 						-Fire Blast
 						-Toxic
 						-Flash Cannon
-					Sandaconda Lv 49 [Sand Spit] [Leftovers]
+					Sandaconda Lv 52 [Sand Spit] [Leftovers]
 						-Scorching Sands
 						-Coil
 						-Stealth Rock
 						-Rest
-					Gastrodon Lv 48 [Sand Force] [Soft Sand]
+					Gastrodon Lv 51 [Sand Force] [Soft Sand]
 						-Sandstorm
 						-Scorching Sands
 						-Surf
 						-Earth Power
-					Marowak Lv 48 [Rock Head] [Thick Club]
+					Marowak Lv 51 [Rock Head] [Thick Club]
 						-Scorching Sands
 						-Stealth Rock
 						-Thunder Punch
 						-Double Edge
-					Quagsire Lv 48 [Unaware] [Leftovers]
+					Quagsire Lv 50 [Unaware] [Leftovers]
 						-Scorching Sands
 						-Stone Edge
 						-Aqua Tail
@@ -163,32 +163,32 @@ Hailey
 Type = Ice
 Items: Full Restore, Full Restore, Full Restore, Full Heal
 
-Pokemon:	M Glalie Lv 56 [Refrigerate] [Galite]
+Pokemon:	M Glalie Lv 62 [Refrigerate] [Galite]
 						-Freeze Shock
 						-Earthquake
 						-Rest
 						-Hyper Beam
-					Lapras Lv 54 [Hydration] [Leftovers]
+					Lapras Lv 60 [Hydration] [Leftovers]
 						-Rain Dance
 						-Freeze Shock
 						-Liquidation
 						-Dragon Dance
-					Walrein Lv 54 [Thick Fat] [Leftovers]
+					Walrein Lv 60 [Thick Fat] [Leftovers]
 						-Freeze Shock
 						-Surf
 						-Body Press
 						-Rest
-					Mr. Rime Lv 54 [Ice Body] [Leftovers]
+					Mr. Rime Lv 61 [Ice Body] [Leftovers]
 						-Hail
 						-Block
 						-Perish Song
 						-Freeze Shock
-					Alolan Sandslash Lv 55 [Slush Rush] [Nevermeltice]
+					Alolan Sandslash Lv 60 [Slush Rush] [Nevermeltice]
 						-Freeze Shock
 						-Hail
 						-Poison Jab
 						-Sword Dance
-					Beartic Lv 53 [Slush Rush] [Leftovers]
+					Beartic Lv 59 [Slush Rush] [Leftovers]
 						-Hail
 						-Freeze Shock
 						-Liquidation

@@ -1909,3 +1909,83 @@ gTilesetPalettes_PokeCenterNew::
 	.align 2
 gTilesetTiles_PokeCenterNew::
 	.incbin "data/tilesets/secondary/pokecenternew/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Forest::
+	.incbin "data/tilesets/secondary/forest/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/forest/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Forest::
+	.incbin "data/tilesets/secondary/forest/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Main2::
+	.incbin "data/tilesets/primary/main2/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/main2/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Main2::
+	.incbin "data/tilesets/primary/main2/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_MetalMeadows::
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/metalmeadows/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_MetalMeadows::
+	.incbin "data/tilesets/secondary/metalmeadows/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Gym2::
+	.incbin "data/tilesets/secondary/gym2/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/gym2/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Gym2::
+	.incbin "data/tilesets/secondary/gym2/tiles.4bpp.lz"

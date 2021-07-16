@@ -74,7 +74,9 @@ MauvilleCity_Gym_EventScript_DeactivatePuzzle:: @ 820DEE7
 	end
 
 MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
+	setflag FLAG_DISABLE_BAG
 	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
+	clearflag FLAG_DISABLE_BAG
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	compare VAR_RESULT, TRUE
 	goto_if_eq MauvilleCity_Gym_EventScript_WattsonRematch
@@ -86,28 +88,18 @@ MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
 	end
 
 MauvilleCity_Gym_EventScript_WattsonDefeated:: @ 820DF2B
+	clearflag FLAG_DISABLE_BAG
 	message MauvilleCity_Gym_Text_ReceivedDynamoBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis, MSGBOX_DEFAULT
-	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 3
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_SCOTT
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
-	setflag FLAG_BADGE03_GET
-	addvar VAR_PETALBURG_GYM_STATE, 1
-	compare VAR_PETALBURG_GYM_STATE, 6
-	call_if_eq Common_EventScript_ReadyPetalburgGymForBattle
+	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 3
 	call Common_EventScript_SetGymTrainers
 	special MauvilleGymDeactivatePuzzle
 	special DrawWholeMapView
-	playse SE_UNLOCK
 	call MauvilleCity_Gym_EventScript_GiveShockWave
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox MauvilleCity_Gym_Text_RegisteredWattson, MSGBOX_DEFAULT
-	waitfanfare
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
@@ -115,7 +107,10 @@ MauvilleCity_Gym_EventScript_WattsonDefeated:: @ 820DF2B
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave2:: @ 820DF8D
-	giveitem ITEM_TM34
+	giveitem ITEM_TM52
+	compare VAR_RESULT, FALSE
+	goto_if_eq Common_EventScript_ShowBagIsFull
+	giveitem ITEM_MAWILITE
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
@@ -124,9 +119,12 @@ MauvilleCity_Gym_EventScript_GiveShockWave2:: @ 820DF8D
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave:: @ 820DFB1
-	giveitem ITEM_TM34
+	giveitem ITEM_TM52
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_BagIsFull
+	giveitem ITEM_MAWILITE
+	compare VAR_RESULT, FALSE
+	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM34
 	return
@@ -245,13 +243,13 @@ MauvilleCity_Gym_EventScript_GymGuidePostVictory:: @ 820E141
 
 MauvilleCity_Gym_EventScript_LeftGymStatue:: @ 820E14B
 	lockall
-	goto_if_set FLAG_BADGE03_GET, MauvilleCity_Gym_EventScript_GymStatueCertified
+	goto_if_set FLAG_BADGE02_GET, MauvilleCity_Gym_EventScript_GymStatueCertified
 	goto MauvilleCity_Gym_EventScript_GymStatue
 	end
 
 MauvilleCity_Gym_EventScript_RightGymStatue:: @ 820E15B
 	lockall
-	goto_if_set FLAG_BADGE03_GET, MauvilleCity_Gym_EventScript_GymStatueCertified
+	goto_if_set FLAG_BADGE02_GET, MauvilleCity_Gym_EventScript_GymStatueCertified
 	goto MauvilleCity_Gym_EventScript_GymStatue
 	end
 
@@ -266,136 +264,142 @@ MauvilleCity_Gym_EventScript_GymStatue:: @ 820E175
 	end
 
 MauvilleCity_Gym_Text_GymGuideAdvice: @ 820E17F
-	.string "Hey, how's it going, CHAMPION-\n"
-	.string "bound {PLAYER}?\p"
-	.string "WATTSON, the LEADER of MAUVILLE\n"
-	.string "GYM, uses ELECTRIC-type POKéMON.\p"
-	.string "If you challenge him with WATER-type\n"
-	.string "POKéMON, he'll zap them! Bzzt!\p"
-	.string "And, he's put in switch-controlled\n"
-	.string "doors all over his GYM! Eccentric!\p"
-	.string "Hey, go for it!$"
+	.string "Hey, {PLAYER}! Ready for Smithie's Gym?\p"
+	.string "This one's all about the Steel Type. It\n"
+	.string "can dish out some powerful hits, but the\l"
+	.string "real power of Steel Pokémon comes from\l"
+	.string "their incredible defense!\p"
+	.string "Try taking them down with a powerful\n"
+	.string "Fire or Ground move, yeah? Good luck!$"
 
 MauvilleCity_Gym_Text_GymGuidePostVictory: @ 820E283
-	.string "Whoa, you're electrifying!\n"
-	.string "You've powered the door open!$"
+	.string "Whoa, you did it! On to the next Gym!$"
 
 MauvilleCity_Gym_Text_KirkIntro: @ 820E2BC
-	.string "My electric soul, it'll shatter your\n"
-	.string "dreams whole, whoa-yeahah!$"
+	.string "Hahaha! Isn't this Gym so crazy?\n"
+	.string "Which way do you go next?$"
 
 MauvilleCity_Gym_Text_KirkDefeat: @ 820E2FC
-	.string "That was plugged in, amped up,\n"
-	.string "over-driven electric, man!$"
+	.string "Aw, man! You're smart!$"
 
 MauvilleCity_Gym_Text_KirkPostBattle: @ 820E336
-	.string "POKéMON and rock, it's all about heart,\n"
-	.string "whoa-yeah!$"
+	.string "Smithie put this arrow puzzle in\n"
+	.string "to make things interesting!$"
 
 MauvilleCity_Gym_Text_ShawnIntro: @ 820E369
-	.string "I trained under WATTSON!\n"
-	.string "There ain't no way I'll lose easily!$"
+	.string "Cipher? In our Gym?\n"
+	.string "Impossible!$"
 
 MauvilleCity_Gym_Text_ShawnDefeat: @ 820E3A7
-	.string "Unplugged and turned off…$"
+	.string "Ugh, beat by a kid!$"
 
 MauvilleCity_Gym_Text_ShawnPostBattle: @ 820E3C1
-	.string "WATTSON, our GYM LEADER, has been\n"
-	.string "around for a long, long time.\p"
-	.string "He was battling even before your\n"
-	.string "daddy was born, that tough coot.$"
+	.string "Smithie isn't associated with Cipher!\n"
+	.string "...I mean, I don't think he is...$"
 
 MauvilleCity_Gym_Text_BenIntro: @ 820E443
-	.string "This GYM's got puzzles!\n"
-	.string "Isn't it fun?$"
+	.string "Aha! A Challenger! I'll take care of\n"
+	.string "you myself!$"
 
 MauvilleCity_Gym_Text_BenDefeat: @ 820E469
 	.string "It's no fun to lose…$"
 
 MauvilleCity_Gym_Text_BenPostBattle: @ 820E47E
-	.string "WATTSON says he likes setting up\n"
-	.string "little traps with switches.$"
+	.string "Sometimes, I get lost in here just\n"
+	.string "trying to leave.\p"
+	.string "It's so frustrating!$"
 
 MauvilleCity_Gym_Text_VivianIntro: @ 820E4BB
-	.string "With my charm and my POKéMON's moves,\n"
-	.string "you'll be shocked!$"
+	.string "So, you want to challenge Smithie with\n"
+	.string "your Pokémon?\p"
+	.string "Yeah, good luck with that!$"
 
 MauvilleCity_Gym_Text_VivianDefeat: @ 820E4F4
-	.string "I'm shocked by your power!$"
+	.string "Ha, maybe I needed the good luck!$"
 
 MauvilleCity_Gym_Text_VivianPostBattle: @ 820E50F
-	.string "I've heard that MAUVILLE was founded\n"
-	.string "by WATTSON.\p"
-	.string "He was a TRAINER long before we\n"
-	.string "became TRAINERS.\l"
-	.string "He must know all sorts of things!$"
+	.string "I've heard that Smithie does some shady\n"
+	.string "deals with that Cipher group.\p"
+	.string "Maybe I should reconsider working here.$"
 
 MauvilleCity_Gym_Text_AngeloIntro: @ 820E593
-	.string "I love shiny things!$"
+		.string "You can't battle Smithie!\n"
+	.string "I won't allow it!$"
 
 MauvilleCity_Gym_Text_AngeloDefeat: @ 820E5A8
-	.string "Oh…\n"
-	.string "My eyes are frazzled…$"
+	.string "Fine, go ahead...$"
 
 MauvilleCity_Gym_Text_AngeloPostBattle: @ 820E5C2
-	.string "MAUVILLE GYM's WATTSON has a shiny\n"
-	.string "forehead. It makes me happy!$"
+	.string "I never beat any of the Trainers who\n"
+	.string "make it this far.\p"
+	.string "I'm bound to get fired soon...$"
 
 MauvilleCity_Gym_Text_WattsonIntro: @ 820E602
-	.string "I've given up on my plans to convert\n"
-	.string "the city, I have.\p"
-	.string "And so, I put my time into making\n"
-	.string "door traps in my GYM.\p"
-	.string "Oh? Now, what are you doing here?\p"
-	.string "What's that? You say you've gotten\n"
-	.string "past all my rigged doors?\p"
-	.string "Wahahahah!\n"
-	.string "Now, that is amusing!\p"
-	.string "Then, I, WATTSON, the LEADER of\n"
-	.string "MAUVILLE GYM, shall electrify you!$"
+	.string "Ah, another challneger! Trainers are\n"
+	.string "always welcome to challenge me!\p"
+	.string "Allow me to introduce myself! My name\n"
+	.string "is Smithie, and I'm the Iridium Bluff\l"
+	.string "Gym Leader. I specialize in steel Types!\p"
+	.string "Smithie: Hm? Cipher? Why, I've hardly\n"
+	.string "heard the name! The rumors are simply\l"
+	.string "fabricated lies, friend!\p"
+	.string "Come, let us forget about that! Do you\n"
+	.string "know the rules? No Items for you! Knock\l"
+	.string "out my Pokémon for the Badge!\p"
+	.string "Ready? No turning back! Hahahahaha!$"
 
 MauvilleCity_Gym_Text_WattsonDefeat: @ 820E734
-	.string "Wahahahah!\n"
-	.string "Fine, I lost!\p"
-	.string "You ended up giving me a thrill!\n"
-	.string "Take this BADGE!$"
+	.string "Hahaha! I've never seen such a great\n"
+	.string "battle! Here, take this!$"
 
 MauvilleCity_Gym_Text_ReceivedDynamoBadge: @ 820E77F
-	.string "{PLAYER} received the DYNAMO BADGE\n"
-	.string "from WATTSON.$"
+	.string "{PLAYER} received the Alloy Badge\n"
+	.string "from Smithie.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis: @ 820E7AA
-	.string "With the DYNAMO BADGE, POKéMON can\n"
-	.string "use ROCK SMASH out of battle.\p"
-	.string "And, it will make your POKéMON a little\n"
-	.string "bit faster, too.\p"
-	.string "Hmm…\n"
-	.string "You should take this, too!$"
+	.string "I'm sure you're already familiar with\n"
+	.string "what a Badge does...\p"
+	.string "So take these, too!$"
 
 MauvilleCity_Gym_Text_ExplainShockWave: @ 820E844
-	.string "That TM34 there contains SHOCK WAVE.\p"
-	.string "It's a trustworthy move that never\n"
-	.string "misses! You can count on it!\p"
-	.string "… … … … … …$"
-
-MauvilleCity_Gym_Text_RegisteredWattson: @ 820E8B5
-	.string "Registered GYM LEADER WATTSON\n"
-	.string "in the POKéNAV.$"
+	.string "That TM52 there contains Iron Defense!\p"
+	.string "It boosts your defense. Who'd have\n"
+	.string "guessed it? Hahaha! And that Mawilite\l"
+	.string "is for Mega Evolving a Mawile!\p"
+	.string "Because you beat me, I'll let you in on\n"
+	.string "a secret. I am part of Cipher.\p"
+	.string "But, what can you do about it? Kid, I\n"
+	.string "paid off the officials.\p"
+	.string "Cipher owns this city! Hahahaha!\p"
+	.string "Now, run along! Continue challenging the\n"
+	.string "Gyms like a good kid! Good luck!\p"
+	.string "Hahahahahahahaha!$"
 
 MauvilleCity_Gym_Text_WattsonPostBattle: @ 820E8E3
-	.string "I swell with optimism, seeing a promising\n"
-	.string "young TRAINER like you!$"
+	.string "Because you beat me, I'll let you in on\n"
+	.string "a secret. I am part of Cipher.\p"
+	.string "But, what can you do about it? Kid, I\n"
+	.string "paid off the officials.\p"
+	.string "Cipher owns this city! Hahahaha!\p"
+	.string "Now, run along! Continue challenging the\n"
+	.string "Gyms like a good kid! Good luck!\p"
+	.string "Hahahahahahahaha!$"
 
 MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor: @ 820E925
 	.string "Wahahahah!\n"
 	.string "Go forth and endeavor, youngster!$"
 
-MauvilleCity_Gym_Text_GymStatue: @ 820E952
-	.string "MAUVILLE CITY POKéMON GYM$"
+MauvilleCity_Gym_Text_GymStatue: @ 820E96C
+	.string "Iridium Bluff Pokémon Gym\p"
+	.string "Smithie's Certified Trainers:\n"
+	.string "{RIVAL}\l"
+	.string "Ravynn$"
 
 MauvilleCity_Gym_Text_GymStatueCertified: @ 820E96C
-	.string "MAUVILLE CITY POKéMON GYM\p"
-	.string "WATTSON'S CERTIFIED TRAINERS:\n"
+	.string "Iridium Bluff Pokémon Gym\p"
+	.string "Smithie's Certified Trainers:\n"
+	.string "{RIVAL}\l"
+	.string "Ravynn\l"
 	.string "{PLAYER}$"
 
 MauvilleCity_Gym_Text_WattsonPreRematch: @ 820E9A7
@@ -427,4 +431,3 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons: @ 820EAFD
 	.string "You've only one POKéMON with you!\p"
 	.string "Come see me with two or more\n"
 	.string "POKéMON, all right?$"
-

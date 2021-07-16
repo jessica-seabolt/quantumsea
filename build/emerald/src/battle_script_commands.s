@@ -261,25 +261,25 @@ sLevelCapFlags:
 	.size	 sLevelCaps,16
 sLevelCaps:
 	.short	0x12
-	.short	0x19
-	.short	0x1f
+	.short	0x1b
 	.short	0x24
-	.short	0x29
-	.short	0x2e
-	.short	0x33
-	.short	0x38
+	.short	0x2d
+	.short	0x32
+	.short	0x37
+	.short	0x3d
+	.short	0x42
 	.globl	sLevelCapReduction
 	.align	2, 0
 	.type	 sLevelCapReduction,object
 	.size	 sLevelCapReduction,56
 sLevelCapReduction:
 	.long 0x3fc99999, 0x9999999a	@ double 2.00000000000000011102e-1
-	.long 0x3fc66666, 0x66666666	@ double 1.74999999999999988898e-1
 	.long 0x3fc33333, 0x33333333	@ double 1.49999999999999994449e-1
 	.long 0x3fc00000, 0x0	@ double 1.25000000000000000000e-1
 	.long 0x3fb99999, 0x9999999a	@ double 1.00000000000000005551e-1
 	.long 0x3fb33333, 0x33333333	@ double 7.49999999999999972244e-2
 	.long 0x3fa99999, 0x9999999a	@ double 5.00000000000000027756e-2
+	.long 0x3f847ae1, 0x47ae147b	@ double 1.00000000000000002082e-2
 	.globl	sRelativePartyScaling
 	.align	2, 0
 	.type	 sRelativePartyScaling,object

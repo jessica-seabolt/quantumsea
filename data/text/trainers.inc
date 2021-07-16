@@ -246,38 +246,37 @@ Route103_Text_MarcosPostBattle: @ 8295246
 	.string "Heh, maybe I should turn pro.$"
 
 Route104_Text_GinaIntro: @ 82952BB
-	.string "GINA: Okay, let's battle with our\n"
-	.string "POKéMON!$"
+	.string "Bess: My sister and I love to battle!$"
 
 Route104_Text_GinaDefeat: @ 82952E6
-	.string "GINA: Losing upsets me!$"
+	.string "Bess: We hate losing!$"
 
 Route104_Text_GinaPostBattle: @ 82952FE
-	.string "GINA: You are strong!\n"
-	.string "We have to train lots more!$"
+	.string "Bess: You're really tough! Are you\n"
+	.string "going to battle Smithie?$"
 
 Route104_Text_GinaNotEnoughMons: @ 8295330
-	.string "GINA: Oh? Only one POKéMON?\n"
+	.string "Bess: Oh? Only one Pokémon?\n"
 	.string "Then, we don't battle with you.\p"
-	.string "If there's only one POKéMON, it will\n"
+	.string "If there's only one Pokémon, it will\n"
 	.string "be lonesome. That's not nice.$"
 
 Route104_Text_MiaIntro: @ 82953AF
-	.string "MIA: We are twins, so we battle\n"
-	.string "POKéMON together.$"
+	.string "Bri: I love battling Trainers with\n"
+	.string "my sister by my side!$"
 
 Route104_Text_MiaDefeat: @ 82953E1
-	.string "MIA: We battled together, but we\n"
-	.string "both lost…$"
+	.string "Bri: At least my sister will comfort\n"
+	.string "me after this loss...$"
 
 Route104_Text_MiaPostBattle: @ 829540D
-	.string "MIA: We will train our POKéMON more\n"
-	.string "and be strong like you.$"
+	.string "Bri: We're going to battle Smithie\n"
+	.string "together someday! Just you wait!$"
 
 Route104_Text_MiaNotEnoughMons: @ 8295449
-	.string "MIA: You want to battle with us?\p"
+	.string "Bri: You want to battle with us?\p"
 	.string "It's a big no-no if you don't have two\n"
-	.string "POKéMON with you.\l"
+	.string "Pokémon with you.\l"
 	.string "We're too strong for you!$"
 
 Route104_Text_IvanIntro: @ 82954BD
@@ -295,31 +294,25 @@ Route104_Text_IvanPostBattle: @ 829554E
 	.string "I forgot I had to raise my POKéMON…$"
 
 Route104_Text_BillyIntro: @ 829558A
-	.string "Leaving footprints in the sand is\n"
-	.string "so fun!$"
+	.string "Oh, yeah! Time to rock 'n roll!$"
 
 Route104_Text_BillyDefeat: @ 82955B4
-	.string "Waah! I got sand in my runners!\n"
-	.string "They're all gritty!$"
+	.string "Waah! You've got groovy moves!$"
 
 Route104_Text_BillyPostBattle: @ 82955E8
-	.string "I want to leave my footprints in\n"
-	.string "the sand everywhere, but they\l"
-	.string "disappear quickly…$"
+	.string "Hey, if you ever wanna jam out, you can\n"
+	.string "hit me up any day!$"
 
 Route104_Text_HaleyIntro: @ 829563A
-	.string "Should I…\n"
-	.string "Or shouldn't I?\p"
-	.string "Okay, sure, I will battle!$"
+	.string "What the? It started snowing?\n"
+	.string "It never snows around here!$"
 
 Route104_Text_HaleyDefeat: @ 829566F
-	.string "I shouldn't have battled…$"
+	.string "The snow messed me up!$"
 
 Route104_Text_HaleyPostBattle: @ 8295689
-	.string "If you're faced with a decision and\n"
-	.string "you let someone else choose for you,\l"
-	.string "you will regret it, however things\l"
-	.string "turn out.$"
+	.string "Weather patterns have gotten all messed\n"
+	.string "up lately. I wonder why?$"
 
 Route104_Text_HaleyRegister1: @ 82956FF
 	.string "You're strong, but should I register\n"
@@ -346,15 +339,15 @@ Route104_Text_HaleyPostRematch: @ 829580C
 	.string "I am still upset about losing!$"
 
 Route104_Text_WinstonIntro: @ 8295870
-	.string "Oh, sure, I'll accept your challenge.\n"
-	.string "I have a lot of money.$"
+	.string "Oh, you want to battle me? Okay, let\n"
+	.string "me show you what I've learned!$"
 
 Route104_Text_WinstonDefeat: @ 82958AD
 	.string "Why couldn't I win?$"
 
 Route104_Text_WinstonPostBattle: @ 82958C1
-	.string "There are some things money can't buy.\n"
-	.string "That's POKéMON…$"
+	.string "I need to study more! I need to train\n"
+	.string "more! I need to battle more! Woohoo!$"
 
 Route104_Text_WinstonRegister1: @ 82958F8
 	.string "Hm?\n"
@@ -382,15 +375,17 @@ Route104_Text_WinstonPostRematch: @ 8295A1E
 	.string "It's so deep, the world of POKéMON…$"
 
 Route104_Text_CindyIntro: @ 8295A7E
-	.string "We must have been fated to meet.\n"
-	.string "May I ask you for a battle?$"
+	.string "Hoho! I love a good trek thorugh the\n"
+	.string "woods! And I love a good battle, too!$"
 
 Route104_Text_CindyDefeat: @ 8295ABB
-	.string "Oh, my!$"
+	.string "Hoho! Well done!$"
 
 Route104_Text_CindyPostBattle: @ 8295AC3
-	.string "“Hello” is the beginning of “good-bye.”\n"
-	.string "I hope we meet again.$"
+	.string "Hoho! We Hikers spend day and night\n"
+	.string "traversing the roughest of terrains!\p"
+	.string "The changing weather doesn't bother us\n"
+	.string "one little bit! Hoho!$"
 
 Route104_Text_CindyRegister1: @ 8295B01
 	.string "Hello, we meet again.\p"
@@ -416,16 +411,13 @@ Route104_Text_CindyPostRematch: @ 8295C1F
 	.string "I hope we meet again.$"
 
 Route104_Text_DarianIntro: @ 8295C5D
-	.string "I fished up a tough-looking POKéMON!\p"
-	.string "It has this magical quality to it!\n"
-	.string "It surely looks tough, yes it does!$"
+	.string "Look at this big chonky fish I caught!$"
 
 Route104_Text_DarianDefeat: @ 8295CC9
-	.string "What the…$"
+	.string "It wasn't chonky enough!$"
 
 Route104_Text_DarianPostBattle: @ 8295CD3
-	.string "Hey, MAGIKARP, you sure don't live up\n"
-	.string "to your name, do you?$"
+	.string "Hey, have you got any chonky Pokémon?$"
 
 Route105_Text_FosterIntro: @ 8295D0F
 	.string "There's supposed to be a mystical\n"
@@ -467,29 +459,25 @@ Route105_Text_DominikPostBattle: @ 8295F08
 	.string "SLATEPORT, but I forgot.$"
 
 Route105_Text_BeverlyIntro: @ 8295F5C
-	.string "My body feels lighter in the water.\n"
-	.string "It's as if I've gotten slimmer!$"
+	.string "Today's such a beautiful day, isn't it?$"
 
 Route105_Text_BeverlyDefeated: @ 8295FA0
-	.string "I'm floating…$"
+	.string "Good weather doesn't help me win...$"
 
 Route105_Text_PostBattle: @ 8295FAE
-	.string "Your body weight is reduced to just\n"
-	.string "one tenth in the water.\p"
-	.string "That would make me…\n"
-	.string "Whoops! I'm not telling you my weight!$"
+	.string "Sometimes you might want the weather to\n"
+	.string "be icky. It can help in a battle!$"
 
 Route105_Text_ImaniIntro: @ 8296025
-	.string "The blue, blue sky…\n"
-	.string "The vast sea…\l"
-	.string "It's so peaceful…$"
+	.string "Lots of shady people go in that cave\n"
+	.string "down there!\p"
+	.string "I wonder what that's all about?$"
 
 Route105_Text_ImaniDefeated: @ 8296059
-	.string "I lost while I was lounging!$"
+	.string "Wow, you're strong!$"
 
 Route105_Text_ImaniPostBattle: @ 8296076
-	.string "I want to be told I'm relaxing to be\n"
-	.string "with. Giggle.$"
+	.string "Are you going to check out the cave?$"
 
 Route105_Text_AndresIntro: @ 82960A9
 	.string "I'm convinced that the sea keeps\n"

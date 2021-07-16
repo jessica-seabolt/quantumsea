@@ -11,6 +11,44 @@ MauvilleCity_Mart_EventScript_Clerk:: @ 82110E6
 	release
 	end
 
+IridiumBluff_Mart_EventScript_PokemartSeedShop:: @ 8214F21
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart IridiumBluff_Mart_Pokemart_SeedShop
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+IridiumBluff_Mart_Pokemart_SeedShop: @ 8214F30
+	.2byte ITEM_GRASSY_SEED
+	.2byte ITEM_ELECTRIC_SEED
+	.2byte ITEM_MISTY_SEED
+	.2byte ITEM_PSYCHIC_SEED
+	release
+	end
+
+IridiumBluff_Mart_EventScript_PokemartDamageShop:: @ 8214F21
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart IridiumBluff_Mart_Pokemart_DamageShop
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+IridiumBluff_Mart_Pokemart_DamageShop: @ 8214F30
+	.2byte ITEM_ABSORB_BULB
+	.2byte ITEM_CELL_BATTERY
+	.2byte ITEM_EJECT_BUTTON
+	.2byte ITEM_LUMINOUS_MOSS
+	.2byte ITEM_SNOWBALL
+	.2byte ITEM_WEAKNESS_POLICY
+	release
+	end
+
 	.align 2
 MauvilleCity_Mart_Pokemart: @ 8211100
 	.2byte ITEM_POKE_BALL

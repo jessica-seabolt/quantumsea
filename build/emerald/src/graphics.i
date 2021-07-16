@@ -10553,8 +10553,8 @@ const u32 gTrainerPalette_TuberM[] = INCBIN_U32("graphics/trainers/palettes/tube
 const u32 gTrainerFrontPic_CoolTrainerF[] = INCBIN_U32("graphics/trainers/front_pics/cooltrainer_f_front_pic.4bpp.lz");
 const u32 gTrainerPalette_CoolTrainerF[] = INCBIN_U32("graphics/trainers/palettes/cooltrainer_f.gbapal.lz");
 
-const u32 gTrainerFrontPic_Lady[] = INCBIN_U32("graphics/trainers/front_pics/lady_front_pic.4bpp.lz");
-const u32 gTrainerPalette_Lady[] = INCBIN_U32("graphics/trainers/palettes/lady.gbapal.lz");
+const u32 gTrainerFrontPic_Worker[] = INCBIN_U32("graphics/trainers/front_pics/worker_front_pic.4bpp.lz");
+const u32 gTrainerPalette_Worker[] = INCBIN_U32("graphics/trainers/palettes/worker.gbapal.lz");
 
 const u32 gTrainerFrontPic_Beauty[] = INCBIN_U32("graphics/trainers/front_pics/beauty_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Beauty[] = INCBIN_U32("graphics/trainers/palettes/beauty.gbapal.lz");

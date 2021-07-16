@@ -166,7 +166,7 @@ static void SpriteCB_Confetti(struct Sprite *sprite);
 static void Task_ShowContestEntryMonPic(u8 taskId);
 static void Task_LinkContestWaitForConnection(u8 taskId);
 
-extern const u16 gObjectEventPalette8[];
+extern const u16 gObjectEventPaletteQuinn[];
 extern const u16 gObjectEventPalette17[];
 extern const u16 gObjectEventPalette33[];
 extern const u16 gObjectEventPalette34[];
@@ -2479,7 +2479,7 @@ void LoadLinkContestPlayerPalettes(void)
             else
             {
                 if (gLinkPlayers[i].gender == MALE)
-                    LoadPalette(gObjectEventPalette8, 0x160 + i * 0x10, 0x20);
+                    LoadPalette(gObjectEventPaletteQuinn, 0x160 + i * 0x10, 0x20);
                 else
                     LoadPalette(gObjectEventPalette17, 0x160 + i * 0x10, 0x20);
             }

@@ -2118,19 +2118,19 @@ sMapName_SlateportCity:
 	.size	 sMapName_SlateportCity,15
 	.type	 sMapName_MauvilleCity,object
 sMapName_MauvilleCity:
-	.byte	0xc7
-	.byte	0xbb
-	.byte	0xcf
-	.byte	0xd0
 	.byte	0xc3
-	.byte	0xc6
-	.byte	0xc6
-	.byte	0xbf
+	.byte	0xe6
+	.byte	0xdd
+	.byte	0xd8
+	.byte	0xdd
+	.byte	0xe9
+	.byte	0xe1
 	.byte	0x0
-	.byte	0xbd
-	.byte	0xc3
-	.byte	0xce
-	.byte	0xd3
+	.byte	0xbc
+	.byte	0xe0
+	.byte	0xe9
+	.byte	0xda
+	.byte	0xda
 	.byte	0xff
 	.size	 sMapName_MauvilleCity,14
 	.type	 sMapName_RustboroCity,object
@@ -2274,16 +2274,14 @@ sMapName_Route103:
 	.type	 sMapName_Route104,object
 sMapName_Route104:
 	.byte	0xcc
-	.byte	0xc9
-	.byte	0xcf
-	.byte	0xce
-	.byte	0xbf
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe8
+	.byte	0xd9
 	.byte	0x0
-	.byte	0xa2
-	.byte	0xa1
 	.byte	0xa5
 	.byte	0xff
-	.size	 sMapName_Route104,10
+	.size	 sMapName_Route104,8
 	.type	 sMapName_Route105,object
 sMapName_Route105:
 	.byte	0xcc
@@ -2758,23 +2756,22 @@ sMapName_BattleFrontier:
 	.size	 sMapName_BattleFrontier,16
 	.type	 sMapName_PetalburgWoods,object
 sMapName_PetalburgWoods:
-	.byte	0xca
-	.byte	0xbf
-	.byte	0xce
-	.byte	0xbb
-	.byte	0xc6
-	.byte	0xbc
-	.byte	0xcf
-	.byte	0xcc
-	.byte	0xc1
-	.byte	0x0
-	.byte	0xd1
-	.byte	0xc9
-	.byte	0xc9
-	.byte	0xbe
 	.byte	0xcd
+	.byte	0xe4
+	.byte	0xd9
+	.byte	0xd7
+	.byte	0xe8
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xc0
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0xe7
+	.byte	0xe8
 	.byte	0xff
-	.size	 sMapName_PetalburgWoods,16
+	.size	 sMapName_PetalburgWoods,15
 	.type	 sMapName_RusturfTunnel,object
 sMapName_RusturfTunnel:
 	.byte	0xcc
@@ -2845,16 +2842,24 @@ sMapName_MeteorFalls:
 	.size	 sMapName_MeteorFalls,13
 	.type	 sMapName_MtPyre,object
 sMapName_MtPyre:
-	.byte	0xc7
 	.byte	0xce
-	.byte	0xad
+	.byte	0xe6
+	.byte	0xd5
+	.byte	0xdd
+	.byte	0xe2
+	.byte	0xd9
+	.byte	0xe6
+	.byte	0xb4
+	.byte	0xe7
 	.byte	0x0
-	.byte	0xca
-	.byte	0xd3
-	.byte	0xcc
-	.byte	0xbf
+	.byte	0xcd
+	.byte	0xd7
+	.byte	0xdc
+	.byte	0xe3
+	.byte	0xe3
+	.byte	0xe0
 	.byte	0xff
-	.size	 sMapName_MtPyre,9
+	.size	 sMapName_MtPyre,17
 	.type	 sMapName_AquaHideoutOld,object
 sMapName_AquaHideoutOld:
 	.byte	0xfd
@@ -44137,7 +44142,7 @@ CB_ExitFlyMap:
 	.4byte	0xe83e
 	.4byte	0x183f
 	.byte	0xa
-	.byte	0x9
+	.byte	0x7
 	.byte	0x0
 	.byte	0x36
 	.ascii	"sMapName_Route104\000"
@@ -44749,7 +44754,7 @@ CB_ExitFlyMap:
 	.4byte	0xef0c
 	.4byte	0x183f
 	.byte	0xa
-	.byte	0xf
+	.byte	0xe
 	.byte	0x0
 	.byte	0x36
 	.ascii	"sMapName_PetalburgWoods\000"
@@ -44834,7 +44839,7 @@ CB_ExitFlyMap:
 	.4byte	0xf012
 	.4byte	0x183f
 	.byte	0xa
-	.byte	0x8
+	.byte	0x10
 	.byte	0x0
 	.byte	0x36
 	.ascii	"sMapName_MtPyre\000"

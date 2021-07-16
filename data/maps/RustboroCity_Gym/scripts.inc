@@ -4,12 +4,12 @@ RustboroCity_Gym_MapScripts:: @ 8212F30
 RustboroCity_Gym_EventScript_Roxanne:: @ 8212F31
 	setflag FLAG_DISABLE_BAG
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
-	clearflag FLAG_DISABLE_BAG
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	compare VAR_RESULT, TRUE
 	goto_if_eq RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM39, RustboroCity_Gym_EventScript_GiveRockTomb
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
+	clearflag FLAG_DISABLE_BAG
 	release
 	end
 
@@ -20,6 +20,9 @@ RustboroCity_Gym_EventScript_RoxanneDefeated:: @ 8212F66
 	msgbox RustboroCity_Gym_Text_StoneBadgeInfoTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
+	setflag FLAG_HIDE_IB_PIKA_1
+	setflag FLAG_HIDE_IB_PIKA_2
+	clearflag FLAG_DISABLE_BAG
 	setvar VAR_RUSTBORO_CITY_STATE, 1
 	addvar VAR_PETALBURG_GYM_STATE, 1
 	setvar VAR_0x8008, 1
@@ -30,7 +33,7 @@ RustboroCity_Gym_EventScript_RoxanneDefeated:: @ 8212F66
 	end
 
 RustboroCity_Gym_EventScript_GiveRockTomb:: @ 8212FA4
-	giveitem ITEM_TM01
+	giveitem ITEM_TM51
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	giveitem ITEM_SABLENITE
@@ -123,8 +126,8 @@ RustboroCity_Gym_Text_GymGuideAdvice: @ 821309D
 	.string "If you want to beat him, consider using\n"
 	.string "a Dark type, or your own Ghost Pokémon.\p"
 	.string "Gym Leaders can Mega Evolve, too. Be\n"
-	.string "aware that Polter could use Mega Evolution\l"
-	.string "at any time!\p"
+	.string "aware that Polter could use Mega\l"
+	.string "Evolution at any time!\p"
 	.string "Okay, you feel ready? Go for it, kid!$"
 
 RustboroCity_Gym_Text_GymGuidePostVictory: @ 82132E2

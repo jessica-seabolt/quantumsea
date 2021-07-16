@@ -36,21 +36,15 @@ MauvilleCity_PokemonCenter_1F_EventScript_Youngster:: @ 8210E98
 	end
 
 MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings: @ 8210EA1
-	.string "That man over there, he says weird\n"
-	.string "things!\p"
-	.string "He's funny in a weird way.\n"
-	.string "I doubt I'll forget about him!$"
+	.string "Who is Cipher? And what do they want?$"
 
 MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner: @ 8210F06
-	.string "When I accessed the RECORD CORNER,\n"
-	.string "the data for what's hot in DEWFORD\l"
-	.string "got updated.\p"
-	.string "Now that bit of data is the same\n"
-	.string "as my friend's!$"
+	.string "Smithie is so cool! I wish I could battle\n"
+	.string "like he does!$"
 
 MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun: @ 8210F8A
-	.string "A RECORD CORNER opened upstairs in\n"
-	.string "the POKéMON CENTER.\p"
-	.string "I don't know what it's about, but it\n"
-	.string "sounds fun. I'll go check it out!$"
-
+	.string "I heard Team Quantum and Cipher don't\n"
+	.string "get along very well.\p"
+	.string "Cipher is the baddest of the bad! It\n"
+	.string "looks like even Team Quantum has some\l"
+	.string "sort of line.$"

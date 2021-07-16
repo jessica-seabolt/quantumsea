@@ -8895,8 +8895,8 @@ const u16 sLevelCapFlags[8] =
     (((0x500 + 864 - 1) + 1) + 0xB), (((0x500 + 864 - 1) + 1) + 0xC), (((0x500 + 864 - 1) + 1) + 0xD), (((0x500 + 864 - 1) + 1) + 0xE),
 };
 
-const u16 sLevelCaps[8] = { 18, 25, 31, 36, 41, 46, 51, 56 };
-const double sLevelCapReduction[7] = { .2, .175, .15, .125, .1, .075, .05 };
+const u16 sLevelCaps[8] = { 18, 27, 36, 45, 50, 55, 61, 66 };
+const double sLevelCapReduction[7] = { .2, .15, .125, .1, .075, .05, .01 };
 const double sRelativePartyScaling[27] =
 {
     3.00, 2.75, 2.50, 2.33, 2.25,

@@ -12372,7 +12372,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -12466,7 +12466,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -22152,7 +22152,7 @@ const u8 gAbilityNames[268][12 + 1] =
     [211] = _("PwrConstruct"),
     [212] = _("Corrosion"),
     [213] = _("Comatose"),
-    [214] = _("QueenlyMjsty"),
+    [214] = _("Queen Mjesty"),
     [215] = _("Innards Out"),
     [216] = _("Dancer"),
     [217] = _("Battery"),

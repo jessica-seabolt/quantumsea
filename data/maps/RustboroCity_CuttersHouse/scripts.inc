@@ -29,7 +29,7 @@ RustboroCity_CuttersHouse_EventScript_Lass:: @ 8215C0A
 
 RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse: @ 8215C13
 	.string "Hello there, Trainer. My name's Greevil.\n"
-	.string "I'm a Pokémon Trainer, just like you.\p"
+	.string "I used to be a Pokémon Trainer like you.\p"
 	.string "Greevil: I wonder, what is it that truly\n"
 	.string "brings together Trainers and Pokémon?\p"
 	.string "Is it some unspoken bond? Perhaps the\n"

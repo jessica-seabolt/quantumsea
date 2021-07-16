@@ -10621,7 +10621,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -10715,7 +10715,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -30716,7 +30716,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     [18] = {gTrainerFrontPic_TuberF, 0x800, 18},
     [19] = {gTrainerFrontPic_TuberM, 0x800, 19},
     [20] = {gTrainerFrontPic_CoolTrainerF, 0x800, 20},
-    [21] = {gTrainerFrontPic_Lady, 0x800, 21},
+    [21] = {gTrainerFrontPic_Worker, 0x800, 21},
     [22] = {gTrainerFrontPic_Beauty, 0x800, 22},
     [23] = {gTrainerFrontPic_RichBoy, 0x800, 23},
     [24] = {gTrainerFrontPic_ExpertF, 0x800, 24},
@@ -30815,7 +30815,7 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     [18] = {gTrainerPalette_TuberF, 18},
     [19] = {gTrainerPalette_TuberM, 19},
     [20] = {gTrainerPalette_CoolTrainerF, 20},
-    [21] = {gTrainerPalette_Lady, 21},
+    [21] = {gTrainerPalette_Worker, 21},
     [22] = {gTrainerPalette_Beauty, 22},
     [23] = {gTrainerPalette_RichBoy, 23},
     [24] = {gTrainerPalette_ExpertF, 24},
@@ -48275,21 +48275,21 @@ const u32 gUnknown830AF4C[] =
 static const struct TrainerMonNoItemDefaultMoves sParty_Sawyer1[] = {
     {
     .iv = 0,
-    .lvl = 3,
+    .lvl = 5,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 664,
     },
     {
     .iv = 0,
-    .lvl = 3,
+    .lvl = 5,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 595,
     },
     {
     .iv = 0,
-    .lvl = 3,
+    .lvl = 5,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 48,
@@ -48299,10 +48299,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Sawyer1[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout1[] = {
     {
     .iv = 100,
-    .lvl = 19,
+    .lvl = 15,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 757,
+    },
+    {
+    .iv = 100,
+    .lvl = 16,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 0,
+    .species = 404,
     }
 };
 
@@ -48376,18 +48383,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern3[] =
 static const struct TrainerMonNoItemDefaultMoves sParty_Gabrielle1[] = {
     {
     .iv = 0,
-    .lvl = 4,
+    .lvl = 6,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 672,
+    .species = 66,
     },
-    {
-    .iv = 0,
-    .lvl = 4,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 1,
-    .species = 406,
-    }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntPetalburgWoods[] = {
@@ -48403,51 +48403,58 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntPetalburgWoods[] = 
 static const struct TrainerMonNoItemDefaultMoves sParty_Marcel[] = {
     {
     .iv = 100,
-    .lvl = 5,
+    .lvl = 8,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 396,
+    .species = 1,
     },
     {
     .iv = 100,
-    .lvl = 5,
+    .lvl = 8,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 509,
+    .species = 4,
+    },
+    {
+    .iv = 100,
+    .lvl = 8,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 0,
+    .species = 7,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Alberto[] = {
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 9,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 417,
     },
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 333,
+    .species = 194,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Ed[] = {
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 833,
     },
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 309,
+    .species = 522,
     }
 };
 
@@ -48464,42 +48471,42 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern4[] =
 static const struct TrainerMonNoItemDefaultMoves sParty_Declan[] = {
     {
     .iv = 0,
-    .lvl = 4,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 10,
+    .species = 12,
     },
     {
     .iv = 0,
-    .lvl = 4,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 543,
     },
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 595,
     },
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 10,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 265,
+    .species = 269,
     },
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 11,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 824,
+    .species = 825,
     },
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 11,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 850,
@@ -48681,14 +48688,14 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout6[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Fredrick[] = {
     {
     .iv = 100,
-    .lvl = 7,
+    .lvl = 11,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 829,
     },
     {
     .iv = 100,
-    .lvl = 7,
+    .lvl = 11,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 548,
@@ -48698,24 +48705,24 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Fredrick[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Matt[] = {
     {
     .iv = 0,
-    .lvl = 9,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 554,
-    },
-    {
-    .iv = 0,
-    .lvl = 9,
+    .lvl = 12,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 898 + 84,
+    },
+    {
+    .iv = 0,
+    .lvl = 13,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 2,
+    .species = 755,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Zander[] = {
     {
     .iv = 0,
-    .lvl = 11,
+    .lvl = 14,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 1,
     .species = 852,
@@ -48782,52 +48789,66 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Archie[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Leah[] = {
     {
-    .iv = 0,
-    .lvl = 31,
+    .iv = 100,
+    .lvl = 18,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 325,
-    }
+    .abilityNums = 2,
+    .species = 215,
+    },
+    {
+    .iv = 100,
+    .lvl = 18,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 1,
+    .species = 418,
+    },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Daisy[] = {
     {
-    .iv = 0,
-    .lvl = 14,
+    .iv = 100,
+    .lvl = 18,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 285,
+    .abilityNums = 1,
+    .species = 315,
     },
     {
-    .iv = 0,
-    .lvl = 14,
+    .iv = 100,
+    .lvl = 18,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 2,
+    .species = 203,
+    },
+    {
+    .iv = 100,
+    .lvl = 18,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 315,
-    }
+    .species = 869,
+    },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Rose1[] = {
     {
-    .iv = 0,
-    .lvl = 14,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 315,
+    .iv = 100,
+    .lvl = 18,
+    .evs = {0, 0, 0, 252, 0, 0},
+    .abilityNums = 2,
+    .species = 81,
     },
     {
-    .iv = 0,
-    .lvl = 14,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 18,
+    .evs = {0, 0, 0, 252, 0, 0},
     .abilityNums = 0,
-    .species = 285,
+    .species = 125,
     },
     {
-    .iv = 0,
-    .lvl = 14,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 19,
+    .evs = {0, 0, 0, 0, 0, 252},
     .abilityNums = 0,
-    .species = 315,
+    .species = 135,
     }
 };
 
@@ -50173,12 +50194,12 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Valerie5[] = {
 
 static const struct TrainerMonItemDefaultMoves sParty_Cindy1[] = {
     {
-    .iv = 0,
-    .lvl = 7,
+    .iv = 100,
+    .lvl = 20,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 263,
-    .heldItem = 124
+    .species = 95,
+    .heldItem = 624
     }
 };
 
@@ -50497,12 +50518,12 @@ static const struct TrainerMonNoItemCustomMoves sParty_Jessica5[] = {
 
 static const struct TrainerMonItemDefaultMoves sParty_Winston1[] = {
     {
-    .iv = 0,
-    .lvl = 7,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 263,
-    .heldItem = 124
+    .iv = 100,
+    .lvl = 20,
+    .evs = {252, 0, 0, 0, 0, 0},
+    .abilityNums = 1,
+    .species = 197,
+    .heldItem = 285
     }
 };
 
@@ -51255,19 +51276,19 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Atsushi[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_Kirk[] = {
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 20,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 309,
-    .moves = {98, 86, 209, 43}
+    .species = 410,
+    .moves = {36, 319, 182, 269}
     },
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 22,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 100,
-    .moves = {268, 351, 103, 0}
+    .abilityNums = 1,
+    .species = 632,
+    .moves = {232, 450, 28, 91}
     }
 };
 
@@ -51301,16 +51322,16 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout8[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Shawn[] = {
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 21,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 100,
+    .species = 679,
     },
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 22,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
+    .abilityNums = 1,
     .species = 81,
     }
 };
@@ -52650,16 +52671,16 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne1[] = {
     .abilityNums = 0,
     .species = 898 + 81,
     .heldItem = 268,
-    .moves = {506, 261, 109, 120}
+    .moves = {506, 261, 109, 105}
     },
     {
     .iv = 255,
     .lvl = 18,
     .evs = {248, 0, 8, 0, 252, 0},
-    .abilityNums = 2,
+    .abilityNums = 0,
     .species = 302,
     .heldItem = 434,
-    .moves = {506, 109, 182, 7}
+    .moves = {506, 109, 91, 7}
     }
 };
 
@@ -52695,40 +52716,31 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     {
-    .iv = 200,
-    .lvl = 20,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 255,
+    .lvl = 25,
+    .evs = {252, 0, 121, 0, 131, 0},
     .abilityNums = 0,
-    .species = 100,
-    .heldItem = 0,
-    .moves = {205, 209, 120, 351}
+    .species = 375,
+    .heldItem = 304,
+    .moves = {334, 523, 428, 430}
     },
     {
-    .iv = 200,
-    .lvl = 20,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 255,
+    .lvl = 26,
+    .evs = {252, 0, 131, 0, 121, 0},
     .abilityNums = 0,
-    .species = 309,
-    .heldItem = 0,
-    .moves = {351, 43, 98, 336}
+    .species = 898 + 87,
+    .heldItem = 229,
+    .moves = {334, 105, 446, 341}
     },
     {
-    .iv = 220,
-    .lvl = 22,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 82,
-    .heldItem = 0,
-    .moves = {48, 351, 86, 49}
-    },
-    {
-    .iv = 250,
-    .lvl = 24,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 310,
-    .heldItem = 153,
-    .moves = {98, 86, 351, 336}
+    .iv = 255,
+    .lvl = 27,
+    .evs = {92, 252, 0, 0, 0, 164},
+    .abilityNums = 1,
+    .species = 303,
+    .heldItem = 427,
+    .moves = {334, 9, 8, 424}
     }
 };
 
@@ -53728,7 +53740,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Billy[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_Josh[] = {
     {
     .iv = 100,
-    .lvl = 13,
+    .lvl = 14,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 769,
@@ -53739,14 +53751,14 @@ static const struct TrainerMonNoItemCustomMoves sParty_Josh[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Tommy[] = {
     {
     .iv = 110,
-    .lvl = 13,
+    .lvl = 14,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 92,
     },
     {
     .iv = 120,
-    .lvl = 13,
+    .lvl = 14,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 710,
@@ -53766,19 +53778,19 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Joey[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_Ben[] = {
     {
     .iv = 150,
-    .lvl = 17,
+    .lvl = 21,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 263,
-    .moves = {29, 28, 45, 85}
+    .abilityNums = 2,
+    .species = 599,
+    .moves = {84, 475, 319, 268}
     },
     {
     .iv = 150,
-    .lvl = 17,
+    .lvl = 22,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 316,
-    .moves = {133, 124, 281, 1}
+    .abilityNums = 1,
+    .species = 898 + 69,
+    .moves = {232, 468, 6, 269}
     }
 };
 
@@ -55716,28 +55728,28 @@ static const struct TrainerMonNoItemCustomMoves sParty_Madeline5[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Beverly[] = {
     {
-    .iv = 0,
-    .lvl = 25,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 278,
+    .iv = 100,
+    .lvl = 24,
+    .evs = {0, 0, 4, 121, 0, 131},
+    .abilityNums = 1,
+    .species = 26,
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 25,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .evs = {0, 131, 4, 0, 0, 121},
     .abilityNums = 0,
-    .species = 320,
+    .species = 735,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Imani[] = {
     {
-    .iv = 0,
-    .lvl = 26,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 183,
+    .iv = 100,
+    .lvl = 25,
+    .evs = {0, 121, 4, 0, 0, 131},
+    .abilityNums = 1,
+    .species = 397,
     }
 };
 
@@ -56365,18 +56377,18 @@ static const struct TrainerMonNoItemDefaultMoves sParty_AmyAndLiv2[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GinaAndMia1[] = {
     {
-    .iv = 0,
-    .lvl = 6,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 19,
+    .evs = {0, 252, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 273,
+    .species = 538,
     },
     {
-    .iv = 0,
-    .lvl = 6,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 19,
+    .evs = {0, 252, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 270,
+    .species = 539,
     }
 };
 
@@ -57325,7 +57337,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Treecko[] = {
 static const struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = {
     {
     .iv = 100,
-    .lvl = 6,
+    .lvl = 8,
     .evs = {252, 0, 252, 4, 0, 0},
     .abilityNums = 2,
     .species = 898 + 310,
@@ -57334,7 +57346,7 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = {
     },
     {
     .iv = 200,
-    .lvl = 8,
+    .lvl = 10,
     .evs = {0, 252, 0, 0, 4, 252},
     .abilityNums = 1,
     .species = 898 + 309,
@@ -58195,14 +58207,14 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntJaggedPass[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Marc[] = {
     {
     .iv = 120,
-    .lvl = 14,
+    .lvl = 15,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 200,
     },
     {
     .iv = 130,
-    .lvl = 14,
+    .lvl = 15,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
     .species = 425,
@@ -58427,27 +58439,33 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Macey[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTreecko[] = {
-    {
+static const struct TrainerMonItemCustomMoves sParty_BrendanRustboroTreecko[] = {
+{
     .iv = 25,
-    .lvl = 14,
-    .evs = {4, 0, 0, 252, 0, 252},
-    .abilityNums = 2,
-    .species = 527,
-    },
-    {
-    .iv = 50,
     .lvl = 15,
-    .evs = {52, 252, 0, 0, 0, 204},
+    .evs = {4, 0, 0, 252, 0, 252},
     .abilityNums = 0,
-    .species = 781,
+    .species = 607,
+    .heldItem = 0,
+    .moves = {506, 261, 109, 107}
     },
     {
     .iv = 50,
     .lvl = 16,
+    .evs = {52, 252, 0, 0, 0, 204},
+    .abilityNums = 0,
+    .species = 170,
+    .heldItem = 0,
+    .moves = {61, 86, 486, 48}
+    },
+    {
+    .iv = 50,
+    .lvl = 17,
     .evs = {0, 252, 4, 0, 0, 252},
     .abilityNums = 0,
     .species = 15,
+    .heldItem = 406,
+    .moves = {228, 31, 40, 182}
     }
 };
 
@@ -58661,18 +58679,18 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Tiana[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Haley1[] = {
     {
-    .iv = 0,
-    .lvl = 6,
+    .iv = 100,
+    .lvl = 19,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 270,
+    .abilityNums = 1,
+    .species = 459,
     },
     {
-    .iv = 0,
-    .lvl = 6,
+    .iv = 100,
+    .lvl = 19,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 285,
+    .abilityNums = 1,
+    .species = 238,
     }
 };
 
@@ -59501,19 +59519,19 @@ static const struct TrainerMonNoItemCustomMoves sParty_Gerald[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_Vivian[] = {
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 20,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 307,
-    .moves = {117, 197, 93, 9}
+    .abilityNums = 1,
+    .species = 227,
+    .moves = {64, 232, 97, 28}
     },
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 21,
     .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 307,
-    .moves = {9, 197, 93, 96}
+    .abilityNums = 1,
+    .species = 436,
+    .moves = {109, 286, 371, 360}
     }
 };
 
@@ -60168,6 +60186,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Tisha[] = {
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 2,
     .species = 399,
+    },
+    {
+    .iv = 0,
+    .lvl = 6,
+    .evs = {0, 0, 0, 0, 0, 0},
+    .abilityNums = 0,
+    .species = 672,
     }
 };
 
@@ -60530,11 +60555,11 @@ static const struct TrainerMonItemDefaultMoves sParty_Sarah[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Darian[] = {
     {
-    .iv = 0,
-    .lvl = 9,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 20,
+    .evs = {252, 0, 100, 0, 100, 0},
     .abilityNums = 0,
-    .species = 129,
+    .species = 320,
     }
 };
 
@@ -60802,21 +60827,35 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Deandre[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaHideout1[] = {
     {
-    .iv = 0,
-    .lvl = 29,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .iv = 100,
+    .lvl = 21,
+    .evs = {0, 50, 0, 0, 0, 50},
     .abilityNums = 0,
-    .species = 41,
+    .species = 292,
+    },
+    {
+    .iv = 100,
+    .lvl = 21,
+    .evs = {0, 50, 0, 0, 0, 50},
+    .abilityNums = 1,
+    .species = 451,
+    },
+    {
+    .iv = 100,
+    .lvl = 22,
+    .evs = {0, 50, 0, 0, 0, 50},
+    .abilityNums = 2,
+    .species = 168,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaHideout2[] = {
     {
     .iv = 0,
-    .lvl = 29,
-    .evs = {0, 0, 0, 0, 0, 0},
-    .abilityNums = 0,
-    .species = 261,
+    .lvl = 23,
+    .evs = {0, 0, 0, 60, 60, 60},
+    .abilityNums = 2,
+    .species = 828,
     }
 };
 
@@ -61615,20 +61654,33 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Cristin1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroTreecko[] = {
-    {
+static const struct TrainerMonItemCustomMoves sParty_MayRustboroTreecko[] = {
+{
     .iv = 25,
-    .lvl = 13,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .lvl = 15,
+    .evs = {4, 0, 0, 252, 0, 252},
     .abilityNums = 0,
-    .species = 270,
+    .species = 607,
+    .heldItem = 0,
+    .moves = {506, 261, 109, 107}
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .evs = {0, 0, 0, 0, 0, 0},
+    .lvl = 16,
+    .evs = {52, 252, 0, 0, 0, 204},
     .abilityNums = 0,
-    .species = 255,
+    .species = 170,
+    .heldItem = 0,
+    .moves = {61, 86, 486, 48}
+    },
+    {
+    .iv = 50,
+    .lvl = 17,
+    .evs = {0, 252, 4, 0, 0, 252},
+    .abilityNums = 0,
+    .species = 15,
+    .heldItem = 406,
+    .moves = {228, 31, 40, 182}
     }
 };
 
@@ -63260,21 +63312,21 @@ static const struct TrainerMonItemCustomMoves sParty_Juan5[] = {
 static const struct TrainerMonItemCustomMoves sParty_Angelo[] = {
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 22,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 314,
-    .heldItem = 0,
-    .moves = {351, 98, 204, 0}
+    .species = 878,
+    .heldItem = 229,
+    .moves = {205, 523, 23, 249}
     },
     {
     .iv = 100,
-    .lvl = 17,
+    .lvl = 22,
     .evs = {0, 0, 0, 0, 0, 0},
     .abilityNums = 0,
-    .species = 313,
-    .heldItem = 0,
-    .moves = {351, 98, 109, 0}
+    .species = 597,
+    .heldItem = 229,
+    .moves = {275, 232, 430, 42}
     }
 };
 
@@ -64420,7 +64472,7 @@ const u8 gTrainerClassNames[][13] = {
     [0x11] = _("Interviewer"),
     [0x12] = _("Tuber♀"),
     [0x13] = _("Tuber♂"),
-    [0x14] = _("Lady"),
+    [0x14] = _("Worker"),
     [0x15] = _("Beauty"),
     [0x16] = _("Rich Boy"),
     [0x17] = _("Pokémaniac"),
@@ -64600,9 +64652,9 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = 0x14,
-        .encounterMusic_gender = (1 << 7) | 1,
+        .encounterMusic_gender = 11,
         .trainerPic = 21,
-        .trainerName = _("Lilith"),
+        .trainerName = _("Arnold"),
         .items = {},
         .doubleBattle = 0,
         .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
@@ -64963,13 +65015,13 @@ const struct Trainer gTrainers[] = {
     [35] =
     {
         .partyFlags = 0,
-        .trainerClass = 0xe,
-        .encounterMusic_gender = (1 << 7) | 3,
-        .trainerPic = 14,
-        .trainerName = _("LEAH"),
+        .trainerClass = 0x25,
+        .encounterMusic_gender = 5,
+        .trainerPic = 53,
+        .trainerName = _("Cameron"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Leah) / sizeof((sParty_Leah)[0])),
         .party = {.NoItemDefaultMoves = sParty_Leah},
     },
@@ -64977,13 +65029,13 @@ const struct Trainer gTrainers[] = {
     [36] =
     {
         .partyFlags = 0,
-        .trainerClass = 0xf,
+        .trainerClass = 0x1b,
         .encounterMusic_gender = (1 << 7) | 1,
-        .trainerPic = 15,
-        .trainerName = _("DAISY"),
+        .trainerPic = 30,
+        .trainerName = _("Wanda"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Daisy) / sizeof((sParty_Daisy)[0])),
         .party = {.NoItemDefaultMoves = sParty_Daisy},
     },
@@ -64991,13 +65043,13 @@ const struct Trainer gTrainers[] = {
     [37] =
     {
         .partyFlags = 0,
-        .trainerClass = 0xf,
-        .encounterMusic_gender = (1 << 7) | 1,
-        .trainerPic = 15,
-        .trainerName = _("ROSE"),
+        .trainerClass = 0x18,
+        .encounterMusic_gender = 4,
+        .trainerPic = 27,
+        .trainerName = _("Johnny"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Rose1) / sizeof((sParty_Rose1)[0])),
         .party = {.NoItemDefaultMoves = sParty_Rose1},
     },
@@ -66069,13 +66121,13 @@ const struct Trainer gTrainers[] = {
     [114] =
     {
         .partyFlags = (1 << 1),
-        .trainerClass = 0x14,
-        .encounterMusic_gender = (1 << 7) | 1,
-        .trainerPic = 21,
-        .trainerName = _("CINDY"),
+        .trainerClass = 0x2,
+        .encounterMusic_gender = 11,
+        .trainerPic = 0,
+        .trainerName = _("Preston"),
         .items = {34, 0, 0, 0},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Cindy1) / sizeof((sParty_Cindy1)[0])),
         .party = {.ItemDefaultMoves = sParty_Cindy1},
     },
@@ -66377,13 +66429,13 @@ const struct Trainer gTrainers[] = {
     [136] =
     {
         .partyFlags = (1 << 1),
-        .trainerClass = 0x16,
-        .encounterMusic_gender = 13,
-        .trainerPic = 23,
-        .trainerName = _("WINSTON"),
-        .items = {34, 0, 0, 0},
+        .trainerClass = 0x30,
+        .encounterMusic_gender = (1 << 7) | 4,
+        .trainerPic = 20,
+        .trainerName = _("Abigail"),
+        .items = {34, 38, 81, 85},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Winston1) / sizeof((sParty_Winston1)[0])),
         .party = {.ItemDefaultMoves = sParty_Winston1},
     },
@@ -67147,13 +67199,13 @@ const struct Trainer gTrainers[] = {
     [191] =
     {
         .partyFlags = (1 << 0),
-        .trainerClass = 0x18,
+        .trainerClass = 0x7,
         .encounterMusic_gender = 4,
-        .trainerPic = 27,
-        .trainerName = _("KIRK"),
+        .trainerPic = 5,
+        .trainerName = _("Travis"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Kirk) / sizeof((sParty_Kirk)[0])),
         .party = {.NoItemCustomMoves = sParty_Kirk},
     },
@@ -67189,13 +67241,13 @@ const struct Trainer gTrainers[] = {
     [194] =
     {
         .partyFlags = 0,
-        .trainerClass = 0x18,
-        .encounterMusic_gender = 4,
-        .trainerPic = 27,
-        .trainerName = _("SHAWN"),
+        .trainerClass = 0x14,
+        .encounterMusic_gender = 11,
+        .trainerPic = 21,
+        .trainerName = _("Sean"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Shawn) / sizeof((sParty_Shawn)[0])),
         .party = {.NoItemDefaultMoves = sParty_Shawn},
     },
@@ -68187,7 +68239,7 @@ const struct Trainer gTrainers[] = {
         .encounterMusic_gender = (1 << 7) | 1,
         .trainerPic = 40,
         .trainerName = _("Polter"),
-        .items = {0, 0, 0, 0},
+        .items = {86, 84, 82, 84},
         .doubleBattle = 0,
         .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Roxanne1) / sizeof((sParty_Roxanne1)[0])),
@@ -68214,10 +68266,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x20,
         .encounterMusic_gender = 0,
         .trainerPic = 42,
-        .trainerName = _("WATTSON"),
-        .items = {37, 37, 0, 0},
+        .trainerName = _("Smithie"),
+        .items = {37, 37, 34, 80},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 8) | (1 << 2),
         .partySize = (size_t)(sizeof(sParty_Wattson1) / sizeof((sParty_Wattson1)[0])),
         .party = {.ItemCustomMoves = sParty_Wattson1},
     },
@@ -68942,7 +68994,7 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x25,
         .encounterMusic_gender = 0,
         .trainerPic = 53,
-        .trainerName = _("BILLY"),
+        .trainerName = _("Johnny"),
         .items = {},
         .doubleBattle = 0,
         .aiFlags = (1 << 0),
@@ -68998,10 +69050,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x25,
         .encounterMusic_gender = 0,
         .trainerPic = 53,
-        .trainerName = _("BEN"),
+        .trainerName = _("Paul"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Ben) / sizeof((sParty_Ben)[0])),
         .party = {.NoItemCustomMoves = sParty_Ben},
     },
@@ -70661,13 +70713,13 @@ const struct Trainer gTrainers[] = {
     [442] =
     {
         .partyFlags = 0,
-        .trainerClass = 0x2d,
-        .encounterMusic_gender = (1 << 7) | 8,
-        .trainerPic = 66,
-        .trainerName = _("IMANI"),
+        .trainerClass = 0x1a,
+        .encounterMusic_gender = 0,
+        .trainerPic = 29,
+        .trainerName = _("Jared"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Imani) / sizeof((sParty_Imani)[0])),
         .party = {.NoItemDefaultMoves = sParty_Imani},
     },
@@ -71235,13 +71287,13 @@ const struct Trainer gTrainers[] = {
     [483] =
     {
         .partyFlags = 0,
-        .trainerClass = 0x2e,
+        .trainerClass = 0x22,
         .encounterMusic_gender = 9,
-        .trainerPic = 67,
-        .trainerName = _("GINA & MIA"),
+        .trainerPic = 50,
+        .trainerName = _("Bess & Bri"),
         .items = {},
         .doubleBattle = 1,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_GinaAndMia1) / sizeof((sParty_GinaAndMia1)[0])),
         .party = {.NoItemDefaultMoves = sParty_GinaAndMia1},
     },
@@ -72760,7 +72812,7 @@ const struct Trainer gTrainers[] = {
 
     [592] =
     {
-        .partyFlags = 0,
+        .partyFlags = (1 << 1) | (1 << 0),
         .trainerClass = 0x32,
         .encounterMusic_gender = 0,
         .trainerPic = 71,
@@ -72769,7 +72821,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = 0,
         .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_BrendanRustboroTreecko) / sizeof((sParty_BrendanRustboroTreecko)[0])),
-        .party = {.NoItemDefaultMoves = sParty_BrendanRustboroTreecko},
+        .party = {.ItemCustomMoves = sParty_BrendanRustboroTreecko},
     },
 
     [593] =
@@ -72932,10 +72984,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x36,
         .encounterMusic_gender = (1 << 7) | 1,
         .trainerPic = 77,
-        .trainerName = _("HALEY"),
+        .trainerName = _("Hannah"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Haley1) / sizeof((sParty_Haley1)[0])),
         .party = {.NoItemDefaultMoves = sParty_Haley1},
     },
@@ -73559,13 +73611,13 @@ const struct Trainer gTrainers[] = {
     [649] =
     {
         .partyFlags = (1 << 0),
-        .trainerClass = 0x2b,
-        .encounterMusic_gender = (1 << 7) | 4,
-        .trainerPic = 64,
-        .trainerName = _("VIVIAN"),
+        .trainerClass = 0x14,
+        .encounterMusic_gender = 11,
+        .trainerPic = 21,
+        .trainerName = _("Randy"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Vivian) / sizeof((sParty_Vivian)[0])),
         .party = {.NoItemCustomMoves = sParty_Vivian},
     },
@@ -74220,10 +74272,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x27,
         .encounterMusic_gender = 11,
         .trainerPic = 55,
-        .trainerName = _("DARIAN"),
+        .trainerName = _("Elijah"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_Darian) / sizeof((sParty_Darian)[0])),
         .party = {.NoItemDefaultMoves = sParty_Darian},
     },
@@ -74500,10 +74552,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x9,
         .encounterMusic_gender = 7,
         .trainerPic = 8,
-        .trainerName = _("GRUNT"),
+        .trainerName = _("Klyve"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_GruntMagmaHideout1) / sizeof((sParty_GruntMagmaHideout1)[0])),
         .party = {.NoItemDefaultMoves = sParty_GruntMagmaHideout1},
     },
@@ -74514,10 +74566,10 @@ const struct Trainer gTrainers[] = {
         .trainerClass = 0x9,
         .encounterMusic_gender = 7,
         .trainerPic = 8,
-        .trainerName = _("GRUNT"),
+        .trainerName = _("Eustace"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_GruntMagmaHideout2) / sizeof((sParty_GruntMagmaHideout2)[0])),
         .party = {.NoItemDefaultMoves = sParty_GruntMagmaHideout2},
     },
@@ -75224,7 +75276,7 @@ const struct Trainer gTrainers[] = {
 
     [768] =
     {
-        .partyFlags = 0,
+        .partyFlags = (1 << 1) | (1 << 0),
         .trainerClass = 0x32,
         .encounterMusic_gender = (1 << 7) | 1,
         .trainerPic = 72,
@@ -75233,7 +75285,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = 0,
         .aiFlags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 8),
         .partySize = (size_t)(sizeof(sParty_MayRustboroTreecko) / sizeof((sParty_MayRustboroTreecko)[0])),
-        .party = {.NoItemDefaultMoves = sParty_MayRustboroTreecko},
+        .party = {.ItemCustomMoves = sParty_MayRustboroTreecko},
     },
 
     [769] =
@@ -75701,13 +75753,13 @@ const struct Trainer gTrainers[] = {
     [802] =
     {
         .partyFlags = (1 << 1) | (1 << 0),
-        .trainerClass = 0x1c,
+        .trainerClass = 0x7,
         .encounterMusic_gender = 3,
-        .trainerPic = 31,
-        .trainerName = _("ANGELO"),
+        .trainerPic = 5,
+        .trainerName = _("Bobby"),
         .items = {},
         .doubleBattle = 0,
-        .aiFlags = (1 << 0) | (1 << 1) | (1 << 2),
+        .aiFlags = (1 << 0) | (1 << 1) | (1 << 8) | (1 << 2),
         .partySize = (size_t)(sizeof(sParty_Angelo) / sizeof((sParty_Angelo)[0])),
         .party = {.ItemCustomMoves = sParty_Angelo},
     },

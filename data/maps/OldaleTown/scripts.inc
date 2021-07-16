@@ -13,6 +13,7 @@ OldaleTown_OnTransition: @ 81E8EA8
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
 	end
 
 Route2Raining::
@@ -44,7 +45,9 @@ TaprootTown_LeafStone::
 	end
 
 TaprootTown_Azumarill::
+	playmoncry SPECIES_AZUMARILL, 0
 	msgbox Azumarill, MSGBOX_NPC
+	waitmoncry
 	end
 
 Azumarill:
@@ -251,8 +254,9 @@ NickitAlreadyShown::
 	end
 
 NickitCheckPassed::
-	msgbox YouHaveANickit, MSGBOX_SIGN
-	giveitem ITEM_EXP_SHARE, 1
+	msgbox YouHaveANickit, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_TM61, 1
 	playfanfare MUS_REGISTER_MATCH_CALL
 	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_2
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_2
@@ -270,7 +274,7 @@ YouHaveANickit:
 	.string "But, who even needs other Pokémon when\n"
 	.string "you have a Nickit?$"
 
-ExplainExpShareText:
+Text_TM61:
 	.string "The Exp. Share will allow your Pokémon\n"
 	.string "to share their experience together!\p"
 	.string "But, who even needs other Pokémon when\n"
@@ -315,10 +319,15 @@ SonCheckIfActive::
 	end
 
 SonBattleForQuestTaproot::
-	trainerbattle_single TRAINER_MARCEL, TaprootTown_Text_WilliamIntro, TaprootTown_Text_WilliamDefeat
+	trainerbattle_single TRAINER_MARCEL, TaprootTown_Text_WilliamIntro, TaprootTown_Text_WilliamDefeat, TaprootTownSetQuest3Objective
+	releaseall
+	end
+
+TaprootTownSetQuest3Objective::
 	setflag FLAG_DEFEATED_SON_TAPROOT
-	msgbox TaprootTown_Text_WilliamPostBattle, MSGBOX_AUTOCLOSE
-	release
+	msgbox TaprootTown_Text_WilliamPostBattle, MSGBOX_DEFAULT
+	closemessage
+	releaseall
 	end
 
 ActivateQuest3Script::
@@ -340,8 +349,8 @@ TaprootTown_Text_WilliamIntro:
 	.string "So, another Trainer thinks they can take\n"
 	.string "on my Pokémon team?\p"
 	.string "I make them train all day and night! No\n"
-	.string "Pokémon worth catching gets too tired to\l"
-	.string "battle chumps like you!\p"
+	.string "Pokémon worth catching gets too tired\l"
+	.string "to battle chumps like you!\p"
 	.string "Huh? You think I'm treating my Pokémon\n"
 	.string "like tools?\p"
 	.string "I'm treating them like the fighters they\n"
@@ -354,8 +363,8 @@ TaprootTown_Text_WilliamDefeat:
 
 TaprootTown_Text_WilliamPostBattle:
 	.string "Thank you for opening my eyes. I never\n"
-	.string "realized how much my attitude towards my\l"
-	.string "Pokémon was affecting their well-being.\p"
+	.string "realized how much my attitude towards\l"
+	.string "Pokémon could affect their well-being.\p"
 	.string "I promise to give them breaks and not\n"
 	.string "push them so hard.$"
 
@@ -470,7 +479,7 @@ RivalFightQuick0::
 	closemessage
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer0
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto ShowRavynnQuick
@@ -482,7 +491,7 @@ RivalFightQuick1::
 	closemessage
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto ShowRavynnQuick
@@ -581,6 +590,7 @@ TaprootTown_EventScript_AfterRavynnBattle:
 	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_QUANTUM_QUEST_4
 	clearflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
 	fadedefaultbgm
 	releaseall
 	end
@@ -602,8 +612,8 @@ RavynnLeaves:
 ImSureWellMeetAgain:
 	.string "Ravynn: Interesting. I held back and\n"
 	.string "you still struggled to defeat me.\p"
-	.string "You're lucky I was in a good mood for\n"
-	.string "that battle, {PLAYER}.\p"
+	.string "You're lucky my Shadow Pokémon haven't\n"
+	.string "reached their full power yet, {PLAYER}.\p"
 	.string "Still, you're stronger than I thought.\n"
 	.string "I'll be watching your progress closely.\p"
 	.string "I'm sure we'll meet again, in due time.$"
@@ -706,7 +716,7 @@ OldaleTown_Text_SavingMyProgress: @ 81E918E
 
 WannaKnowSecretText: @ 81E918E
 	.string "Hey, kid. Wanna know a secret?\p"
-	.string "Sometimes you can find hiddem items\n"
+	.string "Sometimes you can find hidden items\n"
 	.string "in nooks and crannies like this one.\p"
 	.string "There might even be something down in\n"
 	.string "that corner if you press the A Button.$"

@@ -9413,10 +9413,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_NUZZLE] =
     {
         .effect = EFFECT_PARALYZE_HIT,
-        .power = 20,
+        .power = 60,
         .type = TYPE_ELECTRIC,
-        .accuracy = 100,
-        .pp = 20,
+        .accuracy = 90,
+        .pp = 15,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,

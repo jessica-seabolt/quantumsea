@@ -3331,29 +3331,36 @@ gText_BirchInTrouble:
 	.byte	0xd8
 	.byte	0xb8
 	.byte	0x0
-	.byte	0xfd
-	.byte	0x23
-	.byte	0xad
-	.byte	0xfe
-	.byte	0xbd
+	.byte	0xe8
 	.byte	0xdc
-	.byte	0xe3
-	.byte	0xe3
-	.byte	0xe7
 	.byte	0xd9
+	.byte	0xed
 	.byte	0x0
-	.byte	0xd5
-	.byte	0x0
-	.byte	0xca
-	.byte	0xe3
-	.byte	0xdf
-	.byte	0x1b
-	.byte	0xe1
+	.byte	0xd8
 	.byte	0xe3
 	.byte	0xe2
+	.byte	0xb4
+	.byte	0xe8
+	.byte	0x0
+	.byte	0xd6
+	.byte	0xdd
+	.byte	0xe8
+	.byte	0xd9
+	.byte	0xab
+	.byte	0xfe
+	.byte	0xad
+	.byte	0xad
+	.byte	0xad
+	.byte	0xcf
+	.byte	0xe7
+	.byte	0xe9
+	.byte	0xd5
+	.byte	0xe0
+	.byte	0xe0
+	.byte	0xed
 	.byte	0xab
 	.byte	0xff
-	.size	 gText_BirchInTrouble,40
+	.size	 gText_BirchInTrouble,47
 	.globl	gText_ConfirmStarterChoice
 	.type	 gText_ConfirmStarterChoice,object
 gText_ConfirmStarterChoice:
@@ -33112,29 +33119,36 @@ gText_RecordMixingComplete:
 	.globl	gText_YourName
 	.type	 gText_YourName,object
 gText_YourName:
-	.byte	0xd3
-	.byte	0xc9
-	.byte	0xcf
-	.byte	0xcc
+	.byte	0xd1
+	.byte	0xdc
+	.byte	0xd5
+	.byte	0xe8
+	.byte	0xb4
+	.byte	0xe7
 	.byte	0x0
-	.byte	0xc8
-	.byte	0xbb
-	.byte	0xc7
-	.byte	0xbf
+	.byte	0xed
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xe2
+	.byte	0xd5
+	.byte	0xe1
+	.byte	0xd9
 	.byte	0xac
 	.byte	0xff
-	.size	 gText_YourName,11
+	.size	 gText_YourName,18
 	.globl	gText_BoxName
 	.type	 gText_BoxName,object
 gText_BoxName:
 	.byte	0xbc
-	.byte	0xc9
-	.byte	0xd2
+	.byte	0xe3
+	.byte	0xec
 	.byte	0x0
 	.byte	0xc8
-	.byte	0xbb
-	.byte	0xc7
-	.byte	0xbf
+	.byte	0xd5
+	.byte	0xe1
+	.byte	0xd9
 	.byte	0xac
 	.byte	0xff
 	.size	 gText_BoxName,10
@@ -38755,54 +38769,61 @@ gText_SideQuestName_6:
 	.globl	gText_SideQuestName_7
 	.type	 gText_SideQuestName_7,object
 gText_SideQuestName_7:
-	.byte	0xcd
-	.byte	0xdd
-	.byte	0xd8
-	.byte	0xd9
+	.byte	0xd0
 	.byte	0x0
-	.byte	0xcb
+	.byte	0xda
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xd0
+	.byte	0xd9
+	.byte	0xe2
 	.byte	0xe9
-	.byte	0xd9
 	.byte	0xe7
-	.byte	0xe8
-	.byte	0x0
-	.byte	0xa8
+	.byte	0xd5
+	.byte	0xe9
+	.byte	0xe6
 	.byte	0xff
-	.size	 gText_SideQuestName_7,13
+	.size	 gText_SideQuestName_7,15
 	.globl	gText_SideQuestName_8
 	.type	 gText_SideQuestName_8,object
 gText_SideQuestName_8:
-	.byte	0xcd
+	.byte	0xbe
+	.byte	0xd5
+	.byte	0x0
+	.byte	0xd0
 	.byte	0xdd
+	.byte	0xd7
+	.byte	0xe8
+	.byte	0xdd
+	.byte	0xe2
+	.byte	0xdd
+	.byte	0x0
+	.byte	0xbd
+	.byte	0xe3
 	.byte	0xd8
 	.byte	0xd9
-	.byte	0x0
-	.byte	0xcb
-	.byte	0xe9
-	.byte	0xd9
-	.byte	0xe7
-	.byte	0xe8
-	.byte	0x0
-	.byte	0xa9
 	.byte	0xff
-	.size	 gText_SideQuestName_8,13
+	.size	 gText_SideQuestName_8,16
 	.globl	gText_SideQuestName_9
 	.type	 gText_SideQuestName_9,object
 gText_SideQuestName_9:
-	.byte	0xcd
-	.byte	0xdd
-	.byte	0xd8
+	.byte	0xd1
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0xe6
 	.byte	0xd9
 	.byte	0x0
-	.byte	0xcb
+	.byte	0xbb
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xbd
+	.byte	0xdc
 	.byte	0xe9
-	.byte	0xd9
-	.byte	0xe7
-	.byte	0xe8
-	.byte	0x0
-	.byte	0xaa
+	.byte	0xac
 	.byte	0xff
-	.size	 gText_SideQuestName_9,13
+	.size	 gText_SideQuestName_9,15
 	.globl	gText_SideQuestName_10
 	.type	 gText_SideQuestName_10,object
 gText_SideQuestName_10:
@@ -39598,57 +39619,216 @@ gText_SideQuestDesc_6:
 	.globl	gText_SideQuestDesc_7
 	.type	 gText_SideQuestDesc_7,object
 gText_SideQuestDesc_7:
-	.byte	0xbe
-	.byte	0xd9
-	.byte	0xe7
-	.byte	0xd7
-	.byte	0xe6
-	.byte	0xdd
+	.byte	0xbd
+	.byte	0xd5
 	.byte	0xe4
 	.byte	0xe8
-	.byte	0xdd
+	.byte	0xe9
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xd5
+	.byte	0x0
+	.byte	0xd0
+	.byte	0xd9
+	.byte	0xe2
+	.byte	0xe9
+	.byte	0xe7
+	.byte	0xd5
+	.byte	0xe9
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xda
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xe8
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xe3
+	.byte	0xe0
+	.byte	0xd8
+	.byte	0xfe
+	.byte	0xeb
+	.byte	0xe3
+	.byte	0xe1
+	.byte	0xd5
+	.byte	0xe2
+	.byte	0x0
 	.byte	0xe3
 	.byte	0xe2
 	.byte	0x0
-	.byte	0xa8
+	.byte	0xcc
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe8
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xa2
+	.byte	0xa1
+	.byte	0xa5
+	.byte	0x0
+	.byte	0xe8
+	.byte	0xe3
+	.byte	0x0
+	.byte	0xd9
+	.byte	0xd5
+	.byte	0xe6
+	.byte	0xe2
+	.byte	0x0
+	.byte	0xd5
+	.byte	0xe2
+	.byte	0x0
+	.byte	0xbf
+	.byte	0xd9
+	.byte	0xea
+	.byte	0xd9
+	.byte	0xd9
+	.byte	0xab
 	.byte	0xff
-	.size	 gText_SideQuestDesc_7,14
+	.size	 gText_SideQuestDesc_7,68
 	.globl	gText_SideQuestDesc_8
 	.type	 gText_SideQuestDesc_8,object
 gText_SideQuestDesc_8:
-	.byte	0xbe
-	.byte	0xd9
-	.byte	0xe7
-	.byte	0xd7
+	.byte	0xbc
 	.byte	0xe6
+	.byte	0xd9
+	.byte	0xd5
+	.byte	0xdf
+	.byte	0x0
+	.byte	0xdd
+	.byte	0xe2
+	.byte	0xe8
+	.byte	0xe3
+	.byte	0x0
+	.byte	0xbd
 	.byte	0xdd
 	.byte	0xe4
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xbd
+	.byte	0xd5
+	.byte	0xea
+	.byte	0xd9
+	.byte	0xe6
+	.byte	0xe2
+	.byte	0xe7
+	.byte	0x0
+	.byte	0xd5
+	.byte	0xe2
+	.byte	0xd8
+	.byte	0xfe
+	.byte	0xe8
+	.byte	0xd5
+	.byte	0xdf
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe8
+	.byte	0x0
+	.byte	0xe8
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xd9
+	.byte	0xea
+	.byte	0xdd
+	.byte	0xe0
+	.byte	0x0
+	.byte	0xdb
+	.byte	0xd5
+	.byte	0xe2
+	.byte	0xdb
+	.byte	0x0
+	.byte	0xda
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0x0
+	.byte	0xe8
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xd5
+	.byte	0xe6
 	.byte	0xe8
 	.byte	0xdd
-	.byte	0xe3
-	.byte	0xe2
-	.byte	0x0
-	.byte	0xa9
+	.byte	0xe7
+	.byte	0xe8
+	.byte	0xab
 	.byte	0xff
-	.size	 gText_SideQuestDesc_8,14
+	.size	 gText_SideQuestDesc_8,69
 	.globl	gText_SideQuestDesc_9
 	.type	 gText_SideQuestDesc_9,object
 gText_SideQuestDesc_9:
-	.byte	0xbe
-	.byte	0xd9
-	.byte	0xe7
-	.byte	0xd7
-	.byte	0xe6
-	.byte	0xdd
-	.byte	0xe4
-	.byte	0xe8
-	.byte	0xdd
+	.byte	0xc6
 	.byte	0xe3
+	.byte	0xd7
+	.byte	0xd5
+	.byte	0xe8
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xe8
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xe1
+	.byte	0xdd
+	.byte	0xe7
+	.byte	0xe7
+	.byte	0xdd
+	.byte	0xe2
+	.byte	0xdb
+	.byte	0x0
+	.byte	0xca
+	.byte	0xdd
+	.byte	0xdf
+	.byte	0xd5
+	.byte	0xd7
+	.byte	0xdc
+	.byte	0xe9
+	.byte	0x0
+	.byte	0xda
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0xfe
+	.byte	0xe8
+	.byte	0xdc
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xed
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe2
+	.byte	0xdb
+	.byte	0x0
+	.byte	0xd6
+	.byte	0xe3
+	.byte	0xed
+	.byte	0x0
+	.byte	0xdd
 	.byte	0xe2
 	.byte	0x0
-	.byte	0xaa
+	.byte	0xc3
+	.byte	0xe6
+	.byte	0xdd
+	.byte	0xd8
+	.byte	0xdd
+	.byte	0xe9
+	.byte	0xe1
+	.byte	0x0
+	.byte	0xbc
+	.byte	0xe0
+	.byte	0xe9
+	.byte	0xda
+	.byte	0xda
+	.byte	0xe7
+	.byte	0xab
 	.byte	0xff
-	.size	 gText_SideQuestDesc_9,14
+	.size	 gText_SideQuestDesc_9,64
 	.globl	gText_SideQuestDesc_10
 	.type	 gText_SideQuestDesc_10,object
 gText_SideQuestDesc_10:
@@ -40084,65 +40264,66 @@ gText_SideQuestPOC_2:
 	.globl	gText_SideQuestPOC_3
 	.type	 gText_SideQuestPOC_3,object
 gText_SideQuestPOC_3:
-	.byte	0xd1
-	.byte	0xdd
-	.byte	0xe0
-	.byte	0xe0
-	.byte	0xdd
-	.byte	0xd5
-	.byte	0xe1
-	.byte	0xb4
-	.byte	0xe7
-	.byte	0x0
-	.byte	0xc7
+	.byte	0xbd
 	.byte	0xe3
-	.byte	0xe1
+	.byte	0xe2
+	.byte	0xd7
+	.byte	0xd9
+	.byte	0xe6
+	.byte	0xe2
+	.byte	0xd9
+	.byte	0xd8
+	.byte	0x0
+	.byte	0xd1
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0xdf
+	.byte	0xd9
+	.byte	0xe6
 	.byte	0xff
-	.size	 gText_SideQuestPOC_3,14
+	.size	 gText_SideQuestPOC_3,17
 	.globl	gText_SideQuestPOC_4
 	.type	 gText_SideQuestPOC_4,object
 gText_SideQuestPOC_4:
-	.byte	0xcd
+	.byte	0xbf
+	.byte	0xe7
+	.byte	0xd7
+	.byte	0xd5
 	.byte	0xe4
 	.byte	0xd9
-	.byte	0xd7
-	.byte	0xe8
-	.byte	0xe6
-	.byte	0xd9
 	.byte	0x0
-	.byte	0xbd
-	.byte	0xdd
-	.byte	0xe8
-	.byte	0xed
+	.byte	0xcc
+	.byte	0xe3
+	.byte	0xe4
+	.byte	0xd9
 	.byte	0x0
 	.byte	0xc6
 	.byte	0xd5
 	.byte	0xe7
 	.byte	0xe7
 	.byte	0xff
-	.size	 gText_SideQuestPOC_4,18
+	.size	 gText_SideQuestPOC_4,17
 	.globl	gText_SideQuestPOC_5
 	.type	 gText_SideQuestPOC_5,object
 gText_SideQuestPOC_5:
-	.byte	0xcd
+	.byte	0xbf
+	.byte	0xe7
+	.byte	0xd7
+	.byte	0xd5
 	.byte	0xe4
 	.byte	0xd9
-	.byte	0xd7
-	.byte	0xe8
-	.byte	0xe6
-	.byte	0xd9
 	.byte	0x0
-	.byte	0xbd
-	.byte	0xdd
-	.byte	0xe8
-	.byte	0xed
+	.byte	0xcc
+	.byte	0xe3
+	.byte	0xe4
+	.byte	0xd9
 	.byte	0x0
 	.byte	0xc6
 	.byte	0xd5
 	.byte	0xe7
 	.byte	0xe7
 	.byte	0xff
-	.size	 gText_SideQuestPOC_5,18
+	.size	 gText_SideQuestPOC_5,17
 	.globl	gText_SideQuestPOC_6
 	.type	 gText_SideQuestPOC_6,object
 gText_SideQuestPOC_6:
@@ -40163,33 +40344,49 @@ gText_SideQuestPOC_6:
 	.globl	gText_SideQuestPOC_7
 	.type	 gText_SideQuestPOC_7,object
 gText_SideQuestPOC_7:
-	.byte	0xca
 	.byte	0xc9
-	.byte	0xbd
+	.byte	0xe0
+	.byte	0xd8
 	.byte	0x0
-	.byte	0xa8
+	.byte	0xd1
+	.byte	0xe3
+	.byte	0xe1
+	.byte	0xd5
+	.byte	0xe2
 	.byte	0xff
-	.size	 gText_SideQuestPOC_7,6
+	.size	 gText_SideQuestPOC_7,10
 	.globl	gText_SideQuestPOC_8
 	.type	 gText_SideQuestPOC_8,object
 gText_SideQuestPOC_8:
-	.byte	0xca
-	.byte	0xc9
-	.byte	0xbd
+	.byte	0xc6
+	.byte	0xd9
+	.byte	0xd5
+	.byte	0xdb
+	.byte	0xe9
+	.byte	0xd9
 	.byte	0x0
-	.byte	0xa9
+	.byte	0xbb
+	.byte	0xe6
+	.byte	0xe8
+	.byte	0xdd
+	.byte	0xe7
+	.byte	0xe8
 	.byte	0xff
-	.size	 gText_SideQuestPOC_8,6
+	.size	 gText_SideQuestPOC_8,14
 	.globl	gText_SideQuestPOC_9
 	.type	 gText_SideQuestPOC_9,object
 gText_SideQuestPOC_9:
-	.byte	0xca
-	.byte	0xc9
-	.byte	0xbd
-	.byte	0x0
-	.byte	0xaa
+	.byte	0xcd
+	.byte	0xd7
+	.byte	0xdc
+	.byte	0xe3
+	.byte	0xe3
+	.byte	0xe0
+	.byte	0xd6
+	.byte	0xe3
+	.byte	0xed
 	.byte	0xff
-	.size	 gText_SideQuestPOC_9,6
+	.size	 gText_SideQuestPOC_9,10
 	.globl	gText_SideQuestPOC_10
 	.type	 gText_SideQuestPOC_10,object
 gText_SideQuestPOC_10:
@@ -40495,24 +40692,20 @@ gText_SideQuestMap_4:
 	.globl	gText_SideQuestMap_5
 	.type	 gText_SideQuestMap_5,object
 gText_SideQuestMap_5:
-	.byte	0xce
-	.byte	0xe6
-	.byte	0xd5
-	.byte	0xdd
-	.byte	0xe2
-	.byte	0xd9
-	.byte	0xe6
-	.byte	0xb4
-	.byte	0xe7
-	.byte	0x0
 	.byte	0xcd
+	.byte	0xe4
+	.byte	0xd9
 	.byte	0xd7
-	.byte	0xdc
-	.byte	0xe3
-	.byte	0xe3
-	.byte	0xe0
+	.byte	0xe8
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xbd
+	.byte	0xdd
+	.byte	0xe8
+	.byte	0xed
 	.byte	0xff
-	.size	 gText_SideQuestMap_5,17
+	.size	 gText_SideQuestMap_5,13
 	.globl	gText_SideQuestMap_6
 	.type	 gText_SideQuestMap_6,object
 gText_SideQuestMap_6:
@@ -40533,33 +40726,55 @@ gText_SideQuestMap_6:
 	.globl	gText_SideQuestMap_7
 	.type	 gText_SideQuestMap_7,object
 gText_SideQuestMap_7:
-	.byte	0xc7
-	.byte	0xd5
-	.byte	0xe4
+	.byte	0xcc
+	.byte	0xe3
+	.byte	0xe9
+	.byte	0xe8
+	.byte	0xd9
 	.byte	0x0
-	.byte	0xa8
+	.byte	0xa2
+	.byte	0xa1
+	.byte	0xa5
 	.byte	0xff
-	.size	 gText_SideQuestMap_7,6
+	.size	 gText_SideQuestMap_7,10
 	.globl	gText_SideQuestMap_8
 	.type	 gText_SideQuestMap_8,object
 gText_SideQuestMap_8:
-	.byte	0xc7
-	.byte	0xd5
-	.byte	0xe4
+	.byte	0xc3
+	.byte	0xe6
+	.byte	0xdd
+	.byte	0xd8
+	.byte	0xdd
+	.byte	0xe9
+	.byte	0xe1
 	.byte	0x0
-	.byte	0xa9
+	.byte	0xbc
+	.byte	0xc6
+	.byte	0xe9
+	.byte	0xda
+	.byte	0xda
+	.byte	0xe7
 	.byte	0xff
-	.size	 gText_SideQuestMap_8,6
+	.size	 gText_SideQuestMap_8,15
 	.globl	gText_SideQuestMap_9
 	.type	 gText_SideQuestMap_9,object
 gText_SideQuestMap_9:
-	.byte	0xc7
-	.byte	0xd5
-	.byte	0xe4
+	.byte	0xc3
+	.byte	0xe6
+	.byte	0xdd
+	.byte	0xd8
+	.byte	0xdd
+	.byte	0xe9
+	.byte	0xe1
 	.byte	0x0
-	.byte	0xaa
+	.byte	0xbc
+	.byte	0xe0
+	.byte	0xe9
+	.byte	0xda
+	.byte	0xda
+	.byte	0xe7
 	.byte	0xff
-	.size	 gText_SideQuestMap_9,6
+	.size	 gText_SideQuestMap_9,15
 	.globl	gText_SideQuestMap_10
 	.type	 gText_SideQuestMap_10,object
 gText_SideQuestMap_10:
@@ -40889,42 +41104,46 @@ gText_SideQuestReward_6:
 	.globl	gText_SideQuestReward_7
 	.type	 gText_SideQuestReward_7,object
 gText_SideQuestReward_7:
-	.byte	0xcc
+	.byte	0xbf
 	.byte	0xd9
-	.byte	0xeb
-	.byte	0xd5
-	.byte	0xe6
-	.byte	0xd8
-	.byte	0x0
-	.byte	0xa8
+	.byte	0xea
+	.byte	0xd9
+	.byte	0xd9
 	.byte	0xff
-	.size	 gText_SideQuestReward_7,9
+	.size	 gText_SideQuestReward_7,6
 	.globl	gText_SideQuestReward_8
 	.type	 gText_SideQuestReward_8,object
 gText_SideQuestReward_8:
-	.byte	0xcc
-	.byte	0xd9
-	.byte	0xeb
+	.byte	0xc7
 	.byte	0xd5
+	.byte	0xe7
+	.byte	0xe8
+	.byte	0xd9
 	.byte	0xe6
-	.byte	0xd8
 	.byte	0x0
-	.byte	0xa9
+	.byte	0xbc
+	.byte	0xd5
+	.byte	0xe0
+	.byte	0xe0
 	.byte	0xff
-	.size	 gText_SideQuestReward_8,9
+	.size	 gText_SideQuestReward_8,12
 	.globl	gText_SideQuestReward_9
 	.type	 gText_SideQuestReward_9,object
 gText_SideQuestReward_9:
-	.byte	0xcc
-	.byte	0xd9
-	.byte	0xeb
-	.byte	0xd5
-	.byte	0xe6
+	.byte	0xce
+	.byte	0xdc
+	.byte	0xe9
+	.byte	0xe2
 	.byte	0xd8
-	.byte	0x0
-	.byte	0xaa
+	.byte	0xd9
+	.byte	0xe6
+	.byte	0xe7
+	.byte	0xe8
+	.byte	0xe3
+	.byte	0xe2
+	.byte	0xd9
 	.byte	0xff
-	.size	 gText_SideQuestReward_9,9
+	.size	 gText_SideQuestReward_9,13
 	.globl	gText_SideQuestReward_10
 	.type	 gText_SideQuestReward_10,object
 gText_SideQuestReward_10:
@@ -64327,7 +64546,7 @@ gText_SideQuestReward_30:
 	.4byte	0xdab3
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x27
+	.byte	0x2e
 	.byte	0x0
 	.byte	0x22
 	.ascii	"gText_BirchInTrouble\000"
@@ -87155,7 +87374,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e0dd
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xc
+	.byte	0xe
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestName_7\000"
@@ -87173,7 +87392,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e113
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xc
+	.byte	0xf
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestName_8\000"
@@ -87191,7 +87410,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e149
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xc
+	.byte	0xe
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestName_9\000"
@@ -87695,7 +87914,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e746
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xd
+	.byte	0x43
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestDesc_7\000"
@@ -87713,7 +87932,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e77c
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xd
+	.byte	0x44
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestDesc_8\000"
@@ -87731,7 +87950,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1e7b2
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xd
+	.byte	0x3f
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestDesc_9\000"
@@ -88163,7 +88382,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1ecd5
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xd
+	.byte	0x10
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_3\000"
@@ -88181,7 +88400,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1ed0a
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x11
+	.byte	0x10
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_4\000"
@@ -88199,7 +88418,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1ed3f
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x11
+	.byte	0x10
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_5\000"
@@ -88235,7 +88454,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1eda9
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0x9
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_7\000"
@@ -88253,7 +88472,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1edde
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0xd
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_8\000"
@@ -88271,7 +88490,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1ee13
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0x9
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestPOC_9\000"
@@ -88739,7 +88958,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1f38a
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x10
+	.byte	0xc
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestMap_5\000"
@@ -88775,7 +88994,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1f3f4
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0x9
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestMap_7\000"
@@ -88793,7 +89012,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1f429
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0xe
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestMap_8\000"
@@ -88811,7 +89030,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1f45e
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x5
+	.byte	0xe
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestMap_9\000"
@@ -89315,7 +89534,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1fa51
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x8
+	.byte	0x5
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestReward_7\000"
@@ -89333,7 +89552,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1fa89
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x8
+	.byte	0xb
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestReward_8\000"
@@ -89351,7 +89570,7 @@ gText_SideQuestReward_30:
 	.4byte	0x1fac1
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0x8
+	.byte	0xc
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_SideQuestReward_9\000"
@@ -92627,7 +92846,7 @@ gText_SideQuestReward_30:
 	.4byte	0x21f54
 	.4byte	0xaf5
 	.byte	0x9
-	.byte	0xa
+	.byte	0x11
 	.byte	0x0
 	.byte	0x23
 	.ascii	"gText_YourName\000"

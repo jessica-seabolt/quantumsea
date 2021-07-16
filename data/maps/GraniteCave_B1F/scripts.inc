@@ -12,5 +12,6 @@ SpringrockPathHiker::
 SpringrockPathHikerText:
 	.string "Hey there, traveler!\p"
 	.string "Oh, me? I'm no Pokémon Trainer, but if\n"
-	.string "you go out towards Route 1, there are a\l"
-	.string "bunch of 'em waiting for you!$"
+	.string "you do see a Trainer, be ready!\p"
+	.string "As soon as your eyes meet, you're in for\n"
+	.string "a Pokémon Battle!$"

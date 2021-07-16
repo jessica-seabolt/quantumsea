@@ -12674,7 +12674,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -12768,7 +12768,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -17331,13 +17331,13 @@ static const u16 sSideQuestDifficultyItemIds[] =
 static const u8 sSideQuestDifficulties[(29 + 1)] =
 {
     [0] = QUEST_DIFFICULTY_EASY,
-    [1] = QUEST_DIFFICULTY_MEDIUM,
-    [2] = QUEST_DIFFICULTY_EXTREME,
-    [3] = QUEST_DIFFICULTY_EASY,
-    [4] = QUEST_DIFFICULTY_EASY,
+    [1] = QUEST_DIFFICULTY_EASY,
+    [2] = QUEST_DIFFICULTY_MEDIUM,
+    [3] = QUEST_DIFFICULTY_HARD,
+    [4] = QUEST_DIFFICULTY_MEDIUM,
     [5] = QUEST_DIFFICULTY_EASY,
-    [6] = QUEST_DIFFICULTY_EASY,
-    [7] = QUEST_DIFFICULTY_EASY,
+    [6] = QUEST_DIFFICULTY_MEDIUM,
+    [7] = QUEST_DIFFICULTY_EXTREME,
     [8] = QUEST_DIFFICULTY_EASY,
     [9] = QUEST_DIFFICULTY_EASY,
     [10] = QUEST_DIFFICULTY_EASY,

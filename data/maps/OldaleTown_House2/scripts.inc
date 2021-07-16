@@ -10,8 +10,8 @@ OldaleTown_House2_EventScript_Man:: @ 81FBF64
 	end
 
 OldaleTown_House2_Text_PokemonLevelUp: @ 81FBF6D
-	.string "My grandson Wes wants to go all the way to\n"
-	.string "Orre someday.\p"
+	.string "My grandson Wes wants to go all the way\n"
+	.string "to Orre someday.\p"
 	.string "I know he loves the desert, but it's too\n"
 	.string "dangerous. It's been overrun by thugs.$"
 

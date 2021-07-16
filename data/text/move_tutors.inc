@@ -30,7 +30,7 @@ MoveTutor_Text_RolloutTeach: @ 82C6FDB
 	.string "without changing direction?\p"
 	.string "I might even be able to roll\n"
 	.string "that way.\p"
-	.string "Do you think your POKéMON will\n"
+	.string "Do you think your Pokémon will\n"
 	.string "want to roll, too?\p"
 	.string "I can teach one the move ROLLOUT\n"
 	.string "if you'd like.$"

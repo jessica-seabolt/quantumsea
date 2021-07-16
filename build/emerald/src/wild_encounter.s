@@ -37,39 +37,39 @@ gIsFishingEncounter:
 	.type	 gRoute101_LandMons,object
 gRoute101_LandMons:
 	.byte	0x2
+	.byte	0x4
+	.short	0x107
 	.byte	0x2
-	.short	0x3d4
-	.byte	0x2
-	.byte	0x2
+	.byte	0x4
 	.short	0x18c
 	.byte	0x2
-	.byte	0x2
-	.short	0x18f
-	.byte	0x3
-	.byte	0x3
-	.short	0x10
-	.byte	0x3
-	.byte	0x3
-	.short	0x45
-	.byte	0x3
-	.byte	0x3
-	.short	0xb3
-	.byte	0x3
-	.byte	0x3
-	.short	0x33f
 	.byte	0x4
+	.short	0x18f
+	.byte	0x2
+	.byte	0x4
+	.short	0x10
+	.byte	0x2
+	.byte	0x4
+	.short	0x45
+	.byte	0x2
+	.byte	0x4
+	.short	0xb3
+	.byte	0x2
+	.byte	0x4
+	.short	0x3d4
+	.byte	0x2
 	.byte	0x4
 	.short	0x3e8
+	.byte	0x2
 	.byte	0x4
-	.byte	0x4
-	.short	0xac
-	.byte	0x4
+	.short	0x3a
+	.byte	0x2
 	.byte	0x4
 	.short	0x298
-	.byte	0x4
+	.byte	0x2
 	.byte	0x4
 	.short	0x2a0
-	.byte	0x4
+	.byte	0x2
 	.byte	0x4
 	.short	0x25
 	.size	 gRoute101_LandMons,48
@@ -99,7 +99,7 @@ gRoute102_LandMons:
 	.short	0x38
 	.byte	0x3
 	.byte	0x5
-	.short	0xe7
+	.short	0xae
 	.byte	0x4
 	.byte	0x5
 	.short	0x10e
@@ -325,42 +325,42 @@ gRoute103_FishingMonsInfo:
 	.align	2, 0
 	.type	 gRoute104_LandMons,object
 gRoute104_LandMons:
-	.byte	0x4
-	.byte	0x4
+	.byte	0xc
+	.byte	0x12
+	.short	0x116
+	.byte	0xc
+	.byte	0x12
+	.short	0x12a
+	.byte	0xc
+	.byte	0x12
 	.short	0x105
-	.byte	0x4
-	.byte	0x4
-	.short	0x109
-	.byte	0x5
-	.byte	0x5
-	.short	0x105
-	.byte	0x5
-	.byte	0x5
-	.short	0xb7
-	.byte	0x4
-	.byte	0x4
-	.short	0xb7
-	.byte	0x5
-	.byte	0x5
-	.short	0x105
-	.byte	0x4
-	.byte	0x4
-	.short	0x114
-	.byte	0x5
-	.byte	0x5
-	.short	0x114
-	.byte	0x4
-	.byte	0x4
-	.short	0x116
-	.byte	0x4
-	.byte	0x4
-	.short	0x116
-	.byte	0x3
-	.byte	0x3
-	.short	0x116
-	.byte	0x5
-	.byte	0x5
-	.short	0x116
+	.byte	0xc
+	.byte	0x12
+	.short	0x4d
+	.byte	0xc
+	.byte	0x12
+	.short	0x3c8
+	.byte	0xc
+	.byte	0x12
+	.short	0x222
+	.byte	0xc
+	.byte	0x12
+	.short	0x1ab
+	.byte	0xc
+	.byte	0x12
+	.short	0x1be
+	.byte	0xc
+	.byte	0x12
+	.short	0x183
+	.byte	0xc
+	.byte	0x12
+	.short	0x28a
+	.byte	0xc
+	.byte	0x12
+	.short	0x1ef
+	.byte	0xc
+	.byte	0x12
+	.short	0x32a
 	.size	 gRoute104_LandMons,48
 	.globl	gRoute104_LandMonsInfo
 	.align	2, 0
@@ -379,16 +379,16 @@ gRoute104_WaterMons:
 	.short	0x116
 	.byte	0xf
 	.byte	0x19
-	.short	0x116
+	.short	0x341
 	.byte	0xf
 	.byte	0x19
-	.short	0x116
+	.short	0x153
 	.byte	0x19
 	.byte	0x1e
 	.short	0x117
 	.byte	0x19
 	.byte	0x1e
-	.short	0x117
+	.short	0x82
 	.size	 gRoute104_WaterMons,20
 	.globl	gRoute104_WaterMonsInfo
 	.align	2, 0
@@ -441,77 +441,55 @@ gRoute104_FishingMonsInfo:
 	.byte	0x1e
 	.space	3
 	.word	gRoute104_FishingMons
-	.globl	gRoute105_WaterMons
+	.globl	gRoute105_LandMons
 	.align	2, 0
-	.type	 gRoute105_WaterMons,object
-gRoute105_WaterMons:
-	.byte	0x5
-	.byte	0x23
-	.short	0x48
+	.type	 gRoute105_LandMons,object
+gRoute105_LandMons:
+	.byte	0x10
+	.byte	0x16
+	.short	0x33b
+	.byte	0x10
+	.byte	0x16
+	.short	0x3f
+	.byte	0x10
+	.byte	0x16
+	.short	0x1be
+	.byte	0x10
+	.byte	0x16
+	.short	0x11f
+	.byte	0x10
+	.byte	0x16
+	.short	0x2a2
+	.byte	0x10
+	.byte	0x16
+	.short	0x214
+	.byte	0x10
+	.byte	0x16
+	.short	0xa7
+	.byte	0x10
+	.byte	0x16
+	.short	0x364
+	.byte	0x10
+	.byte	0x16
+	.short	0x1b6
+	.byte	0x10
+	.byte	0x16
+	.short	0x4
+	.byte	0x10
+	.byte	0x16
+	.short	0x9b
+	.byte	0x10
+	.byte	0x16
+	.short	0xff
+	.size	 gRoute105_LandMons,48
+	.globl	gRoute105_LandMonsInfo
+	.align	2, 0
+	.type	 gRoute105_LandMonsInfo,object
+	.size	 gRoute105_LandMonsInfo,8
+gRoute105_LandMonsInfo:
 	.byte	0xa
-	.byte	0x1e
-	.short	0x116
-	.byte	0xf
-	.byte	0x19
-	.short	0x116
-	.byte	0x19
-	.byte	0x1e
-	.short	0x117
-	.byte	0x19
-	.byte	0x1e
-	.short	0x117
-	.size	 gRoute105_WaterMons,20
-	.globl	gRoute105_WaterMonsInfo
-	.align	2, 0
-	.type	 gRoute105_WaterMonsInfo,object
-	.size	 gRoute105_WaterMonsInfo,8
-gRoute105_WaterMonsInfo:
-	.byte	0x4
 	.space	3
-	.word	gRoute105_WaterMons
-	.globl	gRoute105_FishingMons
-	.align	2, 0
-	.type	 gRoute105_FishingMons,object
-gRoute105_FishingMons:
-	.byte	0x5
-	.byte	0xa
-	.short	0x81
-	.byte	0x5
-	.byte	0xa
-	.short	0x48
-	.byte	0xa
-	.byte	0x1e
-	.short	0x81
-	.byte	0xa
-	.byte	0x1e
-	.short	0x48
-	.byte	0xa
-	.byte	0x1e
-	.short	0x140
-	.byte	0x19
-	.byte	0x1e
-	.short	0x140
-	.byte	0x1e
-	.byte	0x23
-	.short	0x140
-	.byte	0x14
-	.byte	0x19
-	.short	0x140
-	.byte	0x23
-	.byte	0x28
-	.short	0x140
-	.byte	0x28
-	.byte	0x2d
-	.short	0x140
-	.size	 gRoute105_FishingMons,40
-	.globl	gRoute105_FishingMonsInfo
-	.align	2, 0
-	.type	 gRoute105_FishingMonsInfo,object
-	.size	 gRoute105_FishingMonsInfo,8
-gRoute105_FishingMonsInfo:
-	.byte	0x1e
-	.space	3
-	.word	gRoute105_FishingMons
+	.word	gRoute105_LandMons
 	.globl	gRoute110_LandMons
 	.align	2, 0
 	.type	 gRoute110_LandMons,object
@@ -1390,49 +1368,49 @@ gRoute124_FishingMonsInfo:
 	.align	2, 0
 	.type	 gPetalburgWoods_LandMons,object
 gPetalburgWoods_LandMons:
-	.byte	0x5
-	.byte	0x5
-	.short	0x105
-	.byte	0x5
-	.byte	0x5
-	.short	0x109
-	.byte	0x5
-	.byte	0x5
-	.short	0x11d
-	.byte	0x6
-	.byte	0x6
-	.short	0x105
-	.byte	0x5
-	.byte	0x5
-	.short	0x10a
-	.byte	0x5
-	.byte	0x5
-	.short	0x10c
-	.byte	0x6
-	.byte	0x6
-	.short	0x109
-	.byte	0x6
-	.byte	0x6
-	.short	0x11d
-	.byte	0x5
-	.byte	0x5
-	.short	0x114
-	.byte	0x5
-	.byte	0x5
-	.short	0x11f
-	.byte	0x6
-	.byte	0x6
-	.short	0x114
-	.byte	0x6
-	.byte	0x6
-	.short	0x11f
+	.byte	0x12
+	.byte	0x16
+	.short	0x144
+	.byte	0x12
+	.byte	0x16
+	.short	0x1b
+	.byte	0x12
+	.byte	0x16
+	.short	0x29
+	.byte	0x12
+	.byte	0x16
+	.short	0x2ca
+	.byte	0x12
+	.byte	0x16
+	.short	0x20c
+	.byte	0x12
+	.byte	0x16
+	.short	0x122
+	.byte	0x12
+	.byte	0x16
+	.short	0x8a
+	.byte	0x12
+	.byte	0x16
+	.short	0x8c
+	.byte	0x12
+	.byte	0x16
+	.short	0x186
+	.byte	0x12
+	.byte	0x16
+	.short	0x1f2
+	.byte	0x12
+	.byte	0x16
+	.short	0x2d5
+	.byte	0x12
+	.byte	0x16
+	.short	0x32d
 	.size	 gPetalburgWoods_LandMons,48
 	.globl	gPetalburgWoods_LandMonsInfo
 	.align	2, 0
 	.type	 gPetalburgWoods_LandMonsInfo,object
 	.size	 gPetalburgWoods_LandMonsInfo,8
 gPetalburgWoods_LandMonsInfo:
-	.byte	0x14
+	.byte	0xa
 	.space	3
 	.word	gPetalburgWoods_LandMons
 	.globl	gRusturfTunnel_LandMons
@@ -3229,91 +3207,91 @@ gMtPyre_3F_LandMonsInfo:
 	.align	2, 0
 	.type	 gMtPyre_4F_LandMons,object
 gMtPyre_4F_LandMons:
-	.byte	0x1b
-	.byte	0x1b
+	.byte	0xe
+	.byte	0xf
 	.short	0x161
-	.byte	0x1c
-	.byte	0x1c
-	.short	0x161
-	.byte	0x1a
-	.byte	0x1a
-	.short	0x161
-	.byte	0x19
-	.byte	0x19
-	.short	0x161
-	.byte	0x1d
-	.byte	0x1d
-	.short	0x161
-	.byte	0x18
-	.byte	0x18
-	.short	0x161
-	.byte	0x17
-	.byte	0x17
-	.short	0x161
-	.byte	0x16
-	.byte	0x16
-	.short	0x161
-	.byte	0x1b
-	.byte	0x1b
+	.byte	0xe
+	.byte	0xf
+	.short	0xc8
+	.byte	0xe
+	.byte	0xf
+	.short	0x5c
+	.byte	0xe
+	.byte	0xf
 	.short	0x163
-	.byte	0x1b
-	.byte	0x1b
-	.short	0x163
-	.byte	0x19
-	.byte	0x19
-	.short	0x163
-	.byte	0x1d
-	.byte	0x1d
-	.short	0x163
+	.byte	0xe
+	.byte	0xf
+	.short	0x301
+	.byte	0xe
+	.byte	0xf
+	.short	0x30d
+	.byte	0xe
+	.byte	0xf
+	.short	0x356
+	.byte	0xe
+	.byte	0xf
+	.short	0x1a9
+	.byte	0xe
+	.byte	0xf
+	.short	0x26e
+	.byte	0xe
+	.byte	0xf
+	.short	0x250
+	.byte	0xe
+	.byte	0xf
+	.short	0x375
+	.byte	0xe
+	.byte	0xf
+	.short	0x1df
 	.size	 gMtPyre_4F_LandMons,48
 	.globl	gMtPyre_4F_LandMonsInfo
 	.align	2, 0
 	.type	 gMtPyre_4F_LandMonsInfo,object
 	.size	 gMtPyre_4F_LandMonsInfo,8
 gMtPyre_4F_LandMonsInfo:
-	.byte	0x0
+	.byte	0xa
 	.space	3
 	.word	gMtPyre_4F_LandMons
 	.globl	gMtPyre_5F_LandMons
 	.align	2, 0
 	.type	 gMtPyre_5F_LandMons,object
 gMtPyre_5F_LandMons:
-	.byte	0x1b
-	.byte	0x1b
-	.short	0x161
-	.byte	0x1c
-	.byte	0x1c
-	.short	0x161
-	.byte	0x1a
-	.byte	0x1a
-	.short	0x161
-	.byte	0x19
-	.byte	0x19
-	.short	0x161
-	.byte	0x1d
-	.byte	0x1d
-	.short	0x161
-	.byte	0x18
-	.byte	0x18
-	.short	0x161
-	.byte	0x17
-	.byte	0x17
-	.short	0x161
-	.byte	0x16
-	.byte	0x16
-	.short	0x161
-	.byte	0x1b
-	.byte	0x1b
-	.short	0x163
-	.byte	0x1b
-	.byte	0x1b
-	.short	0x163
-	.byte	0x19
-	.byte	0x19
-	.short	0x163
-	.byte	0x1d
-	.byte	0x1d
-	.short	0x163
+	.byte	0xa
+	.byte	0x10
+	.short	0x11d
+	.byte	0xa
+	.byte	0x10
+	.short	0x335
+	.byte	0xa
+	.byte	0x10
+	.short	0x333
+	.byte	0xa
+	.byte	0x10
+	.short	0x21c
+	.byte	0xa
+	.byte	0x10
+	.short	0x109
+	.byte	0xa
+	.byte	0x10
+	.short	0xa
+	.byte	0xa
+	.byte	0x10
+	.short	0x191
+	.byte	0xa
+	.byte	0x10
+	.short	0x111
+	.byte	0xa
+	.byte	0x10
+	.short	0x249
+	.byte	0xa
+	.byte	0x10
+	.short	0xfc
+	.byte	0xa
+	.byte	0x10
+	.short	0x1
+	.byte	0xa
+	.byte	0x10
+	.short	0x98
 	.size	 gMtPyre_5F_LandMons,48
 	.globl	gMtPyre_5F_LandMonsInfo
 	.align	2, 0
@@ -8752,10 +8730,10 @@ gWildMonHeaders:
 	.byte	0x0
 	.byte	0x14
 	.space	2
+	.word	gRoute105_LandMonsInfo
 	.word	0x0
-	.word	gRoute105_WaterMonsInfo
 	.word	0x0
-	.word	gRoute105_FishingMonsInfo
+	.word	0x0
 	.byte	0x0
 	.byte	0x19
 	.space	2
@@ -17880,7 +17858,7 @@ TryDoDoubleWildBattle:
 	.byte	0,0
 
 	.section	.debug_info
-	.4byte	0x119c3
+	.4byte	0x11962
 	.2byte	0x2
 	.4byte	.debug_abbrev
 	.byte	0x4
@@ -36505,7 +36483,7 @@ TryDoDoubleWildBattle:
 	.ascii	"gWildMonHeaders\000"
 
 	.byte	0xe
-	.2byte	0xee1
+	.2byte	0xed8
 	.4byte	0xacad
 	.byte	0x1
 	.byte	0x5
@@ -38433,88 +38411,60 @@ TryDoDoubleWildBattle:
 	.4byte	0xc35e
 	.4byte	0x41e
 	.byte	0xb
-	.byte	0x4
+	.byte	0xb
 	.byte	0x0
 	.byte	0x37
-	.ascii	"gRoute105_WaterMons\000"
+	.ascii	"gRoute105_LandMons\000"
 
 	.byte	0xe
-	.byte	0xea
-	.4byte	0xc380
+	.byte	0xe9
+	.4byte	0xc37f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.4byte	gRoute105_WaterMons
+	.4byte	gRoute105_LandMons
 	.byte	0x11
 	.4byte	0xc352
 	.byte	0x37
-	.ascii	"gRoute105_WaterMonsInfo\000"
+	.ascii	"gRoute105_LandMonsInfo\000"
 
 	.byte	0xe
-	.byte	0xf3
+	.byte	0xf9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.4byte	gRoute105_WaterMonsInfo
+	.4byte	gRoute105_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc3b7
+	.4byte	0xc3b5
 	.4byte	0x41e
 	.byte	0xb
-	.byte	0x9
+	.byte	0xb
 	.byte	0x0
 	.byte	0x37
-	.ascii	"gRoute105_FishingMons\000"
-
-	.byte	0xe
-	.byte	0xf7
-	.4byte	0xc3db
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	gRoute105_FishingMons
-	.byte	0x11
-	.4byte	0xc3ab
-	.byte	0x38
-	.ascii	"gRoute105_FishingMonsInfo\000"
-
-	.byte	0xe
-	.2byte	0x105
-	.4byte	0x5aa
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	gRoute105_FishingMonsInfo
-	.byte	0xa
-	.4byte	0xc415
-	.4byte	0x41e
-	.byte	0xb
-	.byte	0xb
-	.byte	0x0
-	.byte	0x38
 	.ascii	"gRoute110_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x108
-	.4byte	0xc437
+	.byte	0xff
+	.4byte	0xc3d6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_LandMons
 	.byte	0x11
-	.4byte	0xc409
+	.4byte	0xc3a9
 	.byte	0x38
 	.ascii	"gRoute110_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x118
+	.2byte	0x10f
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc46e
+	.4byte	0xc40d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38523,26 +38473,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute110_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x11b
-	.4byte	0xc491
+	.2byte	0x112
+	.4byte	0xc430
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_WaterMons
 	.byte	0x11
-	.4byte	0xc462
+	.4byte	0xc401
 	.byte	0x38
 	.ascii	"gRoute110_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x124
+	.2byte	0x11b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xc4c9
+	.4byte	0xc468
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -38551,26 +38501,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute110_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x128
-	.4byte	0xc4ee
+	.2byte	0x11f
+	.4byte	0xc48d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_FishingMons
 	.byte	0x11
-	.4byte	0xc4bd
+	.4byte	0xc45c
 	.byte	0x38
 	.ascii	"gRoute110_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x136
+	.2byte	0x12d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute110_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xc528
+	.4byte	0xc4c7
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38579,26 +38529,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute111_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x139
-	.4byte	0xc54a
+	.2byte	0x130
+	.4byte	0xc4e9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_LandMons
 	.byte	0x11
-	.4byte	0xc51c
+	.4byte	0xc4bb
 	.byte	0x38
 	.ascii	"gRoute111_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x149
+	.2byte	0x140
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc581
+	.4byte	0xc520
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38607,26 +38557,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute111_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x14c
-	.4byte	0xc5a4
+	.2byte	0x143
+	.4byte	0xc543
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_WaterMons
 	.byte	0x11
-	.4byte	0xc575
+	.4byte	0xc514
 	.byte	0x38
 	.ascii	"gRoute111_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x155
+	.2byte	0x14c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xc5dc
+	.4byte	0xc57b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38635,26 +38585,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute111_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0x158
-	.4byte	0xc603
+	.2byte	0x14f
+	.4byte	0xc5a2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_RockSmashMons
 	.byte	0x11
-	.4byte	0xc5d0
+	.4byte	0xc56f
 	.byte	0x38
 	.ascii	"gRoute111_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x161
+	.2byte	0x158
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0xc63f
+	.4byte	0xc5de
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -38663,26 +38613,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute111_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x164
-	.4byte	0xc664
+	.2byte	0x15b
+	.4byte	0xc603
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_FishingMons
 	.byte	0x11
-	.4byte	0xc633
+	.4byte	0xc5d2
 	.byte	0x38
 	.ascii	"gRoute111_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x172
+	.2byte	0x169
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute111_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xc69e
+	.4byte	0xc63d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38691,26 +38641,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute112_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x175
-	.4byte	0xc6c0
+	.2byte	0x16c
+	.4byte	0xc65f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute112_LandMons
 	.byte	0x11
-	.4byte	0xc692
+	.4byte	0xc631
 	.byte	0x38
 	.ascii	"gRoute112_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x185
+	.2byte	0x17c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute112_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc6f7
+	.4byte	0xc696
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38719,26 +38669,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute113_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x18b
-	.4byte	0xc719
+	.2byte	0x182
+	.4byte	0xc6b8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute113_LandMons
 	.byte	0x11
-	.4byte	0xc6eb
+	.4byte	0xc68a
 	.byte	0x38
 	.ascii	"gRoute113_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x19b
+	.2byte	0x192
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute113_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc750
+	.4byte	0xc6ef
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38747,26 +38697,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute114_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1a1
-	.4byte	0xc772
+	.2byte	0x198
+	.4byte	0xc711
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_LandMons
 	.byte	0x11
-	.4byte	0xc744
+	.4byte	0xc6e3
 	.byte	0x38
 	.ascii	"gRoute114_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1b1
+	.2byte	0x1a8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc7a9
+	.4byte	0xc748
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38775,26 +38725,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute114_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x1b4
-	.4byte	0xc7cc
+	.2byte	0x1ab
+	.4byte	0xc76b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_WaterMons
 	.byte	0x11
-	.4byte	0xc79d
+	.4byte	0xc73c
 	.byte	0x38
 	.ascii	"gRoute114_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1bd
+	.2byte	0x1b4
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xc804
+	.4byte	0xc7a3
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38803,26 +38753,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute114_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0x1c0
-	.4byte	0xc82b
+	.2byte	0x1b7
+	.4byte	0xc7ca
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_RockSmashMons
 	.byte	0x11
-	.4byte	0xc7f8
+	.4byte	0xc797
 	.byte	0x38
 	.ascii	"gRoute114_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1c9
+	.2byte	0x1c0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0xc867
+	.4byte	0xc806
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -38831,26 +38781,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute114_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x1cc
-	.4byte	0xc88c
+	.2byte	0x1c3
+	.4byte	0xc82b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_FishingMons
 	.byte	0x11
-	.4byte	0xc85b
+	.4byte	0xc7fa
 	.byte	0x38
 	.ascii	"gRoute114_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1da
+	.2byte	0x1d1
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute114_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xc8c6
+	.4byte	0xc865
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38859,26 +38809,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute116_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1dd
-	.4byte	0xc8e8
+	.2byte	0x1d4
+	.4byte	0xc887
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute116_LandMons
 	.byte	0x11
-	.4byte	0xc8ba
+	.4byte	0xc859
 	.byte	0x38
 	.ascii	"gRoute116_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1ed
+	.2byte	0x1e4
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute116_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc91f
+	.4byte	0xc8be
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38887,26 +38837,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute117_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1f3
-	.4byte	0xc941
+	.2byte	0x1ea
+	.4byte	0xc8e0
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_LandMons
 	.byte	0x11
-	.4byte	0xc913
+	.4byte	0xc8b2
 	.byte	0x38
 	.ascii	"gRoute117_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x203
+	.2byte	0x1fa
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_LandMonsInfo
 	.byte	0xa
-	.4byte	0xc978
+	.4byte	0xc917
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38915,26 +38865,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute117_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x206
-	.4byte	0xc99b
+	.2byte	0x1fd
+	.4byte	0xc93a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_WaterMons
 	.byte	0x11
-	.4byte	0xc96c
+	.4byte	0xc90b
 	.byte	0x38
 	.ascii	"gRoute117_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x20f
+	.2byte	0x206
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xc9d3
+	.4byte	0xc972
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -38943,26 +38893,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute117_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x213
-	.4byte	0xc9f8
+	.2byte	0x20a
+	.4byte	0xc997
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_FishingMons
 	.byte	0x11
-	.4byte	0xc9c7
+	.4byte	0xc966
 	.byte	0x38
 	.ascii	"gRoute117_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x221
+	.2byte	0x218
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute117_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xca32
+	.4byte	0xc9d1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -38971,26 +38921,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute118_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x224
-	.4byte	0xca54
+	.2byte	0x21b
+	.4byte	0xc9f3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_LandMons
 	.byte	0x11
-	.4byte	0xca26
+	.4byte	0xc9c5
 	.byte	0x38
 	.ascii	"gRoute118_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x234
+	.2byte	0x22b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_LandMonsInfo
 	.byte	0xa
-	.4byte	0xca8b
+	.4byte	0xca2a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -38999,26 +38949,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute118_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x237
-	.4byte	0xcaae
+	.2byte	0x22e
+	.4byte	0xca4d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_WaterMons
 	.byte	0x11
-	.4byte	0xca7f
+	.4byte	0xca1e
 	.byte	0x38
 	.ascii	"gRoute118_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x240
+	.2byte	0x237
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xcae6
+	.4byte	0xca85
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39027,26 +38977,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute118_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x244
-	.4byte	0xcb0b
+	.2byte	0x23b
+	.4byte	0xcaaa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_FishingMons
 	.byte	0x11
-	.4byte	0xcada
+	.4byte	0xca79
 	.byte	0x38
 	.ascii	"gRoute118_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x252
+	.2byte	0x249
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute118_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xcb45
+	.4byte	0xcae4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39055,26 +39005,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute124_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x256
-	.4byte	0xcb68
+	.2byte	0x24d
+	.4byte	0xcb07
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute124_WaterMons
 	.byte	0x11
-	.4byte	0xcb39
+	.4byte	0xcad8
 	.byte	0x38
 	.ascii	"gRoute124_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x25f
+	.2byte	0x256
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute124_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xcba0
+	.4byte	0xcb3f
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39083,26 +39033,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute124_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x263
-	.4byte	0xcbc5
+	.2byte	0x25a
+	.4byte	0xcb64
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute124_FishingMons
 	.byte	0x11
-	.4byte	0xcb94
+	.4byte	0xcb33
 	.byte	0x38
 	.ascii	"gRoute124_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x271
+	.2byte	0x268
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute124_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xcbff
+	.4byte	0xcb9e
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39111,26 +39061,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gPetalburgWoods_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x274
-	.4byte	0xcc27
+	.2byte	0x26b
+	.4byte	0xcbc6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgWoods_LandMons
 	.byte	0x11
-	.4byte	0xcbf3
+	.4byte	0xcb92
 	.byte	0x38
 	.ascii	"gPetalburgWoods_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x284
+	.2byte	0x27b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgWoods_LandMonsInfo
 	.byte	0xa
-	.4byte	0xcc64
+	.4byte	0xcc03
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39139,26 +39089,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRusturfTunnel_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x28a
-	.4byte	0xcc8b
+	.2byte	0x281
+	.4byte	0xcc2a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRusturfTunnel_LandMons
 	.byte	0x11
-	.4byte	0xcc58
+	.4byte	0xcbf7
 	.byte	0x38
 	.ascii	"gRusturfTunnel_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x29a
+	.2byte	0x291
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRusturfTunnel_LandMonsInfo
 	.byte	0xa
-	.4byte	0xccc7
+	.4byte	0xcc66
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39167,26 +39117,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gGraniteCave_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x2a0
-	.4byte	0xccef
+	.2byte	0x297
+	.4byte	0xcc8e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_1F_LandMons
 	.byte	0x11
-	.4byte	0xccbb
+	.4byte	0xcc5a
 	.byte	0x38
 	.ascii	"gGraniteCave_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x2b0
+	.2byte	0x2a7
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xcd2c
+	.4byte	0xcccb
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39195,26 +39145,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gGraniteCave_B1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x2b6
-	.4byte	0xcd55
+	.2byte	0x2ad
+	.4byte	0xccf4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B1F_LandMons
 	.byte	0x11
-	.4byte	0xcd20
+	.4byte	0xccbf
 	.byte	0x38
 	.ascii	"gGraniteCave_B1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x2c6
+	.2byte	0x2bd
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xcd93
+	.4byte	0xcd32
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39223,26 +39173,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x2cc
-	.4byte	0xcdb6
+	.2byte	0x2c3
+	.4byte	0xcd55
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_1F_LandMons
 	.byte	0x11
-	.4byte	0xcd87
+	.4byte	0xcd26
 	.byte	0x38
 	.ascii	"gMtPyre_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x2dc
+	.2byte	0x2d3
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xcdee
+	.4byte	0xcd8d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39251,26 +39201,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x2e2
-	.4byte	0xce16
+	.2byte	0x2d9
+	.4byte	0xcdb5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_1F_LandMons
 	.byte	0x11
-	.4byte	0xcde2
+	.4byte	0xcd81
 	.byte	0x38
 	.ascii	"gVictoryRoad_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x2f2
+	.2byte	0x2e9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xce53
+	.4byte	0xcdf2
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39279,26 +39229,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_South_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x2f8
-	.4byte	0xce7d
+	.2byte	0x2ef
+	.4byte	0xce1c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_South_LandMons
 	.byte	0x11
-	.4byte	0xce47
+	.4byte	0xcde6
 	.byte	0x38
 	.ascii	"gSafariZone_South_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x308
+	.2byte	0x2ff
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_South_LandMonsInfo
 	.byte	0xa
-	.4byte	0xcebc
+	.4byte	0xce5b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39307,26 +39257,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gUnderwater_Route126_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x30f
-	.4byte	0xceea
+	.2byte	0x306
+	.4byte	0xce89
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gUnderwater_Route126_WaterMons
 	.byte	0x11
-	.4byte	0xceb0
+	.4byte	0xce4f
 	.byte	0x38
 	.ascii	"gUnderwater_Route126_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x318
+	.2byte	0x30f
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gUnderwater_Route126_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xcf2d
+	.4byte	0xcecc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39335,26 +39285,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAbandonedShip_Rooms_B1F_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x31e
-	.4byte	0xcf5f
+	.2byte	0x315
+	.4byte	0xcefe
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_Rooms_B1F_WaterMons
 	.byte	0x11
-	.4byte	0xcf21
+	.4byte	0xcec0
 	.byte	0x38
 	.ascii	"gAbandonedShip_Rooms_B1F_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x327
+	.2byte	0x31e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_Rooms_B1F_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xcfa6
+	.4byte	0xcf45
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39363,26 +39313,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAbandonedShip_Rooms_B1F_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x32b
-	.4byte	0xcfda
+	.2byte	0x322
+	.4byte	0xcf79
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_Rooms_B1F_FishingMons
 	.byte	0x11
-	.4byte	0xcf9a
+	.4byte	0xcf39
 	.byte	0x38
 	.ascii	"gAbandonedShip_Rooms_B1F_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x339
+	.2byte	0x330
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_Rooms_B1F_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd023
+	.4byte	0xcfc2
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39391,26 +39341,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gGraniteCave_B2F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x33c
-	.4byte	0xd04c
+	.2byte	0x333
+	.4byte	0xcfeb
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B2F_LandMons
 	.byte	0x11
-	.4byte	0xd017
+	.4byte	0xcfb6
 	.byte	0x38
 	.ascii	"gGraniteCave_B2F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x34c
+	.2byte	0x343
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B2F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd08a
+	.4byte	0xd029
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39419,26 +39369,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gGraniteCave_B2F_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0x350
-	.4byte	0xd0b8
+	.2byte	0x347
+	.4byte	0xd057
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B2F_RockSmashMons
 	.byte	0x11
-	.4byte	0xd07e
+	.4byte	0xd01d
 	.byte	0x38
 	.ascii	"gGraniteCave_B2F_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x359
+	.2byte	0x350
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_B2F_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0xd0fb
+	.4byte	0xd09a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39447,26 +39397,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gFieryPath_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x35d
-	.4byte	0xd11e
+	.2byte	0x354
+	.4byte	0xd0bd
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gFieryPath_LandMons
 	.byte	0x11
-	.4byte	0xd0ef
+	.4byte	0xd08e
 	.byte	0x38
 	.ascii	"gFieryPath_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x36d
+	.2byte	0x364
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gFieryPath_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd156
+	.4byte	0xd0f5
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39475,26 +39425,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_2R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x373
-	.4byte	0xd182
+	.2byte	0x36a
+	.4byte	0xd121
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_LandMons
 	.byte	0x11
-	.4byte	0xd14a
+	.4byte	0xd0e9
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_2R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x383
+	.2byte	0x37a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd1c3
+	.4byte	0xd162
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39503,26 +39453,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_2R_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x386
-	.4byte	0xd1f0
+	.2byte	0x37d
+	.4byte	0xd18f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_WaterMons
 	.byte	0x11
-	.4byte	0xd1b7
+	.4byte	0xd156
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_2R_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x38f
+	.2byte	0x386
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd232
+	.4byte	0xd1d1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39531,26 +39481,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_2R_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x393
-	.4byte	0xd261
+	.2byte	0x38a
+	.4byte	0xd200
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_FishingMons
 	.byte	0x11
-	.4byte	0xd226
+	.4byte	0xd1c5
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_2R_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3a1
+	.2byte	0x398
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_2R_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd2a5
+	.4byte	0xd244
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39559,26 +39509,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gJaggedPass_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x3a4
-	.4byte	0xd2c9
+	.2byte	0x39b
+	.4byte	0xd268
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gJaggedPass_LandMons
 	.byte	0x11
-	.4byte	0xd299
+	.4byte	0xd238
 	.byte	0x38
 	.ascii	"gJaggedPass_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3b4
+	.2byte	0x3ab
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gJaggedPass_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd302
+	.4byte	0xd2a1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39587,26 +39537,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute106_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x3bb
-	.4byte	0xd325
+	.2byte	0x3b2
+	.4byte	0xd2c4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute106_WaterMons
 	.byte	0x11
-	.4byte	0xd2f6
+	.4byte	0xd295
 	.byte	0x38
 	.ascii	"gRoute106_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3c4
+	.2byte	0x3bb
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute106_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd35d
+	.4byte	0xd2fc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39615,26 +39565,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute106_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x3c8
-	.4byte	0xd382
+	.2byte	0x3bf
+	.4byte	0xd321
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute106_FishingMons
 	.byte	0x11
-	.4byte	0xd351
+	.4byte	0xd2f0
 	.byte	0x38
 	.ascii	"gRoute106_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3d6
+	.2byte	0x3cd
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute106_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd3bc
+	.4byte	0xd35b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39643,26 +39593,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute107_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x3da
-	.4byte	0xd3df
+	.2byte	0x3d1
+	.4byte	0xd37e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute107_WaterMons
 	.byte	0x11
-	.4byte	0xd3b0
+	.4byte	0xd34f
 	.byte	0x38
 	.ascii	"gRoute107_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3e3
+	.2byte	0x3da
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute107_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd417
+	.4byte	0xd3b6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39671,26 +39621,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute107_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x3e7
-	.4byte	0xd43c
+	.2byte	0x3de
+	.4byte	0xd3db
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute107_FishingMons
 	.byte	0x11
-	.4byte	0xd40b
+	.4byte	0xd3aa
 	.byte	0x38
 	.ascii	"gRoute107_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x3f5
+	.2byte	0x3ec
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute107_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd476
+	.4byte	0xd415
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39699,26 +39649,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute108_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x3f9
-	.4byte	0xd499
+	.2byte	0x3f0
+	.4byte	0xd438
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute108_WaterMons
 	.byte	0x11
-	.4byte	0xd46a
+	.4byte	0xd409
 	.byte	0x38
 	.ascii	"gRoute108_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x402
+	.2byte	0x3f9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute108_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd4d1
+	.4byte	0xd470
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39727,26 +39677,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute108_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x406
-	.4byte	0xd4f6
+	.2byte	0x3fd
+	.4byte	0xd495
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute108_FishingMons
 	.byte	0x11
-	.4byte	0xd4c5
+	.4byte	0xd464
 	.byte	0x38
 	.ascii	"gRoute108_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x414
+	.2byte	0x40b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute108_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd530
+	.4byte	0xd4cf
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39755,26 +39705,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute109_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x418
-	.4byte	0xd553
+	.2byte	0x40f
+	.4byte	0xd4f2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute109_WaterMons
 	.byte	0x11
-	.4byte	0xd524
+	.4byte	0xd4c3
 	.byte	0x38
 	.ascii	"gRoute109_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x421
+	.2byte	0x418
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute109_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd58b
+	.4byte	0xd52a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39783,26 +39733,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute109_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x425
-	.4byte	0xd5b0
+	.2byte	0x41c
+	.4byte	0xd54f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute109_FishingMons
 	.byte	0x11
-	.4byte	0xd57f
+	.4byte	0xd51e
 	.byte	0x38
 	.ascii	"gRoute109_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x433
+	.2byte	0x42a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute109_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd5ea
+	.4byte	0xd589
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39811,26 +39761,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute115_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x436
-	.4byte	0xd60c
+	.2byte	0x42d
+	.4byte	0xd5ab
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_LandMons
 	.byte	0x11
-	.4byte	0xd5de
+	.4byte	0xd57d
 	.byte	0x38
 	.ascii	"gRoute115_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x446
+	.2byte	0x43d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd643
+	.4byte	0xd5e2
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39839,26 +39789,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute115_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x449
-	.4byte	0xd666
+	.2byte	0x440
+	.4byte	0xd605
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_WaterMons
 	.byte	0x11
-	.4byte	0xd637
+	.4byte	0xd5d6
 	.byte	0x38
 	.ascii	"gRoute115_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x452
+	.2byte	0x449
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd69e
+	.4byte	0xd63d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39867,26 +39817,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute115_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x456
-	.4byte	0xd6c3
+	.2byte	0x44d
+	.4byte	0xd662
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_FishingMons
 	.byte	0x11
-	.4byte	0xd692
+	.4byte	0xd631
 	.byte	0x38
 	.ascii	"gRoute115_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x464
+	.2byte	0x45b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute115_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd6fd
+	.4byte	0xd69c
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39895,26 +39845,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gNewMauville_Inside_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x467
-	.4byte	0xd729
+	.2byte	0x45e
+	.4byte	0xd6c8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gNewMauville_Inside_LandMons
 	.byte	0x11
-	.4byte	0xd6f1
+	.4byte	0xd690
 	.byte	0x38
 	.ascii	"gNewMauville_Inside_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x477
+	.2byte	0x46e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gNewMauville_Inside_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd76a
+	.4byte	0xd709
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -39923,26 +39873,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute119_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x47d
-	.4byte	0xd78c
+	.2byte	0x474
+	.4byte	0xd72b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_LandMons
 	.byte	0x11
-	.4byte	0xd75e
+	.4byte	0xd6fd
 	.byte	0x38
 	.ascii	"gRoute119_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x48d
+	.2byte	0x484
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd7c3
+	.4byte	0xd762
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -39951,26 +39901,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute119_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x490
-	.4byte	0xd7e6
+	.2byte	0x487
+	.4byte	0xd785
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_WaterMons
 	.byte	0x11
-	.4byte	0xd7b7
+	.4byte	0xd756
 	.byte	0x38
 	.ascii	"gRoute119_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x499
+	.2byte	0x490
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd81e
+	.4byte	0xd7bd
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -39979,26 +39929,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute119_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x49d
-	.4byte	0xd843
+	.2byte	0x494
+	.4byte	0xd7e2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_FishingMons
 	.byte	0x11
-	.4byte	0xd812
+	.4byte	0xd7b1
 	.byte	0x38
 	.ascii	"gRoute119_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4ab
+	.2byte	0x4a2
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd87d
+	.4byte	0xd81c
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40007,26 +39957,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute120_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x4ae
-	.4byte	0xd89f
+	.2byte	0x4a5
+	.4byte	0xd83e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_LandMons
 	.byte	0x11
-	.4byte	0xd871
+	.4byte	0xd810
 	.byte	0x38
 	.ascii	"gRoute120_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4be
+	.2byte	0x4b5
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd8d6
+	.4byte	0xd875
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40035,26 +39985,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute120_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x4c1
-	.4byte	0xd8f9
+	.2byte	0x4b8
+	.4byte	0xd898
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_WaterMons
 	.byte	0x11
-	.4byte	0xd8ca
+	.4byte	0xd869
 	.byte	0x38
 	.ascii	"gRoute120_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4ca
+	.2byte	0x4c1
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xd931
+	.4byte	0xd8d0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40063,26 +40013,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute120_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x4ce
-	.4byte	0xd956
+	.2byte	0x4c5
+	.4byte	0xd8f5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_FishingMons
 	.byte	0x11
-	.4byte	0xd925
+	.4byte	0xd8c4
 	.byte	0x38
 	.ascii	"gRoute120_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4dc
+	.2byte	0x4d3
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute120_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xd990
+	.4byte	0xd92f
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40091,26 +40041,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute121_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x4df
-	.4byte	0xd9b2
+	.2byte	0x4d6
+	.4byte	0xd951
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_LandMons
 	.byte	0x11
-	.4byte	0xd984
+	.4byte	0xd923
 	.byte	0x38
 	.ascii	"gRoute121_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4ef
+	.2byte	0x4e6
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_LandMonsInfo
 	.byte	0xa
-	.4byte	0xd9e9
+	.4byte	0xd988
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40119,26 +40069,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute121_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x4f2
-	.4byte	0xda0c
+	.2byte	0x4e9
+	.4byte	0xd9ab
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_WaterMons
 	.byte	0x11
-	.4byte	0xd9dd
+	.4byte	0xd97c
 	.byte	0x38
 	.ascii	"gRoute121_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x4fb
+	.2byte	0x4f2
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xda44
+	.4byte	0xd9e3
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40147,26 +40097,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute121_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x4ff
-	.4byte	0xda69
+	.2byte	0x4f6
+	.4byte	0xda08
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_FishingMons
 	.byte	0x11
-	.4byte	0xda38
+	.4byte	0xd9d7
 	.byte	0x38
 	.ascii	"gRoute121_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x50d
+	.2byte	0x504
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute121_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xdaa3
+	.4byte	0xda42
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40175,26 +40125,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute122_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x511
-	.4byte	0xdac6
+	.2byte	0x508
+	.4byte	0xda65
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute122_WaterMons
 	.byte	0x11
-	.4byte	0xda97
+	.4byte	0xda36
 	.byte	0x38
 	.ascii	"gRoute122_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x51a
+	.2byte	0x511
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute122_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xdafe
+	.4byte	0xda9d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40203,26 +40153,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute122_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x51e
-	.4byte	0xdb23
+	.2byte	0x515
+	.4byte	0xdac2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute122_FishingMons
 	.byte	0x11
-	.4byte	0xdaf2
+	.4byte	0xda91
 	.byte	0x38
 	.ascii	"gRoute122_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x52c
+	.2byte	0x523
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute122_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xdb5d
+	.4byte	0xdafc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40231,26 +40181,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute123_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x52f
-	.4byte	0xdb7f
+	.2byte	0x526
+	.4byte	0xdb1e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_LandMons
 	.byte	0x11
-	.4byte	0xdb51
+	.4byte	0xdaf0
 	.byte	0x38
 	.ascii	"gRoute123_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x53f
+	.2byte	0x536
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdbb6
+	.4byte	0xdb55
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40259,26 +40209,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute123_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x542
-	.4byte	0xdbd9
+	.2byte	0x539
+	.4byte	0xdb78
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_WaterMons
 	.byte	0x11
-	.4byte	0xdbaa
+	.4byte	0xdb49
 	.byte	0x38
 	.ascii	"gRoute123_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x54b
+	.2byte	0x542
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xdc11
+	.4byte	0xdbb0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40287,26 +40237,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute123_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x54f
-	.4byte	0xdc36
+	.2byte	0x546
+	.4byte	0xdbd5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_FishingMons
 	.byte	0x11
-	.4byte	0xdc05
+	.4byte	0xdba4
 	.byte	0x38
 	.ascii	"gRoute123_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x55d
+	.2byte	0x554
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute123_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xdc70
+	.4byte	0xdc0f
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40315,26 +40265,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_2F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x560
-	.4byte	0xdc93
+	.2byte	0x557
+	.4byte	0xdc32
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_2F_LandMons
 	.byte	0x11
-	.4byte	0xdc64
+	.4byte	0xdc03
 	.byte	0x38
 	.ascii	"gMtPyre_2F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x570
+	.2byte	0x567
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_2F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdccb
+	.4byte	0xdc6a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40343,26 +40293,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_3F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x576
-	.4byte	0xdcee
+	.2byte	0x56d
+	.4byte	0xdc8d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_3F_LandMons
 	.byte	0x11
-	.4byte	0xdcbf
+	.4byte	0xdc5e
 	.byte	0x38
 	.ascii	"gMtPyre_3F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x586
+	.2byte	0x57d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_3F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdd26
+	.4byte	0xdcc5
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40371,26 +40321,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_4F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x58c
-	.4byte	0xdd49
+	.2byte	0x583
+	.4byte	0xdce8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_4F_LandMons
 	.byte	0x11
-	.4byte	0xdd1a
+	.4byte	0xdcb9
 	.byte	0x38
 	.ascii	"gMtPyre_4F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x59c
+	.2byte	0x593
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_4F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdd81
+	.4byte	0xdd20
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40399,26 +40349,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_5F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x5a2
-	.4byte	0xdda4
+	.2byte	0x599
+	.4byte	0xdd43
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_5F_LandMons
 	.byte	0x11
-	.4byte	0xdd75
+	.4byte	0xdd14
 	.byte	0x38
 	.ascii	"gMtPyre_5F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x5b2
+	.2byte	0x5a9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_5F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdddc
+	.4byte	0xdd7b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40427,26 +40377,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_6F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x5b8
-	.4byte	0xddff
+	.2byte	0x5af
+	.4byte	0xdd9e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_6F_LandMons
 	.byte	0x11
-	.4byte	0xddd0
+	.4byte	0xdd6f
 	.byte	0x38
 	.ascii	"gMtPyre_6F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x5c8
+	.2byte	0x5bf
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_6F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xde37
+	.4byte	0xddd6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40455,26 +40405,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_Exterior_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x5ce
-	.4byte	0xde60
+	.2byte	0x5c5
+	.4byte	0xddff
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_Exterior_LandMons
 	.byte	0x11
-	.4byte	0xde2b
+	.4byte	0xddca
 	.byte	0x38
 	.ascii	"gMtPyre_Exterior_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x5de
+	.2byte	0x5d5
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_Exterior_LandMonsInfo
 	.byte	0xa
-	.4byte	0xde9e
+	.4byte	0xde3d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40483,26 +40433,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMtPyre_Summit_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x5e4
-	.4byte	0xdec5
+	.2byte	0x5db
+	.4byte	0xde64
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_Summit_LandMons
 	.byte	0x11
-	.4byte	0xde92
+	.4byte	0xde31
 	.byte	0x38
 	.ascii	"gMtPyre_Summit_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x5f4
+	.2byte	0x5eb
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMtPyre_Summit_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdf01
+	.4byte	0xdea0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40511,26 +40461,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gGraniteCave_StevensRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x5fa
-	.4byte	0xdf32
+	.2byte	0x5f1
+	.4byte	0xded1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_StevensRoom_LandMons
 	.byte	0x11
-	.4byte	0xdef5
+	.4byte	0xde94
 	.byte	0x38
 	.ascii	"gGraniteCave_StevensRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x60a
+	.2byte	0x601
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gGraniteCave_StevensRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0xdf78
+	.4byte	0xdf17
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40539,26 +40489,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute125_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x611
-	.4byte	0xdf9b
+	.2byte	0x608
+	.4byte	0xdf3a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute125_WaterMons
 	.byte	0x11
-	.4byte	0xdf6c
+	.4byte	0xdf0b
 	.byte	0x38
 	.ascii	"gRoute125_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x61a
+	.2byte	0x611
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute125_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xdfd3
+	.4byte	0xdf72
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40567,26 +40517,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute125_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x61e
-	.4byte	0xdff8
+	.2byte	0x615
+	.4byte	0xdf97
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute125_FishingMons
 	.byte	0x11
-	.4byte	0xdfc7
+	.4byte	0xdf66
 	.byte	0x38
 	.ascii	"gRoute125_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x62c
+	.2byte	0x623
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute125_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe032
+	.4byte	0xdfd1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40595,26 +40545,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute126_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x630
-	.4byte	0xe055
+	.2byte	0x627
+	.4byte	0xdff4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute126_WaterMons
 	.byte	0x11
-	.4byte	0xe026
+	.4byte	0xdfc5
 	.byte	0x38
 	.ascii	"gRoute126_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x639
+	.2byte	0x630
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute126_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe08d
+	.4byte	0xe02c
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40623,26 +40573,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute126_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x63d
-	.4byte	0xe0b2
+	.2byte	0x634
+	.4byte	0xe051
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute126_FishingMons
 	.byte	0x11
-	.4byte	0xe081
+	.4byte	0xe020
 	.byte	0x38
 	.ascii	"gRoute126_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x64b
+	.2byte	0x642
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute126_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe0ec
+	.4byte	0xe08b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40651,26 +40601,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute127_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x64f
-	.4byte	0xe10f
+	.2byte	0x646
+	.4byte	0xe0ae
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute127_WaterMons
 	.byte	0x11
-	.4byte	0xe0e0
+	.4byte	0xe07f
 	.byte	0x38
 	.ascii	"gRoute127_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x658
+	.2byte	0x64f
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute127_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe147
+	.4byte	0xe0e6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40679,26 +40629,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute127_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x65c
-	.4byte	0xe16c
+	.2byte	0x653
+	.4byte	0xe10b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute127_FishingMons
 	.byte	0x11
-	.4byte	0xe13b
+	.4byte	0xe0da
 	.byte	0x38
 	.ascii	"gRoute127_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x66a
+	.2byte	0x661
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute127_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe1a6
+	.4byte	0xe145
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40707,26 +40657,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute128_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x66e
-	.4byte	0xe1c9
+	.2byte	0x665
+	.4byte	0xe168
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute128_WaterMons
 	.byte	0x11
-	.4byte	0xe19a
+	.4byte	0xe139
 	.byte	0x38
 	.ascii	"gRoute128_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x677
+	.2byte	0x66e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute128_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe201
+	.4byte	0xe1a0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40735,26 +40685,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute128_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x67b
-	.4byte	0xe226
+	.2byte	0x672
+	.4byte	0xe1c5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute128_FishingMons
 	.byte	0x11
-	.4byte	0xe1f5
+	.4byte	0xe194
 	.byte	0x38
 	.ascii	"gRoute128_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x689
+	.2byte	0x680
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute128_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe260
+	.4byte	0xe1ff
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40763,26 +40713,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute129_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x68d
-	.4byte	0xe283
+	.2byte	0x684
+	.4byte	0xe222
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute129_WaterMons
 	.byte	0x11
-	.4byte	0xe254
+	.4byte	0xe1f3
 	.byte	0x38
 	.ascii	"gRoute129_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x696
+	.2byte	0x68d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute129_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe2bb
+	.4byte	0xe25a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40791,26 +40741,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute129_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x69a
-	.4byte	0xe2e0
+	.2byte	0x691
+	.4byte	0xe27f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute129_FishingMons
 	.byte	0x11
-	.4byte	0xe2af
+	.4byte	0xe24e
 	.byte	0x38
 	.ascii	"gRoute129_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6a8
+	.2byte	0x69f
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute129_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe31a
+	.4byte	0xe2b9
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -40819,26 +40769,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute130_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x6ab
-	.4byte	0xe33c
+	.2byte	0x6a2
+	.4byte	0xe2db
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_LandMons
 	.byte	0x11
-	.4byte	0xe30e
+	.4byte	0xe2ad
 	.byte	0x38
 	.ascii	"gRoute130_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6bb
+	.2byte	0x6b2
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_LandMonsInfo
 	.byte	0xa
-	.4byte	0xe373
+	.4byte	0xe312
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40847,26 +40797,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute130_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x6be
-	.4byte	0xe396
+	.2byte	0x6b5
+	.4byte	0xe335
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_WaterMons
 	.byte	0x11
-	.4byte	0xe367
+	.4byte	0xe306
 	.byte	0x38
 	.ascii	"gRoute130_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6c7
+	.2byte	0x6be
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe3ce
+	.4byte	0xe36d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40875,26 +40825,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute130_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x6cb
-	.4byte	0xe3f3
+	.2byte	0x6c2
+	.4byte	0xe392
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_FishingMons
 	.byte	0x11
-	.4byte	0xe3c2
+	.4byte	0xe361
 	.byte	0x38
 	.ascii	"gRoute130_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6d9
+	.2byte	0x6d0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute130_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe42d
+	.4byte	0xe3cc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40903,26 +40853,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute131_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x6dd
-	.4byte	0xe450
+	.2byte	0x6d4
+	.4byte	0xe3ef
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute131_WaterMons
 	.byte	0x11
-	.4byte	0xe421
+	.4byte	0xe3c0
 	.byte	0x38
 	.ascii	"gRoute131_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6e6
+	.2byte	0x6dd
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute131_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe488
+	.4byte	0xe427
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40931,26 +40881,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute131_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x6ea
-	.4byte	0xe4ad
+	.2byte	0x6e1
+	.4byte	0xe44c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute131_FishingMons
 	.byte	0x11
-	.4byte	0xe47c
+	.4byte	0xe41b
 	.byte	0x38
 	.ascii	"gRoute131_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x6f8
+	.2byte	0x6ef
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute131_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe4e7
+	.4byte	0xe486
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -40959,26 +40909,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute132_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x6fc
-	.4byte	0xe50a
+	.2byte	0x6f3
+	.4byte	0xe4a9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute132_WaterMons
 	.byte	0x11
-	.4byte	0xe4db
+	.4byte	0xe47a
 	.byte	0x38
 	.ascii	"gRoute132_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x705
+	.2byte	0x6fc
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute132_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe542
+	.4byte	0xe4e1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -40987,26 +40937,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute132_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x709
-	.4byte	0xe567
+	.2byte	0x700
+	.4byte	0xe506
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute132_FishingMons
 	.byte	0x11
-	.4byte	0xe536
+	.4byte	0xe4d5
 	.byte	0x38
 	.ascii	"gRoute132_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x717
+	.2byte	0x70e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute132_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe5a1
+	.4byte	0xe540
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41015,26 +40965,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute133_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x71b
-	.4byte	0xe5c4
+	.2byte	0x712
+	.4byte	0xe563
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute133_WaterMons
 	.byte	0x11
-	.4byte	0xe595
+	.4byte	0xe534
 	.byte	0x38
 	.ascii	"gRoute133_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x724
+	.2byte	0x71b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute133_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe5fc
+	.4byte	0xe59b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41043,26 +40993,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute133_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x728
-	.4byte	0xe621
+	.2byte	0x71f
+	.4byte	0xe5c0
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute133_FishingMons
 	.byte	0x11
-	.4byte	0xe5f0
+	.4byte	0xe58f
 	.byte	0x38
 	.ascii	"gRoute133_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x736
+	.2byte	0x72d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute133_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe65b
+	.4byte	0xe5fa
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41071,26 +41021,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute134_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x73a
-	.4byte	0xe67e
+	.2byte	0x731
+	.4byte	0xe61d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute134_WaterMons
 	.byte	0x11
-	.4byte	0xe64f
+	.4byte	0xe5ee
 	.byte	0x38
 	.ascii	"gRoute134_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x743
+	.2byte	0x73a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute134_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe6b6
+	.4byte	0xe655
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41099,26 +41049,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute134_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x747
-	.4byte	0xe6db
+	.2byte	0x73e
+	.4byte	0xe67a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute134_FishingMons
 	.byte	0x11
-	.4byte	0xe6aa
+	.4byte	0xe649
 	.byte	0x38
 	.ascii	"gRoute134_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x755
+	.2byte	0x74c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute134_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe715
+	.4byte	0xe6b4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41127,26 +41077,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x759
-	.4byte	0xe752
+	.2byte	0x750
+	.4byte	0xe6f1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_HiddenFloorCorridors_WaterMons
 	.byte	0x11
-	.4byte	0xe709
+	.4byte	0xe6a8
 	.byte	0x38
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x762
+	.2byte	0x759
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_HiddenFloorCorridors_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xe7a4
+	.4byte	0xe743
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41155,26 +41105,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x766
-	.4byte	0xe7e3
+	.2byte	0x75d
+	.4byte	0xe782
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_HiddenFloorCorridors_FishingMons
 	.byte	0x11
-	.4byte	0xe798
+	.4byte	0xe737
 	.byte	0x38
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x774
+	.2byte	0x76b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAbandonedShip_HiddenFloorCorridors_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xe837
+	.4byte	0xe7d6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41183,26 +41133,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room1_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x777
-	.4byte	0xe865
+	.2byte	0x76e
+	.4byte	0xe804
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room1_LandMons
 	.byte	0x11
-	.4byte	0xe82b
+	.4byte	0xe7ca
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room1_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x787
+	.2byte	0x77e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room1_LandMonsInfo
 	.byte	0xa
-	.4byte	0xe8a8
+	.4byte	0xe847
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41211,26 +41161,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room2_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x78d
-	.4byte	0xe8d6
+	.2byte	0x784
+	.4byte	0xe875
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room2_LandMons
 	.byte	0x11
-	.4byte	0xe89c
+	.4byte	0xe83b
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room2_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x79d
+	.2byte	0x794
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room2_LandMonsInfo
 	.byte	0xa
-	.4byte	0xe919
+	.4byte	0xe8b8
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41239,26 +41189,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room3_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x7a3
-	.4byte	0xe947
+	.2byte	0x79a
+	.4byte	0xe8e6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room3_LandMons
 	.byte	0x11
-	.4byte	0xe90d
+	.4byte	0xe8ac
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room3_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x7b3
+	.2byte	0x7aa
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room3_LandMonsInfo
 	.byte	0xa
-	.4byte	0xe98a
+	.4byte	0xe929
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41267,26 +41217,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room4_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x7b9
-	.4byte	0xe9b8
+	.2byte	0x7b0
+	.4byte	0xe957
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room4_LandMons
 	.byte	0x11
-	.4byte	0xe97e
+	.4byte	0xe91d
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room4_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x7c9
+	.2byte	0x7c0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room4_LandMonsInfo
 	.byte	0xa
-	.4byte	0xe9fb
+	.4byte	0xe99a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41295,26 +41245,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room5_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x7cf
-	.4byte	0xea29
+	.2byte	0x7c6
+	.4byte	0xe9c8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room5_LandMons
 	.byte	0x11
-	.4byte	0xe9ef
+	.4byte	0xe98e
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room5_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x7df
+	.2byte	0x7d6
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room5_LandMonsInfo
 	.byte	0xa
-	.4byte	0xea6c
+	.4byte	0xea0b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41323,26 +41273,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room6_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x7e5
-	.4byte	0xea9a
+	.2byte	0x7dc
+	.4byte	0xea39
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_LandMons
 	.byte	0x11
-	.4byte	0xea60
+	.4byte	0xe9ff
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room6_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x7f5
+	.2byte	0x7ec
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_LandMonsInfo
 	.byte	0xa
-	.4byte	0xeadd
+	.4byte	0xea7c
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41351,26 +41301,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room6_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x7f8
-	.4byte	0xeb0c
+	.2byte	0x7ef
+	.4byte	0xeaab
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_WaterMons
 	.byte	0x11
-	.4byte	0xead1
+	.4byte	0xea70
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room6_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x801
+	.2byte	0x7f8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xeb50
+	.4byte	0xeaef
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41379,26 +41329,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room6_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x805
-	.4byte	0xeb81
+	.2byte	0x7fc
+	.4byte	0xeb20
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_FishingMons
 	.byte	0x11
-	.4byte	0xeb44
+	.4byte	0xeae3
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room6_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x813
+	.2byte	0x80a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room6_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xebc7
+	.4byte	0xeb66
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41407,26 +41357,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room7_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x816
-	.4byte	0xebf5
+	.2byte	0x80d
+	.4byte	0xeb94
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_LandMons
 	.byte	0x11
-	.4byte	0xebbb
+	.4byte	0xeb5a
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room7_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x826
+	.2byte	0x81d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_LandMonsInfo
 	.byte	0xa
-	.4byte	0xec38
+	.4byte	0xebd7
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41435,26 +41385,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room7_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x829
-	.4byte	0xec67
+	.2byte	0x820
+	.4byte	0xec06
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_WaterMons
 	.byte	0x11
-	.4byte	0xec2c
+	.4byte	0xebcb
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room7_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x832
+	.2byte	0x829
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xecab
+	.4byte	0xec4a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41463,26 +41413,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room7_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x836
-	.4byte	0xecdc
+	.2byte	0x82d
+	.4byte	0xec7b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_FishingMons
 	.byte	0x11
-	.4byte	0xec9f
+	.4byte	0xec3e
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room7_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x844
+	.2byte	0x83b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room7_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xed22
+	.4byte	0xecc1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41491,26 +41441,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Room8_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x847
-	.4byte	0xed50
+	.2byte	0x83e
+	.4byte	0xecef
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room8_LandMons
 	.byte	0x11
-	.4byte	0xed16
+	.4byte	0xecb5
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Room8_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x857
+	.2byte	0x84e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Room8_LandMonsInfo
 	.byte	0xa
-	.4byte	0xed93
+	.4byte	0xed32
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41519,26 +41469,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Entrance_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x85e
-	.4byte	0xedc5
+	.2byte	0x855
+	.4byte	0xed64
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Entrance_WaterMons
 	.byte	0x11
-	.4byte	0xed87
+	.4byte	0xed26
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Entrance_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x867
+	.2byte	0x85e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Entrance_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xee0c
+	.4byte	0xedab
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41547,26 +41497,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSeafloorCavern_Entrance_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x86b
-	.4byte	0xee40
+	.2byte	0x862
+	.4byte	0xeddf
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Entrance_FishingMons
 	.byte	0x11
-	.4byte	0xee00
+	.4byte	0xed9f
 	.byte	0x38
 	.ascii	"gSeafloorCavern_Entrance_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x879
+	.2byte	0x870
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSeafloorCavern_Entrance_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xee89
+	.4byte	0xee28
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41575,26 +41525,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gCaveOfOrigin_Entrance_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x87c
-	.4byte	0xeeb8
+	.2byte	0x873
+	.4byte	0xee57
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_Entrance_LandMons
 	.byte	0x11
-	.4byte	0xee7d
+	.4byte	0xee1c
 	.byte	0x38
 	.ascii	"gCaveOfOrigin_Entrance_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x88c
+	.2byte	0x883
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_Entrance_LandMonsInfo
 	.byte	0xa
-	.4byte	0xeefc
+	.4byte	0xee9b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41603,26 +41553,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gCaveOfOrigin_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x892
-	.4byte	0xef25
+	.2byte	0x889
+	.4byte	0xeec4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_1F_LandMons
 	.byte	0x11
-	.4byte	0xeef0
+	.4byte	0xee8f
 	.byte	0x38
 	.ascii	"gCaveOfOrigin_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x8a2
+	.2byte	0x899
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xef63
+	.4byte	0xef02
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41631,26 +41581,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap1_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x8a8
-	.4byte	0xefa0
+	.2byte	0x89f
+	.4byte	0xef3f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap1_LandMons
 	.byte	0x11
-	.4byte	0xef57
+	.4byte	0xeef6
 	.byte	0x38
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap1_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x8b8
+	.2byte	0x8af
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap1_LandMonsInfo
 	.byte	0xa
-	.4byte	0xeff2
+	.4byte	0xef91
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41659,26 +41609,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap2_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x8be
-	.4byte	0xf02f
+	.2byte	0x8b5
+	.4byte	0xefce
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap2_LandMons
 	.byte	0x11
-	.4byte	0xefe6
+	.4byte	0xef85
 	.byte	0x38
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap2_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x8ce
+	.2byte	0x8c5
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap2_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf081
+	.4byte	0xf020
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41687,26 +41637,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap3_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x8d4
-	.4byte	0xf0be
+	.2byte	0x8cb
+	.4byte	0xf05d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap3_LandMons
 	.byte	0x11
-	.4byte	0xf075
+	.4byte	0xf014
 	.byte	0x38
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap3_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x8e4
+	.2byte	0x8db
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gCaveOfOrigin_UnusedRubySapphireMap3_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf110
+	.4byte	0xf0af
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41715,26 +41665,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gNewMauville_Entrance_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x8ea
-	.4byte	0xf13e
+	.2byte	0x8e1
+	.4byte	0xf0dd
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gNewMauville_Entrance_LandMons
 	.byte	0x11
-	.4byte	0xf104
+	.4byte	0xf0a3
 	.byte	0x38
 	.ascii	"gNewMauville_Entrance_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x8fa
+	.2byte	0x8f1
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gNewMauville_Entrance_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf181
+	.4byte	0xf120
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41743,26 +41693,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southwest_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x900
-	.4byte	0xf1af
+	.2byte	0x8f7
+	.4byte	0xf14e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_LandMons
 	.byte	0x11
-	.4byte	0xf175
+	.4byte	0xf114
 	.byte	0x38
 	.ascii	"gSafariZone_Southwest_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x910
+	.2byte	0x907
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf1f2
+	.4byte	0xf191
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41771,26 +41721,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southwest_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x913
-	.4byte	0xf221
+	.2byte	0x90a
+	.4byte	0xf1c0
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_WaterMons
 	.byte	0x11
-	.4byte	0xf1e6
+	.4byte	0xf185
 	.byte	0x38
 	.ascii	"gSafariZone_Southwest_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x91c
+	.2byte	0x913
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xf265
+	.4byte	0xf204
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41799,26 +41749,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southwest_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x920
-	.4byte	0xf296
+	.2byte	0x917
+	.4byte	0xf235
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_FishingMons
 	.byte	0x11
-	.4byte	0xf259
+	.4byte	0xf1f8
 	.byte	0x38
 	.ascii	"gSafariZone_Southwest_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x92e
+	.2byte	0x925
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southwest_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xf2dc
+	.4byte	0xf27b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41827,26 +41777,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_North_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x931
-	.4byte	0xf306
+	.2byte	0x928
+	.4byte	0xf2a5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_North_LandMons
 	.byte	0x11
-	.4byte	0xf2d0
+	.4byte	0xf26f
 	.byte	0x38
 	.ascii	"gSafariZone_North_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x941
+	.2byte	0x938
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_North_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf345
+	.4byte	0xf2e4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41855,26 +41805,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_North_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0x945
-	.4byte	0xf374
+	.2byte	0x93c
+	.4byte	0xf313
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_North_RockSmashMons
 	.byte	0x11
-	.4byte	0xf339
+	.4byte	0xf2d8
 	.byte	0x38
 	.ascii	"gSafariZone_North_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x94e
+	.2byte	0x945
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_North_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0xf3b8
+	.4byte	0xf357
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41883,26 +41833,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Northwest_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x952
-	.4byte	0xf3e6
+	.2byte	0x949
+	.4byte	0xf385
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_LandMons
 	.byte	0x11
-	.4byte	0xf3ac
+	.4byte	0xf34b
 	.byte	0x38
 	.ascii	"gSafariZone_Northwest_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x962
+	.2byte	0x959
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf429
+	.4byte	0xf3c8
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41911,26 +41861,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Northwest_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x965
-	.4byte	0xf458
+	.2byte	0x95c
+	.4byte	0xf3f7
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_WaterMons
 	.byte	0x11
-	.4byte	0xf41d
+	.4byte	0xf3bc
 	.byte	0x38
 	.ascii	"gSafariZone_Northwest_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x96e
+	.2byte	0x965
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xf49c
+	.4byte	0xf43b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -41939,26 +41889,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Northwest_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x972
-	.4byte	0xf4cd
+	.2byte	0x969
+	.4byte	0xf46c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_FishingMons
 	.byte	0x11
-	.4byte	0xf490
+	.4byte	0xf42f
 	.byte	0x38
 	.ascii	"gSafariZone_Northwest_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x980
+	.2byte	0x977
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northwest_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xf513
+	.4byte	0xf4b2
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -41967,26 +41917,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_B1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x983
-	.4byte	0xf53c
+	.2byte	0x97a
+	.4byte	0xf4db
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B1F_LandMons
 	.byte	0x11
-	.4byte	0xf507
+	.4byte	0xf4a6
 	.byte	0x38
 	.ascii	"gVictoryRoad_B1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x993
+	.2byte	0x98a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf57a
+	.4byte	0xf519
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -41995,26 +41945,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_B1F_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0x997
-	.4byte	0xf5a8
+	.2byte	0x98e
+	.4byte	0xf547
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B1F_RockSmashMons
 	.byte	0x11
-	.4byte	0xf56e
+	.4byte	0xf50d
 	.byte	0x38
 	.ascii	"gVictoryRoad_B1F_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9a0
+	.2byte	0x997
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B1F_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0xf5eb
+	.4byte	0xf58a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42023,26 +41973,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_B2F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x9a4
-	.4byte	0xf614
+	.2byte	0x99b
+	.4byte	0xf5b3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_LandMons
 	.byte	0x11
-	.4byte	0xf5df
+	.4byte	0xf57e
 	.byte	0x38
 	.ascii	"gVictoryRoad_B2F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9b4
+	.2byte	0x9ab
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf652
+	.4byte	0xf5f1
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42051,26 +42001,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_B2F_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x9b7
-	.4byte	0xf67c
+	.2byte	0x9ae
+	.4byte	0xf61b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_WaterMons
 	.byte	0x11
-	.4byte	0xf646
+	.4byte	0xf5e5
 	.byte	0x38
 	.ascii	"gVictoryRoad_B2F_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9c0
+	.2byte	0x9b7
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xf6bb
+	.4byte	0xf65a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42079,26 +42029,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gVictoryRoad_B2F_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x9c4
-	.4byte	0xf6e7
+	.2byte	0x9bb
+	.4byte	0xf686
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_FishingMons
 	.byte	0x11
-	.4byte	0xf6af
+	.4byte	0xf64e
 	.byte	0x38
 	.ascii	"gVictoryRoad_B2F_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9d2
+	.2byte	0x9c9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gVictoryRoad_B2F_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xf728
+	.4byte	0xf6c7
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42107,26 +42057,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_1R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x9d5
-	.4byte	0xf753
+	.2byte	0x9cc
+	.4byte	0xf6f2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_LandMons
 	.byte	0x11
-	.4byte	0xf71c
+	.4byte	0xf6bb
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_1R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9e5
+	.2byte	0x9dc
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf793
+	.4byte	0xf732
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42135,26 +42085,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_1R_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0x9e8
-	.4byte	0xf7bf
+	.2byte	0x9df
+	.4byte	0xf75e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_WaterMons
 	.byte	0x11
-	.4byte	0xf787
+	.4byte	0xf726
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_1R_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x9f1
+	.2byte	0x9e8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xf800
+	.4byte	0xf79f
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42163,26 +42113,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_1R_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0x9f5
-	.4byte	0xf82e
+	.2byte	0x9ec
+	.4byte	0xf7cd
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_FishingMons
 	.byte	0x11
-	.4byte	0xf7f4
+	.4byte	0xf793
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_1R_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa03
+	.2byte	0x9fa
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_1R_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xf871
+	.4byte	0xf810
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42191,26 +42141,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_2R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xa06
-	.4byte	0xf89c
+	.2byte	0x9fd
+	.4byte	0xf83b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_LandMons
 	.byte	0x11
-	.4byte	0xf865
+	.4byte	0xf804
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_2R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa16
+	.2byte	0xa0d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_LandMonsInfo
 	.byte	0xa
-	.4byte	0xf8dc
+	.4byte	0xf87b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42219,26 +42169,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_2R_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xa19
-	.4byte	0xf908
+	.2byte	0xa10
+	.4byte	0xf8a7
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_WaterMons
 	.byte	0x11
-	.4byte	0xf8d0
+	.4byte	0xf86f
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_2R_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa22
+	.2byte	0xa19
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xf949
+	.4byte	0xf8e8
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42247,26 +42197,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_1F_2R_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xa26
-	.4byte	0xf977
+	.2byte	0xa1d
+	.4byte	0xf916
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_FishingMons
 	.byte	0x11
-	.4byte	0xf93d
+	.4byte	0xf8dc
 	.byte	0x38
 	.ascii	"gMeteorFalls_1F_2R_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa34
+	.2byte	0xa2b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_1F_2R_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xf9ba
+	.4byte	0xf959
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42275,26 +42225,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_1R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xa37
-	.4byte	0xf9e6
+	.2byte	0xa2e
+	.4byte	0xf985
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_LandMons
 	.byte	0x11
-	.4byte	0xf9ae
+	.4byte	0xf94d
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_1R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa47
+	.2byte	0xa3e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_LandMonsInfo
 	.byte	0xa
-	.4byte	0xfa27
+	.4byte	0xf9c6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42303,26 +42253,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_1R_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xa4a
-	.4byte	0xfa54
+	.2byte	0xa41
+	.4byte	0xf9f3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_WaterMons
 	.byte	0x11
-	.4byte	0xfa1b
+	.4byte	0xf9ba
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_1R_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa53
+	.2byte	0xa4a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xfa96
+	.4byte	0xfa35
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42331,26 +42281,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_B1F_1R_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xa57
-	.4byte	0xfac5
+	.2byte	0xa4e
+	.4byte	0xfa64
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_FishingMons
 	.byte	0x11
-	.4byte	0xfa8a
+	.4byte	0xfa29
 	.byte	0x38
 	.ascii	"gMeteorFalls_B1F_1R_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa65
+	.2byte	0xa5c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_B1F_1R_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xfb09
+	.4byte	0xfaa8
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42359,26 +42309,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideStairsRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xa68
-	.4byte	0xfb3e
+	.2byte	0xa5f
+	.4byte	0xfadd
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideStairsRoom_LandMons
 	.byte	0x11
-	.4byte	0xfafd
+	.4byte	0xfa9c
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideStairsRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa78
+	.2byte	0xa6f
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideStairsRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0xfb88
+	.4byte	0xfb27
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42387,26 +42337,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideLowerRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xa7e
-	.4byte	0xfbbc
+	.2byte	0xa75
+	.4byte	0xfb5b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideLowerRoom_LandMons
 	.byte	0x11
-	.4byte	0xfb7c
+	.4byte	0xfb1b
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideLowerRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xa8e
+	.2byte	0xa85
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideLowerRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0xfc05
+	.4byte	0xfba4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42415,26 +42365,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideInnerRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xa94
-	.4byte	0xfc39
+	.2byte	0xa8b
+	.4byte	0xfbd8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_LandMons
 	.byte	0x11
-	.4byte	0xfbf9
+	.4byte	0xfb98
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideInnerRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xaa4
+	.2byte	0xa9b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0xfc82
+	.4byte	0xfc21
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42443,26 +42393,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideInnerRoom_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xaa7
-	.4byte	0xfcb7
+	.2byte	0xa9e
+	.4byte	0xfc56
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_WaterMons
 	.byte	0x11
-	.4byte	0xfc76
+	.4byte	0xfc15
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideInnerRoom_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xab0
+	.2byte	0xaa7
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xfd01
+	.4byte	0xfca0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42471,26 +42421,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideInnerRoom_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xab4
-	.4byte	0xfd38
+	.2byte	0xaab
+	.4byte	0xfcd7
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_FishingMons
 	.byte	0x11
-	.4byte	0xfcf5
+	.4byte	0xfc94
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideInnerRoom_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xac2
+	.2byte	0xab9
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideInnerRoom_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xfd84
+	.4byte	0xfd23
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -42499,26 +42449,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideEntranceRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xac5
-	.4byte	0xfdbb
+	.2byte	0xabc
+	.4byte	0xfd5a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_LandMons
 	.byte	0x11
-	.4byte	0xfd78
+	.4byte	0xfd17
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideEntranceRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xad5
+	.2byte	0xacc
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0xfe07
+	.4byte	0xfda6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42527,26 +42477,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideEntranceRoom_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xad8
-	.4byte	0xfe3f
+	.2byte	0xacf
+	.4byte	0xfdde
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_WaterMons
 	.byte	0x11
-	.4byte	0xfdfb
+	.4byte	0xfd9a
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideEntranceRoom_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xae1
+	.2byte	0xad8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xfe8c
+	.4byte	0xfe2b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42555,26 +42505,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideEntranceRoom_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xae5
-	.4byte	0xfec6
+	.2byte	0xadc
+	.4byte	0xfe65
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_FishingMons
 	.byte	0x11
-	.4byte	0xfe80
+	.4byte	0xfe1f
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideEntranceRoom_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xaf3
+	.2byte	0xaea
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideEntranceRoom_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xff15
+	.4byte	0xfeb4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42583,26 +42533,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gLilycoveCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xaf7
-	.4byte	0xff3c
+	.2byte	0xaee
+	.4byte	0xfedb
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLilycoveCity_WaterMons
 	.byte	0x11
-	.4byte	0xff09
+	.4byte	0xfea8
 	.byte	0x38
 	.ascii	"gLilycoveCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb00
+	.2byte	0xaf7
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLilycoveCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0xff78
+	.4byte	0xff17
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42611,26 +42561,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gLilycoveCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb04
-	.4byte	0xffa1
+	.2byte	0xafb
+	.4byte	0xff40
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLilycoveCity_FishingMons
 	.byte	0x11
-	.4byte	0xff6c
+	.4byte	0xff0b
 	.byte	0x38
 	.ascii	"gLilycoveCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb12
+	.2byte	0xb09
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLilycoveCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0xffdf
+	.4byte	0xff7e
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42639,26 +42589,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gDewfordTown_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xb16
-	.4byte	0x10005
+	.2byte	0xb0d
+	.4byte	0xffa4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDewfordTown_WaterMons
 	.byte	0x11
-	.4byte	0xffd3
+	.4byte	0xff72
 	.byte	0x38
 	.ascii	"gDewfordTown_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb1f
+	.2byte	0xb16
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDewfordTown_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10040
+	.4byte	0xffdf
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42667,26 +42617,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gDewfordTown_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb23
-	.4byte	0x10068
+	.2byte	0xb1a
+	.4byte	0x10007
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDewfordTown_FishingMons
 	.byte	0x11
-	.4byte	0x10034
+	.4byte	0xffd3
 	.byte	0x38
 	.ascii	"gDewfordTown_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb31
+	.2byte	0xb28
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDewfordTown_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x100a5
+	.4byte	0x10044
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42695,26 +42645,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSlateportCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xb35
-	.4byte	0x100cd
+	.2byte	0xb2c
+	.4byte	0x1006c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSlateportCity_WaterMons
 	.byte	0x11
-	.4byte	0x10099
+	.4byte	0x10038
 	.byte	0x38
 	.ascii	"gSlateportCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb3e
+	.2byte	0xb35
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSlateportCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x1010a
+	.4byte	0x100a9
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42723,26 +42673,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSlateportCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb42
-	.4byte	0x10134
+	.2byte	0xb39
+	.4byte	0x100d3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSlateportCity_FishingMons
 	.byte	0x11
-	.4byte	0x100fe
+	.4byte	0x1009d
 	.byte	0x38
 	.ascii	"gSlateportCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb50
+	.2byte	0xb47
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSlateportCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x10173
+	.4byte	0x10112
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42751,26 +42701,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMossdeepCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xb54
-	.4byte	0x1019a
+	.2byte	0xb4b
+	.4byte	0x10139
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMossdeepCity_WaterMons
 	.byte	0x11
-	.4byte	0x10167
+	.4byte	0x10106
 	.byte	0x38
 	.ascii	"gMossdeepCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb5d
+	.2byte	0xb54
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMossdeepCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x101d6
+	.4byte	0x10175
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42779,26 +42729,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMossdeepCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb61
-	.4byte	0x101ff
+	.2byte	0xb58
+	.4byte	0x1019e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMossdeepCity_FishingMons
 	.byte	0x11
-	.4byte	0x101ca
+	.4byte	0x10169
 	.byte	0x38
 	.ascii	"gMossdeepCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb6f
+	.2byte	0xb66
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMossdeepCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x1023d
+	.4byte	0x101dc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42807,26 +42757,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gPacifidlogTown_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xb73
-	.4byte	0x10266
+	.2byte	0xb6a
+	.4byte	0x10205
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPacifidlogTown_WaterMons
 	.byte	0x11
-	.4byte	0x10231
+	.4byte	0x101d0
 	.byte	0x38
 	.ascii	"gPacifidlogTown_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb7c
+	.2byte	0xb73
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPacifidlogTown_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x102a4
+	.4byte	0x10243
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42835,26 +42785,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gPacifidlogTown_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb80
-	.4byte	0x102cf
+	.2byte	0xb77
+	.4byte	0x1026e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPacifidlogTown_FishingMons
 	.byte	0x11
-	.4byte	0x10298
+	.4byte	0x10237
 	.byte	0x38
 	.ascii	"gPacifidlogTown_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb8e
+	.2byte	0xb85
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPacifidlogTown_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x1030f
+	.4byte	0x102ae
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42863,26 +42813,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gEverGrandeCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xb92
-	.4byte	0x10338
+	.2byte	0xb89
+	.4byte	0x102d7
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gEverGrandeCity_WaterMons
 	.byte	0x11
-	.4byte	0x10303
+	.4byte	0x102a2
 	.byte	0x38
 	.ascii	"gEverGrandeCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xb9b
+	.2byte	0xb92
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gEverGrandeCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10376
+	.4byte	0x10315
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42891,26 +42841,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gEverGrandeCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xb9f
-	.4byte	0x103a1
+	.2byte	0xb96
+	.4byte	0x10340
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gEverGrandeCity_FishingMons
 	.byte	0x11
-	.4byte	0x1036a
+	.4byte	0x10309
 	.byte	0x38
 	.ascii	"gEverGrandeCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xbad
+	.2byte	0xba4
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gEverGrandeCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x103e1
+	.4byte	0x10380
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42919,26 +42869,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gPetalburgCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xbb1
-	.4byte	0x10409
+	.2byte	0xba8
+	.4byte	0x103a8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgCity_WaterMons
 	.byte	0x11
-	.4byte	0x103d5
+	.4byte	0x10374
 	.byte	0x38
 	.ascii	"gPetalburgCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xbba
+	.2byte	0xbb1
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10446
+	.4byte	0x103e5
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -42947,26 +42897,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gPetalburgCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xbbe
-	.4byte	0x10470
+	.2byte	0xbb5
+	.4byte	0x1040f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgCity_FishingMons
 	.byte	0x11
-	.4byte	0x1043a
+	.4byte	0x103d9
 	.byte	0x38
 	.ascii	"gPetalburgCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xbcc
+	.2byte	0xbc3
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gPetalburgCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x104af
+	.4byte	0x1044e
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -42975,26 +42925,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gUnderwater_Route124_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xbd0
-	.4byte	0x104dd
+	.2byte	0xbc7
+	.4byte	0x1047c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gUnderwater_Route124_WaterMons
 	.byte	0x11
-	.4byte	0x104a3
+	.4byte	0x10442
 	.byte	0x38
 	.ascii	"gUnderwater_Route124_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xbd9
+	.2byte	0xbd0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gUnderwater_Route124_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10520
+	.4byte	0x104bf
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43003,26 +42953,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gShoalCave_LowTideIceRoom_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xbde
-	.4byte	0x10552
+	.2byte	0xbd5
+	.4byte	0x104f1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideIceRoom_LandMons
 	.byte	0x11
-	.4byte	0x10514
+	.4byte	0x104b3
 	.byte	0x38
 	.ascii	"gShoalCave_LowTideIceRoom_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xbee
+	.2byte	0xbe5
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gShoalCave_LowTideIceRoom_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10599
+	.4byte	0x10538
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43031,26 +42981,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSkyPillar_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xbf4
-	.4byte	0x105bf
+	.2byte	0xbeb
+	.4byte	0x1055e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_1F_LandMons
 	.byte	0x11
-	.4byte	0x1058d
+	.4byte	0x1052c
 	.byte	0x38
 	.ascii	"gSkyPillar_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc04
+	.2byte	0xbfb
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x105fa
+	.4byte	0x10599
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -43059,26 +43009,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSootopolisCity_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xc0b
-	.4byte	0x10623
+	.2byte	0xc02
+	.4byte	0x105c2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSootopolisCity_WaterMons
 	.byte	0x11
-	.4byte	0x105ee
+	.4byte	0x1058d
 	.byte	0x38
 	.ascii	"gSootopolisCity_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc14
+	.2byte	0xc0b
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSootopolisCity_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10661
+	.4byte	0x10600
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -43087,26 +43037,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSootopolisCity_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xc18
-	.4byte	0x1068c
+	.2byte	0xc0f
+	.4byte	0x1062b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSootopolisCity_FishingMons
 	.byte	0x11
-	.4byte	0x10655
+	.4byte	0x105f4
 	.byte	0x38
 	.ascii	"gSootopolisCity_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc26
+	.2byte	0xc1d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSootopolisCity_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x106cc
+	.4byte	0x1066b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43115,26 +43065,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSkyPillar_3F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xc29
-	.4byte	0x106f2
+	.2byte	0xc20
+	.4byte	0x10691
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_3F_LandMons
 	.byte	0x11
-	.4byte	0x106c0
+	.4byte	0x1065f
 	.byte	0x38
 	.ascii	"gSkyPillar_3F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc39
+	.2byte	0xc30
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_3F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1072d
+	.4byte	0x106cc
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43143,26 +43093,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSkyPillar_5F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xc3f
-	.4byte	0x10753
+	.2byte	0xc36
+	.4byte	0x106f2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_5F_LandMons
 	.byte	0x11
-	.4byte	0x10721
+	.4byte	0x106c0
 	.byte	0x38
 	.ascii	"gSkyPillar_5F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc4f
+	.2byte	0xc46
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSkyPillar_5F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1078e
+	.4byte	0x1072d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43171,26 +43121,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southeast_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xc55
-	.4byte	0x107bc
+	.2byte	0xc4c
+	.4byte	0x1075b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_LandMons
 	.byte	0x11
-	.4byte	0x10782
+	.4byte	0x10721
 	.byte	0x38
 	.ascii	"gSafariZone_Southeast_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc65
+	.2byte	0xc5c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_LandMonsInfo
 	.byte	0xa
-	.4byte	0x107ff
+	.4byte	0x1079e
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -43199,26 +43149,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southeast_WaterMons\000"
 
 	.byte	0xe
-	.2byte	0xc68
-	.4byte	0x1082e
+	.2byte	0xc5f
+	.4byte	0x107cd
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_WaterMons
 	.byte	0x11
-	.4byte	0x107f3
+	.4byte	0x10792
 	.byte	0x38
 	.ascii	"gSafariZone_Southeast_WaterMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc71
+	.2byte	0xc68
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_WaterMonsInfo
 	.byte	0xa
-	.4byte	0x10872
+	.4byte	0x10811
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -43227,26 +43177,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Southeast_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xc75
-	.4byte	0x108a3
+	.2byte	0xc6c
+	.4byte	0x10842
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_FishingMons
 	.byte	0x11
-	.4byte	0x10866
+	.4byte	0x10805
 	.byte	0x38
 	.ascii	"gSafariZone_Southeast_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc83
+	.2byte	0xc7a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Southeast_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x108e9
+	.4byte	0x10888
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43255,26 +43205,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Northeast_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xc86
-	.4byte	0x10917
+	.2byte	0xc7d
+	.4byte	0x108b6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northeast_LandMons
 	.byte	0x11
-	.4byte	0x108dd
+	.4byte	0x1087c
 	.byte	0x38
 	.ascii	"gSafariZone_Northeast_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xc96
+	.2byte	0xc8d
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northeast_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1095a
+	.4byte	0x108f9
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x4
@@ -43283,26 +43233,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gSafariZone_Northeast_RockSmashMons\000"
 
 	.byte	0xe
-	.2byte	0xc9a
-	.4byte	0x1098d
+	.2byte	0xc91
+	.4byte	0x1092c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northeast_RockSmashMons
 	.byte	0x11
-	.4byte	0x1094e
+	.4byte	0x108ed
 	.byte	0x38
 	.ascii	"gSafariZone_Northeast_RockSmashMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xca3
+	.2byte	0xc9a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gSafariZone_Northeast_RockSmashMonsInfo
 	.byte	0xa
-	.4byte	0x109d5
+	.4byte	0x10974
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43311,26 +43261,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xca7
-	.4byte	0x109fe
+	.2byte	0xc9e
+	.4byte	0x1099d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_1F_LandMons
 	.byte	0x11
-	.4byte	0x109c9
+	.4byte	0x10968
 	.byte	0x38
 	.ascii	"gMagmaHideout_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xcb7
+	.2byte	0xcae
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10a3c
+	.4byte	0x109db
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43339,26 +43289,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_2F_1R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xcbd
-	.4byte	0x10a68
+	.2byte	0xcb4
+	.4byte	0x10a07
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_1R_LandMons
 	.byte	0x11
-	.4byte	0x10a30
+	.4byte	0x109cf
 	.byte	0x38
 	.ascii	"gMagmaHideout_2F_1R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xccd
+	.2byte	0xcc4
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_1R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10aa9
+	.4byte	0x10a48
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43367,26 +43317,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_2F_2R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xcd3
-	.4byte	0x10ad5
+	.2byte	0xcca
+	.4byte	0x10a74
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_2R_LandMons
 	.byte	0x11
-	.4byte	0x10a9d
+	.4byte	0x10a3c
 	.byte	0x38
 	.ascii	"gMagmaHideout_2F_2R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xce3
+	.2byte	0xcda
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_2R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10b16
+	.4byte	0x10ab5
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43395,26 +43345,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_3F_1R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xce9
-	.4byte	0x10b42
+	.2byte	0xce0
+	.4byte	0x10ae1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_1R_LandMons
 	.byte	0x11
-	.4byte	0x10b0a
+	.4byte	0x10aa9
 	.byte	0x38
 	.ascii	"gMagmaHideout_3F_1R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xcf9
+	.2byte	0xcf0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_1R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10b83
+	.4byte	0x10b22
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43423,26 +43373,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_3F_2R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xcff
-	.4byte	0x10baf
+	.2byte	0xcf6
+	.4byte	0x10b4e
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_2R_LandMons
 	.byte	0x11
-	.4byte	0x10b77
+	.4byte	0x10b16
 	.byte	0x38
 	.ascii	"gMagmaHideout_3F_2R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd0f
+	.2byte	0xd06
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_2R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10bf0
+	.4byte	0x10b8f
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43451,26 +43401,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_4F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd15
-	.4byte	0x10c19
+	.2byte	0xd0c
+	.4byte	0x10bb8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_4F_LandMons
 	.byte	0x11
-	.4byte	0x10be4
+	.4byte	0x10b83
 	.byte	0x38
 	.ascii	"gMagmaHideout_4F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd25
+	.2byte	0xd1c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_4F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10c57
+	.4byte	0x10bf6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43479,26 +43429,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_3F_3R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd2b
-	.4byte	0x10c83
+	.2byte	0xd22
+	.4byte	0x10c22
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_3R_LandMons
 	.byte	0x11
-	.4byte	0x10c4b
+	.4byte	0x10bea
 	.byte	0x38
 	.ascii	"gMagmaHideout_3F_3R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd3b
+	.2byte	0xd32
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_3F_3R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10cc4
+	.4byte	0x10c63
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43507,26 +43457,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMagmaHideout_2F_3R_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd41
-	.4byte	0x10cf0
+	.2byte	0xd38
+	.4byte	0x10c8f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_3R_LandMons
 	.byte	0x11
-	.4byte	0x10cb8
+	.4byte	0x10c57
 	.byte	0x38
 	.ascii	"gMagmaHideout_2F_3R_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd51
+	.2byte	0xd48
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMagmaHideout_2F_3R_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10d31
+	.4byte	0x10cd0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43535,26 +43485,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMirageTower_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd57
-	.4byte	0x10d59
+	.2byte	0xd4e
+	.4byte	0x10cf8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_1F_LandMons
 	.byte	0x11
-	.4byte	0x10d25
+	.4byte	0x10cc4
 	.byte	0x38
 	.ascii	"gMirageTower_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd67
+	.2byte	0xd5e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10d96
+	.4byte	0x10d35
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43563,26 +43513,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMirageTower_2F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd6d
-	.4byte	0x10dbe
+	.2byte	0xd64
+	.4byte	0x10d5d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_2F_LandMons
 	.byte	0x11
-	.4byte	0x10d8a
+	.4byte	0x10d29
 	.byte	0x38
 	.ascii	"gMirageTower_2F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd7d
+	.2byte	0xd74
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_2F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10dfb
+	.4byte	0x10d9a
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43591,26 +43541,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMirageTower_3F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd83
-	.4byte	0x10e23
+	.2byte	0xd7a
+	.4byte	0x10dc2
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_3F_LandMons
 	.byte	0x11
-	.4byte	0x10def
+	.4byte	0x10d8e
 	.byte	0x38
 	.ascii	"gMirageTower_3F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xd93
+	.2byte	0xd8a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_3F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10e60
+	.4byte	0x10dff
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43619,26 +43569,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMirageTower_4F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xd99
-	.4byte	0x10e88
+	.2byte	0xd90
+	.4byte	0x10e27
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_4F_LandMons
 	.byte	0x11
-	.4byte	0x10e54
+	.4byte	0x10df3
 	.byte	0x38
 	.ascii	"gMirageTower_4F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xda9
+	.2byte	0xda0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMirageTower_4F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10ec5
+	.4byte	0x10e64
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43647,26 +43597,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gDesertUnderpass_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xdaf
-	.4byte	0x10eee
+	.2byte	0xda6
+	.4byte	0x10e8d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDesertUnderpass_LandMons
 	.byte	0x11
-	.4byte	0x10eb9
+	.4byte	0x10e58
 	.byte	0x38
 	.ascii	"gDesertUnderpass_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xdbf
+	.2byte	0xdb6
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDesertUnderpass_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10f2c
+	.4byte	0x10ecb
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43675,26 +43625,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gArtisanCave_B1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xdc5
-	.4byte	0x10f55
+	.2byte	0xdbc
+	.4byte	0x10ef4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gArtisanCave_B1F_LandMons
 	.byte	0x11
-	.4byte	0x10f20
+	.4byte	0x10ebf
 	.byte	0x38
 	.ascii	"gArtisanCave_B1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xdd5
+	.2byte	0xdcc
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gArtisanCave_B1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10f93
+	.4byte	0x10f32
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43703,26 +43653,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gArtisanCave_1F_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xddb
-	.4byte	0x10fbb
+	.2byte	0xdd2
+	.4byte	0x10f5a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gArtisanCave_1F_LandMons
 	.byte	0x11
-	.4byte	0x10f87
+	.4byte	0x10f26
 	.byte	0x38
 	.ascii	"gArtisanCave_1F_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xdeb
+	.2byte	0xde2
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gArtisanCave_1F_LandMonsInfo
 	.byte	0xa
-	.4byte	0x10ff8
+	.4byte	0x10f97
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43731,26 +43681,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave1_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xdf1
-	.4byte	0x1101f
+	.2byte	0xde8
+	.4byte	0x10fbe
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave1_LandMons
 	.byte	0x11
-	.4byte	0x10fec
+	.4byte	0x10f8b
 	.byte	0x38
 	.ascii	"gAlteringCave1_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe01
+	.2byte	0xdf8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave1_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1105b
+	.4byte	0x10ffa
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43759,26 +43709,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave2_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe07
-	.4byte	0x11082
+	.2byte	0xdfe
+	.4byte	0x11021
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave2_LandMons
 	.byte	0x11
-	.4byte	0x1104f
+	.4byte	0x10fee
 	.byte	0x38
 	.ascii	"gAlteringCave2_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe17
+	.2byte	0xe0e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave2_LandMonsInfo
 	.byte	0xa
-	.4byte	0x110be
+	.4byte	0x1105d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43787,26 +43737,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave3_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe1d
-	.4byte	0x110e5
+	.2byte	0xe14
+	.4byte	0x11084
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave3_LandMons
 	.byte	0x11
-	.4byte	0x110b2
+	.4byte	0x11051
 	.byte	0x38
 	.ascii	"gAlteringCave3_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe2d
+	.2byte	0xe24
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave3_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11121
+	.4byte	0x110c0
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43815,26 +43765,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave4_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe33
-	.4byte	0x11148
+	.2byte	0xe2a
+	.4byte	0x110e7
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave4_LandMons
 	.byte	0x11
-	.4byte	0x11115
+	.4byte	0x110b4
 	.byte	0x38
 	.ascii	"gAlteringCave4_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe43
+	.2byte	0xe3a
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave4_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11184
+	.4byte	0x11123
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43843,26 +43793,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave5_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe49
-	.4byte	0x111ab
+	.2byte	0xe40
+	.4byte	0x1114a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave5_LandMons
 	.byte	0x11
-	.4byte	0x11178
+	.4byte	0x11117
 	.byte	0x38
 	.ascii	"gAlteringCave5_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe59
+	.2byte	0xe50
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave5_LandMonsInfo
 	.byte	0xa
-	.4byte	0x111e7
+	.4byte	0x11186
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43871,26 +43821,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave6_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe5f
-	.4byte	0x1120e
+	.2byte	0xe56
+	.4byte	0x111ad
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave6_LandMons
 	.byte	0x11
-	.4byte	0x111db
+	.4byte	0x1117a
 	.byte	0x38
 	.ascii	"gAlteringCave6_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe6f
+	.2byte	0xe66
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave6_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1124a
+	.4byte	0x111e9
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43899,26 +43849,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave7_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe75
-	.4byte	0x11271
+	.2byte	0xe6c
+	.4byte	0x11210
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave7_LandMons
 	.byte	0x11
-	.4byte	0x1123e
+	.4byte	0x111dd
 	.byte	0x38
 	.ascii	"gAlteringCave7_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe85
+	.2byte	0xe7c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave7_LandMonsInfo
 	.byte	0xa
-	.4byte	0x112ad
+	.4byte	0x1124c
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43927,26 +43877,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave8_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xe8b
-	.4byte	0x112d4
+	.2byte	0xe82
+	.4byte	0x11273
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave8_LandMons
 	.byte	0x11
-	.4byte	0x112a1
+	.4byte	0x11240
 	.byte	0x38
 	.ascii	"gAlteringCave8_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xe9b
+	.2byte	0xe92
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave8_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11310
+	.4byte	0x112af
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43955,26 +43905,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gAlteringCave9_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xea1
-	.4byte	0x11337
+	.2byte	0xe98
+	.4byte	0x112d6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave9_LandMons
 	.byte	0x11
-	.4byte	0x11304
+	.4byte	0x112a3
 	.byte	0x38
 	.ascii	"gAlteringCave9_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xeb1
+	.2byte	0xea8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gAlteringCave9_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11373
+	.4byte	0x11312
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -43983,26 +43933,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gMeteorFalls_StevensCave_LandMons\000"
 
 	.byte	0xe
-	.2byte	0xeb7
-	.4byte	0x113a4
+	.2byte	0xeae
+	.4byte	0x11343
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_StevensCave_LandMons
 	.byte	0x11
-	.4byte	0x11367
+	.4byte	0x11306
 	.byte	0x38
 	.ascii	"gMeteorFalls_StevensCave_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xec7
+	.2byte	0xebe
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gMeteorFalls_StevensCave_LandMonsInfo
 	.byte	0xa
-	.4byte	0x113ea
+	.4byte	0x11389
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0x9
@@ -44011,26 +43961,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gLittlerootTown0_FishingMons\000"
 
 	.byte	0xe
-	.2byte	0xed0
-	.4byte	0x11416
+	.2byte	0xec7
+	.4byte	0x113b5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLittlerootTown0_FishingMons
 	.byte	0x11
-	.4byte	0x113de
+	.4byte	0x1137d
 	.byte	0x38
 	.ascii	"gLittlerootTown0_FishingMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0xede
+	.2byte	0xed5
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gLittlerootTown0_FishingMonsInfo
 	.byte	0xa
-	.4byte	0x11457
+	.4byte	0x113f6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44039,26 +43989,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_1_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x12d9
-	.4byte	0x11480
+	.2byte	0x12d0
+	.4byte	0x1141f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_1_LandMons
 	.byte	0x11
-	.4byte	0x1144b
+	.4byte	0x113ea
 	.byte	0x38
 	.ascii	"gBattlePyramid_1_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x12e9
+	.2byte	0x12e0
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_1_LandMonsInfo
 	.byte	0xa
-	.4byte	0x114be
+	.4byte	0x1145d
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44067,26 +44017,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_2_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x12ef
-	.4byte	0x114e7
+	.2byte	0x12e6
+	.4byte	0x11486
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_2_LandMons
 	.byte	0x11
-	.4byte	0x114b2
+	.4byte	0x11451
 	.byte	0x38
 	.ascii	"gBattlePyramid_2_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x12ff
+	.2byte	0x12f6
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_2_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11525
+	.4byte	0x114c4
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44095,26 +44045,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_3_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1305
-	.4byte	0x1154e
+	.2byte	0x12fc
+	.4byte	0x114ed
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_3_LandMons
 	.byte	0x11
-	.4byte	0x11519
+	.4byte	0x114b8
 	.byte	0x38
 	.ascii	"gBattlePyramid_3_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1315
+	.2byte	0x130c
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_3_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1158c
+	.4byte	0x1152b
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44123,26 +44073,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_4_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x131b
-	.4byte	0x115b5
+	.2byte	0x1312
+	.4byte	0x11554
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_4_LandMons
 	.byte	0x11
-	.4byte	0x11580
+	.4byte	0x1151f
 	.byte	0x38
 	.ascii	"gBattlePyramid_4_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x132b
+	.2byte	0x1322
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_4_LandMonsInfo
 	.byte	0xa
-	.4byte	0x115f3
+	.4byte	0x11592
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44151,26 +44101,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_5_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1331
-	.4byte	0x1161c
+	.2byte	0x1328
+	.4byte	0x115bb
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_5_LandMons
 	.byte	0x11
-	.4byte	0x115e7
+	.4byte	0x11586
 	.byte	0x38
 	.ascii	"gBattlePyramid_5_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1341
+	.2byte	0x1338
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_5_LandMonsInfo
 	.byte	0xa
-	.4byte	0x1165a
+	.4byte	0x115f9
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44179,26 +44129,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_6_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x1347
-	.4byte	0x11683
+	.2byte	0x133e
+	.4byte	0x11622
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_6_LandMons
 	.byte	0x11
-	.4byte	0x1164e
+	.4byte	0x115ed
 	.byte	0x38
 	.ascii	"gBattlePyramid_6_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x1357
+	.2byte	0x134e
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_6_LandMonsInfo
 	.byte	0xa
-	.4byte	0x116c1
+	.4byte	0x11660
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44207,26 +44157,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramid_7_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x135d
-	.4byte	0x116ea
+	.2byte	0x1354
+	.4byte	0x11689
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_7_LandMons
 	.byte	0x11
-	.4byte	0x116b5
+	.4byte	0x11654
 	.byte	0x38
 	.ascii	"gBattlePyramid_7_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x136d
+	.2byte	0x1364
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramid_7_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11728
+	.4byte	0x116c7
 	.4byte	0x558
 	.byte	0xb
 	.byte	0x7
@@ -44235,16 +44185,16 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePyramidWildMonHeaders\000"
 
 	.byte	0xe
-	.2byte	0x1373
-	.4byte	0x11754
+	.2byte	0x136a
+	.4byte	0x116f3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePyramidWildMonHeaders
 	.byte	0x11
-	.4byte	0x1171c
+	.4byte	0x116bb
 	.byte	0xa
-	.4byte	0x11765
+	.4byte	0x11704
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44253,26 +44203,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePike_1_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x13bb
-	.4byte	0x1178b
+	.2byte	0x13b2
+	.4byte	0x1172a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_1_LandMons
 	.byte	0x11
-	.4byte	0x11759
+	.4byte	0x116f8
 	.byte	0x38
 	.ascii	"gBattlePike_1_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x13cb
+	.2byte	0x13c2
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_1_LandMonsInfo
 	.byte	0xa
-	.4byte	0x117c6
+	.4byte	0x11765
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44281,26 +44231,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePike_2_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x13d1
-	.4byte	0x117ec
+	.2byte	0x13c8
+	.4byte	0x1178b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_2_LandMons
 	.byte	0x11
-	.4byte	0x117ba
+	.4byte	0x11759
 	.byte	0x38
 	.ascii	"gBattlePike_2_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x13e1
+	.2byte	0x13d8
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_2_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11827
+	.4byte	0x117c6
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44309,26 +44259,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePike_3_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x13e7
-	.4byte	0x1184d
+	.2byte	0x13de
+	.4byte	0x117ec
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_3_LandMons
 	.byte	0x11
-	.4byte	0x1181b
+	.4byte	0x117ba
 	.byte	0x38
 	.ascii	"gBattlePike_3_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x13f7
+	.2byte	0x13ee
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_3_LandMonsInfo
 	.byte	0xa
-	.4byte	0x11888
+	.4byte	0x11827
 	.4byte	0x41e
 	.byte	0xb
 	.byte	0xb
@@ -44337,26 +44287,26 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePike_4_LandMons\000"
 
 	.byte	0xe
-	.2byte	0x13fd
-	.4byte	0x118ae
+	.2byte	0x13f4
+	.4byte	0x1184d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_4_LandMons
 	.byte	0x11
-	.4byte	0x1187c
+	.4byte	0x1181b
 	.byte	0x38
 	.ascii	"gBattlePike_4_LandMonsInfo\000"
 
 	.byte	0xe
-	.2byte	0x140d
+	.2byte	0x1404
 	.4byte	0x5aa
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePike_4_LandMonsInfo
 	.byte	0xa
-	.4byte	0x118e9
+	.4byte	0x11888
 	.4byte	0x558
 	.byte	0xb
 	.byte	0x4
@@ -44365,14 +44315,14 @@ TryDoDoubleWildBattle:
 	.ascii	"gBattlePikeWildMonHeaders\000"
 
 	.byte	0xe
-	.2byte	0x1413
-	.4byte	0x11912
+	.2byte	0x140a
+	.4byte	0x118b1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gBattlePikeWildMonHeaders
 	.byte	0x11
-	.4byte	0x118dd
+	.4byte	0x1187c
 	.byte	0x37
 	.ascii	"gWildFeebasRoute119Data\000"
 
@@ -44384,7 +44334,7 @@ TryDoDoubleWildBattle:
 	.byte	0x3
 	.4byte	gWildFeebasRoute119Data
 	.byte	0xa
-	.4byte	0x11949
+	.4byte	0x118e8
 	.4byte	0x7ee9
 	.byte	0xb
 	.byte	0x8
@@ -44394,15 +44344,15 @@ TryDoDoubleWildBattle:
 
 	.byte	0x1
 	.byte	0x36
-	.4byte	0x1196e
+	.4byte	0x1190d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gRoute119WaterTileData
 	.byte	0x11
-	.4byte	0x1193d
+	.4byte	0x118dc
 	.byte	0x2e
-	.4byte	0x119c6
+	.4byte	0x11965
 	.byte	0x4
 	.byte	0x1
 	.2byte	0x17e
@@ -44426,10 +44376,10 @@ TryDoDoubleWildBattle:
 	.byte	0x0
 
 	.section	.debug_pubnames
-	.4byte	0x3918
+	.4byte	0x38de
 	.2byte	0x2
 	.4byte	.debug_info
-	.4byte	0x119c7
+	.4byte	0x11966
 	.4byte	0x5d
 	.ascii	"DisableWildEncounters\000"
 
@@ -44533,1281 +44483,1275 @@ TryDoDoubleWildBattle:
 	.ascii	"gRoute104_FishingMonsInfo\000"
 
 	.4byte	0xc35e
-	.ascii	"gRoute105_WaterMons\000"
+	.ascii	"gRoute105_LandMons\000"
 
-	.4byte	0xc385
-	.ascii	"gRoute105_WaterMonsInfo\000"
+	.4byte	0xc384
+	.ascii	"gRoute105_LandMonsInfo\000"
 
-	.4byte	0xc3b7
-	.ascii	"gRoute105_FishingMons\000"
-
-	.4byte	0xc3e0
-	.ascii	"gRoute105_FishingMonsInfo\000"
-
-	.4byte	0xc415
+	.4byte	0xc3b5
 	.ascii	"gRoute110_LandMons\000"
 
-	.4byte	0xc43c
+	.4byte	0xc3db
 	.ascii	"gRoute110_LandMonsInfo\000"
 
-	.4byte	0xc46e
+	.4byte	0xc40d
 	.ascii	"gRoute110_WaterMons\000"
 
-	.4byte	0xc496
+	.4byte	0xc435
 	.ascii	"gRoute110_WaterMonsInfo\000"
 
-	.4byte	0xc4c9
+	.4byte	0xc468
 	.ascii	"gRoute110_FishingMons\000"
 
-	.4byte	0xc4f3
+	.4byte	0xc492
 	.ascii	"gRoute110_FishingMonsInfo\000"
 
-	.4byte	0xc528
+	.4byte	0xc4c7
 	.ascii	"gRoute111_LandMons\000"
 
-	.4byte	0xc54f
+	.4byte	0xc4ee
 	.ascii	"gRoute111_LandMonsInfo\000"
 
-	.4byte	0xc581
+	.4byte	0xc520
 	.ascii	"gRoute111_WaterMons\000"
 
-	.4byte	0xc5a9
+	.4byte	0xc548
 	.ascii	"gRoute111_WaterMonsInfo\000"
 
-	.4byte	0xc5dc
+	.4byte	0xc57b
 	.ascii	"gRoute111_RockSmashMons\000"
 
-	.4byte	0xc608
+	.4byte	0xc5a7
 	.ascii	"gRoute111_RockSmashMonsInfo\000"
 
-	.4byte	0xc63f
+	.4byte	0xc5de
 	.ascii	"gRoute111_FishingMons\000"
 
-	.4byte	0xc669
+	.4byte	0xc608
 	.ascii	"gRoute111_FishingMonsInfo\000"
 
-	.4byte	0xc69e
+	.4byte	0xc63d
 	.ascii	"gRoute112_LandMons\000"
 
-	.4byte	0xc6c5
+	.4byte	0xc664
 	.ascii	"gRoute112_LandMonsInfo\000"
 
-	.4byte	0xc6f7
+	.4byte	0xc696
 	.ascii	"gRoute113_LandMons\000"
 
-	.4byte	0xc71e
+	.4byte	0xc6bd
 	.ascii	"gRoute113_LandMonsInfo\000"
 
-	.4byte	0xc750
+	.4byte	0xc6ef
 	.ascii	"gRoute114_LandMons\000"
 
-	.4byte	0xc777
+	.4byte	0xc716
 	.ascii	"gRoute114_LandMonsInfo\000"
 
-	.4byte	0xc7a9
+	.4byte	0xc748
 	.ascii	"gRoute114_WaterMons\000"
 
-	.4byte	0xc7d1
+	.4byte	0xc770
 	.ascii	"gRoute114_WaterMonsInfo\000"
 
-	.4byte	0xc804
+	.4byte	0xc7a3
 	.ascii	"gRoute114_RockSmashMons\000"
 
-	.4byte	0xc830
+	.4byte	0xc7cf
 	.ascii	"gRoute114_RockSmashMonsInfo\000"
 
-	.4byte	0xc867
+	.4byte	0xc806
 	.ascii	"gRoute114_FishingMons\000"
 
-	.4byte	0xc891
+	.4byte	0xc830
 	.ascii	"gRoute114_FishingMonsInfo\000"
 
-	.4byte	0xc8c6
+	.4byte	0xc865
 	.ascii	"gRoute116_LandMons\000"
 
-	.4byte	0xc8ed
+	.4byte	0xc88c
 	.ascii	"gRoute116_LandMonsInfo\000"
 
-	.4byte	0xc91f
+	.4byte	0xc8be
 	.ascii	"gRoute117_LandMons\000"
 
-	.4byte	0xc946
+	.4byte	0xc8e5
 	.ascii	"gRoute117_LandMonsInfo\000"
 
-	.4byte	0xc978
+	.4byte	0xc917
 	.ascii	"gRoute117_WaterMons\000"
 
-	.4byte	0xc9a0
+	.4byte	0xc93f
 	.ascii	"gRoute117_WaterMonsInfo\000"
 
-	.4byte	0xc9d3
+	.4byte	0xc972
 	.ascii	"gRoute117_FishingMons\000"
 
-	.4byte	0xc9fd
+	.4byte	0xc99c
 	.ascii	"gRoute117_FishingMonsInfo\000"
 
-	.4byte	0xca32
+	.4byte	0xc9d1
 	.ascii	"gRoute118_LandMons\000"
 
-	.4byte	0xca59
+	.4byte	0xc9f8
 	.ascii	"gRoute118_LandMonsInfo\000"
 
-	.4byte	0xca8b
+	.4byte	0xca2a
 	.ascii	"gRoute118_WaterMons\000"
 
-	.4byte	0xcab3
+	.4byte	0xca52
 	.ascii	"gRoute118_WaterMonsInfo\000"
 
-	.4byte	0xcae6
+	.4byte	0xca85
 	.ascii	"gRoute118_FishingMons\000"
 
-	.4byte	0xcb10
+	.4byte	0xcaaf
 	.ascii	"gRoute118_FishingMonsInfo\000"
 
-	.4byte	0xcb45
+	.4byte	0xcae4
 	.ascii	"gRoute124_WaterMons\000"
 
-	.4byte	0xcb6d
+	.4byte	0xcb0c
 	.ascii	"gRoute124_WaterMonsInfo\000"
 
-	.4byte	0xcba0
+	.4byte	0xcb3f
 	.ascii	"gRoute124_FishingMons\000"
 
-	.4byte	0xcbca
+	.4byte	0xcb69
 	.ascii	"gRoute124_FishingMonsInfo\000"
 
-	.4byte	0xcbff
+	.4byte	0xcb9e
 	.ascii	"gPetalburgWoods_LandMons\000"
 
-	.4byte	0xcc2c
+	.4byte	0xcbcb
 	.ascii	"gPetalburgWoods_LandMonsInfo\000"
 
-	.4byte	0xcc64
+	.4byte	0xcc03
 	.ascii	"gRusturfTunnel_LandMons\000"
 
-	.4byte	0xcc90
+	.4byte	0xcc2f
 	.ascii	"gRusturfTunnel_LandMonsInfo\000"
 
-	.4byte	0xccc7
+	.4byte	0xcc66
 	.ascii	"gGraniteCave_1F_LandMons\000"
 
-	.4byte	0xccf4
+	.4byte	0xcc93
 	.ascii	"gGraniteCave_1F_LandMonsInfo\000"
 
-	.4byte	0xcd2c
+	.4byte	0xcccb
 	.ascii	"gGraniteCave_B1F_LandMons\000"
 
-	.4byte	0xcd5a
+	.4byte	0xccf9
 	.ascii	"gGraniteCave_B1F_LandMonsInfo\000"
 
-	.4byte	0xcd93
+	.4byte	0xcd32
 	.ascii	"gMtPyre_1F_LandMons\000"
 
-	.4byte	0xcdbb
+	.4byte	0xcd5a
 	.ascii	"gMtPyre_1F_LandMonsInfo\000"
 
-	.4byte	0xcdee
+	.4byte	0xcd8d
 	.ascii	"gVictoryRoad_1F_LandMons\000"
 
-	.4byte	0xce1b
+	.4byte	0xcdba
 	.ascii	"gVictoryRoad_1F_LandMonsInfo\000"
 
-	.4byte	0xce53
+	.4byte	0xcdf2
 	.ascii	"gSafariZone_South_LandMons\000"
 
-	.4byte	0xce82
+	.4byte	0xce21
 	.ascii	"gSafariZone_South_LandMonsInfo\000"
 
-	.4byte	0xcebc
+	.4byte	0xce5b
 	.ascii	"gUnderwater_Route126_WaterMons\000"
 
-	.4byte	0xceef
+	.4byte	0xce8e
 	.ascii	"gUnderwater_Route126_WaterMonsInfo\000"
 
-	.4byte	0xcf2d
+	.4byte	0xcecc
 	.ascii	"gAbandonedShip_Rooms_B1F_WaterMons\000"
 
-	.4byte	0xcf64
+	.4byte	0xcf03
 	.ascii	"gAbandonedShip_Rooms_B1F_WaterMonsInfo\000"
 
-	.4byte	0xcfa6
+	.4byte	0xcf45
 	.ascii	"gAbandonedShip_Rooms_B1F_FishingMons\000"
 
-	.4byte	0xcfdf
+	.4byte	0xcf7e
 	.ascii	"gAbandonedShip_Rooms_B1F_FishingMonsInfo\000"
 
-	.4byte	0xd023
+	.4byte	0xcfc2
 	.ascii	"gGraniteCave_B2F_LandMons\000"
 
-	.4byte	0xd051
+	.4byte	0xcff0
 	.ascii	"gGraniteCave_B2F_LandMonsInfo\000"
 
-	.4byte	0xd08a
+	.4byte	0xd029
 	.ascii	"gGraniteCave_B2F_RockSmashMons\000"
 
-	.4byte	0xd0bd
+	.4byte	0xd05c
 	.ascii	"gGraniteCave_B2F_RockSmashMonsInfo\000"
 
-	.4byte	0xd0fb
+	.4byte	0xd09a
 	.ascii	"gFieryPath_LandMons\000"
 
-	.4byte	0xd123
+	.4byte	0xd0c2
 	.ascii	"gFieryPath_LandMonsInfo\000"
 
-	.4byte	0xd156
+	.4byte	0xd0f5
 	.ascii	"gMeteorFalls_B1F_2R_LandMons\000"
 
-	.4byte	0xd187
+	.4byte	0xd126
 	.ascii	"gMeteorFalls_B1F_2R_LandMonsInfo\000"
 
-	.4byte	0xd1c3
+	.4byte	0xd162
 	.ascii	"gMeteorFalls_B1F_2R_WaterMons\000"
 
-	.4byte	0xd1f5
+	.4byte	0xd194
 	.ascii	"gMeteorFalls_B1F_2R_WaterMonsInfo\000"
 
-	.4byte	0xd232
+	.4byte	0xd1d1
 	.ascii	"gMeteorFalls_B1F_2R_FishingMons\000"
 
-	.4byte	0xd266
+	.4byte	0xd205
 	.ascii	"gMeteorFalls_B1F_2R_FishingMonsInfo\000"
 
-	.4byte	0xd2a5
+	.4byte	0xd244
 	.ascii	"gJaggedPass_LandMons\000"
 
-	.4byte	0xd2ce
+	.4byte	0xd26d
 	.ascii	"gJaggedPass_LandMonsInfo\000"
 
-	.4byte	0xd302
+	.4byte	0xd2a1
 	.ascii	"gRoute106_WaterMons\000"
 
-	.4byte	0xd32a
+	.4byte	0xd2c9
 	.ascii	"gRoute106_WaterMonsInfo\000"
 
-	.4byte	0xd35d
+	.4byte	0xd2fc
 	.ascii	"gRoute106_FishingMons\000"
 
-	.4byte	0xd387
+	.4byte	0xd326
 	.ascii	"gRoute106_FishingMonsInfo\000"
 
-	.4byte	0xd3bc
+	.4byte	0xd35b
 	.ascii	"gRoute107_WaterMons\000"
 
-	.4byte	0xd3e4
+	.4byte	0xd383
 	.ascii	"gRoute107_WaterMonsInfo\000"
 
-	.4byte	0xd417
+	.4byte	0xd3b6
 	.ascii	"gRoute107_FishingMons\000"
 
-	.4byte	0xd441
+	.4byte	0xd3e0
 	.ascii	"gRoute107_FishingMonsInfo\000"
 
-	.4byte	0xd476
+	.4byte	0xd415
 	.ascii	"gRoute108_WaterMons\000"
 
-	.4byte	0xd49e
+	.4byte	0xd43d
 	.ascii	"gRoute108_WaterMonsInfo\000"
 
-	.4byte	0xd4d1
+	.4byte	0xd470
 	.ascii	"gRoute108_FishingMons\000"
 
-	.4byte	0xd4fb
+	.4byte	0xd49a
 	.ascii	"gRoute108_FishingMonsInfo\000"
 
-	.4byte	0xd530
+	.4byte	0xd4cf
 	.ascii	"gRoute109_WaterMons\000"
 
-	.4byte	0xd558
+	.4byte	0xd4f7
 	.ascii	"gRoute109_WaterMonsInfo\000"
 
-	.4byte	0xd58b
+	.4byte	0xd52a
 	.ascii	"gRoute109_FishingMons\000"
 
-	.4byte	0xd5b5
+	.4byte	0xd554
 	.ascii	"gRoute109_FishingMonsInfo\000"
 
-	.4byte	0xd5ea
+	.4byte	0xd589
 	.ascii	"gRoute115_LandMons\000"
 
-	.4byte	0xd611
+	.4byte	0xd5b0
 	.ascii	"gRoute115_LandMonsInfo\000"
 
-	.4byte	0xd643
+	.4byte	0xd5e2
 	.ascii	"gRoute115_WaterMons\000"
 
-	.4byte	0xd66b
+	.4byte	0xd60a
 	.ascii	"gRoute115_WaterMonsInfo\000"
 
-	.4byte	0xd69e
+	.4byte	0xd63d
 	.ascii	"gRoute115_FishingMons\000"
 
-	.4byte	0xd6c8
+	.4byte	0xd667
 	.ascii	"gRoute115_FishingMonsInfo\000"
 
-	.4byte	0xd6fd
+	.4byte	0xd69c
 	.ascii	"gNewMauville_Inside_LandMons\000"
 
-	.4byte	0xd72e
+	.4byte	0xd6cd
 	.ascii	"gNewMauville_Inside_LandMonsInfo\000"
 
-	.4byte	0xd76a
+	.4byte	0xd709
 	.ascii	"gRoute119_LandMons\000"
 
-	.4byte	0xd791
+	.4byte	0xd730
 	.ascii	"gRoute119_LandMonsInfo\000"
 
-	.4byte	0xd7c3
+	.4byte	0xd762
 	.ascii	"gRoute119_WaterMons\000"
 
-	.4byte	0xd7eb
+	.4byte	0xd78a
 	.ascii	"gRoute119_WaterMonsInfo\000"
 
-	.4byte	0xd81e
+	.4byte	0xd7bd
 	.ascii	"gRoute119_FishingMons\000"
 
-	.4byte	0xd848
+	.4byte	0xd7e7
 	.ascii	"gRoute119_FishingMonsInfo\000"
 
-	.4byte	0xd87d
+	.4byte	0xd81c
 	.ascii	"gRoute120_LandMons\000"
 
-	.4byte	0xd8a4
+	.4byte	0xd843
 	.ascii	"gRoute120_LandMonsInfo\000"
 
-	.4byte	0xd8d6
+	.4byte	0xd875
 	.ascii	"gRoute120_WaterMons\000"
 
-	.4byte	0xd8fe
+	.4byte	0xd89d
 	.ascii	"gRoute120_WaterMonsInfo\000"
 
-	.4byte	0xd931
+	.4byte	0xd8d0
 	.ascii	"gRoute120_FishingMons\000"
 
-	.4byte	0xd95b
+	.4byte	0xd8fa
 	.ascii	"gRoute120_FishingMonsInfo\000"
 
-	.4byte	0xd990
+	.4byte	0xd92f
 	.ascii	"gRoute121_LandMons\000"
 
-	.4byte	0xd9b7
+	.4byte	0xd956
 	.ascii	"gRoute121_LandMonsInfo\000"
 
-	.4byte	0xd9e9
+	.4byte	0xd988
 	.ascii	"gRoute121_WaterMons\000"
 
-	.4byte	0xda11
+	.4byte	0xd9b0
 	.ascii	"gRoute121_WaterMonsInfo\000"
 
-	.4byte	0xda44
+	.4byte	0xd9e3
 	.ascii	"gRoute121_FishingMons\000"
 
-	.4byte	0xda6e
+	.4byte	0xda0d
 	.ascii	"gRoute121_FishingMonsInfo\000"
 
-	.4byte	0xdaa3
+	.4byte	0xda42
 	.ascii	"gRoute122_WaterMons\000"
 
-	.4byte	0xdacb
+	.4byte	0xda6a
 	.ascii	"gRoute122_WaterMonsInfo\000"
 
-	.4byte	0xdafe
+	.4byte	0xda9d
 	.ascii	"gRoute122_FishingMons\000"
 
-	.4byte	0xdb28
+	.4byte	0xdac7
 	.ascii	"gRoute122_FishingMonsInfo\000"
 
-	.4byte	0xdb5d
+	.4byte	0xdafc
 	.ascii	"gRoute123_LandMons\000"
 
-	.4byte	0xdb84
+	.4byte	0xdb23
 	.ascii	"gRoute123_LandMonsInfo\000"
 
-	.4byte	0xdbb6
+	.4byte	0xdb55
 	.ascii	"gRoute123_WaterMons\000"
 
-	.4byte	0xdbde
+	.4byte	0xdb7d
 	.ascii	"gRoute123_WaterMonsInfo\000"
 
-	.4byte	0xdc11
+	.4byte	0xdbb0
 	.ascii	"gRoute123_FishingMons\000"
 
-	.4byte	0xdc3b
+	.4byte	0xdbda
 	.ascii	"gRoute123_FishingMonsInfo\000"
 
-	.4byte	0xdc70
+	.4byte	0xdc0f
 	.ascii	"gMtPyre_2F_LandMons\000"
 
-	.4byte	0xdc98
+	.4byte	0xdc37
 	.ascii	"gMtPyre_2F_LandMonsInfo\000"
 
-	.4byte	0xdccb
+	.4byte	0xdc6a
 	.ascii	"gMtPyre_3F_LandMons\000"
 
-	.4byte	0xdcf3
+	.4byte	0xdc92
 	.ascii	"gMtPyre_3F_LandMonsInfo\000"
 
-	.4byte	0xdd26
+	.4byte	0xdcc5
 	.ascii	"gMtPyre_4F_LandMons\000"
 
-	.4byte	0xdd4e
+	.4byte	0xdced
 	.ascii	"gMtPyre_4F_LandMonsInfo\000"
 
-	.4byte	0xdd81
+	.4byte	0xdd20
 	.ascii	"gMtPyre_5F_LandMons\000"
 
-	.4byte	0xdda9
+	.4byte	0xdd48
 	.ascii	"gMtPyre_5F_LandMonsInfo\000"
 
-	.4byte	0xdddc
+	.4byte	0xdd7b
 	.ascii	"gMtPyre_6F_LandMons\000"
 
-	.4byte	0xde04
+	.4byte	0xdda3
 	.ascii	"gMtPyre_6F_LandMonsInfo\000"
 
-	.4byte	0xde37
+	.4byte	0xddd6
 	.ascii	"gMtPyre_Exterior_LandMons\000"
 
-	.4byte	0xde65
+	.4byte	0xde04
 	.ascii	"gMtPyre_Exterior_LandMonsInfo\000"
 
-	.4byte	0xde9e
+	.4byte	0xde3d
 	.ascii	"gMtPyre_Summit_LandMons\000"
 
-	.4byte	0xdeca
+	.4byte	0xde69
 	.ascii	"gMtPyre_Summit_LandMonsInfo\000"
 
-	.4byte	0xdf01
+	.4byte	0xdea0
 	.ascii	"gGraniteCave_StevensRoom_LandMons\000"
 
-	.4byte	0xdf37
+	.4byte	0xded6
 	.ascii	"gGraniteCave_StevensRoom_LandMonsInfo\000"
 
-	.4byte	0xdf78
+	.4byte	0xdf17
 	.ascii	"gRoute125_WaterMons\000"
 
-	.4byte	0xdfa0
+	.4byte	0xdf3f
 	.ascii	"gRoute125_WaterMonsInfo\000"
 
-	.4byte	0xdfd3
+	.4byte	0xdf72
 	.ascii	"gRoute125_FishingMons\000"
 
-	.4byte	0xdffd
+	.4byte	0xdf9c
 	.ascii	"gRoute125_FishingMonsInfo\000"
 
-	.4byte	0xe032
+	.4byte	0xdfd1
 	.ascii	"gRoute126_WaterMons\000"
 
-	.4byte	0xe05a
+	.4byte	0xdff9
 	.ascii	"gRoute126_WaterMonsInfo\000"
 
-	.4byte	0xe08d
+	.4byte	0xe02c
 	.ascii	"gRoute126_FishingMons\000"
 
-	.4byte	0xe0b7
+	.4byte	0xe056
 	.ascii	"gRoute126_FishingMonsInfo\000"
 
-	.4byte	0xe0ec
+	.4byte	0xe08b
 	.ascii	"gRoute127_WaterMons\000"
 
-	.4byte	0xe114
+	.4byte	0xe0b3
 	.ascii	"gRoute127_WaterMonsInfo\000"
 
-	.4byte	0xe147
+	.4byte	0xe0e6
 	.ascii	"gRoute127_FishingMons\000"
 
-	.4byte	0xe171
+	.4byte	0xe110
 	.ascii	"gRoute127_FishingMonsInfo\000"
 
-	.4byte	0xe1a6
+	.4byte	0xe145
 	.ascii	"gRoute128_WaterMons\000"
 
-	.4byte	0xe1ce
+	.4byte	0xe16d
 	.ascii	"gRoute128_WaterMonsInfo\000"
 
-	.4byte	0xe201
+	.4byte	0xe1a0
 	.ascii	"gRoute128_FishingMons\000"
 
-	.4byte	0xe22b
+	.4byte	0xe1ca
 	.ascii	"gRoute128_FishingMonsInfo\000"
 
-	.4byte	0xe260
+	.4byte	0xe1ff
 	.ascii	"gRoute129_WaterMons\000"
 
-	.4byte	0xe288
+	.4byte	0xe227
 	.ascii	"gRoute129_WaterMonsInfo\000"
 
-	.4byte	0xe2bb
+	.4byte	0xe25a
 	.ascii	"gRoute129_FishingMons\000"
 
-	.4byte	0xe2e5
+	.4byte	0xe284
 	.ascii	"gRoute129_FishingMonsInfo\000"
 
-	.4byte	0xe31a
+	.4byte	0xe2b9
 	.ascii	"gRoute130_LandMons\000"
 
-	.4byte	0xe341
+	.4byte	0xe2e0
 	.ascii	"gRoute130_LandMonsInfo\000"
 
-	.4byte	0xe373
+	.4byte	0xe312
 	.ascii	"gRoute130_WaterMons\000"
 
-	.4byte	0xe39b
+	.4byte	0xe33a
 	.ascii	"gRoute130_WaterMonsInfo\000"
 
-	.4byte	0xe3ce
+	.4byte	0xe36d
 	.ascii	"gRoute130_FishingMons\000"
 
-	.4byte	0xe3f8
+	.4byte	0xe397
 	.ascii	"gRoute130_FishingMonsInfo\000"
 
-	.4byte	0xe42d
+	.4byte	0xe3cc
 	.ascii	"gRoute131_WaterMons\000"
 
-	.4byte	0xe455
+	.4byte	0xe3f4
 	.ascii	"gRoute131_WaterMonsInfo\000"
 
-	.4byte	0xe488
+	.4byte	0xe427
 	.ascii	"gRoute131_FishingMons\000"
 
-	.4byte	0xe4b2
+	.4byte	0xe451
 	.ascii	"gRoute131_FishingMonsInfo\000"
 
-	.4byte	0xe4e7
+	.4byte	0xe486
 	.ascii	"gRoute132_WaterMons\000"
 
-	.4byte	0xe50f
+	.4byte	0xe4ae
 	.ascii	"gRoute132_WaterMonsInfo\000"
 
-	.4byte	0xe542
+	.4byte	0xe4e1
 	.ascii	"gRoute132_FishingMons\000"
 
-	.4byte	0xe56c
+	.4byte	0xe50b
 	.ascii	"gRoute132_FishingMonsInfo\000"
 
-	.4byte	0xe5a1
+	.4byte	0xe540
 	.ascii	"gRoute133_WaterMons\000"
 
-	.4byte	0xe5c9
+	.4byte	0xe568
 	.ascii	"gRoute133_WaterMonsInfo\000"
 
-	.4byte	0xe5fc
+	.4byte	0xe59b
 	.ascii	"gRoute133_FishingMons\000"
 
-	.4byte	0xe626
+	.4byte	0xe5c5
 	.ascii	"gRoute133_FishingMonsInfo\000"
 
-	.4byte	0xe65b
+	.4byte	0xe5fa
 	.ascii	"gRoute134_WaterMons\000"
 
-	.4byte	0xe683
+	.4byte	0xe622
 	.ascii	"gRoute134_WaterMonsInfo\000"
 
-	.4byte	0xe6b6
+	.4byte	0xe655
 	.ascii	"gRoute134_FishingMons\000"
 
-	.4byte	0xe6e0
+	.4byte	0xe67f
 	.ascii	"gRoute134_FishingMonsInfo\000"
 
-	.4byte	0xe715
+	.4byte	0xe6b4
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_WaterMons\000"
 
-	.4byte	0xe757
+	.4byte	0xe6f6
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_WaterMonsInfo\000"
 
-	.4byte	0xe7a4
+	.4byte	0xe743
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_FishingMons\000"
 
-	.4byte	0xe7e8
+	.4byte	0xe787
 	.ascii	"gAbandonedShip_HiddenFloorCorridors_FishingMonsInfo\000"
 
-	.4byte	0xe837
+	.4byte	0xe7d6
 	.ascii	"gSeafloorCavern_Room1_LandMons\000"
 
-	.4byte	0xe86a
+	.4byte	0xe809
 	.ascii	"gSeafloorCavern_Room1_LandMonsInfo\000"
 
-	.4byte	0xe8a8
+	.4byte	0xe847
 	.ascii	"gSeafloorCavern_Room2_LandMons\000"
 
-	.4byte	0xe8db
+	.4byte	0xe87a
 	.ascii	"gSeafloorCavern_Room2_LandMonsInfo\000"
 
-	.4byte	0xe919
+	.4byte	0xe8b8
 	.ascii	"gSeafloorCavern_Room3_LandMons\000"
 
-	.4byte	0xe94c
+	.4byte	0xe8eb
 	.ascii	"gSeafloorCavern_Room3_LandMonsInfo\000"
 
-	.4byte	0xe98a
+	.4byte	0xe929
 	.ascii	"gSeafloorCavern_Room4_LandMons\000"
 
-	.4byte	0xe9bd
+	.4byte	0xe95c
 	.ascii	"gSeafloorCavern_Room4_LandMonsInfo\000"
 
-	.4byte	0xe9fb
+	.4byte	0xe99a
 	.ascii	"gSeafloorCavern_Room5_LandMons\000"
 
-	.4byte	0xea2e
+	.4byte	0xe9cd
 	.ascii	"gSeafloorCavern_Room5_LandMonsInfo\000"
 
-	.4byte	0xea6c
+	.4byte	0xea0b
 	.ascii	"gSeafloorCavern_Room6_LandMons\000"
 
-	.4byte	0xea9f
+	.4byte	0xea3e
 	.ascii	"gSeafloorCavern_Room6_LandMonsInfo\000"
 
-	.4byte	0xeadd
+	.4byte	0xea7c
 	.ascii	"gSeafloorCavern_Room6_WaterMons\000"
 
-	.4byte	0xeb11
+	.4byte	0xeab0
 	.ascii	"gSeafloorCavern_Room6_WaterMonsInfo\000"
 
-	.4byte	0xeb50
+	.4byte	0xeaef
 	.ascii	"gSeafloorCavern_Room6_FishingMons\000"
 
-	.4byte	0xeb86
+	.4byte	0xeb25
 	.ascii	"gSeafloorCavern_Room6_FishingMonsInfo\000"
 
-	.4byte	0xebc7
+	.4byte	0xeb66
 	.ascii	"gSeafloorCavern_Room7_LandMons\000"
 
-	.4byte	0xebfa
+	.4byte	0xeb99
 	.ascii	"gSeafloorCavern_Room7_LandMonsInfo\000"
 
-	.4byte	0xec38
+	.4byte	0xebd7
 	.ascii	"gSeafloorCavern_Room7_WaterMons\000"
 
-	.4byte	0xec6c
+	.4byte	0xec0b
 	.ascii	"gSeafloorCavern_Room7_WaterMonsInfo\000"
 
-	.4byte	0xecab
+	.4byte	0xec4a
 	.ascii	"gSeafloorCavern_Room7_FishingMons\000"
 
-	.4byte	0xece1
+	.4byte	0xec80
 	.ascii	"gSeafloorCavern_Room7_FishingMonsInfo\000"
 
-	.4byte	0xed22
+	.4byte	0xecc1
 	.ascii	"gSeafloorCavern_Room8_LandMons\000"
 
-	.4byte	0xed55
+	.4byte	0xecf4
 	.ascii	"gSeafloorCavern_Room8_LandMonsInfo\000"
 
-	.4byte	0xed93
+	.4byte	0xed32
 	.ascii	"gSeafloorCavern_Entrance_WaterMons\000"
 
-	.4byte	0xedca
+	.4byte	0xed69
 	.ascii	"gSeafloorCavern_Entrance_WaterMonsInfo\000"
 
-	.4byte	0xee0c
+	.4byte	0xedab
 	.ascii	"gSeafloorCavern_Entrance_FishingMons\000"
 
-	.4byte	0xee45
+	.4byte	0xede4
 	.ascii	"gSeafloorCavern_Entrance_FishingMonsInfo\000"
 
-	.4byte	0xee89
+	.4byte	0xee28
 	.ascii	"gCaveOfOrigin_Entrance_LandMons\000"
 
-	.4byte	0xeebd
+	.4byte	0xee5c
 	.ascii	"gCaveOfOrigin_Entrance_LandMonsInfo\000"
 
-	.4byte	0xeefc
+	.4byte	0xee9b
 	.ascii	"gCaveOfOrigin_1F_LandMons\000"
 
-	.4byte	0xef2a
+	.4byte	0xeec9
 	.ascii	"gCaveOfOrigin_1F_LandMonsInfo\000"
 
-	.4byte	0xef63
+	.4byte	0xef02
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap1_LandMons\000"
 
-	.4byte	0xefa5
+	.4byte	0xef44
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap1_LandMonsInfo\000"
 
-	.4byte	0xeff2
+	.4byte	0xef91
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap2_LandMons\000"
 
-	.4byte	0xf034
+	.4byte	0xefd3
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap2_LandMonsInfo\000"
 
-	.4byte	0xf081
+	.4byte	0xf020
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap3_LandMons\000"
 
-	.4byte	0xf0c3
+	.4byte	0xf062
 	.ascii	"gCaveOfOrigin_UnusedRubySapphireMap3_LandMonsInfo\000"
 
-	.4byte	0xf110
+	.4byte	0xf0af
 	.ascii	"gNewMauville_Entrance_LandMons\000"
 
-	.4byte	0xf143
+	.4byte	0xf0e2
 	.ascii	"gNewMauville_Entrance_LandMonsInfo\000"
 
-	.4byte	0xf181
+	.4byte	0xf120
 	.ascii	"gSafariZone_Southwest_LandMons\000"
 
-	.4byte	0xf1b4
+	.4byte	0xf153
 	.ascii	"gSafariZone_Southwest_LandMonsInfo\000"
 
-	.4byte	0xf1f2
+	.4byte	0xf191
 	.ascii	"gSafariZone_Southwest_WaterMons\000"
 
-	.4byte	0xf226
+	.4byte	0xf1c5
 	.ascii	"gSafariZone_Southwest_WaterMonsInfo\000"
 
-	.4byte	0xf265
+	.4byte	0xf204
 	.ascii	"gSafariZone_Southwest_FishingMons\000"
 
-	.4byte	0xf29b
+	.4byte	0xf23a
 	.ascii	"gSafariZone_Southwest_FishingMonsInfo\000"
 
-	.4byte	0xf2dc
+	.4byte	0xf27b
 	.ascii	"gSafariZone_North_LandMons\000"
 
-	.4byte	0xf30b
+	.4byte	0xf2aa
 	.ascii	"gSafariZone_North_LandMonsInfo\000"
 
-	.4byte	0xf345
+	.4byte	0xf2e4
 	.ascii	"gSafariZone_North_RockSmashMons\000"
 
-	.4byte	0xf379
+	.4byte	0xf318
 	.ascii	"gSafariZone_North_RockSmashMonsInfo\000"
 
-	.4byte	0xf3b8
+	.4byte	0xf357
 	.ascii	"gSafariZone_Northwest_LandMons\000"
 
-	.4byte	0xf3eb
+	.4byte	0xf38a
 	.ascii	"gSafariZone_Northwest_LandMonsInfo\000"
 
-	.4byte	0xf429
+	.4byte	0xf3c8
 	.ascii	"gSafariZone_Northwest_WaterMons\000"
 
-	.4byte	0xf45d
+	.4byte	0xf3fc
 	.ascii	"gSafariZone_Northwest_WaterMonsInfo\000"
 
-	.4byte	0xf49c
+	.4byte	0xf43b
 	.ascii	"gSafariZone_Northwest_FishingMons\000"
 
-	.4byte	0xf4d2
+	.4byte	0xf471
 	.ascii	"gSafariZone_Northwest_FishingMonsInfo\000"
 
-	.4byte	0xf513
+	.4byte	0xf4b2
 	.ascii	"gVictoryRoad_B1F_LandMons\000"
 
-	.4byte	0xf541
+	.4byte	0xf4e0
 	.ascii	"gVictoryRoad_B1F_LandMonsInfo\000"
 
-	.4byte	0xf57a
+	.4byte	0xf519
 	.ascii	"gVictoryRoad_B1F_RockSmashMons\000"
 
-	.4byte	0xf5ad
+	.4byte	0xf54c
 	.ascii	"gVictoryRoad_B1F_RockSmashMonsInfo\000"
 
-	.4byte	0xf5eb
+	.4byte	0xf58a
 	.ascii	"gVictoryRoad_B2F_LandMons\000"
 
-	.4byte	0xf619
+	.4byte	0xf5b8
 	.ascii	"gVictoryRoad_B2F_LandMonsInfo\000"
 
-	.4byte	0xf652
+	.4byte	0xf5f1
 	.ascii	"gVictoryRoad_B2F_WaterMons\000"
 
-	.4byte	0xf681
+	.4byte	0xf620
 	.ascii	"gVictoryRoad_B2F_WaterMonsInfo\000"
 
-	.4byte	0xf6bb
+	.4byte	0xf65a
 	.ascii	"gVictoryRoad_B2F_FishingMons\000"
 
-	.4byte	0xf6ec
+	.4byte	0xf68b
 	.ascii	"gVictoryRoad_B2F_FishingMonsInfo\000"
 
-	.4byte	0xf728
+	.4byte	0xf6c7
 	.ascii	"gMeteorFalls_1F_1R_LandMons\000"
 
-	.4byte	0xf758
+	.4byte	0xf6f7
 	.ascii	"gMeteorFalls_1F_1R_LandMonsInfo\000"
 
-	.4byte	0xf793
+	.4byte	0xf732
 	.ascii	"gMeteorFalls_1F_1R_WaterMons\000"
 
-	.4byte	0xf7c4
+	.4byte	0xf763
 	.ascii	"gMeteorFalls_1F_1R_WaterMonsInfo\000"
 
-	.4byte	0xf800
+	.4byte	0xf79f
 	.ascii	"gMeteorFalls_1F_1R_FishingMons\000"
 
-	.4byte	0xf833
+	.4byte	0xf7d2
 	.ascii	"gMeteorFalls_1F_1R_FishingMonsInfo\000"
 
-	.4byte	0xf871
+	.4byte	0xf810
 	.ascii	"gMeteorFalls_1F_2R_LandMons\000"
 
-	.4byte	0xf8a1
+	.4byte	0xf840
 	.ascii	"gMeteorFalls_1F_2R_LandMonsInfo\000"
 
-	.4byte	0xf8dc
+	.4byte	0xf87b
 	.ascii	"gMeteorFalls_1F_2R_WaterMons\000"
 
-	.4byte	0xf90d
+	.4byte	0xf8ac
 	.ascii	"gMeteorFalls_1F_2R_WaterMonsInfo\000"
 
-	.4byte	0xf949
+	.4byte	0xf8e8
 	.ascii	"gMeteorFalls_1F_2R_FishingMons\000"
 
-	.4byte	0xf97c
+	.4byte	0xf91b
 	.ascii	"gMeteorFalls_1F_2R_FishingMonsInfo\000"
 
-	.4byte	0xf9ba
+	.4byte	0xf959
 	.ascii	"gMeteorFalls_B1F_1R_LandMons\000"
 
-	.4byte	0xf9eb
+	.4byte	0xf98a
 	.ascii	"gMeteorFalls_B1F_1R_LandMonsInfo\000"
 
-	.4byte	0xfa27
+	.4byte	0xf9c6
 	.ascii	"gMeteorFalls_B1F_1R_WaterMons\000"
 
-	.4byte	0xfa59
+	.4byte	0xf9f8
 	.ascii	"gMeteorFalls_B1F_1R_WaterMonsInfo\000"
 
-	.4byte	0xfa96
+	.4byte	0xfa35
 	.ascii	"gMeteorFalls_B1F_1R_FishingMons\000"
 
-	.4byte	0xfaca
+	.4byte	0xfa69
 	.ascii	"gMeteorFalls_B1F_1R_FishingMonsInfo\000"
 
-	.4byte	0xfb09
+	.4byte	0xfaa8
 	.ascii	"gShoalCave_LowTideStairsRoom_LandMons\000"
 
-	.4byte	0xfb43
+	.4byte	0xfae2
 	.ascii	"gShoalCave_LowTideStairsRoom_LandMonsInfo\000"
 
-	.4byte	0xfb88
+	.4byte	0xfb27
 	.ascii	"gShoalCave_LowTideLowerRoom_LandMons\000"
 
-	.4byte	0xfbc1
+	.4byte	0xfb60
 	.ascii	"gShoalCave_LowTideLowerRoom_LandMonsInfo\000"
 
-	.4byte	0xfc05
+	.4byte	0xfba4
 	.ascii	"gShoalCave_LowTideInnerRoom_LandMons\000"
 
-	.4byte	0xfc3e
+	.4byte	0xfbdd
 	.ascii	"gShoalCave_LowTideInnerRoom_LandMonsInfo\000"
 
-	.4byte	0xfc82
+	.4byte	0xfc21
 	.ascii	"gShoalCave_LowTideInnerRoom_WaterMons\000"
 
-	.4byte	0xfcbc
+	.4byte	0xfc5b
 	.ascii	"gShoalCave_LowTideInnerRoom_WaterMonsInfo\000"
 
-	.4byte	0xfd01
+	.4byte	0xfca0
 	.ascii	"gShoalCave_LowTideInnerRoom_FishingMons\000"
 
-	.4byte	0xfd3d
+	.4byte	0xfcdc
 	.ascii	"gShoalCave_LowTideInnerRoom_FishingMonsInfo\000"
 
-	.4byte	0xfd84
+	.4byte	0xfd23
 	.ascii	"gShoalCave_LowTideEntranceRoom_LandMons\000"
 
-	.4byte	0xfdc0
+	.4byte	0xfd5f
 	.ascii	"gShoalCave_LowTideEntranceRoom_LandMonsInfo\000"
 
-	.4byte	0xfe07
+	.4byte	0xfda6
 	.ascii	"gShoalCave_LowTideEntranceRoom_WaterMons\000"
 
-	.4byte	0xfe44
+	.4byte	0xfde3
 	.ascii	"gShoalCave_LowTideEntranceRoom_WaterMonsInfo\000"
 
-	.4byte	0xfe8c
+	.4byte	0xfe2b
 	.ascii	"gShoalCave_LowTideEntranceRoom_FishingMons\000"
 
-	.4byte	0xfecb
+	.4byte	0xfe6a
 	.ascii	"gShoalCave_LowTideEntranceRoom_FishingMonsInfo\000"
 
-	.4byte	0xff15
+	.4byte	0xfeb4
 	.ascii	"gLilycoveCity_WaterMons\000"
 
-	.4byte	0xff41
+	.4byte	0xfee0
 	.ascii	"gLilycoveCity_WaterMonsInfo\000"
 
-	.4byte	0xff78
+	.4byte	0xff17
 	.ascii	"gLilycoveCity_FishingMons\000"
 
-	.4byte	0xffa6
+	.4byte	0xff45
 	.ascii	"gLilycoveCity_FishingMonsInfo\000"
 
-	.4byte	0xffdf
+	.4byte	0xff7e
 	.ascii	"gDewfordTown_WaterMons\000"
 
-	.4byte	0x1000a
+	.4byte	0xffa9
 	.ascii	"gDewfordTown_WaterMonsInfo\000"
 
-	.4byte	0x10040
+	.4byte	0xffdf
 	.ascii	"gDewfordTown_FishingMons\000"
 
-	.4byte	0x1006d
+	.4byte	0x1000c
 	.ascii	"gDewfordTown_FishingMonsInfo\000"
 
-	.4byte	0x100a5
+	.4byte	0x10044
 	.ascii	"gSlateportCity_WaterMons\000"
 
-	.4byte	0x100d2
+	.4byte	0x10071
 	.ascii	"gSlateportCity_WaterMonsInfo\000"
 
-	.4byte	0x1010a
+	.4byte	0x100a9
 	.ascii	"gSlateportCity_FishingMons\000"
 
-	.4byte	0x10139
+	.4byte	0x100d8
 	.ascii	"gSlateportCity_FishingMonsInfo\000"
 
-	.4byte	0x10173
+	.4byte	0x10112
 	.ascii	"gMossdeepCity_WaterMons\000"
 
-	.4byte	0x1019f
+	.4byte	0x1013e
 	.ascii	"gMossdeepCity_WaterMonsInfo\000"
 
-	.4byte	0x101d6
+	.4byte	0x10175
 	.ascii	"gMossdeepCity_FishingMons\000"
 
-	.4byte	0x10204
+	.4byte	0x101a3
 	.ascii	"gMossdeepCity_FishingMonsInfo\000"
 
-	.4byte	0x1023d
+	.4byte	0x101dc
 	.ascii	"gPacifidlogTown_WaterMons\000"
 
-	.4byte	0x1026b
+	.4byte	0x1020a
 	.ascii	"gPacifidlogTown_WaterMonsInfo\000"
 
-	.4byte	0x102a4
+	.4byte	0x10243
 	.ascii	"gPacifidlogTown_FishingMons\000"
 
-	.4byte	0x102d4
+	.4byte	0x10273
 	.ascii	"gPacifidlogTown_FishingMonsInfo\000"
 
-	.4byte	0x1030f
+	.4byte	0x102ae
 	.ascii	"gEverGrandeCity_WaterMons\000"
 
-	.4byte	0x1033d
+	.4byte	0x102dc
 	.ascii	"gEverGrandeCity_WaterMonsInfo\000"
 
-	.4byte	0x10376
+	.4byte	0x10315
 	.ascii	"gEverGrandeCity_FishingMons\000"
 
-	.4byte	0x103a6
+	.4byte	0x10345
 	.ascii	"gEverGrandeCity_FishingMonsInfo\000"
 
-	.4byte	0x103e1
+	.4byte	0x10380
 	.ascii	"gPetalburgCity_WaterMons\000"
 
-	.4byte	0x1040e
+	.4byte	0x103ad
 	.ascii	"gPetalburgCity_WaterMonsInfo\000"
 
-	.4byte	0x10446
+	.4byte	0x103e5
 	.ascii	"gPetalburgCity_FishingMons\000"
 
-	.4byte	0x10475
+	.4byte	0x10414
 	.ascii	"gPetalburgCity_FishingMonsInfo\000"
 
-	.4byte	0x104af
+	.4byte	0x1044e
 	.ascii	"gUnderwater_Route124_WaterMons\000"
 
-	.4byte	0x104e2
+	.4byte	0x10481
 	.ascii	"gUnderwater_Route124_WaterMonsInfo\000"
 
-	.4byte	0x10520
+	.4byte	0x104bf
 	.ascii	"gShoalCave_LowTideIceRoom_LandMons\000"
 
-	.4byte	0x10557
+	.4byte	0x104f6
 	.ascii	"gShoalCave_LowTideIceRoom_LandMonsInfo\000"
 
-	.4byte	0x10599
+	.4byte	0x10538
 	.ascii	"gSkyPillar_1F_LandMons\000"
 
-	.4byte	0x105c4
+	.4byte	0x10563
 	.ascii	"gSkyPillar_1F_LandMonsInfo\000"
 
-	.4byte	0x105fa
+	.4byte	0x10599
 	.ascii	"gSootopolisCity_WaterMons\000"
 
-	.4byte	0x10628
+	.4byte	0x105c7
 	.ascii	"gSootopolisCity_WaterMonsInfo\000"
 
-	.4byte	0x10661
+	.4byte	0x10600
 	.ascii	"gSootopolisCity_FishingMons\000"
 
-	.4byte	0x10691
+	.4byte	0x10630
 	.ascii	"gSootopolisCity_FishingMonsInfo\000"
 
-	.4byte	0x106cc
+	.4byte	0x1066b
 	.ascii	"gSkyPillar_3F_LandMons\000"
 
-	.4byte	0x106f7
+	.4byte	0x10696
 	.ascii	"gSkyPillar_3F_LandMonsInfo\000"
 
-	.4byte	0x1072d
+	.4byte	0x106cc
 	.ascii	"gSkyPillar_5F_LandMons\000"
 
-	.4byte	0x10758
+	.4byte	0x106f7
 	.ascii	"gSkyPillar_5F_LandMonsInfo\000"
 
-	.4byte	0x1078e
+	.4byte	0x1072d
 	.ascii	"gSafariZone_Southeast_LandMons\000"
 
-	.4byte	0x107c1
+	.4byte	0x10760
 	.ascii	"gSafariZone_Southeast_LandMonsInfo\000"
 
-	.4byte	0x107ff
+	.4byte	0x1079e
 	.ascii	"gSafariZone_Southeast_WaterMons\000"
 
-	.4byte	0x10833
+	.4byte	0x107d2
 	.ascii	"gSafariZone_Southeast_WaterMonsInfo\000"
 
-	.4byte	0x10872
+	.4byte	0x10811
 	.ascii	"gSafariZone_Southeast_FishingMons\000"
 
-	.4byte	0x108a8
+	.4byte	0x10847
 	.ascii	"gSafariZone_Southeast_FishingMonsInfo\000"
 
-	.4byte	0x108e9
+	.4byte	0x10888
 	.ascii	"gSafariZone_Northeast_LandMons\000"
 
-	.4byte	0x1091c
+	.4byte	0x108bb
 	.ascii	"gSafariZone_Northeast_LandMonsInfo\000"
 
-	.4byte	0x1095a
+	.4byte	0x108f9
 	.ascii	"gSafariZone_Northeast_RockSmashMons\000"
 
-	.4byte	0x10992
+	.4byte	0x10931
 	.ascii	"gSafariZone_Northeast_RockSmashMonsInfo\000"
 
-	.4byte	0x109d5
+	.4byte	0x10974
 	.ascii	"gMagmaHideout_1F_LandMons\000"
 
-	.4byte	0x10a03
+	.4byte	0x109a2
 	.ascii	"gMagmaHideout_1F_LandMonsInfo\000"
 
-	.4byte	0x10a3c
+	.4byte	0x109db
 	.ascii	"gMagmaHideout_2F_1R_LandMons\000"
 
-	.4byte	0x10a6d
+	.4byte	0x10a0c
 	.ascii	"gMagmaHideout_2F_1R_LandMonsInfo\000"
 
-	.4byte	0x10aa9
+	.4byte	0x10a48
 	.ascii	"gMagmaHideout_2F_2R_LandMons\000"
 
-	.4byte	0x10ada
+	.4byte	0x10a79
 	.ascii	"gMagmaHideout_2F_2R_LandMonsInfo\000"
 
-	.4byte	0x10b16
+	.4byte	0x10ab5
 	.ascii	"gMagmaHideout_3F_1R_LandMons\000"
 
-	.4byte	0x10b47
+	.4byte	0x10ae6
 	.ascii	"gMagmaHideout_3F_1R_LandMonsInfo\000"
 
-	.4byte	0x10b83
+	.4byte	0x10b22
 	.ascii	"gMagmaHideout_3F_2R_LandMons\000"
 
-	.4byte	0x10bb4
+	.4byte	0x10b53
 	.ascii	"gMagmaHideout_3F_2R_LandMonsInfo\000"
 
-	.4byte	0x10bf0
+	.4byte	0x10b8f
 	.ascii	"gMagmaHideout_4F_LandMons\000"
 
-	.4byte	0x10c1e
+	.4byte	0x10bbd
 	.ascii	"gMagmaHideout_4F_LandMonsInfo\000"
 
-	.4byte	0x10c57
+	.4byte	0x10bf6
 	.ascii	"gMagmaHideout_3F_3R_LandMons\000"
 
-	.4byte	0x10c88
+	.4byte	0x10c27
 	.ascii	"gMagmaHideout_3F_3R_LandMonsInfo\000"
 
-	.4byte	0x10cc4
+	.4byte	0x10c63
 	.ascii	"gMagmaHideout_2F_3R_LandMons\000"
 
-	.4byte	0x10cf5
+	.4byte	0x10c94
 	.ascii	"gMagmaHideout_2F_3R_LandMonsInfo\000"
 
-	.4byte	0x10d31
+	.4byte	0x10cd0
 	.ascii	"gMirageTower_1F_LandMons\000"
 
-	.4byte	0x10d5e
+	.4byte	0x10cfd
 	.ascii	"gMirageTower_1F_LandMonsInfo\000"
 
-	.4byte	0x10d96
+	.4byte	0x10d35
 	.ascii	"gMirageTower_2F_LandMons\000"
 
-	.4byte	0x10dc3
+	.4byte	0x10d62
 	.ascii	"gMirageTower_2F_LandMonsInfo\000"
 
-	.4byte	0x10dfb
+	.4byte	0x10d9a
 	.ascii	"gMirageTower_3F_LandMons\000"
 
-	.4byte	0x10e28
+	.4byte	0x10dc7
 	.ascii	"gMirageTower_3F_LandMonsInfo\000"
 
-	.4byte	0x10e60
+	.4byte	0x10dff
 	.ascii	"gMirageTower_4F_LandMons\000"
 
-	.4byte	0x10e8d
+	.4byte	0x10e2c
 	.ascii	"gMirageTower_4F_LandMonsInfo\000"
 
-	.4byte	0x10ec5
+	.4byte	0x10e64
 	.ascii	"gDesertUnderpass_LandMons\000"
 
-	.4byte	0x10ef3
+	.4byte	0x10e92
 	.ascii	"gDesertUnderpass_LandMonsInfo\000"
 
-	.4byte	0x10f2c
+	.4byte	0x10ecb
 	.ascii	"gArtisanCave_B1F_LandMons\000"
 
-	.4byte	0x10f5a
+	.4byte	0x10ef9
 	.ascii	"gArtisanCave_B1F_LandMonsInfo\000"
 
-	.4byte	0x10f93
+	.4byte	0x10f32
 	.ascii	"gArtisanCave_1F_LandMons\000"
 
-	.4byte	0x10fc0
+	.4byte	0x10f5f
 	.ascii	"gArtisanCave_1F_LandMonsInfo\000"
 
-	.4byte	0x10ff8
+	.4byte	0x10f97
 	.ascii	"gAlteringCave1_LandMons\000"
 
-	.4byte	0x11024
+	.4byte	0x10fc3
 	.ascii	"gAlteringCave1_LandMonsInfo\000"
 
-	.4byte	0x1105b
+	.4byte	0x10ffa
 	.ascii	"gAlteringCave2_LandMons\000"
 
-	.4byte	0x11087
+	.4byte	0x11026
 	.ascii	"gAlteringCave2_LandMonsInfo\000"
 
-	.4byte	0x110be
+	.4byte	0x1105d
 	.ascii	"gAlteringCave3_LandMons\000"
 
-	.4byte	0x110ea
+	.4byte	0x11089
 	.ascii	"gAlteringCave3_LandMonsInfo\000"
 
-	.4byte	0x11121
+	.4byte	0x110c0
 	.ascii	"gAlteringCave4_LandMons\000"
 
-	.4byte	0x1114d
+	.4byte	0x110ec
 	.ascii	"gAlteringCave4_LandMonsInfo\000"
 
-	.4byte	0x11184
+	.4byte	0x11123
 	.ascii	"gAlteringCave5_LandMons\000"
 
-	.4byte	0x111b0
+	.4byte	0x1114f
 	.ascii	"gAlteringCave5_LandMonsInfo\000"
 
-	.4byte	0x111e7
+	.4byte	0x11186
 	.ascii	"gAlteringCave6_LandMons\000"
 
-	.4byte	0x11213
+	.4byte	0x111b2
 	.ascii	"gAlteringCave6_LandMonsInfo\000"
 
-	.4byte	0x1124a
+	.4byte	0x111e9
 	.ascii	"gAlteringCave7_LandMons\000"
 
-	.4byte	0x11276
+	.4byte	0x11215
 	.ascii	"gAlteringCave7_LandMonsInfo\000"
 
-	.4byte	0x112ad
+	.4byte	0x1124c
 	.ascii	"gAlteringCave8_LandMons\000"
 
-	.4byte	0x112d9
+	.4byte	0x11278
 	.ascii	"gAlteringCave8_LandMonsInfo\000"
 
-	.4byte	0x11310
+	.4byte	0x112af
 	.ascii	"gAlteringCave9_LandMons\000"
 
-	.4byte	0x1133c
+	.4byte	0x112db
 	.ascii	"gAlteringCave9_LandMonsInfo\000"
 
-	.4byte	0x11373
+	.4byte	0x11312
 	.ascii	"gMeteorFalls_StevensCave_LandMons\000"
 
-	.4byte	0x113a9
+	.4byte	0x11348
 	.ascii	"gMeteorFalls_StevensCave_LandMonsInfo\000"
 
-	.4byte	0x113ea
+	.4byte	0x11389
 	.ascii	"gLittlerootTown0_FishingMons\000"
 
-	.4byte	0x1141b
+	.4byte	0x113ba
 	.ascii	"gLittlerootTown0_FishingMonsInfo\000"
 
-	.4byte	0x11457
+	.4byte	0x113f6
 	.ascii	"gBattlePyramid_1_LandMons\000"
 
-	.4byte	0x11485
+	.4byte	0x11424
 	.ascii	"gBattlePyramid_1_LandMonsInfo\000"
 
-	.4byte	0x114be
+	.4byte	0x1145d
 	.ascii	"gBattlePyramid_2_LandMons\000"
 
-	.4byte	0x114ec
+	.4byte	0x1148b
 	.ascii	"gBattlePyramid_2_LandMonsInfo\000"
 
-	.4byte	0x11525
+	.4byte	0x114c4
 	.ascii	"gBattlePyramid_3_LandMons\000"
 
-	.4byte	0x11553
+	.4byte	0x114f2
 	.ascii	"gBattlePyramid_3_LandMonsInfo\000"
 
-	.4byte	0x1158c
+	.4byte	0x1152b
 	.ascii	"gBattlePyramid_4_LandMons\000"
 
-	.4byte	0x115ba
+	.4byte	0x11559
 	.ascii	"gBattlePyramid_4_LandMonsInfo\000"
 
-	.4byte	0x115f3
+	.4byte	0x11592
 	.ascii	"gBattlePyramid_5_LandMons\000"
 
-	.4byte	0x11621
+	.4byte	0x115c0
 	.ascii	"gBattlePyramid_5_LandMonsInfo\000"
 
-	.4byte	0x1165a
+	.4byte	0x115f9
 	.ascii	"gBattlePyramid_6_LandMons\000"
 
-	.4byte	0x11688
+	.4byte	0x11627
 	.ascii	"gBattlePyramid_6_LandMonsInfo\000"
 
-	.4byte	0x116c1
+	.4byte	0x11660
 	.ascii	"gBattlePyramid_7_LandMons\000"
 
-	.4byte	0x116ef
+	.4byte	0x1168e
 	.ascii	"gBattlePyramid_7_LandMonsInfo\000"
 
-	.4byte	0x11728
+	.4byte	0x116c7
 	.ascii	"gBattlePyramidWildMonHeaders\000"
 
-	.4byte	0x11765
+	.4byte	0x11704
 	.ascii	"gBattlePike_1_LandMons\000"
 
-	.4byte	0x11790
+	.4byte	0x1172f
 	.ascii	"gBattlePike_1_LandMonsInfo\000"
 
-	.4byte	0x117c6
+	.4byte	0x11765
 	.ascii	"gBattlePike_2_LandMons\000"
 
-	.4byte	0x117f1
+	.4byte	0x11790
 	.ascii	"gBattlePike_2_LandMonsInfo\000"
 
-	.4byte	0x11827
+	.4byte	0x117c6
 	.ascii	"gBattlePike_3_LandMons\000"
 
-	.4byte	0x11852
+	.4byte	0x117f1
 	.ascii	"gBattlePike_3_LandMonsInfo\000"
 
-	.4byte	0x11888
+	.4byte	0x11827
 	.ascii	"gBattlePike_4_LandMons\000"
 
-	.4byte	0x118b3
+	.4byte	0x11852
 	.ascii	"gBattlePike_4_LandMonsInfo\000"
 
-	.4byte	0x118e9
+	.4byte	0x11888
 	.ascii	"gBattlePikeWildMonHeaders\000"
 
-	.4byte	0x11917
+	.4byte	0x118b6
 	.ascii	"gWildFeebasRoute119Data\000"
 
-	.4byte	0x11949
+	.4byte	0x118e8
 	.ascii	"gRoute119WaterTileData\000"
 
 	.4byte	0x0

@@ -6,6 +6,7 @@ Route102_MapScripts:: @ 81EC0E0
 
 Route2Transition:
 	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
 	end
 
 Route102_EventScript_LittleBoy:: @ 81EC0E1
@@ -24,21 +25,7 @@ Route102_EventScript_Boy:: @ 81EC0FC
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 
-Tiana1::
-	setflag FLAG_ROUTE_2_RAINING
-	setweather WEATHER_RAIN_THUNDERSTORM
-	doweather
-	setvar VAR_ROUTE102_STATE, 1
-	end
-
-Tiana2::
-	setflag FLAG_ROUTE_2_RAINING
-	setweather WEATHER_RAIN_THUNDERSTORM
-	doweather
-	setvar VAR_ROUTE102_STATE, 1
-	end
-
-Tiana3::
+StartRainingRoute2Script::
 	setflag FLAG_ROUTE_2_RAINING
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather

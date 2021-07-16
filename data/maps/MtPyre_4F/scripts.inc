@@ -4,21 +4,20 @@ MtPyre_4F_MapScripts:: @ 8231BC8
 @ Seems like the scripts for the 4F and 5F were swapped
 
 MtPyre_5F_EventScript_Atsushi:: @ 8231BC9
-	trainerbattle_single TRAINER_ATSUSHI, MtPyre_5F_Text_AtsushiIntro, MtPyre_5F_Text_AtsushiDefeat
+	trainerbattle_single TRAINER_LEAH, MtPyre_5F_Text_AtsushiIntro, MtPyre_5F_Text_AtsushiDefeat
 	msgbox MtPyre_5F_Text_AtsushiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_5F_Text_AtsushiIntro: @ 8231BE0
-	.string "Teacher…\n"
-	.string "Please watch over my progress!$"
+	.string "Woah! You got the Umbra Badge, too?\n"
+	.string "Let's see if you deserve it!$"
 
 MtPyre_5F_Text_AtsushiDefeat: @ 8231C08
-	.string "Teacher…\n"
-	.string "Please forgive me!$"
+	.string "Wow... maybe I don't deserve the\n"
+	.string "Umbra Badge...$"
 
 MtPyre_5F_Text_AtsushiPostBattle: @ 8231C24
-	.string "Until I improve, my teacher, who rests\n"
-	.string "here, will never find true peace…$"
+	.string "I'll train harder! You'll see!$"
 
 StartBattleSpiritomb::
 	lockall
@@ -28,7 +27,7 @@ StartBattleSpiritomb::
 	waitmoncry
 	msgbox SpiritombIsAngry, MSGBOX_DEFAULT
 	closemessage
-	setwildbattle SPECIES_SPIRITOMB, 20, ITEM_BLACK_GLASSES
+	setwildbattle SPECIES_SPIRITOMB, 17, ITEM_SPELL_TAG
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

@@ -38,7 +38,7 @@
 #define TRAINER_PIC_TUBER_F               18
 #define TRAINER_PIC_TUBER_M               19
 #define TRAINER_PIC_COOLTRAINER_F         20
-#define TRAINER_PIC_LADY                  21
+#define TRAINER_PIC_WORKER                  21
 #define TRAINER_PIC_BEAUTY                22
 #define TRAINER_PIC_RICH_BOY              23
 #define TRAINER_PIC_EXPERT_F              24
@@ -305,7 +305,7 @@
 #define TRAINER_CLASS_INTERVIEWER    0x11
 #define TRAINER_CLASS_TUBER_F        0x12
 #define TRAINER_CLASS_TUBER_M        0x13
-#define TRAINER_CLASS_LADY           0x14
+#define TRAINER_CLASS_WORKER           0x14
 #define TRAINER_CLASS_BEAUTY         0x15
 #define TRAINER_CLASS_RICH_BOY       0x16
 #define TRAINER_CLASS_POKEMANIAC     0x17

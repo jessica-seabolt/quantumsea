@@ -10602,13 +10602,9 @@ sText_GotchaPkmnCaught:
 	.byte	0xab
 	.byte	0xfc
 	.byte	0xa
-	.byte	0xfc
-	.byte	0xb
-	.byte	0x60
-	.byte	0x1
 	.byte	0xfb
 	.byte	0xff
-	.size	 sText_GotchaPkmnCaught,30
+	.size	 sText_GotchaPkmnCaught,26
 	.type	 sText_GotchaPkmnCaught2,object
 sText_GotchaPkmnCaught2:
 	.byte	0xc1
@@ -10636,14 +10632,10 @@ sText_GotchaPkmnCaught2:
 	.byte	0xfc
 	.byte	0xa
 	.byte	0xfc
-	.byte	0xb
-	.byte	0x60
-	.byte	0x1
-	.byte	0xfc
 	.byte	0x8
 	.byte	0x7f
 	.byte	0xff
-	.size	 sText_GotchaPkmnCaught2,32
+	.size	 sText_GotchaPkmnCaught2,28
 	.type	 sText_GiveNicknameCaptured,object
 sText_GiveNicknameCaptured:
 	.byte	0xc1
@@ -70388,7 +70380,7 @@ ShouldDoTrainerSlide:
 	.4byte	0x1821c
 	.4byte	0xcc
 	.byte	0xb
-	.byte	0x1d
+	.byte	0x19
 	.byte	0x0
 	.byte	0x4
 	.ascii	"sText_GotchaPkmnCaught\000"
@@ -70405,7 +70397,7 @@ ShouldDoTrainerSlide:
 	.4byte	0x18252
 	.4byte	0xcc
 	.byte	0xb
-	.byte	0x1f
+	.byte	0x1b
 	.byte	0x0
 	.byte	0x4
 	.ascii	"sText_GotchaPkmnCaught2\000"

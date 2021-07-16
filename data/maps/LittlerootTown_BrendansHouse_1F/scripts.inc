@@ -451,15 +451,15 @@ PlayersHouse_1F_Text_IsThatABreakingStory: @ 81F824B
 	.string "MOM: Is that a breaking news story?$"
 
 PlayersHouse_1F_Text_LatiEmergencyNewsFlash: @ 81F826F
-	.string "We bring you this emergency\n"
-	.string "news flash!\p"
-	.string "In various HOENN locales, there have\n"
-	.string "been reports of a BZZT…colored\l"
-	.string "POKéMON in flight.\p"
-	.string "The identity of this POKéMON is\n"
-	.string "currently unknown.\p"
-	.string "We now return you to the regular\n"
-	.string "movie program.$"
+	.string "Breaking news!\p"
+	.string "All across the Rika region, strange\n"
+	.string "weather phenomena have been recorded.\p"
+	.string "Rain is falling without notice, snow has\n"
+	.string "been sighted in lower altitudes...\p"
+	.string "Authorities believe it is related to the\n"
+	.string "recent disappearance of the Legendary\l"
+	.string "Bird Pokémon last week.\p"
+	.string "Stay tuned for more updates!$"
 
 PlayersHouse_1F_Text_WhatColorDidTheySay: @ 81F8351
 	.string "MOM: {PLAYER}, did you catch that?\p"

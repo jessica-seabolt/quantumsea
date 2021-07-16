@@ -56,9 +56,16 @@ Route105_EventScript_Imani:: @ 81EE2A6
 	end
 
 Route105_EventScript_Josue:: @ 81EE2BD
-	trainerbattle_single TRAINER_JOSUE, Route105_Text_JosueIntro, Route105_Text_JosueDefeated
-	msgbox Route105_Text_JosuePostBattle, MSGBOX_AUTOCLOSE
+	lockall
+	faceplayer
+	msgbox Route5MoveIt, MSGBOX_DEFAULT
+	closemessage
+	releaseall
 	end
+
+Route5MoveIt:
+	.string "Huh? Move it kid! You've got no reason\n"
+	.string "to snoop around in here!$"
 
 Route105_EventScript_Andres:: @ 81EE2D4
 	trainerbattle_single TRAINER_ANDRES_1, Route105_Text_AndresIntro, Route105_Text_AndresDefeated, Route105_EventScript_AndresRegisterMatchCallAfterBattle

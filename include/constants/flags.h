@@ -51,15 +51,15 @@
 #define FLAG_HIDE_QUANTUM_QUEST_4    0x27 // set when quest 4 objective is completed
 #define FLAG_QUEST_5_OBJECTIVE_COMPLETE    0x28 // set when quest 5 objective is completed
 #define FLAG_OBTAINED_ZORUA    0x29 // set when zorua is obtained
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_ROUTE_4_SNOWING    0x2A // set when route 4 snows
+#define FLAG_QUEST_8_OBJECTIVE_COMPLETE    0x2B // Set when cipher cave is beaten
+#define FLAG_HIDE_SPRINGROCK_NURSE    0x2C // hides nurse joy in beginning of game
+#define FLAG_HIDE_IB_GYM_GUARDS    0x2D // hides iridium bluff guards
+#define FLAG_QUEST_9_OBJECTIVE_COMPLETE    0x2E // completes quest 9
+#define FLAG_HIDE_CIPHER_IRIDIUM_BLUFF    0x2F // removes cipher peon from house
+#define FLAG_HIDE_IB_PIKA_1  0x30 // hides pikachu 1 in iridium bluff
+#define FLAG_HIDE_IB_PIKA_2    0x31 // its obvious dumbass
+#define FLAG_HIDE_CIPHER_CAVE_GUARD    0x32 // ahhhhhhhhhhhhhh
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
@@ -1182,14 +1182,14 @@
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
 #define FLAG_ITEM_RUSTBORO_CITY_REVIVE                              0x470 // Unused Flag
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-#define FLAG_UNUSED_0x472                                           0x472 // Unused Flag
+#define FLAG_ITEM_SPECTRE_FOREST_SUPER_POTION                                       0x472 // Unused Flag
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
 #define FLAG_ITEM_ROUTE_111_ELIXIR                                  0x476
 #define FLAG_ITEM_ROUTE_113_HYPER_POTION                            0x477
 #define FLAG_ITEM_ROUTE_115_HEAL_POWDER                             0x478
-#define FLAG_UNUSED_0x479                                           0x479 // Unused Flag
+#define FLAG_ITEM_SPECTRE_FOREST_PP_UP                              0x479 // Unused Flag
 #define FLAG_ITEM_ROUTE_116_POTION                                  0x47A
 #define FLAG_ITEM_ROUTE_119_ELIXIR_2                                0x47B
 #define FLAG_ITEM_ROUTE_120_REVIVE                                  0x47C
@@ -1217,8 +1217,8 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_HIDE_HIKER_SPRINGROCK_PATH                             0x493 // Hides Hiker in Springrock Path
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
+#define FLAG_ITEM_SPECTRE_FOREST_TM64                               0x494 // Unused Flag
+#define FLAG_ITEM_MAUVILLE_CITY_LIGHT_CLAY                          0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag

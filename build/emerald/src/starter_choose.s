@@ -1400,9 +1400,9 @@ sStarterLabelCoords:
 	.type	 sStarterMon,object
 	.size	 sStarterMon,6
 sStarterMon:
-	.short	0x345
-	.short	0x335
-	.short	0x214
+	.short	0x2d2
+	.short	0x28d
+	.short	0x189
 	.align	2, 0
 	.type	 sBgTemplates,object
 	.size	 sBgTemplates,12

@@ -9,6 +9,7 @@ Route101_MapScripts:: @ 81EBCBA
 Route101_OnTransition: @ 81EBCC5
 	call ProfBirch_EventScript_UpdateLocation
 	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
 	end
 
 Route101_OnFrame: @ 81EBCCB
@@ -375,6 +376,6 @@ Route1_Text_LilithDefeat:
 	.string "I wish you said no to my challenge...$"
 
 Route1_Text_LilithPostBattle:
-	.string "Hm? Are you Pokémon hurt? You can find a\n"
+	.string "Hm? Are your Pokémon hurt? You can find a\n"
 	.string "Pokémon Center in most Towns.\p"
 	.string "The Nurse there can heal you right up!$"

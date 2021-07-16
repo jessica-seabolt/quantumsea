@@ -102,6 +102,7 @@ static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_AWAKENING,
     ITEM_PARALYZE_HEAL,
     ITEM_DIRE_HIT,
+    ITEM_REPEL,
     ITEM_NONE
 };
 
@@ -115,6 +116,8 @@ static const u16 sShopInventory_OneBadge[] = {
     ITEM_ICE_HEAL,
     ITEM_PARALYZE_HEAL,
     ITEM_DIRE_HIT,
+    ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_NONE
 };
 
@@ -128,6 +131,8 @@ static const u16 sShopInventory_TwoBadges[] = {
     ITEM_ICE_HEAL,
     ITEM_PARALYZE_HEAL,
     ITEM_DIRE_HIT,
+    ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SWIFT_WING,
     ITEM_NONE
 };
@@ -144,6 +149,7 @@ static const u16 sShopInventory_ThreeBadges[] = {
     ITEM_PARALYZE_HEAL,
     ITEM_DIRE_HIT,
     ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SWIFT_WING,
     ITEM_CLEVER_WING,
     ITEM_NONE
@@ -160,9 +166,10 @@ static const u16 sShopInventory_FourBadges[] = {
     ITEM_ICE_HEAL,
     ITEM_AWAKENING,
     ITEM_PARALYZE_HEAL,
+    ITEM_FULL_HEAL,
     ITEM_DIRE_HIT,
-    ITEM_REVIVE,
     ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SWIFT_WING,
     ITEM_CLEVER_WING,
     ITEM_NONE
@@ -180,9 +187,10 @@ static const u16 sShopInventory_FiveBadges[] = {
     ITEM_ICE_HEAL,
     ITEM_AWAKENING,
     ITEM_PARALYZE_HEAL,
+    ITEM_FULL_HEAL,
     ITEM_DIRE_HIT,
-    ITEM_REVIVE,
     ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SUPER_REPEL,
     ITEM_SWIFT_WING,
     ITEM_CLEVER_WING,
@@ -204,8 +212,8 @@ static const u16 sShopInventory_SixBadges[] = {
     ITEM_PARALYZE_HEAL,
     ITEM_FULL_HEAL,
     ITEM_DIRE_HIT,
-    ITEM_REVIVE,
     ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SUPER_REPEL,
     ITEM_SWIFT_WING,
     ITEM_CLEVER_WING,
@@ -229,8 +237,8 @@ static const u16 sShopInventory_SevenBadges[] = {
     ITEM_PARALYZE_HEAL,
     ITEM_FULL_HEAL,
     ITEM_DIRE_HIT,
-    ITEM_REVIVE,
     ITEM_REPEL,
+    ITEM_REVIVE,
     ITEM_SUPER_REPEL,
     ITEM_MAX_REPEL,
     ITEM_SWIFT_WING,

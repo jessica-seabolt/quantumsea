@@ -19,23 +19,22 @@ LandmarkName_FlowerShop:
 	.size	 LandmarkName_FlowerShop,12
 	.type	 LandmarkName_PetalburgWoods,object
 LandmarkName_PetalburgWoods:
-	.byte	0xca
-	.byte	0xbf
-	.byte	0xce
-	.byte	0xbb
-	.byte	0xc6
-	.byte	0xbc
-	.byte	0xcf
-	.byte	0xcc
-	.byte	0xc1
-	.byte	0x0
-	.byte	0xd1
-	.byte	0xc9
-	.byte	0xc9
-	.byte	0xbe
 	.byte	0xcd
+	.byte	0xe4
+	.byte	0xd9
+	.byte	0xd7
+	.byte	0xe8
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0x0
+	.byte	0xc0
+	.byte	0xe3
+	.byte	0xe6
+	.byte	0xd9
+	.byte	0xe7
+	.byte	0xe8
 	.byte	0xff
-	.size	 LandmarkName_PetalburgWoods,16
+	.size	 LandmarkName_PetalburgWoods,15
 	.type	 LandmarkName_MrBrineysCottage,object
 LandmarkName_MrBrineysCottage:
 	.byte	0xc7
@@ -19651,7 +19650,7 @@ GetLandmarks:
 	.4byte	0x9d7d
 	.4byte	0xe9
 	.byte	0x11
-	.byte	0xf
+	.byte	0xe
 	.byte	0x0
 	.byte	0x28
 	.ascii	"LandmarkName_PetalburgWoods\000"

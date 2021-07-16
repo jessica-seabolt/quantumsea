@@ -87,7 +87,7 @@ static EWRAM_DATA u32 sBattleTowerMultiBattleTypeFlags = 0;
 
 struct ListMenuTemplate gScrollableMultichoice_ListMenuTemplate;
 
-extern const u16 gObjectEventPalette8[];
+extern const u16 gObjectEventPaletteQuinn[];
 extern const u16 gObjectEventPalette17[];
 extern const u16 gObjectEventPalette33[];
 extern const u16 gObjectEventPalette34[];
@@ -629,7 +629,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
                 LoadPalette(gObjectEventPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
             case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                LoadPalette(gObjectEventPalette8, 0x100 + (adjustedPaletteNum << 4), 0x20);
+                LoadPalette(gObjectEventPaletteQuinn, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
             case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
                 LoadPalette(gObjectEventPalette17, 0x100 + (adjustedPaletteNum << 4), 0x20);

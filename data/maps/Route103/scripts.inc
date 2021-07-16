@@ -9,6 +9,7 @@ Route103_OnTransition: @ 81EC399
 	call Common_EventScript_SetupRivalGfxId
 	call ProfBirch_EventScript_UpdateLocation
 	call_if_set FLAG_ROUTE_2_RAINING, Route2Raining
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
 	end
 
 Route103_OnLoad: @ 81EC3A4

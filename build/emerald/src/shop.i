@@ -10503,7 +10503,7 @@ extern const u32 gTrainerFrontPic_Interviewer[];
 extern const u32 gTrainerFrontPic_TuberF[];
 extern const u32 gTrainerFrontPic_TuberM[];
 extern const u32 gTrainerFrontPic_CoolTrainerF[];
-extern const u32 gTrainerFrontPic_Lady[];
+extern const u32 gTrainerFrontPic_Worker[];
 extern const u32 gTrainerFrontPic_Beauty[];
 extern const u32 gTrainerFrontPic_RichBoy[];
 extern const u32 gTrainerFrontPic_ExpertF[];
@@ -10597,7 +10597,7 @@ extern const u32 gTrainerPalette_Interviewer[];
 extern const u32 gTrainerPalette_TuberF[];
 extern const u32 gTrainerPalette_TuberM[];
 extern const u32 gTrainerPalette_CoolTrainerF[];
-extern const u32 gTrainerPalette_Lady[];
+extern const u32 gTrainerPalette_Worker[];
 extern const u32 gTrainerPalette_Beauty[];
 extern const u32 gTrainerPalette_RichBoy[];
 extern const u32 gTrainerPalette_ExpertF[];
@@ -18240,6 +18240,7 @@ static const u16 sShopInventory_ZeroBadges[] = {
     32,
     33,
     80,
+    90,
     0
 };
 
@@ -18253,6 +18254,8 @@ static const u16 sShopInventory_OneBadge[] = {
     31,
     33,
     80,
+    90,
+    39,
     0
 };
 
@@ -18266,6 +18269,8 @@ static const u16 sShopInventory_TwoBadges[] = {
     31,
     33,
     80,
+    90,
+    39,
     99,
     0
 };
@@ -18282,6 +18287,7 @@ static const u16 sShopInventory_ThreeBadges[] = {
     33,
     80,
     90,
+    39,
     99,
     98,
     0
@@ -18298,9 +18304,10 @@ static const u16 sShopInventory_FourBadges[] = {
     31,
     32,
     33,
+    38,
     80,
-    39,
     90,
+    39,
     99,
     98,
     0
@@ -18318,9 +18325,10 @@ static const u16 sShopInventory_FiveBadges[] = {
     31,
     32,
     33,
+    38,
     80,
-    39,
     90,
+    39,
     91,
     99,
     98,
@@ -18342,8 +18350,8 @@ static const u16 sShopInventory_SixBadges[] = {
     33,
     38,
     80,
-    39,
     90,
+    39,
     91,
     99,
     98,
@@ -18367,8 +18375,8 @@ static const u16 sShopInventory_SevenBadges[] = {
     33,
     38,
     80,
-    39,
     90,
+    39,
     91,
     92,
     99,

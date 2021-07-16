@@ -4,12 +4,12 @@ OldaleTown_House1_MapScripts:: @ 81FBE85
 OldaleTown_House1_EventScript_Woman:: @ 81FBE86
 	lock
 	faceplayer
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_3
+	goto_if_eq SideQuest3Completed
 	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_3
 	compare VAR_RESULT, TRUE
 	goto_if_ne GiveSideQuest3
 	goto_if_set FLAG_DEFEATED_SON_TAPROOT, CompleteQuest3
-	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_3
-	goto_if_eq SideQuest3Completed
 	msgbox PleaseDefeatMySon, MSGBOX_NPC
 	release
 	end
@@ -33,7 +33,7 @@ GiveSideQuest3::
 
 CompleteQuest3::
 	msgbox YouDefeatedMySon, MSGBOX_SIGN
-	giveitem ITEM_TM61, 1
+	giveitem ITEM_EXP_SHARE, 1
 	msgbox Text_TM61, MSGBOX_SIGN
 	playfanfare MUS_REGISTER_MATCH_CALL
 	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_3
@@ -50,8 +50,8 @@ DefeatMySon:
 	.string "bond with you. I can tell.\p"
 	.string "My son William has gotten a bit out of\n"
 	.string "hand lately with his battling.\p"
-	.string "He wants to challenge Polter in Darkwing\n"
-	.string "Grove, but he hasn't learned to treat\l"
+	.string "He wants to challenge Polter in Spectre\n"
+	.string "City, but he hasn't learned to treat\l"
 	.string "his Pokémon with respect.\p"
 	.string "He's never going to get anywhere this\n"
 	.string "way, and his Pokémon will be unhappy.\p"
@@ -68,10 +68,10 @@ YouDefeatedMySon:
 	.string "loss, but I think it will help him grow.\p"
 	.string "Please, accept this as my thanks!$"
 
-Text_TM61:
+ExplainExpShareText:
 	.string "TM61 contains Will-O-Wisp. It can burn\n"
 	.string "opposing Pokémon in battle.\p"
-	.string "Use it wisely!"
+	.string "Use it wisely!$"
 
 PleaseDefeatMySon:
 	.string "Please defeat my son, William. He needs\n"

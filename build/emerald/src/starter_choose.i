@@ -7282,9 +7282,9 @@ static const u8 sStarterLabelCoords[3][2] =
 
 static const u16 sStarterMon[3] =
 {
-    837,
-    821,
-    532,
+    722,
+    653,
+    393,
 };
 
 static const struct BgTemplate sBgTemplates[3] =

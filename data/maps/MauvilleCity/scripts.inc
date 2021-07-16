@@ -1,6 +1,7 @@
 .set LOCALID_WALLY, 6
 .set LOCALID_WALLYS_UNCLE, 7
 .set LOCALID_SCOTT, 11
+.set LOCALID_PIKACHU, 16
 
 MauvilleCity_MapScripts:: @ 81DF385
 	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_OnTransition
@@ -16,6 +17,7 @@ MauvilleCity_OnTransition: @ 81DF38B
 	call_if_set FLAG_GOT_TM24_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
 	end
 
+
 MauvilleCity_EventScript_MoveWattsonBackToGym:: @ 81DF3A9
 	clearflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
 	setflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
@@ -23,8 +25,285 @@ MauvilleCity_EventScript_MoveWattsonBackToGym:: @ 81DF3A9
 	return
 
 MauvilleCity_EventScript_Boy:: @ 81DF3B3
-	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_NPC
+	lockall
+	faceplayer
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_8
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest8AlreadyComplete
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_8
+	goto_if_eq Quest8IsUnlocked
+	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_REGISTER_MATCH_CALL
+	setflag FLAG_HIDE_CIPHER_CAVE_GUARD
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_8
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_8
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	releaseall
 	end
+
+Quest8AlreadyComplete::
+	msgbox ExplainHeavyDutyBoots, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+
+IridiumBluff_Cynthia_Trigger_0::
+	lockall
+	playbgm MUS_RG_POKE_MANSION, 0
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaApproachPlayer0
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia1, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia3, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaLeaves
+	waitmovement 0
+	fadedefaultbgm
+	removeobject LOCALID_WALLY
+	setflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+	setvar VAR_MAUVILLE_CITY_STATE, 1
+	clearflag FLAG_ROUTE_4_SNOWING
+	releaseall
+	end
+
+IridiumBluff_Cynthia_Trigger_1::
+	lockall
+	playbgm MUS_RG_POKE_MANSION, 0
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaApproachPlayer1
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia1, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia3, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaLeaves
+	waitmovement 0
+	fadedefaultbgm
+	removeobject LOCALID_WALLY
+	setflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+	setvar VAR_MAUVILLE_CITY_STATE, 1
+	clearflag FLAG_ROUTE_4_SNOWING
+	releaseall
+	end
+
+IridiumBluff_Cynthia_Trigger_2::
+	lockall
+	playbgm MUS_RG_POKE_MANSION, 0
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaApproachPlayer2
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia1, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia3, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaLeaves
+	waitmovement 0
+	fadedefaultbgm
+	removeobject LOCALID_WALLY
+	setflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+	setvar VAR_MAUVILLE_CITY_STATE, 1
+	clearflag FLAG_ROUTE_4_SNOWING
+	releaseall
+	end
+
+IridiumBluff_Cynthia_Trigger_3::
+	lockall
+	playbgm MUS_RG_POKE_MANSION, 0
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaApproachPlayer3
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia1, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox IridiumBluff_Text_Cynthia3, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLY, IridiumBluff_Movement_CynthiaLeaves
+	waitmovement 0
+	fadedefaultbgm
+	removeobject LOCALID_WALLY
+	setflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+	setvar VAR_MAUVILLE_CITY_STATE, 1
+	clearflag FLAG_ROUTE_4_SNOWING
+	releaseall
+	end
+
+IridiumBluff_Text_Cynthia1:
+	.string "Hm? Oh, hello. Are you a Trainer?\n"
+	.string "Here to battle the Gym, perhaps?\p"
+	.string "My name's Cynthia. I'm just starting on\n"
+	.string "my quest to travel Rika.\p"
+	.string "I wish to uncover secrets the likes of\n"
+	.string "which no person has ever seen.\p"
+	.string "And so, I have begun my journey as a\n"
+	.string "Pokémon Trainer, just like you.\p"
+	.string "Regardless, I'm looking for a man. He\n"
+	.string "goes by the name of Ravynn. Have you\l"
+	.string "heard of him?\p"
+	.string "Oh? You've beaten him in a battle?$"
+
+IridiumBluff_Text_Cynthia2:
+	.string "This Trainer... could they be..?$"
+
+IridiumBluff_Text_Cynthia3:
+	.string "Tell me. What is your name?\p"
+	.string "{PLAYER}? I'll keep that in mind.\p"
+	.string "I need to get going. I have a feeling\n"
+	.string "you and I will meet again soon.\p"
+	.string "Strange things are happening in Rika.\n"
+	.string "The general public turns a blind eye...\l"
+	.string "But I have a feeling you're different.\p"
+	.string "We'll talk soon.$"
+
+IridiumBluff_Movement_CynthiaLeaves:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+IridiumBluff_Movement_CynthiaApproachPlayer0:
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+IridiumBluff_Movement_CynthiaApproachPlayer1:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+IridiumBluff_Movement_CynthiaApproachPlayer2:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+IridiumBluff_Movement_CynthiaApproachPlayer3:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Quest8IsUnlocked::
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_8
+	goto_if_ne ActivateQuest8
+	goto_if_set FLAG_QUEST_8_OBJECTIVE_COMPLETE, Quest8ObjectiveComplete
+	msgbox ReminderQuest8, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+Quest8ObjectiveComplete::
+	msgbox Quest8CompleteText, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_MASTER_BALL, 1
+	compare VAR_RESULT, FALSE
+	goto_if_eq IridiumBluff_NoRoom
+	msgbox ExplainHeavyDutyBoots, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_8
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_8
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	releaseall
+	end
+
+IridiumBluff_NoRoom::
+	msgbox IridiumBluffNoRoomText, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+IridiumBluffNoRoomText:
+	.string "Huh? Your Bag's full.$"
+
+Quest8CompleteText:
+	.string "You did it? For real? Man, I hated those\n"
+	.string "guys! Thanks a lot, kid!\p"
+	.string "Here, let me just draw you...\p"
+	.string "Uh-huh... okay...\p"
+	.string "Done! Here, I promised something good\n"
+	.string "and I meant it!$"
+
+ExplainHeavyDutyBoots:
+	.string "The Master Ball can capture any Pokémon\n"
+	.string "without fail. I told you the reward\l"
+	.string "would be worth it!$"
+
+ReminderQuest8:
+	.string "Oh, it's you! Are you going to take out\n"
+	.string "those criminals in their cave? It's just\l"
+	.string "off Route 5, in case you've forgotten.$"
+
+ActivateQuest8::
+	msgbox Text_ActivateQuest8, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+Text_ActivateQuest8:
+	.string "Oh hey, it's you! I'd love to chat, but\n"
+	.string "I'm working right now. Can't talk and\l"
+	.string "work at the same time, y'know?\p"
+	.string "I've got that {COLOR GREEN}Active{COLOR DARK_GREY} listener thing so\n"
+	.string "it's hard to focus on two things at once.$"
 
 MauvilleCity_EventScript_Maniac:: @ 81DF3BC
 	msgbox MauvilleCity_Text_AllSortsOfPeopleComeThrough, MSGBOX_NPC
@@ -50,18 +329,137 @@ MauvilleCity_EventScript_BikeShopSign:: @ 81DF3E9
 	msgbox MauvilleCity_Text_BikeShopSign, MSGBOX_SIGN
 	end
 
+IridiumBluffPikachu::
+	lockall
+	faceplayer
+	playmoncry SPECIES_PIKACHU, 2
+	goto_if_set FLAG_QUEST_9_OBJECTIVE_COMPLETE, PikachuQuest9Complete
+	msgbox IridiumBluffPikaPika, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_PIKACHU
+	setflag FLAG_HIDE_IB_PIKA_1
+	clearflag FLAG_HIDE_IB_PIKA_2
+	setflag FLAG_QUEST_9_OBJECTIVE_COMPLETE
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
+
+PikachuQuest9Complete::
+	msgbox IridiumBluffPikachuComplete, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+IridiumBluffPikachuComplete:
+	.string "Pikachu: Pika piiii!$"
+
+IridiumBluffPikaPika:
+	.string "Pikachu: Pika piiiii!\p"
+	.string "The Pikachu returned to its owner!$"
+
 MauvilleCity_EventScript_GameCornerSign:: @ 81DF3F2
 	msgbox MauvilleCity_Text_GameCornerSign, MSGBOX_SIGN
 	end
 
 MauvilleCity_EventScript_SchoolKidM:: @ 81DF3FB
-	lock
+	lockall
 	faceplayer
-	goto_if_set FLAG_TV_EXPLAINED, MauvilleCity_EventScript_TVExplained
-	msgbox MauvilleCity_Text_ExplainTV, MSGBOX_DEFAULT
-	setflag FLAG_TV_EXPLAINED
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_9
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest9AlreadyComplete
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_9
+	goto_if_eq Quest9IsActive
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_9
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest9IsUnlocked
+	msgbox StartQuest9Text, MSGBOX_DEFAULT
+	closemessage
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_9
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_9
+	clearflag FLAG_HIDE_IB_PIKA_1
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
+	releaseall
+	end
+
+Quest9AlreadyComplete::
+	msgbox ExplainThunderstone, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+Quest9IsActive::
+	goto_if_set FLAG_QUEST_9_OBJECTIVE_COMPLETE, CompleteQuest9
+	msgbox HaveYouFoundPikachu, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+CompleteQuest9::
+	msgbox CompleteQuest9Text, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_THUNDER_STONE, 1
+	compare VAR_RESULT, FALSE
+	goto_if_eq IridiumBluff_NoRoom
+	msgbox ExplainThunderstone, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_9
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_9
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	releaseall
+	end
+
+IridiumBluffImportantMeeting::
+	lockall
+	faceplayer
+	msgbox ImportantMeetingText, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+ImportantMeetingText:
+	.string "Hey, kid! We're holding an important\n"
+	.string "metting with Smithie! Back off!$"
+
+CompleteQuest9Text:
+	.string "You found my Pikachu! Thank you!\n"
+	.string "I was starting to worry.\p"
+	.string "Here, as promised. A Thunder Stone!$"
+
+ExplainThunderstone:
+	.string "You can use that Thunder Stone to\n"
+	.string "evolve certain Pokémon.\p"
+	.string "Like my Pikachu, for example!$"
+
+HaveYouFoundPikachu:
+	.string "Hi again! Have you found my Pikachu yet?\n"
+	.string "I'm starting to get nervous...$"
+
+Quest9IsUnlocked::
+	msgbox Quest9IsInactive, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
+
+Quest9IsInactive:
+	.string "Hm? I don't remember you. Maybe I just\n"
+	.string "got so caught up in my {COLOR GREEN}Active{COLOR DARK_GREY} search for\l"
+	.string "my Pikachu...$"
+
+StartQuest9Text:
+	.string "Hi, can you help me out?\p"
+	.string "My Pikachu ran off.. It's always doing\n"
+	.string "this to me!\p"
+	.string "I hate to ask you, but could you help\n"
+	.string "me find it?\p"
+	.string "I had this Thunder Stone, but Pikachu is\n"
+	.string "clearly not ready to evolve yet.\p"
+	.string "If you can find my Pikachu, I can give\n"
+	.string "my Thunder Stone to you. Deal?$"
 
 MauvilleCity_EventScript_TVExplained:: @ 81DF413
 	msgbox MauvilleCity_Text_BeenCheckingOutTV, MSGBOX_DEFAULT
@@ -71,13 +469,34 @@ MauvilleCity_EventScript_TVExplained:: @ 81DF413
 MauvilleCity_EventScript_WallysUncle:: @ 81DF41D
 	lock
 	faceplayer
-	goto_if_set FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, MauvilleCity_EventScript_UncleAskPlayerToBattleWally
+	playbgm MUS_ENCOUNTER_AQUA, 0
 	msgbox MauvilleCity_Text_UncleHesTooPeppy, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_WALLYS_UNCLE, Common_Movement_FaceOriginalDirection
-	waitmovement 0
+	goto BattleCipherIridiumBluff
 	release
 	end
+
+BattleCipherIridiumBluff::
+	trainerbattle_no_intro TRAINER_GRUNT_MAGMA_HIDEOUT_1, MauvilleCity_Text_WallyDefeat
+	goto CipherBattleCompleteIridiumBluff
+	end
+
+CipherBattleCompleteIridiumBluff::
+	playbgm MUS_ENCOUNTER_AQUA, 0
+	msgbox CipherDefeatedIridiumBluffText, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_WALLYS_UNCLE
+	setflag FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE
+	setflag FLAG_HIDE_IB_GYM_GUARDS
+	fadescreen FADE_FROM_BLACK
+	fadedefaultbgm
+	release
+	end
+
+CipherDefeatedIridiumBluffText:
+	.string "Gah! What? Impossible! Oh man, oh man!\n"
+	.string "I gotta tell Smith- I mean, the Boss!$"
 
 MauvilleCity_EventScript_UncleAskPlayerToBattleWally:: @ 81DF43D
 	msgbox MauvilleCity_Text_UncleCanYouBattleWally, MSGBOX_DEFAULT
@@ -471,9 +890,15 @@ MauvilleCity_EventScript_RegisterWallyCall:: @ 81DF7BA
 	end
 
 MauvilleCity_Text_UncleHesTooPeppy: @ 81DF7DC
-	.string "UNCLE: It's because of POKéMON that\n"
-	.string "this boy's got more pep, I suppose…\l"
-	.string "But he's become a bit too peppy…$"
+	.string "Huh? What am I doing back here?\n"
+	.string "Why, I'm minding my own business!\p"
+	.string "Why don't you mind yours, pal?\p"
+	.string ". . . . . . . . . . . . . . . . . . . . . . . .\p"
+	.string "Well, if you must know, I'm waiting to\n"
+	.string "meet someone here. I have a deal to\l"
+	.string "make with some guy named Ravynn.\p"
+	.string "You want to stop me? Ha! Nobody crosses\n"
+	.string "Cipher! This will be your last battle!$"
 
 MauvilleCity_Text_WallyWantToChallengeGym: @ 81DF845
 	.string "WALLY: Aww, UNCLE, please?\p"
@@ -523,9 +948,8 @@ MauvilleCity_Text_WallyHereICome: @ 81DFB6D
 	.string "Okay… Here I come!$"
 
 MauvilleCity_Text_WallyDefeat: @ 81DFB96
-	.string "WALLY: … … … … … … …\p"
-	.string "… … … … … … … …\p"
-	.string "I lost…$"
+	.string "What? That's impossible! I can't\n"
+	.string "believe I lost to a kid!$"
 
 MauvilleCity_Text_WallyIllGoBackToVerdanturf: @ 81DFBC3
 	.string "WALLY: UNCLE…\n"
@@ -621,34 +1045,52 @@ MauvilleCity_Text_WattsonYoungTakeCharge: @ 81E02AA
 	.string "the young step up and take charge!$"
 
 MauvilleCity_Text_NurseHurtMonBackToHealth: @ 81E0301
-	.string "You know, it's cool to have POKéMON\n"
-	.string "battles and stuff…\p"
-	.string "But if your POKéMON gets hurt,\n"
-	.string "you have to nurse it back to health.$"
+	.string "Ah, hello! Good to see a friendly face!\n"
+	.string "Are you a Pokémon Trainer?\p"
+	.string "I might have a deal for you!\p"
+	.string "You see, I've been commissioned to draw\n"
+	.string "a really heroic Pokémon Trainer for my\l"
+	.string "company, but I need a reference.\p"
+	.string "You look like you'd be perfect, but if\n"
+	.string "word got out that I used a non-heroic\l"
+	.string "Trainer for this, I'd be so embarassed!\p"
+	.string "So, here's what we'll do.\p"
+	.string "There's these shady guys south of here\n"
+	.string "in a nasty looking cave. It's right on\l"
+	.string "Route 5, you can't miss it!\p"
+	.string "If you can take care of them, I'll be\n"
+	.string "happy to use you as a reference.\p"
+	.string "I can reward you quite well if you do\n"
+	.string "this for me!$"
 
 MauvilleCity_Text_AllSortsOfPeopleComeThrough: @ 81E037C
-	.string "The roads of this town stretch north\n"
-	.string "and south, and east and west.\p"
-	.string "Because of that, we get all sorts of\n"
-	.string "people coming through.$"
+	.string "Travelers from all over Rika come to\n"
+	.string "Iridium Bluffs to battle Smithie.\p"
+	.string "The Gym Challenge just started, but\n"
+	.string "so many Trainers have already been\l"
+	.string "all over Rika battling it out!$"
 
 MauvilleCity_Text_RydelVeryGenerous: @ 81E03FB
-	.string "Have you been to RYDEL'S CYCLES yet?\p"
-	.string "RYDEL, the owner, is a very generous\n"
-	.string "man.$"
+	.string "Have you ever seen anyone as young as\n"
+	.string "Smithie battle as well as he does?\p"
+	.string "That young man is a prodigy!$"
 
 MauvilleCity_Text_PokemonCanJumpYouOnBike: @ 81E044A
-	.string "Even if you're riding a BIKE,\n"
-	.string "wild POKéMON could jump you.$"
+	.string "Rumor has it, Smithie is only the\n"
+	.string "Gym Leader because this old man\l"
+	.string "Greevil paid off the right people.\p"
+	.string "It's basically been confirmed by\n"
+	.string "Smithie himself.\l"
+	.string "The real question is... why?$"
 
 MauvilleCity_Text_CitySign: @ 81E0485
-	.string "MAUVILLE CITY\n"
-	.string "“The bright and shiny city of fun!”$"
+	.string "Iridium Bluff\n"
+	.string "“The best bluffs in the business!”$"
 
 MauvilleCity_Text_GymSign: @ 81E04B7
-	.string "MAUVILLE CITY POKéMON GYM\n"
-	.string "LEADER: WATTSON\l"
-	.string "“The cheerfully electrifying man!”$"
+	.string "Iridium Bluff Pokémon Gym\n"
+	.string "Leader: Smithie\p"
+	.string "“The Iron Defender!”$"
 
 MauvilleCity_Text_BikeShopSign: @ 81E0504
 	.string "“Ride in gravel and shake up your\n"

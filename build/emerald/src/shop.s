@@ -52,8 +52,9 @@ sShopInventory_ZeroBadges:
 	.short	0x20
 	.short	0x21
 	.short	0x50
+	.short	0x5a
 	.short	0x0
-	.size	 sShopInventory_ZeroBadges,18
+	.size	 sShopInventory_ZeroBadges,20
 	.align	1, 0
 	.type	 sShopInventory_OneBadge,object
 sShopInventory_OneBadge:
@@ -66,8 +67,10 @@ sShopInventory_OneBadge:
 	.short	0x1f
 	.short	0x21
 	.short	0x50
+	.short	0x5a
+	.short	0x27
 	.short	0x0
-	.size	 sShopInventory_OneBadge,20
+	.size	 sShopInventory_OneBadge,24
 	.align	1, 0
 	.type	 sShopInventory_TwoBadges,object
 sShopInventory_TwoBadges:
@@ -80,9 +83,11 @@ sShopInventory_TwoBadges:
 	.short	0x1f
 	.short	0x21
 	.short	0x50
+	.short	0x5a
+	.short	0x27
 	.short	0x63
 	.short	0x0
-	.size	 sShopInventory_TwoBadges,22
+	.size	 sShopInventory_TwoBadges,26
 	.align	1, 0
 	.type	 sShopInventory_ThreeBadges,object
 sShopInventory_ThreeBadges:
@@ -97,10 +102,11 @@ sShopInventory_ThreeBadges:
 	.short	0x21
 	.short	0x50
 	.short	0x5a
+	.short	0x27
 	.short	0x63
 	.short	0x62
 	.short	0x0
-	.size	 sShopInventory_ThreeBadges,28
+	.size	 sShopInventory_ThreeBadges,30
 	.align	1, 0
 	.type	 sShopInventory_FourBadges,object
 sShopInventory_FourBadges:
@@ -114,13 +120,14 @@ sShopInventory_FourBadges:
 	.short	0x1f
 	.short	0x20
 	.short	0x21
+	.short	0x26
 	.short	0x50
-	.short	0x27
 	.short	0x5a
+	.short	0x27
 	.short	0x63
 	.short	0x62
 	.short	0x0
-	.size	 sShopInventory_FourBadges,32
+	.size	 sShopInventory_FourBadges,34
 	.align	1, 0
 	.type	 sShopInventory_FiveBadges,object
 sShopInventory_FiveBadges:
@@ -135,15 +142,16 @@ sShopInventory_FiveBadges:
 	.short	0x1f
 	.short	0x20
 	.short	0x21
+	.short	0x26
 	.short	0x50
-	.short	0x27
 	.short	0x5a
+	.short	0x27
 	.short	0x5b
 	.short	0x63
 	.short	0x62
 	.short	0x61
 	.short	0x0
-	.size	 sShopInventory_FiveBadges,38
+	.size	 sShopInventory_FiveBadges,40
 	.align	1, 0
 	.type	 sShopInventory_SixBadges,object
 sShopInventory_SixBadges:
@@ -160,8 +168,8 @@ sShopInventory_SixBadges:
 	.short	0x21
 	.short	0x26
 	.short	0x50
-	.short	0x27
 	.short	0x5a
+	.short	0x27
 	.short	0x5b
 	.short	0x63
 	.short	0x62
@@ -186,8 +194,8 @@ sShopInventory_SevenBadges:
 	.short	0x21
 	.short	0x26
 	.short	0x50
-	.short	0x27
 	.short	0x5a
+	.short	0x27
 	.short	0x5b
 	.short	0x5c
 	.short	0x63
@@ -5402,7 +5410,7 @@ CreateDecorationShop2Menu:
 	.byte	0x2
 	.4byte	.LM1
 	.byte	0x3
-	.byte	0xd3,0x3
+	.byte	0xdb,0x3
 	.byte	0x1
 	.byte	0x0
 	.byte	0x5
@@ -9143,7 +9151,7 @@ CreateDecorationShop2Menu:
 	.ascii	"CreateShopMenu\000"
 
 	.byte	0x1
-	.2byte	0x1d4
+	.2byte	0x1dc
 	.byte	0x1
 	.4byte	0xec
 	.4byte	.LFB1
@@ -9154,13 +9162,13 @@ CreateDecorationShop2Menu:
 	.ascii	"martType\000"
 
 	.byte	0x1
-	.2byte	0x1d3
+	.2byte	0x1db
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"numMenuItems\000"
 
 	.byte	0x1
-	.2byte	0x1d5
+	.2byte	0x1dd
 	.4byte	0xf2
 	.byte	0x1
 	.byte	0x55
@@ -9172,7 +9180,7 @@ CreateDecorationShop2Menu:
 	.ascii	"winTemplate\000"
 
 	.byte	0x1
-	.2byte	0x1dc
+	.2byte	0x1e4
 	.4byte	0xf9
 	.byte	0x2
 	.byte	0x91
@@ -9186,7 +9194,7 @@ CreateDecorationShop2Menu:
 	.ascii	"winTemplate\000"
 
 	.byte	0x1
-	.2byte	0x1e5
+	.2byte	0x1ed
 	.4byte	0xf9
 	.byte	0x2
 	.byte	0x91
@@ -9284,7 +9292,7 @@ CreateDecorationShop2Menu:
 	.ascii	"SetShopMenuCallback\000"
 
 	.byte	0x1
-	.2byte	0x1f7
+	.2byte	0x1ff
 	.byte	0x1
 	.4byte	.LFB2
 	.4byte	.LFE2
@@ -9294,7 +9302,7 @@ CreateDecorationShop2Menu:
 	.ascii	"callback\000"
 
 	.byte	0x1
-	.2byte	0x1f6
+	.2byte	0x1fe
 	.4byte	0x1d7
 	.byte	0x1
 	.byte	0x50
@@ -9309,7 +9317,7 @@ CreateDecorationShop2Menu:
 	.ascii	"GetNumberOfBadges\000"
 
 	.byte	0x1
-	.2byte	0x1fd
+	.2byte	0x205
 	.byte	0x1
 	.4byte	0xec
 	.4byte	.LFB3
@@ -9320,7 +9328,7 @@ CreateDecorationShop2Menu:
 	.ascii	"badgeFlag\000"
 
 	.byte	0x1
-	.2byte	0x1fe
+	.2byte	0x206
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x54
@@ -9328,7 +9336,7 @@ CreateDecorationShop2Menu:
 	.ascii	"count\000"
 
 	.byte	0x1
-	.2byte	0x1ff
+	.2byte	0x207
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x55
@@ -9338,7 +9346,7 @@ CreateDecorationShop2Menu:
 	.ascii	"SetShopItemsForSale\000"
 
 	.byte	0x1
-	.2byte	0x20b
+	.2byte	0x213
 	.byte	0x1
 	.4byte	.LFB4
 	.4byte	.LFE4
@@ -9348,7 +9356,7 @@ CreateDecorationShop2Menu:
 	.ascii	"items\000"
 
 	.byte	0x1
-	.2byte	0x20a
+	.2byte	0x212
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x54
@@ -9356,7 +9364,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x20c
+	.2byte	0x214
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x55
@@ -9364,7 +9372,7 @@ CreateDecorationShop2Menu:
 	.ascii	"badgeCount\000"
 
 	.byte	0x1
-	.2byte	0x20d
+	.2byte	0x215
 	.4byte	0xec
 	.byte	0x0
 	.byte	0xc
@@ -9377,7 +9385,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_ShopMenu\000"
 
 	.byte	0x1
-	.2byte	0x21d
+	.2byte	0x225
 	.byte	0x1
 	.4byte	.LFB5
 	.4byte	.LFE5
@@ -9387,7 +9395,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x21c
+	.2byte	0x224
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x55
@@ -9395,7 +9403,7 @@ CreateDecorationShop2Menu:
 	.ascii	"inputCode\000"
 
 	.byte	0x1
-	.2byte	0x21e
+	.2byte	0x226
 	.4byte	0x2d2
 	.byte	0x0
 	.byte	0x6
@@ -9408,7 +9416,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_HandleShopMenuBuy\000"
 
 	.byte	0x1
-	.2byte	0x22e
+	.2byte	0x236
 	.byte	0x1
 	.4byte	.LFB6
 	.4byte	.LFE6
@@ -9418,13 +9426,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x22d
+	.2byte	0x235
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x22f
+	.2byte	0x237
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -9442,7 +9450,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_HandleShopMenuSell\000"
 
 	.byte	0x1
-	.2byte	0x237
+	.2byte	0x23f
 	.byte	0x1
 	.4byte	.LFB7
 	.4byte	.LFE7
@@ -9452,13 +9460,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x236
+	.2byte	0x23e
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x238
+	.2byte	0x240
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -9468,7 +9476,7 @@ CreateDecorationShop2Menu:
 	.ascii	"CB2_ExitSellMenu\000"
 
 	.byte	0x1
-	.2byte	0x240
+	.2byte	0x248
 	.byte	0x1
 	.4byte	.LFB8
 	.4byte	.LFE8
@@ -9479,7 +9487,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_HandleShopMenuQuit\000"
 
 	.byte	0x1
-	.2byte	0x246
+	.2byte	0x24e
 	.byte	0x1
 	.4byte	.LFB9
 	.4byte	.LFE9
@@ -9489,7 +9497,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x245
+	.2byte	0x24d
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -9497,7 +9505,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_GoToBuyOrSellMenu\000"
 
 	.byte	0x1
-	.2byte	0x252
+	.2byte	0x25a
 	.byte	0x1
 	.4byte	.LFB10
 	.4byte	.LFE10
@@ -9507,13 +9515,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x251
+	.2byte	0x259
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x253
+	.2byte	0x25b
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -9522,7 +9530,7 @@ CreateDecorationShop2Menu:
 	.ascii	"MapPostLoadHook_ReturnToShopMenu\000"
 
 	.byte	0x1
-	.2byte	0x25c
+	.2byte	0x264
 	.byte	0x1
 	.4byte	.LFB11
 	.4byte	.LFE11
@@ -9533,7 +9541,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_ReturnToShopMenu\000"
 
 	.byte	0x1
-	.2byte	0x262
+	.2byte	0x26a
 	.byte	0x1
 	.4byte	.LFB12
 	.4byte	.LFE12
@@ -9543,7 +9551,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x261
+	.2byte	0x269
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x55
@@ -9553,7 +9561,7 @@ CreateDecorationShop2Menu:
 	.ascii	"ShowShopMenuAfterExitingBuyOrSellMenu\000"
 
 	.byte	0x1
-	.2byte	0x26d
+	.2byte	0x275
 	.byte	0x1
 	.4byte	.LFB13
 	.4byte	.LFE13
@@ -9563,14 +9571,14 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x26c
+	.2byte	0x274
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x10
 	.ascii	"CB2_BuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x273
+	.2byte	0x27b
 	.byte	0x1
 	.4byte	.LFB14
 	.4byte	.LFE14
@@ -9580,7 +9588,7 @@ CreateDecorationShop2Menu:
 	.ascii	"VBlankCB_BuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x27c
+	.2byte	0x284
 	.byte	0x1
 	.4byte	.LFB15
 	.4byte	.LFE15
@@ -9591,7 +9599,7 @@ CreateDecorationShop2Menu:
 	.ascii	"CB2_InitBuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x287
+	.2byte	0x28f
 	.byte	0x1
 	.4byte	.LFB16
 	.4byte	.LFE16
@@ -9601,7 +9609,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x288
+	.2byte	0x290
 	.4byte	0xec
 	.byte	0x5
 	.4byte	0x55b
@@ -9611,7 +9619,7 @@ CreateDecorationShop2Menu:
 	.ascii	"tmp\000"
 
 	.byte	0x1
-	.2byte	0x28e
+	.2byte	0x296
 	.4byte	0x55c
 	.byte	0x2
 	.byte	0x91
@@ -9629,7 +9637,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuFreeMemory\000"
 
 	.byte	0x1
-	.2byte	0x2b6
+	.2byte	0x2be
 	.byte	0x1
 	.4byte	.LFB17
 	.4byte	.LFE17
@@ -9640,7 +9648,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuBuildListMenuTemplate\000"
 
 	.byte	0x1
-	.2byte	0x2be
+	.2byte	0x2c6
 	.byte	0x1
 	.4byte	.LFB18
 	.4byte	.LFE18
@@ -9650,7 +9658,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x2bf
+	.2byte	0x2c7
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x56
@@ -9660,7 +9668,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuSetListEntry\000"
 
 	.byte	0x1
-	.2byte	0x2d6
+	.2byte	0x2de
 	.byte	0x1
 	.4byte	.LFB19
 	.4byte	.LFE19
@@ -9670,7 +9678,7 @@ CreateDecorationShop2Menu:
 	.ascii	"menuItem\000"
 
 	.byte	0x1
-	.2byte	0x2d5
+	.2byte	0x2dd
 	.4byte	0x65a
 	.byte	0x1
 	.byte	0x56
@@ -9678,7 +9686,7 @@ CreateDecorationShop2Menu:
 	.ascii	"item\000"
 
 	.byte	0x1
-	.2byte	0x2d5
+	.2byte	0x2dd
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x54
@@ -9686,7 +9694,7 @@ CreateDecorationShop2Menu:
 	.ascii	"name\000"
 
 	.byte	0x1
-	.2byte	0x2d5
+	.2byte	0x2dd
 	.4byte	0x660
 	.byte	0x1
 	.byte	0x55
@@ -9738,7 +9746,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuPrintItemDescriptionAndShowItemIcon\000"
 
 	.byte	0x1
-	.2byte	0x2e1
+	.2byte	0x2e9
 	.byte	0x1
 	.4byte	.LFB20
 	.4byte	.LFE20
@@ -9748,7 +9756,7 @@ CreateDecorationShop2Menu:
 	.ascii	"item\000"
 
 	.byte	0x1
-	.2byte	0x2e0
+	.2byte	0x2e8
 	.4byte	0x671
 	.byte	0x1
 	.byte	0x57
@@ -9756,13 +9764,13 @@ CreateDecorationShop2Menu:
 	.ascii	"onInit\000"
 
 	.byte	0x1
-	.2byte	0x2e0
+	.2byte	0x2e8
 	.4byte	0x6fa
 	.byte	0xa
 	.ascii	"list\000"
 
 	.byte	0x1
-	.2byte	0x2e0
+	.2byte	0x2e8
 	.4byte	0x799
 	.byte	0x1
 	.byte	0x52
@@ -9770,7 +9778,7 @@ CreateDecorationShop2Menu:
 	.ascii	"description\000"
 
 	.byte	0x1
-	.2byte	0x2e2
+	.2byte	0x2ea
 	.4byte	0x666
 	.byte	0x1
 	.byte	0x54
@@ -10087,7 +10095,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuPrintPriceInList\000"
 
 	.byte	0x1
-	.2byte	0x2fe
+	.2byte	0x306
 	.byte	0x1
 	.4byte	.LFB21
 	.4byte	.LFE21
@@ -10097,7 +10105,7 @@ CreateDecorationShop2Menu:
 	.ascii	"windowId\000"
 
 	.byte	0x1
-	.2byte	0x2fd
+	.2byte	0x305
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x56
@@ -10105,7 +10113,7 @@ CreateDecorationShop2Menu:
 	.ascii	"item\000"
 
 	.byte	0x1
-	.2byte	0x2fd
+	.2byte	0x305
 	.4byte	0x671
 	.byte	0x1
 	.byte	0x51
@@ -10113,7 +10121,7 @@ CreateDecorationShop2Menu:
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x2fd
+	.2byte	0x305
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x57
@@ -10121,14 +10129,14 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x2ff
+	.2byte	0x307
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x10
 	.ascii	"BuyMenuAddScrollIndicatorArrows\000"
 
 	.byte	0x1
-	.2byte	0x31b
+	.2byte	0x323
 	.byte	0x1
 	.4byte	.LFB22
 	.4byte	.LFE22
@@ -10138,7 +10146,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuRemoveScrollIndicatorArrows\000"
 
 	.byte	0x1
-	.2byte	0x32b
+	.2byte	0x333
 	.byte	0x1
 	.4byte	.LFB23
 	.4byte	.LFE23
@@ -10149,7 +10157,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuPrintCursor\000"
 
 	.byte	0x1
-	.2byte	0x334
+	.2byte	0x33c
 	.byte	0x1
 	.4byte	.LFB24
 	.4byte	.LFE24
@@ -10159,19 +10167,19 @@ CreateDecorationShop2Menu:
 	.ascii	"scrollIndicatorsTaskId\000"
 
 	.byte	0x1
-	.2byte	0x333
+	.2byte	0x33b
 	.4byte	0xec
 	.byte	0x3
 	.ascii	"colorSet\000"
 
 	.byte	0x1
-	.2byte	0x333
+	.2byte	0x33b
 	.4byte	0xec
 	.byte	0xd
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x335
+	.2byte	0x33d
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -10179,7 +10187,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuAddItemIcon\000"
 
 	.byte	0x1
-	.2byte	0x33a
+	.2byte	0x342
 	.byte	0x1
 	.4byte	.LFB25
 	.4byte	.LFE25
@@ -10189,7 +10197,7 @@ CreateDecorationShop2Menu:
 	.ascii	"item\000"
 
 	.byte	0x1
-	.2byte	0x339
+	.2byte	0x341
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x52
@@ -10197,7 +10205,7 @@ CreateDecorationShop2Menu:
 	.ascii	"iconSlot\000"
 
 	.byte	0x1
-	.2byte	0x339
+	.2byte	0x341
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x53
@@ -10205,7 +10213,7 @@ CreateDecorationShop2Menu:
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x33b
+	.2byte	0x343
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x52
@@ -10213,7 +10221,7 @@ CreateDecorationShop2Menu:
 	.ascii	"spriteIdPtr\000"
 
 	.byte	0x1
-	.2byte	0x33c
+	.2byte	0x344
 	.4byte	0x660
 	.byte	0x1
 	.byte	0x54
@@ -10223,7 +10231,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuRemoveItemIcon\000"
 
 	.byte	0x1
-	.2byte	0x353
+	.2byte	0x35b
 	.byte	0x1
 	.4byte	.LFB26
 	.4byte	.LFE26
@@ -10233,19 +10241,19 @@ CreateDecorationShop2Menu:
 	.ascii	"item\000"
 
 	.byte	0x1
-	.2byte	0x352
+	.2byte	0x35a
 	.4byte	0x193
 	.byte	0x3
 	.ascii	"iconSlot\000"
 
 	.byte	0x1
-	.2byte	0x352
+	.2byte	0x35a
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"spriteIdPtr\000"
 
 	.byte	0x1
-	.2byte	0x354
+	.2byte	0x35c
 	.4byte	0x660
 	.byte	0x1
 	.byte	0x55
@@ -10254,7 +10262,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuInitBgs\000"
 
 	.byte	0x1
-	.2byte	0x35f
+	.2byte	0x367
 	.byte	0x1
 	.4byte	.LFB27
 	.4byte	.LFE27
@@ -10264,7 +10272,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDecompressBgGraphics\000"
 
 	.byte	0x1
-	.2byte	0x376
+	.2byte	0x37e
 	.byte	0x1
 	.4byte	.LFB28
 	.4byte	.LFE28
@@ -10274,7 +10282,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuInitWindows\000"
 
 	.byte	0x1
-	.2byte	0x37d
+	.2byte	0x385
 	.byte	0x1
 	.4byte	.LFB29
 	.4byte	.LFE29
@@ -10285,7 +10293,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuPrint\000"
 
 	.byte	0x1
-	.2byte	0x388
+	.2byte	0x390
 	.byte	0x1
 	.4byte	.LFB30
 	.4byte	.LFE30
@@ -10295,13 +10303,13 @@ CreateDecorationShop2Menu:
 	.ascii	"windowId\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0xec
 	.byte	0xa
 	.ascii	"text\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0x666
 	.byte	0x1
 	.byte	0x51
@@ -10309,25 +10317,25 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0xec
 	.byte	0x3
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0xec
 	.byte	0x3
 	.ascii	"speed\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0x2d2
 	.byte	0x3
 	.ascii	"colorSet\000"
 
 	.byte	0x1
-	.2byte	0x387
+	.2byte	0x38f
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -10335,7 +10343,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDisplayMessage\000"
 
 	.byte	0x1
-	.2byte	0x38d
+	.2byte	0x395
 	.byte	0x1
 	.4byte	.LFB31
 	.4byte	.LFE31
@@ -10345,13 +10353,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x38c
+	.2byte	0x394
 	.4byte	0xec
 	.byte	0xa
 	.ascii	"text\000"
 
 	.byte	0x1
-	.2byte	0x38c
+	.2byte	0x394
 	.4byte	0x666
 	.byte	0x1
 	.byte	0x55
@@ -10359,7 +10367,7 @@ CreateDecorationShop2Menu:
 	.ascii	"callback\000"
 
 	.byte	0x1
-	.2byte	0x38c
+	.2byte	0x394
 	.4byte	0xcd2
 	.byte	0x1
 	.byte	0x56
@@ -10377,7 +10385,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawGraphics\000"
 
 	.byte	0x1
-	.2byte	0x393
+	.2byte	0x39b
 	.byte	0x1
 	.4byte	.LFB32
 	.4byte	.LFE32
@@ -10387,7 +10395,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawMapGraphics\000"
 
 	.byte	0x1
-	.2byte	0x39f
+	.2byte	0x3a7
 	.byte	0x1
 	.4byte	.LFB33
 	.4byte	.LFE33
@@ -10398,7 +10406,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawMapBg\000"
 
 	.byte	0x1
-	.2byte	0x3a6
+	.2byte	0x3ae
 	.byte	0x1
 	.4byte	.LFB34
 	.4byte	.LFE34
@@ -10408,7 +10416,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x3a7
+	.2byte	0x3af
 	.4byte	0x327
 	.byte	0x1
 	.byte	0x54
@@ -10416,7 +10424,7 @@ CreateDecorationShop2Menu:
 	.ascii	"j\000"
 
 	.byte	0x1
-	.2byte	0x3a8
+	.2byte	0x3b0
 	.4byte	0x327
 	.byte	0x1
 	.byte	0x51
@@ -10424,7 +10432,7 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x3a9
+	.2byte	0x3b1
 	.4byte	0x327
 	.byte	0x2
 	.byte	0x91
@@ -10433,7 +10441,7 @@ CreateDecorationShop2Menu:
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x3aa
+	.2byte	0x3b2
 	.4byte	0x327
 	.byte	0x2
 	.byte	0x91
@@ -10442,7 +10450,7 @@ CreateDecorationShop2Menu:
 	.ascii	"mapLayout\000"
 
 	.byte	0x1
-	.2byte	0x3ab
+	.2byte	0x3b3
 	.4byte	0xe42
 	.byte	0x1
 	.byte	0x59
@@ -10450,7 +10458,7 @@ CreateDecorationShop2Menu:
 	.ascii	"metatile\000"
 
 	.byte	0x1
-	.2byte	0x3ac
+	.2byte	0x3b4
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x56
@@ -10458,7 +10466,7 @@ CreateDecorationShop2Menu:
 	.ascii	"metatileLayerType\000"
 
 	.byte	0x1
-	.2byte	0x3ad
+	.2byte	0x3b5
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x55
@@ -10617,7 +10625,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawMapMetatile\000"
 
 	.byte	0x1
-	.2byte	0x3cb
+	.2byte	0x3d3
 	.byte	0x1
 	.4byte	.LFB35
 	.4byte	.LFE35
@@ -10627,19 +10635,19 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x3ca
+	.2byte	0x3d2
 	.4byte	0x327
 	.byte	0x3
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x3ca
+	.2byte	0x3d2
 	.4byte	0x327
 	.byte	0xa
 	.ascii	"src\000"
 
 	.byte	0x1
-	.2byte	0x3ca
+	.2byte	0x3d2
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x57
@@ -10647,7 +10655,7 @@ CreateDecorationShop2Menu:
 	.ascii	"metatileLayerType\000"
 
 	.byte	0x1
-	.2byte	0x3ca
+	.2byte	0x3d2
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x52
@@ -10655,7 +10663,7 @@ CreateDecorationShop2Menu:
 	.ascii	"offset1\000"
 
 	.byte	0x1
-	.2byte	0x3cc
+	.2byte	0x3d4
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x55
@@ -10663,7 +10671,7 @@ CreateDecorationShop2Menu:
 	.ascii	"offset2\000"
 
 	.byte	0x1
-	.2byte	0x3cd
+	.2byte	0x3d5
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x51
@@ -10673,7 +10681,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawMapMetatileLayer\000"
 
 	.byte	0x1
-	.2byte	0x3e1
+	.2byte	0x3e9
 	.byte	0x1
 	.4byte	.LFB36
 	.4byte	.LFE36
@@ -10683,7 +10691,7 @@ CreateDecorationShop2Menu:
 	.ascii	"dest\000"
 
 	.byte	0x1
-	.2byte	0x3e0
+	.2byte	0x3e8
 	.4byte	0xe4d
 	.byte	0x1
 	.byte	0x50
@@ -10691,19 +10699,19 @@ CreateDecorationShop2Menu:
 	.ascii	"offset1\000"
 
 	.byte	0x1
-	.2byte	0x3e0
+	.2byte	0x3e8
 	.4byte	0x327
 	.byte	0x3
 	.ascii	"offset2\000"
 
 	.byte	0x1
-	.2byte	0x3e0
+	.2byte	0x3e8
 	.4byte	0x327
 	.byte	0xa
 	.ascii	"src\000"
 
 	.byte	0x1
-	.2byte	0x3e0
+	.2byte	0x3e8
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x53
@@ -10713,7 +10721,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuCollectObjectEventData\000"
 
 	.byte	0x1
-	.2byte	0x3ea
+	.2byte	0x3f2
 	.byte	0x1
 	.4byte	.LFB37
 	.4byte	.LFE37
@@ -10723,7 +10731,7 @@ CreateDecorationShop2Menu:
 	.ascii	"facingX\000"
 
 	.byte	0x1
-	.2byte	0x3eb
+	.2byte	0x3f3
 	.4byte	0x327
 	.byte	0x2
 	.byte	0x91
@@ -10732,7 +10740,7 @@ CreateDecorationShop2Menu:
 	.ascii	"facingY\000"
 
 	.byte	0x1
-	.2byte	0x3ec
+	.2byte	0x3f4
 	.4byte	0x327
 	.byte	0x2
 	.byte	0x91
@@ -10741,7 +10749,7 @@ CreateDecorationShop2Menu:
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x3ed
+	.2byte	0x3f5
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x57
@@ -10749,7 +10757,7 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x3ee
+	.2byte	0x3f6
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x53
@@ -10757,7 +10765,7 @@ CreateDecorationShop2Menu:
 	.ascii	"r8\000"
 
 	.byte	0x1
-	.2byte	0x3ef
+	.2byte	0x3f7
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x58
@@ -10769,7 +10777,7 @@ CreateDecorationShop2Menu:
 	.ascii	"objEventId\000"
 
 	.byte	0x1
-	.2byte	0x3f8
+	.2byte	0x400
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x0
@@ -10778,7 +10786,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuDrawObjectEvents\000"
 
 	.byte	0x1
-	.2byte	0x418
+	.2byte	0x420
 	.byte	0x1
 	.4byte	.LFB38
 	.4byte	.LFE38
@@ -10788,7 +10796,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x419
+	.2byte	0x421
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x57
@@ -10796,7 +10804,7 @@ CreateDecorationShop2Menu:
 	.ascii	"spriteId\000"
 
 	.byte	0x1
-	.2byte	0x41a
+	.2byte	0x422
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x56
@@ -10804,7 +10812,7 @@ CreateDecorationShop2Menu:
 	.ascii	"graphicsInfo\000"
 
 	.byte	0x1
-	.2byte	0x41b
+	.2byte	0x423
 	.4byte	0x1279
 	.byte	0x1
 	.byte	0x50
@@ -11631,7 +11639,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuCheckIfObjectEventOverlapsMenuBg\000"
 
 	.byte	0x1
-	.2byte	0x436
+	.2byte	0x43e
 	.byte	0x1
 	.4byte	0x6fa
 	.4byte	.LFB39
@@ -11642,7 +11650,7 @@ CreateDecorationShop2Menu:
 	.ascii	"object\000"
 
 	.byte	0x1
-	.2byte	0x435
+	.2byte	0x43d
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -11652,7 +11660,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuCopyMenuBgToBg1TilemapBuffer\000"
 
 	.byte	0x1
-	.2byte	0x442
+	.2byte	0x44a
 	.byte	0x1
 	.4byte	.LFB40
 	.4byte	.LFE40
@@ -11662,7 +11670,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x443
+	.2byte	0x44b
 	.4byte	0x327
 	.byte	0x1
 	.byte	0x51
@@ -11670,7 +11678,7 @@ CreateDecorationShop2Menu:
 	.ascii	"dest\000"
 
 	.byte	0x1
-	.2byte	0x444
+	.2byte	0x44c
 	.4byte	0xe4d
 	.byte	0x1
 	.byte	0x54
@@ -11678,7 +11686,7 @@ CreateDecorationShop2Menu:
 	.ascii	"src\000"
 
 	.byte	0x1
-	.2byte	0x445
+	.2byte	0x44d
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x53
@@ -11688,7 +11696,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuCheckForOverlapWithMenuBg\000"
 
 	.byte	0x1
-	.2byte	0x451
+	.2byte	0x459
 	.byte	0x1
 	.4byte	0x6fa
 	.4byte	.LFB41
@@ -11699,7 +11707,7 @@ CreateDecorationShop2Menu:
 	.ascii	"x\000"
 
 	.byte	0x1
-	.2byte	0x450
+	.2byte	0x458
 	.4byte	0xf2
 	.byte	0x1
 	.byte	0x50
@@ -11707,7 +11715,7 @@ CreateDecorationShop2Menu:
 	.ascii	"y\000"
 
 	.byte	0x1
-	.2byte	0x450
+	.2byte	0x458
 	.4byte	0xf2
 	.byte	0x1
 	.byte	0x51
@@ -11715,7 +11723,7 @@ CreateDecorationShop2Menu:
 	.ascii	"metatile\000"
 
 	.byte	0x1
-	.2byte	0x452
+	.2byte	0x45a
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x52
@@ -11723,13 +11731,13 @@ CreateDecorationShop2Menu:
 	.ascii	"offset1\000"
 
 	.byte	0x1
-	.2byte	0x453
+	.2byte	0x45b
 	.4byte	0xf2
 	.byte	0xd
 	.ascii	"offset2\000"
 
 	.byte	0x1
-	.2byte	0x454
+	.2byte	0x45c
 	.4byte	0xf2
 	.byte	0x0
 	.byte	0x9
@@ -11737,7 +11745,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_BuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x462
+	.2byte	0x46a
 	.byte	0x1
 	.4byte	.LFB42
 	.4byte	.LFE42
@@ -11747,7 +11755,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x461
+	.2byte	0x469
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x56
@@ -11755,7 +11763,7 @@ CreateDecorationShop2Menu:
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x463
+	.2byte	0x46b
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -11767,7 +11775,7 @@ CreateDecorationShop2Menu:
 	.ascii	"itemId\000"
 
 	.byte	0x1
-	.2byte	0x467
+	.2byte	0x46f
 	.4byte	0x671
 	.byte	0x1
 	.byte	0x55
@@ -11778,7 +11786,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_BuyHowManyDialogueInit\000"
 
 	.byte	0x1
-	.2byte	0x4a7
+	.2byte	0x4af
 	.byte	0x1
 	.4byte	.LFB43
 	.4byte	.LFE43
@@ -11788,7 +11796,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x4a6
+	.2byte	0x4ae
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x56
@@ -11796,7 +11804,7 @@ CreateDecorationShop2Menu:
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x4a8
+	.2byte	0x4b0
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x55
@@ -11804,13 +11812,13 @@ CreateDecorationShop2Menu:
 	.ascii	"quantityInBag\000"
 
 	.byte	0x1
-	.2byte	0x4aa
+	.2byte	0x4b2
 	.4byte	0x193
 	.byte	0x4
 	.ascii	"maxQuantity\000"
 
 	.byte	0x1
-	.2byte	0x4ab
+	.2byte	0x4b3
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x51
@@ -11820,7 +11828,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_BuyHowManyDialogueHandleInput\000"
 
 	.byte	0x1
-	.2byte	0x4c5
+	.2byte	0x4cd
 	.byte	0x1
 	.4byte	.LFB44
 	.4byte	.LFE44
@@ -11830,7 +11838,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x4c4
+	.2byte	0x4cc
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x54
@@ -11838,7 +11846,7 @@ CreateDecorationShop2Menu:
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x4c6
+	.2byte	0x4ce
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x55
@@ -11848,7 +11856,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuConfirmPurchase\000"
 
 	.byte	0x1
-	.2byte	0x4e9
+	.2byte	0x4f1
 	.byte	0x1
 	.4byte	.LFB45
 	.4byte	.LFE45
@@ -11858,7 +11866,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x4e8
+	.2byte	0x4f0
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -11866,7 +11874,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuTryMakePurchase\000"
 
 	.byte	0x1
-	.2byte	0x4ee
+	.2byte	0x4f6
 	.byte	0x1
 	.4byte	.LFB46
 	.4byte	.LFE46
@@ -11876,7 +11884,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x4ed
+	.2byte	0x4f5
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x57
@@ -11884,7 +11892,7 @@ CreateDecorationShop2Menu:
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x4ef
+	.2byte	0x4f7
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -11894,7 +11902,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuSubtractMoney\000"
 
 	.byte	0x1
-	.2byte	0x514
+	.2byte	0x51c
 	.byte	0x1
 	.4byte	.LFB47
 	.4byte	.LFE47
@@ -11904,7 +11912,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x513
+	.2byte	0x51b
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x56
@@ -11914,7 +11922,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_ReturnToItemListAfterItemPurchase\000"
 
 	.byte	0x1
-	.2byte	0x525
+	.2byte	0x52d
 	.byte	0x1
 	.4byte	.LFB48
 	.4byte	.LFE48
@@ -11924,7 +11932,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x524
+	.2byte	0x52c
 	.4byte	0xec
 	.byte	0x1
 	.byte	0x55
@@ -11932,7 +11940,7 @@ CreateDecorationShop2Menu:
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x526
+	.2byte	0x52e
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -11942,7 +11950,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_ReturnToItemListAfterDecorationPurchase\000"
 
 	.byte	0x1
-	.2byte	0x543
+	.2byte	0x54b
 	.byte	0x1
 	.4byte	.LFB49
 	.4byte	.LFE49
@@ -11952,7 +11960,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x542
+	.2byte	0x54a
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -11960,7 +11968,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuReturnToItemList\000"
 
 	.byte	0x1
-	.2byte	0x54c
+	.2byte	0x554
 	.byte	0x1
 	.4byte	.LFB50
 	.4byte	.LFE50
@@ -11970,13 +11978,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x54b
+	.2byte	0x553
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x54d
+	.2byte	0x555
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x56
@@ -11986,7 +11994,7 @@ CreateDecorationShop2Menu:
 	.ascii	"BuyMenuPrintItemQuantityAndPrice\000"
 
 	.byte	0x1
-	.2byte	0x559
+	.2byte	0x561
 	.byte	0x1
 	.4byte	.LFB51
 	.4byte	.LFE51
@@ -11996,13 +12004,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x558
+	.2byte	0x560
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x55a
+	.2byte	0x562
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -12012,7 +12020,7 @@ CreateDecorationShop2Menu:
 	.ascii	"ExitBuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x564
+	.2byte	0x56c
 	.byte	0x1
 	.4byte	.LFB52
 	.4byte	.LFE52
@@ -12022,7 +12030,7 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x563
+	.2byte	0x56b
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x9
@@ -12030,7 +12038,7 @@ CreateDecorationShop2Menu:
 	.ascii	"Task_ExitBuyMenu\000"
 
 	.byte	0x1
-	.2byte	0x56b
+	.2byte	0x573
 	.byte	0x1
 	.4byte	.LFB53
 	.4byte	.LFE53
@@ -12040,14 +12048,14 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x56a
+	.2byte	0x572
 	.4byte	0xec
 	.byte	0x0
 	.byte	0x10
 	.ascii	"ClearItemPurchases\000"
 
 	.byte	0x1
-	.2byte	0x576
+	.2byte	0x57e
 	.byte	0x1
 	.4byte	.LFB54
 	.4byte	.LFE54
@@ -12058,7 +12066,7 @@ CreateDecorationShop2Menu:
 	.ascii	"RecordItemPurchase\000"
 
 	.byte	0x1
-	.2byte	0x57c
+	.2byte	0x584
 	.byte	0x1
 	.4byte	.LFB55
 	.4byte	.LFE55
@@ -12068,13 +12076,13 @@ CreateDecorationShop2Menu:
 	.ascii	"taskId\000"
 
 	.byte	0x1
-	.2byte	0x57b
+	.2byte	0x583
 	.4byte	0xec
 	.byte	0x4
 	.ascii	"data\000"
 
 	.byte	0x1
-	.2byte	0x57d
+	.2byte	0x585
 	.4byte	0x321
 	.byte	0x1
 	.byte	0x54
@@ -12082,7 +12090,7 @@ CreateDecorationShop2Menu:
 	.ascii	"i\000"
 
 	.byte	0x1
-	.2byte	0x57f
+	.2byte	0x587
 	.4byte	0x193
 	.byte	0x1
 	.byte	0x53
@@ -12093,31 +12101,10 @@ CreateDecorationShop2Menu:
 	.ascii	"CreatePokemartMenu\000"
 
 	.byte	0x1
-	.2byte	0x59e
+	.2byte	0x5a6
 	.byte	0x1
 	.4byte	.LFB56
 	.4byte	.LFE56
-	.byte	0x1
-	.byte	0x5d
-	.byte	0xa
-	.ascii	"itemsForSale\000"
-
-	.byte	0x1
-	.2byte	0x59d
-	.4byte	0x282
-	.byte	0x1
-	.byte	0x54
-	.byte	0x0
-	.byte	0x19
-	.4byte	0x1d4e
-	.byte	0x1
-	.ascii	"CreateDecorationShop1Menu\000"
-
-	.byte	0x1
-	.2byte	0x5a6
-	.byte	0x1
-	.4byte	.LFB57
-	.4byte	.LFE57
 	.byte	0x1
 	.byte	0x5d
 	.byte	0xa
@@ -12130,12 +12117,33 @@ CreateDecorationShop2Menu:
 	.byte	0x54
 	.byte	0x0
 	.byte	0x19
+	.4byte	0x1d4e
+	.byte	0x1
+	.ascii	"CreateDecorationShop1Menu\000"
+
+	.byte	0x1
+	.2byte	0x5ae
+	.byte	0x1
+	.4byte	.LFB57
+	.4byte	.LFE57
+	.byte	0x1
+	.byte	0x5d
+	.byte	0xa
+	.ascii	"itemsForSale\000"
+
+	.byte	0x1
+	.2byte	0x5ad
+	.4byte	0x282
+	.byte	0x1
+	.byte	0x54
+	.byte	0x0
+	.byte	0x19
 	.4byte	0x1d94
 	.byte	0x1
 	.ascii	"CreateDecorationShop2Menu\000"
 
 	.byte	0x1
-	.2byte	0x5ad
+	.2byte	0x5b5
 	.byte	0x1
 	.4byte	.LFB58
 	.4byte	.LFE58
@@ -12145,7 +12153,7 @@ CreateDecorationShop2Menu:
 	.ascii	"itemsForSale\000"
 
 	.byte	0x1
-	.2byte	0x5ac
+	.2byte	0x5b4
 	.4byte	0x282
 	.byte	0x1
 	.byte	0x54
@@ -33750,7 +33758,7 @@ CreateDecorationShop2Menu:
 	.4byte	0xeb0b
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0x8
+	.byte	0x9
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_ZeroBadges\000"
@@ -33767,13 +33775,13 @@ CreateDecorationShop2Menu:
 	.4byte	0xeb43
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0x9
+	.byte	0xb
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_OneBadge\000"
 
 	.byte	0x1
-	.byte	0x6c
+	.byte	0x6d
 	.4byte	0xeb68
 	.byte	0x5
 	.byte	0x3
@@ -33784,13 +33792,13 @@ CreateDecorationShop2Menu:
 	.4byte	0xeb79
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0xa
+	.byte	0xc
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_TwoBadges\000"
 
 	.byte	0x1
-	.byte	0x79
+	.byte	0x7c
 	.4byte	0xeb9f
 	.byte	0x5
 	.byte	0x3
@@ -33801,13 +33809,13 @@ CreateDecorationShop2Menu:
 	.4byte	0xebb0
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0xd
+	.byte	0xe
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_ThreeBadges\000"
 
 	.byte	0x1
-	.byte	0x87
+	.byte	0x8c
 	.4byte	0xebd8
 	.byte	0x5
 	.byte	0x3
@@ -33818,13 +33826,13 @@ CreateDecorationShop2Menu:
 	.4byte	0xebe9
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0xf
+	.byte	0x10
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_FourBadges\000"
 
 	.byte	0x1
-	.byte	0x98
+	.byte	0x9e
 	.4byte	0xec10
 	.byte	0x5
 	.byte	0x3
@@ -33835,13 +33843,13 @@ CreateDecorationShop2Menu:
 	.4byte	0xec21
 	.4byte	0x288
 	.byte	0x1c
-	.byte	0x12
+	.byte	0x13
 	.byte	0x0
 	.byte	0x37
 	.ascii	"sShopInventory_FiveBadges\000"
 
 	.byte	0x1
-	.byte	0xab
+	.byte	0xb2
 	.4byte	0xec48
 	.byte	0x5
 	.byte	0x3
@@ -33858,7 +33866,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopInventory_SixBadges\000"
 
 	.byte	0x1
-	.byte	0xc1
+	.byte	0xc9
 	.4byte	0xec7f
 	.byte	0x5
 	.byte	0x3
@@ -33875,7 +33883,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopInventory_SevenBadges\000"
 
 	.byte	0x1
-	.byte	0xd9
+	.byte	0xe1
 	.4byte	0xecb8
 	.byte	0x5
 	.byte	0x3
@@ -33892,7 +33900,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopInventory_EightBadges\000"
 
 	.byte	0x1
-	.byte	0xf4
+	.byte	0xfc
 	.4byte	0xecf1
 	.byte	0x5
 	.byte	0x3
@@ -33911,7 +33919,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopInventories\000"
 
 	.byte	0x1
-	.2byte	0x112
+	.2byte	0x11a
 	.4byte	0xed26
 	.byte	0x5
 	.byte	0x3
@@ -33922,7 +33930,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopPurchaseYesNoFuncs\000"
 
 	.byte	0x1
-	.2byte	0x11f
+	.2byte	0x127
 	.4byte	0xed51
 	.byte	0x5
 	.byte	0x3
@@ -33939,7 +33947,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopMenuActions_BuySellQuit\000"
 
 	.byte	0x1
-	.2byte	0x125
+	.2byte	0x12d
 	.4byte	0xed8d
 	.byte	0x5
 	.byte	0x3
@@ -33956,7 +33964,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopMenuActions_BuyQuit\000"
 
 	.byte	0x1
-	.2byte	0x12c
+	.2byte	0x134
 	.4byte	0xedc5
 	.byte	0x5
 	.byte	0x3
@@ -33975,7 +33983,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopMenuWindowTemplates\000"
 
 	.byte	0x1
-	.2byte	0x132
+	.2byte	0x13a
 	.4byte	0xee02
 	.byte	0x5
 	.byte	0x3
@@ -33986,7 +33994,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopBuyMenuListTemplate\000"
 
 	.byte	0x1
-	.2byte	0x148
+	.2byte	0x150
 	.4byte	0xee2e
 	.byte	0x5
 	.byte	0x3
@@ -34005,7 +34013,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopBuyMenuBgTemplates\000"
 
 	.byte	0x1
-	.2byte	0x15e
+	.2byte	0x166
 	.4byte	0xee6a
 	.byte	0x5
 	.byte	0x3
@@ -34022,7 +34030,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopBuyMenuWindowTemplates\000"
 
 	.byte	0x1
-	.2byte	0x186
+	.2byte	0x18e
 	.4byte	0xeea5
 	.byte	0x5
 	.byte	0x3
@@ -34033,7 +34041,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopBuyMenuYesNoWindowTemplates\000"
 
 	.byte	0x1
-	.2byte	0x1c1
+	.2byte	0x1c9
 	.4byte	0xedd6
 	.byte	0x5
 	.byte	0x3
@@ -34050,7 +34058,7 @@ CreateDecorationShop2Menu:
 	.ascii	"sShopBuyMenuTextColors\000"
 
 	.byte	0x1
-	.2byte	0x1cc
+	.2byte	0x1d4
 	.4byte	0xef0c
 	.byte	0x5
 	.byte	0x3

@@ -929,3 +929,47 @@ gTileset_PokeCenterNew::
 	.4byte gMetatiles_PokeCenterNew
 	.4byte gMetatileAttributes_PokeCenterNew
 	.4byte NULL
+
+	.align 2
+gTileset_Forest::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Forest
+	.4byte gTilesetPalettes_Forest
+	.4byte gMetatiles_Forest
+	.4byte gMetatileAttributes_Forest
+	.4byte NULL
+
+	.align 2
+gTileset_Main2::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Main2
+	.4byte gTilesetPalettes_Main2
+	.4byte gMetatiles_Main2
+	.4byte gMetatileAttributes_Main2
+	.4byte NULL
+
+	.align 2
+gTileset_MetalMeadows::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_MetalMeadows
+	.4byte gTilesetPalettes_MetalMeadows
+	.4byte gMetatiles_MetalMeadows
+	.4byte gMetatileAttributes_MetalMeadows
+	.4byte NULL
+
+	.align 2
+gTileset_Gym2::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Gym2
+	.4byte gTilesetPalettes_Gym2
+	.4byte gMetatiles_Gym2
+	.4byte gMetatileAttributes_Gym2
+	.4byte NULL

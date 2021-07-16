@@ -20,6 +20,12 @@ Route104_OnTransition: @ 81ECC4E
 	call Common_EventScript_SetupRivalGfxId
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
+	call_if_set FLAG_ROUTE_4_SNOWING, Route4Snowing
+	end
+
+Route4Snowing::
+	setweather WEATHER_SNOW
+	doweather
 	end
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist:: @ 81ECC5E
@@ -49,6 +55,13 @@ Route104_EventScript_Rival:: @ 81ECC9E
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	goto Route104_EventScript_RivalEncounter
+
+StartSnowingRoute4Script::
+	setflag FLAG_ROUTE_4_SNOWING
+	setweather WEATHER_SNOW
+	doweather
+	setvar VAR_ROUTE104_STATE, 1
+	end
 
 Route104_EventScript_RivalTrigger:: @ 81ECCB3
 	lockall
@@ -271,15 +284,142 @@ Route104_Movement_RivalExitBrineysCottage: @ 81ECF8A
 Route104_EventScript_ExpertF:: @ 81ECF8C
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104, Route104_EventScript_ReceivedBerry
-	msgbox Route104_Text_PlantBerriesInSoilTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_CHESTO_BERRY
-	compare VAR_RESULT, FALSE
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104
-	msgbox Route104_Text_TrainersOftenMakeMonHoldBerries, MSGBOX_DEFAULT
+	questmenu QUEST_MENU_CHECK_COMPLETE SIDE_QUEST_7
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest7AlreadyCompleted
+	questmenu QUEST_MENU_CHECK_UNLOCKED SIDE_QUEST_7
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest7CheckIfActive
+	msgbox Quest7StartDialogue, MSGBOX_DEFAULT
+	closemessage
+	showmonpic SPECIES_VENUSAUR, 10, 3
+	msgbox VenusaurPicShownText, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	msgbox DoThatAndIllGiveEevee, MSGBOX_DEFAULT
+	closemessage
+	questmenu QUEST_MENU_UNLOCK_QUEST SIDE_QUEST_7
+	playfanfare MUS_REGISTER_MATCH_CALL
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME SIDE_QUEST_7
+	msgbox QuestName, MSGBOX_SIGN
+	waitfanfare
 	release
 	end
+
+Quest7StartDialogue:
+	.string "My my, dearie! You look like quite the\n"
+	.string "Pokémon Trainer!\p"
+	.string "Perhaps you could do me a favor?\p"
+	.string "I have an Eevee here with me. It's just\n"
+	.string "a baby, so it doesn't have any fighting\l"
+	.string "capability yet.\p"
+	.string "I bet if a strong Trainer took care of\n"
+	.string "my Eevee, it would grow to be a very\l"
+	.string "powerful Pokémon.\p"
+	.string "I just might give it to you, but first\n"
+	.string "I need to know you're a good Trainer.$"
+
+VenusaurPicShownText:
+	.string "If you're a good Trainer, you can prove\n"
+	.string "it by showing me that you've captured a\l"
+	.string "Venusaur. Is that fair?$"
+
+DoThatAndIllGiveEevee:
+	.string "Do this for me, and I will entrust you\n"
+	.string "with my Eevee.$"
+
+Quest7AlreadyCompleted::
+	msgbox TakeGoodCareOfEevee, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+TakeGoodCareOfEevee:
+	.string "Oh, take good care of my Eevee! I know\n"
+	.string "it will be of good use to you!$"
+
+Quest7CheckIfActive::
+	questmenu QUEST_MENU_GET_ACTIVE_QUEST 0
+	compare VAR_RESULT, SIDE_QUEST_7
+	goto_if_eq Quest7CheckForVenusaur
+	msgbox Quest7NotActive, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Quest7NotActive:
+	.string "Oh? What's that, my dear?\p"
+	.string "I'm sorry, my hearing aid must not\n"
+	.string "be {COLOR GREEN}Active{COLOR RED} right now...$"
+
+Quest7CheckForVenusaur::
+	msgbox CheckForVenusaurText, MSGBOX_DEFAULT
+	closemessage
+	special ChoosePartyMon
+	waitstate
+	compare VAR_RESULT, 255
+	goto_if_eq VenusaurCheckFailed
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_VENUSAUR
+	goto_if_eq VenusaurCheckPassed
+	msgbox Text_VenusaurCheckFailed, MSGBOX_SIGN
+	release
+	end
+
+VenusaurCheckFailed::
+	msgbox Text_VenusaurCheckFailed, MSGBOX_SIGN
+	release
+	end
+
+CheckForVenusaurText:
+	.string "Oh? What's that, my dear?\p"
+	.string "You say you have a Venusaur to show me?\n"
+	.string "Well, let's see it!$"
+
+Text_VenusaurCheckFailed:
+	.string "Sorry, dearie. Come back when you can\n"
+	.string "show me a Venusar.$"
+
+VenusaurCheckPassed::
+	msgbox OhMyGoshAVenusaur, MSGBOX_DEFAULT
+	closemessage
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq Script_PlayerHasFullPartyEevee
+	givemon SPECIES_EEVEE, 1, ITEM_EEVIUM_Z
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox Text_ReceivedEevee, MSGBOX_DEFAULT
+	waitfanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq Common_EventScript_GetGiftMonPartySlot
+	call_if_eq Common_EventScript_NameReceivedPartyMon
+	questmenu QUEST_MENU_COMPLETE_QUEST SIDE_QUEST_7
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox QuestCompleted, MSGBOX_SIGN
+	waitfanfare
+	release
+	end
+
+OhMyGoshAVenusaur:
+	.string "Oh my stars! You really did capture a\n"
+	.string "Venusaur for me!\p"
+	.string "As promised, here is the Eevee, dear.\n"
+	.string "Raise it well!$"
+
+Script_PlayerHasFullPartyEevee::
+	msgbox Text_PlayerHasFullPartyEevee, MSGBOX_DEFAULT
+	release
+	end
+
+Text_PlayerHasFullPartyEevee:
+	.string "Hm? Sorry dear, but your Party is full.\p"
+	.string "Come back after you've made room for my\n"
+	.string "Eevee, alright?$"
+
+Text_ReceivedEevee:
+	.string "{PLAYER} received an Eevee!$"
+
 
 Route104_EventScript_ReceivedBerry:: @ 81ECFC3
 	msgbox Route104_Text_TrainersOftenMakeMonHoldBerries, MSGBOX_DEFAULT
@@ -291,7 +431,7 @@ Route104_EventScript_WhiteHerbFlorist:: @ 81ECFCD
 	faceplayer
 	goto_if_set FLAG_RECEIVED_WHITE_HERB, Route104_EventScript_ReceivedWhiteHerb
 	msgbox Route104_Text_DontNeedThisTakeIt, MSGBOX_DEFAULT
-	giveitem ITEM_WHITE_HERB
+	giveitem ITEM_SCEPTILITE
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_WHITE_HERB
@@ -344,7 +484,7 @@ Route104_EventScript_Boy2:: @ 81ED057
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM09, Route104_EventScript_ReceivedBulletSeed
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM09
+	giveitem ITEM_TM00
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM09
@@ -866,20 +1006,13 @@ Route104_EventScript_Ivan:: @ 81ED35F
 	end
 
 Route104_EventScript_Billy:: @ 81ED376
-	trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
+	trainerbattle_single TRAINER_ROSE_1, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
 	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route104_EventScript_Haley:: @ 81ED38D
-	trainerbattle_single TRAINER_HALEY_1, Route104_Text_HaleyIntro, Route104_Text_HaleyDefeat, Route104_EventScript_TryRegisterHaleyAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route104_EventScript_RematchHaley
-	setvar VAR_0x8004, TRAINER_HALEY_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route104_EventScript_TryRegisterHaley
-	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_HALEY_1, Route104_Text_HaleyIntro, Route104_Text_HaleyDefeat
+	msgbox Route104_Text_HaleyPostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -914,15 +1047,8 @@ Route104_EventScript_RematchHaley:: @ 81ED424
 	end
 
 Route104_EventScript_Winston:: @ 81ED43B
-	trainerbattle_single TRAINER_WINSTON_1, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat, Route104_EventScript_TryRegisterWinstonAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route104_EventScript_RematchWinston
-	setvar VAR_0x8004, TRAINER_WINSTON_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route104_EventScript_TryRegisterWinston
-	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_WINSTON_1, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat
+	msgbox Route104_Text_WinstonPostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -957,15 +1083,8 @@ Route104_EventScript_RematchWinston:: @ 81ED4D2
 	end
 
 Route104_EventScript_Cindy:: @ 81ED4E9
-	trainerbattle_single TRAINER_CINDY_1, Route104_Text_CindyIntro, Route104_Text_CindyDefeat, Route104_EventScript_TryRegisterCindyAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route104_EventScript_RematchCindy
-	setvar VAR_0x8004, TRAINER_CINDY_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route104_EventScript_TryRegisterCindy
-	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_CINDY_1, Route104_Text_CindyIntro, Route104_Text_CindyDefeat
+	msgbox Route104_Text_CindyPostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -1019,10 +1138,8 @@ Route104_EventScript_Darian:: @ 81ED5D5
 	end
 
 Route104_Text_BrineyLivesInSeasideCottage: @ 81ED5EC
-	.string "That seaside cottage is where\n"
-	.string "MR. BRINEY lives.\p"
-	.string "He was once a mighty sailor who never\n"
-	.string "feared the sea, however stormy.$"
+	.string "Iridium Bluff is just East of here.\n"
+	.string "Smithie is accepting new challengers!$"
 
 Route104_Text_WhatsItLikeAtBottomOfSea: @ 81ED662
 	.string "The sea, huh?\p"
@@ -1030,10 +1147,10 @@ Route104_Text_WhatsItLikeAtBottomOfSea: @ 81ED662
 	.string "of the sea?$"
 
 Route104_Text_ThrowBallAtWeakenedPokemon: @ 81ED6A2
-	.string "If you're going to throw a POKé BALL,\n"
-	.string "weaken the wild POKéMON first.\p"
-	.string "It will be easier to catch if it's been\n"
-	.string "poisoned, burned, or lulled to sleep.$"
+	.string "Sometimes you have to backtrack to get\n"
+	.string "into some areas.\p"
+	.string "You never know when a new path might\n"
+	.string "open up for you to explore!$"
 
 Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "You're a thief if you try to steal\n"
@@ -1042,50 +1159,48 @@ Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "wild POKéMON.$"
 
 Route104_Text_ImNotATrainer: @ 81ED7A2
-	.string "Oh, no, I'm not a TRAINER.\p"
-	.string "But that's right, if TRAINERS lock eyes,\n"
-	.string "it's a challenge to battle.\p"
-	.string "If you don't want to battle, stay out\n"
-	.string "of their sight.$"
+	.string "Have you heard?\p"
+	.string "There's a rumor that some Pokémon are\n"
+	.string "evil. They have a purple aura to them.\p"
+	.string "Isn't that scary?$"
 
 Route104_Text_LikeFillingMouthWithSeedsTakeThis: @ 81ED838
-	.string "I like filling my mouth with seeds,\n"
-	.string "then spitting them out fast!\p"
-	.string "You can have this, so you try it out!\p"
-	.string "Use it on a POKéMON, and it will learn\n"
-	.string "a move for firing seeds rapidly.$"
+	.string "Yo, do you ever just like, get stuff\n"
+	.string "stuck on you? And you just like, really\l"
+	.string "wanna get it off super fast?\p"
+	.string "Yeah, you do! You know what's up! You\n"
+	.string "should try out this move!$"
 
 Route104_Text_TMsAreOneTimeUse: @ 81ED8E7
-	.string "A word of advice!\p"
-	.string "A TM, TECHNICAL MACHINE, is good only\n"
-	.string "for one-time use.\p"
-	.string "Once you use it, it's gone.\n"
-	.string "Think twice before using it!$"
+	.string "TM00! All of us cool kids call it\n"
+	.string "Rapid Spin!\p"
+	.string "It does some damage, and it 'll get\n"
+	.string "anything nasty off your Pokémon!\p"
+	.string "I'm talking Leech Seed, Wrap, and\n"
+	.string "Entry Hazards too! You dig it?$"
 
 Route104_Text_DontNeedThisTakeIt: @ 81ED96A
-	.string "This FLOWER SHOP started selling\n"
-	.string "saplings recently.\p"
-	.string "It made me so happy, I went overboard\n"
-	.string "shopping.\p"
-	.string "I don't need this WHITE HERB anymore.\n"
-	.string "Would you take it, please?$"
+	.string "Hi! I found this the other day while I\n"
+	.string "was walking through Spectre Forest.\p"
+	.string "I'm not a trainer, so I don't really\n"
+	.string "need it. You can have it!$"
 
 Route104_Text_FlowerShopSellingSaplings: @ 81EDA0F
-	.string "This FLOWER SHOP started selling\n"
-	.string "saplings recently.\p"
-	.string "It made me so happy, I went overboard\n"
-	.string "shopping. Where should I put them?$"
+	.string "I think Sceptilite is a Mega Stone! They\n"
+	.string "bring certain Pokémon to increased\l"
+	.string "stages of power that are otherwise not\l"
+	.string "possible to reach.$"
 
 Route104_Text_MrBrineysCottage: @ 81EDA8C
 	.string "MR. BRINEY'S COTTAGE$"
 
 Route104_Text_RouteSignPetalburg: @ 81EDAA1
-	.string "ROUTE 1O4\n"
-	.string "{RIGHT_ARROW} PETALBURG CITY$"
+	.string "Route 4\n"
+	.string "{RIGHT_ARROW} Iridium Bluff$"
 
 Route104_Text_RouteSignRustboro: @ 81EDABC
-	.string "ROUTE 1O4\n"
-	.string "{UP_ARROW} RUSTBORO CITY$"
+	.string "Route 4\n"
+	.string "{LEFT_ARROW} Spectre Forest$"
 
 Route104_Text_PrettyPetalFlowShop: @ 81EDAD6
 	.string "PRETTY PETAL FLOWER SHOP$"

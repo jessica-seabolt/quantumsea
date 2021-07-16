@@ -1868,7 +1868,7 @@ LoadLinkPartnerObjectEventSpritePalette:
 .L258:
 	.align	2, 0
 .L257:
-	.word	gObjectEventPalette8
+	.word	gObjectEventPaletteQuinn
 .L246:
 .LM251:
 
@@ -26489,7 +26489,7 @@ Script_TryGainNewFanFromCounter:
 	.byte	0,0
 
 	.section	.debug_info
-	.4byte	0x19898
+	.4byte	0x1989c
 	.2byte	0x2
 	.4byte	.debug_abbrev
 	.byte	0x4
@@ -65239,17 +65239,17 @@ Script_TryGainNewFanFromCounter:
 	.byte	0x0
 	.byte	0x0
 	.byte	0x34
-	.ascii	"gObjectEventPalette8\000"
+	.ascii	"gObjectEventPaletteQuinn\000"
 
 	.byte	0x1
 	.byte	0x5a
-	.4byte	0x1954e
+	.4byte	0x19552
 	.byte	0x1
 	.byte	0x1
 	.byte	0x9
 	.4byte	0x19524
 	.byte	0x13
-	.4byte	0x1955f
+	.4byte	0x19563
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x0
@@ -65259,13 +65259,13 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.byte	0x5b
-	.4byte	0x1957e
+	.4byte	0x19582
 	.byte	0x1
 	.byte	0x1
 	.byte	0x9
-	.4byte	0x19553
+	.4byte	0x19557
 	.byte	0x13
-	.4byte	0x1958f
+	.4byte	0x19593
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x0
@@ -65275,13 +65275,13 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.byte	0x5c
-	.4byte	0x195ae
+	.4byte	0x195b2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x9
-	.4byte	0x19583
+	.4byte	0x19587
 	.byte	0x13
-	.4byte	0x195bf
+	.4byte	0x195c3
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x0
@@ -65291,13 +65291,13 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.byte	0x5d
-	.4byte	0x195de
+	.4byte	0x195e2
 	.byte	0x1
 	.byte	0x1
 	.byte	0x9
-	.4byte	0x195b3
+	.4byte	0x195b7
 	.byte	0x13
-	.4byte	0x195ef
+	.4byte	0x195f3
 	.4byte	0x11fb
 	.byte	0x14
 	.byte	0x3
@@ -65307,15 +65307,15 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x283
-	.4byte	0x19616
+	.4byte	0x1961a
 	.byte	0x5
 	.byte	0x3
 	.4byte	sMauvilleGymSwitchCoords
 	.byte	0x9
-	.4byte	0x195e3
+	.4byte	0x195e7
 	.byte	0x13
-	.4byte	0x19627
-	.4byte	0x19627
+	.4byte	0x1962b
+	.4byte	0x1962b
 	.byte	0x14
 	.byte	0x4
 	.byte	0x0
@@ -65326,14 +65326,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x330
-	.4byte	0x19655
+	.4byte	0x19659
 	.byte	0x5
 	.byte	0x3
 	.4byte	sSlidingDoorNextFrameDelay
 	.byte	0x9
-	.4byte	0x1961b
+	.4byte	0x1961f
 	.byte	0x13
-	.4byte	0x19666
+	.4byte	0x1966a
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x4
@@ -65343,12 +65343,12 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x332
-	.4byte	0x19696
+	.4byte	0x1969a
 	.byte	0x5
 	.byte	0x3
 	.4byte	sPetalburgGymSlidingDoorMetatiles
 	.byte	0x9
-	.4byte	0x1965a
+	.4byte	0x1965e
 	.byte	0x40
 	.ascii	"gElevatorFloor_WindowTemplate\000"
 
@@ -65360,7 +65360,7 @@ Script_TryGainNewFanFromCounter:
 	.byte	0x3
 	.4byte	gElevatorFloor_WindowTemplate
 	.byte	0x13
-	.4byte	0x196d4
+	.4byte	0x196d8
 	.4byte	0x2fd2
 	.byte	0x14
 	.byte	0xf
@@ -65370,15 +65370,15 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x6c2
-	.4byte	0x196f8
+	.4byte	0x196fc
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	gDeptStoreFloorNames
 	.byte	0x9
-	.4byte	0x196c8
+	.4byte	0x196cc
 	.byte	0x13
-	.4byte	0x1970b
+	.4byte	0x1970f
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x2
@@ -65390,14 +65390,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x6d6
-	.4byte	0x19738
+	.4byte	0x1973c
 	.byte	0x5
 	.byte	0x3
 	.4byte	sElevatorWindowTiles_Ascending
 	.byte	0x9
-	.4byte	0x196fd
+	.4byte	0x19701
 	.byte	0x13
-	.4byte	0x1974b
+	.4byte	0x1974f
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x2
@@ -65409,14 +65409,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x6e9
-	.4byte	0x19779
+	.4byte	0x1977d
 	.byte	0x5
 	.byte	0x3
 	.4byte	sElevatorWindowTiles_Descending
 	.byte	0x9
-	.4byte	0x1973d
+	.4byte	0x19741
 	.byte	0x13
-	.4byte	0x1978c
+	.4byte	0x19790
 	.4byte	0x2fd2
 	.byte	0x14
 	.byte	0xc
@@ -65428,14 +65428,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0x986
-	.4byte	0x197b8
+	.4byte	0x197bc
 	.byte	0x5
 	.byte	0x3
 	.4byte	sScrollableMultichoiceOptions
 	.byte	0x9
-	.4byte	0x1977e
+	.4byte	0x19782
 	.byte	0x13
-	.4byte	0x197c9
+	.4byte	0x197cd
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x9
@@ -65445,14 +65445,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0xc4c
-	.4byte	0x197f3
+	.4byte	0x197f7
 	.byte	0x5
 	.byte	0x3
 	.4byte	sBattleFrontier_TutorMoves1
 	.byte	0x9
-	.4byte	0x197bd
+	.4byte	0x197c1
 	.byte	0x13
-	.4byte	0x19804
+	.4byte	0x19808
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0x9
@@ -65462,14 +65462,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0xc5a
-	.4byte	0x1982e
+	.4byte	0x19832
 	.byte	0x5
 	.byte	0x3
 	.4byte	sBattleFrontier_TutorMoves2
 	.byte	0x9
-	.4byte	0x197f8
+	.4byte	0x197fc
 	.byte	0x13
-	.4byte	0x19841
+	.4byte	0x19845
 	.4byte	0x2e87
 	.byte	0x14
 	.byte	0xa
@@ -65481,14 +65481,14 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0xd24
-	.4byte	0x19863
+	.4byte	0x19867
 	.byte	0x5
 	.byte	0x3
 	.4byte	sDeoxysRockPalettes
 	.byte	0x9
-	.4byte	0x19833
+	.4byte	0x19837
 	.byte	0x13
-	.4byte	0x19876
+	.4byte	0x1987a
 	.4byte	0x23e1
 	.byte	0x14
 	.byte	0xa
@@ -65500,19 +65500,19 @@ Script_TryGainNewFanFromCounter:
 
 	.byte	0x1
 	.2byte	0xd32
-	.4byte	0x19896
+	.4byte	0x1989a
 	.byte	0x5
 	.byte	0x3
 	.4byte	sDeoxysRockCoords
 	.byte	0x9
-	.4byte	0x19868
+	.4byte	0x1986c
 	.byte	0x0
 
 	.section	.debug_pubnames
 	.4byte	0x10fc
 	.2byte	0x2
 	.4byte	.debug_info
-	.4byte	0x1989c
+	.4byte	0x198a0
 	.4byte	0x5d
 	.ascii	"Special_ShowDiploma\000"
 
@@ -65969,10 +65969,10 @@ Script_TryGainNewFanFromCounter:
 	.4byte	0x194ee
 	.ascii	"gScrollableMultichoice_ListMenuTemplate\000"
 
-	.4byte	0x1969b
+	.4byte	0x1969f
 	.ascii	"gElevatorFloor_WindowTemplate\000"
 
-	.4byte	0x196d4
+	.4byte	0x196d8
 	.ascii	"gDeptStoreFloorNames\000"
 
 	.4byte	0x0
